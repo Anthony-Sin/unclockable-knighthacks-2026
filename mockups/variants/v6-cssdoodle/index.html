@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fill the Tale — Sticker Sky edition · Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Baloo+2:wght@500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="./styles.css" />
+<script src="https://unpkg.com/css-doodle@0.40.8/css-doodle.min.js"></script>
+</head>
+<body>
+
+<header class="page-head">
+  <div class="eyebrow">Pip &amp; the Storywood · Chapter 1 · The Sticker Sky</div>
+  <div class="title-row">
+    <css-doodle class="mini-mark" aria-hidden="true">
+      :doodle { @grid: 1x1 / 100% 100%; }
+      @size: 78%;
+      background: #FF6B57;
+      clip-path: @shape(bud 7);
+      animation: markspin 40s linear infinite;
+      @keyframes markspin { to { transform: rotate(360deg); } }
+    </css-doodle>
+    <h1>Fill the Tale</h1>
+    <span class="edition-chip">Sticker Sky edition</span>
+  </div>
+  <svg class="squiggle" viewBox="0 0 220 12" fill="none" aria-hidden="true">
+    <path d="M4 8 C 30 2, 55 10, 80 6 S 130 2, 155 7 S 200 9, 216 5" stroke="#FF6B57" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <p class="lede">
+    Build your sticker hero, then type words to finish Pip&rsquo;s story.
+    Real words pop real props into the sky — silly words make Pip go bonk!
+  </p>
+</header>
+
+<main>
+  <!-- ======================= THE STAGE ======================= -->
+  <section class="stage-wrap">
+    <div class="stage area-0" id="stage">
+
+      <!-- Generated sky — grammar is swapped + re-rolled per journey area -->
+      <css-doodle id="skyDoodle" class="doodle sky" aria-hidden="true"></css-doodle>
+
+      <!-- Corner sun-star (warm areas) -->
+      <css-doodle id="sunDoodle" class="doodle sun" aria-hidden="true">
+        :doodle { @grid: 1x1 / 100% 100%; }
+        @size: 84%;
+        background: #FFC53D;
+        clip-path: @shape(star);
+        opacity: .92;
+        animation: sunspin 90s linear infinite;
+        @keyframes sunspin { to { transform: rotate(360deg); } }
+      </css-doodle>
+
+      <!-- River water band (beat 3) -->
+      <div class="water" id="waterBand" aria-hidden="true">
+        <svg class="water-lip" viewBox="0 0 900 26" preserveAspectRatio="none">
+          <path id="waterLipPath" d="M0 14 Q 45 4 90 14 T 180 14 T 270 14 T 360 14 T 450 14 T 540 14 T 630 14 T 720 14 T 810 14 T 900 14 L900 26 L0 26 Z" fill="#7CC7EF"/>
+        </svg>
+      </div>
+
+      <!-- Constellation critter: a generated star-cat overhead -->
+      <div class="cat-zone" id="catZone" aria-hidden="true">
+        <svg id="catSvg" viewBox="0 0 220 150"></svg>
+        <div class="cat-tag">SKY CAT · KEEPS WATCH</div>
+      </div>
+
+      <!-- Where word-props pop in -->
+      <div class="prop-layer" id="propLayer"></div>
+
+      <!-- The hero sticker rig: slides along the ground -->
+      <div class="hero-rig" id="heroRig">
+        <div class="hero-inner" id="heroInner">
+          <svg id="heroSvg" class="hero-fig" viewBox="0 -12 120 162" role="img" aria-label="Pip, your sticker hero"></svg>
+        </div>
+        <div class="dizzy" id="dizzyStars" aria-hidden="true">
+          <svg class="dstar d1" viewBox="0 0 24 24"><path d="M12 1 L14.6 8.4 L22 9 L16 13.8 L17.8 21 L12 16.8 L6.2 21 L8 13.8 L2 9 L9.4 8.4 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="1.6"/></svg>
+          <svg class="dstar d2" viewBox="0 0 24 24"><path d="M12 1 L14.6 8.4 L22 9 L16 13.8 L17.8 21 L12 16.8 L6.2 21 L8 13.8 L2 9 L9.4 8.4 Z" fill="#5DA9E9" stroke="#2B2118" stroke-width="1.6"/></svg>
+          <svg class="dstar d3" viewBox="0 0 24 24"><path d="M12 1 L14.6 8.4 L22 9 L16 13.8 L17.8 21 L12 16.8 L6.2 21 L8 13.8 L2 9 L9.4 8.4 Z" fill="#FF6B57" stroke="#2B2118" stroke-width="1.6"/></svg>
+        </div>
+      </div>
+
+      <!-- Bursts: confetti / mud-splat / water splash / fizzle smoke -->
+      <css-doodle id="burstGood" class="doodle burst" aria-hidden="true">
+        :doodle { @grid: 10x6 / 100% 100%; }
+        @random(.3) {
+          @size: @r(9%, 26%);
+          background: @p(#FF6B57, #FFC53D, #4FB06D, #5DA9E9, #B565D8, #FF8FA3, #FFFDF6);
+          clip-path: @shape(@p(star, heart, circle, triangle, hexagon, drop, windmill));
+          rotate: @r(-45deg, 45deg);
+          animation: confpop .95s cubic-bezier(.34, 1.56, .64, 1) @r(0s, .25s) both;
+        }
+        @keyframes confpop {
+          0%   { transform: scale(.15) translateY(-8%); opacity: 0; }
+          38%  { transform: scale(1.2) translateY(0); opacity: 1; }
+          70%  { transform: scale(1) translateY(4%); opacity: 1; }
+          100% { transform: scale(.9) translateY(10%); opacity: 0; }
+        }
+      </css-doodle>
+
+      <css-doodle id="burstFail" class="doodle burst" aria-hidden="true">
+        :doodle { @grid: 10x6 / 100% 100%; }
+        @random(.2) {
+          @size: @r(14%, 40%);
+          background: @p(#8B5E3C, #6D4C2F, #A1733F, #7A8B4F, #4B4B4B);
+          clip-path: @shape(@p(bean, bicorn, circle));
+          opacity: @r(.7, .95);
+          animation: splat .8s cubic-bezier(.34, 1.56, .64, 1) @r(0s, .2s) both;
+        }
+        @random(.14) {
+          @size: @r(12%, 30%);
+          background: @p(#FFFDF6, #FFC53D);
+          clip-path: @shape(star);
+          animation: dizzypop .9s cubic-bezier(.34, 1.56, .64, 1) @r(0s, .25s) both;
+        }
+        @keyframes splat {
+          0%   { transform: scale(.1); opacity: 0; }
+          55%  { transform: scale(1.25); opacity: 1; }
+          100% { transform: scale(1); opacity: .9; }
+        }
+        @keyframes dizzypop {
+          0%   { transform: scale(.1) rotate(0deg); opacity: 0; }
+          50%  { transform: scale(1.3) rotate(120deg); opacity: 1; }
+          100% { transform: scale(.95) rotate(260deg); opacity: .9; }
+        }
+      </css-doodle>
+
+      <css-doodle id="burstSplash" class="doodle burst" aria-hidden="true">
+        :doodle { @grid: 10x6 / 100% 100%; }
+        @random(.24) {
+          @size: @r(10%, 34%);
+          background: @p(#5DA9E9, #8FD0FF, #C8EBFF, #FFFDF6, #3D8BC9);
+          clip-path: @shape(@p(drop, circle, bean));
+          opacity: @r(.75, 1);
+          animation: splashup .95s cubic-bezier(.34, 1.56, .64, 1) @r(0s, .2s) both;
+        }
+        @keyframes splashup {
+          0%   { transform: translateY(60%) scale(.2); opacity: 0; }
+          40%  { transform: translateY(-30%) scale(1.2); opacity: 1; }
+          100% { transform: translateY(30%) scale(.8); opacity: 0; }
+        }
+      </css-doodle>
+
+      <css-doodle id="burstSmoke" class="doodle burst" aria-hidden="true">
+        :doodle { @grid: 10x6 / 100% 100%; }
+        @random(.2) {
+          @size: @r(14%, 38%);
+          background: @p(#9AA0A6, #6E6E78, #C9C9D2, #4B4B55);
+          clip-path: @shape(@p(circle, bean));
+          filter: blur(1px);
+          opacity: @r(.55, .85);
+          animation: smokeup 1.2s ease-out @r(0s, .25s) both;
+        }
+        @keyframes smokeup {
+          0%   { transform: translateY(20%) scale(.3); opacity: 0; }
+          35%  { opacity: .9; }
+          100% { transform: translateY(-70%) scale(1.3); opacity: 0; }
+        }
+      </css-doodle>
+
+      <!-- Reaction caption -->
+      <div class="stage-caption" id="reactCaption" role="status" aria-live="polite">
+        First, build your sticker hero!
+      </div>
+
+      <!-- Shock flash for the sky regenerate -->
+      <div class="shock-flash" id="shockFlash" aria-hidden="true"></div>
+
+      <!-- Ending overlay -->
+      <div class="ending" id="endingCard" hidden>
+        <div class="ending-card">
+          <svg class="gem" viewBox="0 0 96 96" aria-hidden="true">
+            <polygon points="48,6 82,26 82,58 48,92 14,58 14,26" fill="#B565D8" stroke="#2B2118" stroke-width="4"/>
+            <polygon points="48,6 82,26 48,44 14,26" fill="#C98BE6"/>
+            <polygon points="14,26 48,44 48,92 14,58" fill="#9A4CC4"/>
+            <text x="48" y="66" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="34" fill="#FFFDF6">T</text>
+          </svg>
+          <h2>Chapter written!</h2>
+          <p class="ending-sub">Pip found the letter-gem <strong>T</strong> under the Sticker Sky. Here&rsquo;s the tale you wrote:</p>
+          <ul class="recap-list" id="recapList"></ul>
+          <p class="silly-recap" id="sillyRecap" hidden></p>
+          <div class="ending-actions">
+            <button type="button" class="btn primary" id="playAgainBtn">Write it again</button>
+            <button type="button" class="btn ghost" id="newHeroBtn">New hero</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls under the stage -->
+    <div class="control-row">
+      <div class="progress" id="progressDots" aria-label="Chapter progress"></div>
+      <div class="controls-right">
+        <span class="sky-tag" id="skyTag">sticker sky</span>
+        <button type="button" class="btn ghost" id="newSkyBtn">
+          <svg viewBox="0 0 20 20" class="btn-icon"><path d="M3 10 a7 7 0 0 1 12-4.9 L17 7 M17 3 v4 h-4 M17 10 a7 7 0 0 1-12 4.9 L3 13 M3 17 v-4 h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Re-roll sky
+        </button>
+        <button type="button" class="btn secondary" id="watchBtn">
+          <svg viewBox="0 0 20 20" class="btn-icon"><path d="M6 4 L16 10 L6 16 Z" fill="currentColor"/></svg>
+          <span id="watchLabel">Watch it play</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= BEAT 0 · HERO MAKER ======================= -->
+  <section class="maker-panel" id="makerPanel">
+    <div class="maker-head">
+      <h2>Build your sticker hero</h2>
+      <p>Pick a body, some eyes, a hat and a color — Pip sticks together right up there!</p>
+    </div>
+
+    <div class="opt-row" data-group="body">
+      <span class="opt-label">Body</span>
+      <div class="swatches">
+        <button type="button" class="swatch" data-opt="round" aria-label="Round body">
+          <svg viewBox="0 0 60 60"><path d="M30 8 C46 8 54 22 54 36 C54 50 44 56 30 56 C16 56 6 50 6 36 C6 22 14 8 30 8 Z" fill="currentColor" stroke="#2B2118" stroke-width="3"/></svg>
+        </button>
+        <button type="button" class="swatch" data-opt="tall" aria-label="Tall body">
+          <svg viewBox="0 0 60 60"><path d="M30 5 C42 5 48 16 48 30 C48 47 41 56 30 56 C19 56 12 47 12 30 C12 16 18 5 30 5 Z" fill="currentColor" stroke="#2B2118" stroke-width="3"/></svg>
+        </button>
+        <button type="button" class="swatch" data-opt="square" aria-label="Square body">
+          <svg viewBox="0 0 60 60"><rect x="9" y="10" width="42" height="44" rx="14" fill="currentColor" stroke="#2B2118" stroke-width="3"/></svg>
+        </button>
+        <button type="button" class="swatch" data-opt="pear" aria-label="Pear body">
+          <svg viewBox="0 0 60 60"><path d="M30 6 C40 6 45 14 45 24 C52 30 55 38 55 44 C55 53 44 57 30 57 C16 57 5 53 5 44 C5 38 8 30 15 24 C15 14 20 6 30 6 Z" fill="currentColor" stroke="#2B2118" stroke-width="3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="opt-row" data-group="eyes">
+      <span class="opt-label">Eyes</span>
+      <div class="swatches">
+        <button type="button" class="swatch" data-opt="big" aria-label="Big eyes">
+          <svg viewBox="0 0 60 60"><circle cx="19" cy="30" r="11" fill="#FFFDF6" stroke="#2B2118" stroke-width="3"/><circle cx="41" cy="30" r="11" fill="#FFFDF6" stroke="#2B2118" stroke-width="3"/><circle cx="21" cy="32" r="4" fill="#2B2118"/><circle cx="39" cy="32" r="4" fill="#2B2118"/></svg>
+        </button>
+        <button type="button" class="swatch" data-opt="sleepy" aria-label="Sleepy eyes">
+          <svg viewBox="0 0 60 60"><path d="M10 30 Q19 38 28 30" fill="none" stroke="#2B2118" stroke-width="4" stroke-linecap="round"/><path d="M32 30 Q41 38 50 30" fill="none" stroke="#2B2118" stroke-width="4" stroke-linecap="round"/><path d="M8 22 Q18 18 27 21 M33 21 Q42 18 52 22" fill="none" stroke="#2B2118" stroke-width="3" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="swatch" data-opt="star" aria-label="Starry eyes">
+          <svg viewBox="0 0 60 60"><path d="M19 16 L22 26 L32 26.5 L24 32.5 L26.5 42 L19 36.5 L11.5 42 L14 32.5 L6 26.5 L16 26 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="2.5" stroke-linejoin="round"/><path d="M41 16 L44 26 L54 26.5 L46 32.5 L48.5 42 L41 36.5 L33.5 42 L36 32.5 L28 26.5 L38 26 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="2.5" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="swatch" data-opt="wink" aria-label="Winking eyes">
+          <svg viewBox="0 0 60 60"><circle cx="19" cy="30" r="11" fill="#FFFDF6" stroke="#2B2118" stroke-width="3"/><circle cx="21" cy="32" r="4" fill="#2B2118"/><path d="M33 32 Q41 26 49 32" fill="none" stroke="#2B2118" stroke-width="4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="opt-row" data-group="hat">
+      <span class="opt-label">Hat</span>
+      <div class="swatches">
+        <button type="button" class="swatch" data-opt="antenna" aria-label="Antenna">
+          <svg viewBox="0 0 60 60"><path d="M30 50 C30 36 24 32 22 24" fill="none" stroke="#2B2118" stroke-width="4" stroke-linecap="round"/><circle cx="21" cy="18" r="8" fill="#FFC53D" stroke="#2B2118" stroke-width="3"/></svg>
+        </button>
+        <button type="button" class="swatch" data-opt="party" aria-label="Party hat">
+          <svg viewBox="0 0 60 60"><path d="M30 8 L48 50 L12 50 Z" fill="#FF6B57" stroke="#2B2118" stroke-width="3" stroke-linejoin="round"/><circle cx="30" cy="8" r="6" fill="#FFC53D" stroke="#2B2118" stroke-width="3"/><path d="M22 30 L38 30" stroke="#FFFDF6" stroke-width="4" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="swatch" data-opt="sprout" aria-label="Sprout">
+          <svg viewBox="0 0 60 60"><path d="M30 52 L30 30" stroke="#2B2118" stroke-width="4" stroke-linecap="round"/><path d="M30 34 C20 34 14 27 14 18 C24 18 30 24 30 34 Z" fill="#4FB06D" stroke="#2B2118" stroke-width="3" stroke-linejoin="round"/><path d="M30 30 C30 21 37 15 46 15 C46 24 40 30 30 30 Z" fill="#6BBF74" stroke="#2B2118" stroke-width="3" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="swatch" data-opt="starclip" aria-label="Star clip">
+          <svg viewBox="0 0 60 60"><path d="M38 10 L42 22 L55 22.5 L45 30.5 L48 43 L38 36 L28 43 L31 30.5 L21 22.5 L34 22 Z" fill="#B565D8" stroke="#2B2118" stroke-width="3" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="opt-row" data-group="color">
+      <span class="opt-label">Color</span>
+      <div class="swatches">
+        <button type="button" class="swatch dot" data-opt="0" style="--dot:#4FB06D" aria-label="Leaf green"><span class="dot-fill"></span></button>
+        <button type="button" class="swatch dot" data-opt="1" style="--dot:#5DA9E9" aria-label="Sky blue"><span class="dot-fill"></span></button>
+        <button type="button" class="swatch dot" data-opt="2" style="--dot:#B565D8" aria-label="Berry purple"><span class="dot-fill"></span></button>
+        <button type="button" class="swatch dot" data-opt="3" style="--dot:#FF8FA3" aria-label="Petal pink"><span class="dot-fill"></span></button>
+        <button type="button" class="swatch dot" data-opt="4" style="--dot:#FF9F5A" aria-label="Sunset orange"><span class="dot-fill"></span></button>
+      </div>
+    </div>
+
+    <div class="maker-actions">
+      <button type="button" class="btn ghost" id="surpriseBtn">
+        <svg viewBox="0 0 20 20" class="btn-icon"><path d="M10 2 L11.8 7.2 L17 7.5 L12.9 10.9 L14.2 16 L10 13 L5.8 16 L7.1 10.9 L3 7.5 L8.2 7.2 Z" fill="currentColor"/></svg>
+        Surprise me
+      </button>
+      <button type="button" class="btn primary" id="startBtn">
+        Start the story
+        <svg viewBox="0 0 20 20" class="btn-icon"><path d="M4 10 L15 10 M11 5 L16 10 L11 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ======================= THE SENTENCE ======================= -->
+  <section class="sentence-panel" id="sentencePanel" hidden>
+    <div class="beat-title" id="beatTitle">The path is blocked!</div>
+    <form class="sentence-form" id="sentenceForm" autocomplete="off">
+      <div class="sentence-line">
+        <span id="sentPre">Pip needs a</span>
+        <span class="blank-wrap">
+          <input
+            id="wordInput"
+            type="text"
+            size="7"
+            placeholder="type a word"
+            aria-label="Your word"
+            maxlength="40"
+            autocapitalize="off"
+            spellcheck="false"
+          />
+        </span>
+        <span id="sentPost"></span>
+        <button type="submit" class="btn primary" id="fillBtn">Fill it in!</button>
+      </div>
+      <div class="didyou-row" id="didyouRow" hidden>
+        <span class="didyou-label">Did you mean</span>
+        <button type="button" class="word-chip didyou-chip" id="didyouChip"></button>
+        <span class="didyou-q">?</span>
+      </div>
+      <div class="chips-row">
+        <span class="chips-label">Or try one:</span>
+        <div class="chips" id="wordChips"></div>
+      </div>
+    </form>
+
+    <div class="tale-strip">
+      <span class="tale-label">Your tale so far</span>
+      <div class="tale-words" id="taleWords"><span class="tale-empty">No words yet — the page is blank.</span></div>
+    </div>
+  </section>
+</main>
+
+<footer class="page-foot">
+  Every sky, sparkle, splash and glow is generated live by css-doodle — and the
+  whole sky visibly re-rolls whenever the story turns. Mockup of the Fill the Tale mode.
+</footer>
+
+<script src="./game.js"></script>
+</body>
+</html>

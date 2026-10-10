@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fill the Tale · Crystal Caves edition — Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Trianglify (low-poly generative art engine) — CDN first, vendored copy as fallback -->
+<script src="https://cdn.jsdelivr.net/npm/trianglify@4.1.1/dist/trianglify.bundle.js"></script>
+<script>window.trianglify || document.write('<script src="trianglify.bundle.js"><\/script>');</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="backlink" href="../../">&larr; all mockups</a>
+    <span class="badge">Variant V4 &middot; every facet by trianglify</span>
+    <h1>Fill the <span class="amp">Tale</span></h1>
+    <svg class="squiggle" width="250" height="16" viewBox="0 0 250 16" fill="none" aria-hidden="true">
+      <path d="M4 10 C 22 3, 42 13, 64 8 S 106 3, 128 8 S 170 14, 192 7 S 232 4, 246 9" stroke="#FF6B57" stroke-width="4" stroke-linecap="round"/>
+      <path d="M60 3 L66 10 L54 10 Z" fill="#B565D8" stroke="#2B2118" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M186 2 L192 9 L180 9 Z" fill="#5DA9E9" stroke="#2B2118" stroke-width="1.4" stroke-linejoin="round"/>
+    </svg>
+    <p class="sub">Crystal Caves edition &mdash; forge a hero of triangles, then type words to carry it home.</p>
+  </header>
+
+  <section class="game">
+    <div class="stage" id="stage">
+
+      <!-- procedural low-poly world: everything is trianglify triangles -->
+      <svg id="backdrop" viewBox="0 0 800 460" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+
+      <!-- words the kid typed literally spawn as props in this layer -->
+      <svg id="propsBack" viewBox="0 0 800 460" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+
+      <!-- weather + cave darkness overlays -->
+      <div id="rainFx" aria-hidden="true"></div>
+      <div id="caveDark" aria-hidden="true"></div>
+
+      <!-- Hoot the faceted owl — support character who glides ahead to each new area -->
+      <div class="owl" id="owl" aria-hidden="true"><div id="owlWrap"></div></div>
+
+      <!-- rideable props (gem-boat, crystal unicorn) live here so Pip can mount -->
+      <div class="ride" id="ride" aria-hidden="true"></div>
+
+      <!-- Pip, the kid-built crystal hero -->
+      <div class="pip" id="pip">
+        <div class="guide" id="guide">
+          <span class="glabel" id="guideName">Pip</span>
+          <span id="guideText"></span>
+        </div>
+        <div class="cheer" id="cheer"></div>
+        <div id="heldProp" aria-hidden="true"></div>
+        <div id="heroWrap"></div>
+      </div>
+
+      <!-- confetti / shard debris layer -->
+      <div class="confetti" id="confetti"></div>
+
+      <div class="hud hud-left"><span class="chip" id="beatChip">Beat 1 of 5</span></div>
+      <div class="hud hud-right">
+        <button class="chip chip-btn" id="mosaicBtn" type="button" title="Regrow this crystal world">
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 0 L14 14 L0 14 Z" fill="#B565D8" stroke="#2B2118" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          New world
+        </button>
+      </div>
+      <div class="hud hud-pal"><span class="chip chip-pal" id="palChip">Emerald Forest</span></div>
+
+      <div class="hintchip" id="hintChip">Every cave, hill and hero is grown fresh from triangles</div>
+      <button class="stopdemo" id="stopBtn" type="button"><span class="stopsq"></span>Stop demo</button>
+
+      <!-- ============ BEAT 0 — the hero maker ============ -->
+      <div class="overlay show" id="makerOverlay">
+        <div class="card card-maker">
+          <span class="sticker">Beat 0 &middot; forge your hero</span>
+          <h2>Grow a crystal hero</h2>
+          <p class="makersub">Pip is triangulated on the spot &mdash; pick the bits, or let the caves decide.</p>
+          <div class="maker-flex">
+            <div class="preview">
+              <div id="heroPreview"></div>
+              <span class="pname" id="heroName">Pip</span>
+              <span class="psub" id="heroTag">your crystal hero</span>
+            </div>
+            <div class="opts">
+              <div class="optgroup">
+                <label>Facets</label>
+                <div class="optrow" id="optFacets"></div>
+              </div>
+              <div class="optgroup">
+                <label>Body colour</label>
+                <div class="optrow" id="optHues"></div>
+              </div>
+              <div class="optgroup">
+                <label>Horns &amp; ears</label>
+                <div class="optrow" id="optHorns"></div>
+              </div>
+              <div class="optgroup">
+                <label>Eyes</label>
+                <div class="optrow" id="optEyes"></div>
+              </div>
+            </div>
+          </div>
+          <div class="btnrow">
+            <button class="btn btn-ghost" id="surpriseBtn" type="button">Surprise me</button>
+            <button class="btn" id="startBtn" type="button">Start the journey</button>
+            <button class="btn btn-ghost" id="watchBtn" type="button">Watch it play</button>
+          </div>
+          <p class="mini">Watch it play forges a hero for you, then types the whole tale</p>
+        </div>
+      </div>
+
+      <!-- ============ payoff overlay ============ -->
+      <div class="overlay" id="endOverlay" hidden>
+        <div class="card card-win">
+          <span class="sticker sticker-sun">Chapter written!</span>
+          <h2>Pip made it home!</h2>
+          <div class="gem-row">
+            <svg class="gem" width="86" height="86" viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M50 8 L82 30 L72 78 L28 78 L18 30 Z" fill="#B565D8" stroke="#2B2118" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M18 30 L82 30 M50 8 L38 30 50 78 M50 8 L62 30 50 78 M38 30 L28 78 M62 30 L72 78" stroke="#2B2118" stroke-width="2.5" fill="none" opacity=".55"/>
+              <path d="M30 22 L44 14" stroke="#FFFDF6" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+              <text x="50" y="59" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="32" fill="#FFFDF6">C</text>
+            </svg>
+            <div class="gem-copy">
+              <b>Letter-gem earned!</b>
+              <span>&ldquo;C&rdquo; is for Crystal &mdash; Pip glues every facet back on and sets it in the bedtime story.</span>
+            </div>
+          </div>
+          <p class="recaplabel">Every word you wrote into the tale:</p>
+          <div class="recap" id="recap"></div>
+          <p class="gags" id="gagsLine"></p>
+          <div class="btnrow">
+            <button class="btn" id="againBtn" type="button">New world, same hero</button>
+            <button class="btn btn-ghost" id="reforgeBtn" type="button">Reforge hero</button>
+            <button class="btn btn-ghost" id="watchAgainBtn" type="button">Watch it again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- the sentence card: the star of the show -->
+    <div class="talecard" id="talecard">
+      <div class="sentence" id="sentence">
+        <span class="spre">Pip needs a</span>
+        <span class="blank" id="blank"><i>&nbsp;</i></span>
+        <span class="spost">to cross.</span>
+      </div>
+      <div class="inputrow">
+        <input id="wordInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="none"
+               spellcheck="false" maxlength="24" placeholder="type a word&hellip;" aria-label="Type a word to fill the blank">
+        <button class="btn btn-go" id="goBtn" type="button">Go!</button>
+      </div>
+      <div class="didyou" id="didyou" hidden>
+        <span>Did you mean</span>
+        <button type="button" id="didyouBtn"></button>
+        <span>?</span>
+      </div>
+      <div class="ideas" id="ideas"></div>
+    </div>
+
+    <p class="foot">
+      <span class="footchip">In the real game, a kid-safe word model checks each answer &mdash;
+      helper words spawn real props, silly words earn the big shatter, and near-misses get a friendly nudge.</span>
+    </p>
+  </section>
+
+  <footer>Five story beats, one faceted owl, and a hero that literally falls to pieces &mdash; then pulls itself together.</footer>
+</div>
+
+<!-- shared svg defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="dstar" d="M0 -7 L2 -2.2 7 -2.2 3 1 4.4 6.2 0 3.4 -4.4 6.2 -3 1 -7 -2.2 -2 -2.2 Z"/>
+  </defs>
+</svg>
+
+<script src="app.js"></script>
+</body>
+</html>

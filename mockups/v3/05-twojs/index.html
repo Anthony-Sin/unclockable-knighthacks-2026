@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Springy Scribble — Three Little Pigs · Two.js edition · Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%234FB06D' stroke='%232B2118' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script src="vendor/two.min.js" defer></script>
+<script src="../shared/llm.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">Wave 3 · Springy Scribble edition · every squiggle is a two.Path</span>
+    <h1>Pip <span class="amp">&amp;</span> the Storywood</h1>
+    <p class="sub">The Three Little Pigs — draw a hero, type a word, and a real story master
+      re-draws the whole springy world.</p>
+  </header>
+
+  <section class="game">
+    <div class="stage" id="stage">
+
+      <!-- Two.js SVG lands here (app.js appends it) -->
+
+      <div class="hud hud-tl">
+        <span class="chip" id="latChip" hidden>story master is thinking…</span>
+        <span class="chip chip-mode" id="modeChip" hidden>warming up…</span>
+      </div>
+
+      <div class="hud hud-tr">
+        <div class="wolfwrap" title="Wolf pressure — when it fills up, he huffs and puffs">
+          <span class="wolflabel">wolf</span>
+          <span class="wolfmeter" id="wolfMeter">
+            <i></i><i></i><i></i><i></i><i></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="hud hud-bl">
+        <div class="goalwrap">
+          <span class="goallabel">to the brick house</span>
+          <div class="goalbar"><div class="goalfill" id="goalFill"></div>
+            <svg class="goalpig" id="goalPig" viewBox="0 0 30 22" aria-hidden="true">
+              <ellipse cx="15" cy="13" rx="12" ry="8" fill="#F5A0B5" stroke="#2B2118" stroke-width="2"/>
+              <circle cx="6" cy="10" r="5" fill="#F5A0B5" stroke="#2B2118" stroke-width="2"/>
+              <circle cx="4" cy="9" r="1.2" fill="#2B2118"/>
+              <path d="M26 10 q4 -3 3 2" fill="none" stroke="#2B2118" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <button class="stopdemo" id="stopBtn" type="button" hidden>
+        <span class="stopsq"></span>Stop the show
+      </button>
+
+      <!-- BEAT 0: draw your hero -->
+      <div class="overlay show" id="makerOverlay">
+        <div class="card card-maker">
+          <span class="sticker">The three little pigs need a hero!</span>
+          <h2>Draw your hero</h2>
+          <p class="makernote">Your scribbles become real <b>two.Path</b> shapes that
+            bounce, ride, slip and hide through the story.</p>
+          <div class="maker">
+            <canvas id="makerCv" width="420" height="240" aria-label="Draw your hero here"></canvas>
+            <div class="swatches" id="swatches" role="radiogroup" aria-label="Crayon colors"></div>
+          </div>
+          <div class="btnrow">
+            <button class="btn" id="doneBtn" type="button">Done — start the story!</button>
+          </div>
+          <div class="btnrow btnrow-ghost">
+            <button class="btn btn-ghost" id="surpriseBtn" type="button">Surprise me</button>
+            <button class="btn btn-ghost" id="clearBtn" type="button">Clear page</button>
+            <button class="btn btn-ghost" id="watchBtn" type="button">Watch it play</button>
+          </div>
+          <p class="mini">"Watch it play" draws a hero and plays the whole journey
+            through the real story master.</p>
+        </div>
+      </div>
+
+      <!-- goal reached -->
+      <div class="overlay" id="endOverlay" hidden>
+        <div class="card card-win">
+          <span class="sticker sticker-sun">Journey complete!</span>
+          <h2>Safe in the brick house!</h2>
+          <p class="winline" id="winLine">The wolf huffed and puffed, but your hero made it.</p>
+          <div class="recap" id="recap"></div>
+          <div class="btnrow">
+            <button class="btn" id="againBtn" type="button">Draw a new hero</button>
+            <button class="btn btn-ghost" id="watchAgainBtn" type="button">Watch it again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- story line + input -->
+    <div class="sentence-card">
+      <p class="narrative" id="narrative">Once upon a time, three little pigs needed a hero…</p>
+      <p class="obstacles" id="obstacles"></p>
+      <p class="dym" id="dym" hidden>Did you mean
+        <button class="dymbtn" id="dymBtn" type="button">bridge</button>?
+      </p>
+      <div class="inputrow">
+        <input id="word" type="text" autocomplete="off" autocorrect="off"
+               autocapitalize="none" spellcheck="false" maxlength="32"
+               placeholder="type a word — try 'straw' or 'unicorn'"
+               aria-label="Type what the hero should do next" disabled>
+        <button class="btn btn-go" id="goBtn" type="button" disabled>Go!</button>
+      </div>
+      <p class="choices" id="choices"></p>
+      <p class="coach"><span id="coach">Draw your hero first — the crayons are waiting!</span></p>
+    </div>
+  </section>
+
+  <footer>One hero, seven little words, one very huffy wolf — rendered fresh by Two.js,
+    written fresh by a real story master.</footer>
+</div>
+</body>
+</html>

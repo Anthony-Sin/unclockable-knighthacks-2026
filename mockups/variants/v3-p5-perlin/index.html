@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fill the Tale — Living Forest edition · Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.min.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../index.html">&larr; all mockups</a>
+
+  <header>
+    <span class="badge">Variant 3 &middot; grown fresh by p5.js noise</span>
+    <h1>Fill the Tale</h1>
+    <svg class="squiggle" width="230" height="14" viewBox="0 0 240 14" fill="none" aria-hidden="true">
+      <path d="M3 9 C 20 3, 40 12, 60 8 S 100 3, 120 8 S 160 13, 180 7 S 220 4, 237 9" stroke="#4FB06D" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Living Forest edition &mdash; make a squishy hero, type words into the story,
+      and watch the forest grow, rain, and splash along.</p>
+    <div class="steps" aria-hidden="true">
+      <span class="step"><b>1</b> Make your hero</span>
+      <span class="step-arrow">&rarr;</span>
+      <span class="step"><b>2</b> Type a word</span>
+      <span class="step-arrow">&rarr;</span>
+      <span class="step"><b>3</b> It really happens!</span>
+    </div>
+  </header>
+
+  <!-- ============ THE LIVING FOREST (p5 canvas) ============ -->
+  <section class="stage-card">
+    <div class="stage-top">
+      <span class="seed-chip" id="seedChip" title="This forest was grown from this number">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c0-6 0-9-3-12m3 12c0-6 0-9 3-12m-3 12v-4m-5-2c2-1 5-1 5-1s-1-3-3-4-5 1-5 4 2 3 3 3Zm10 0c-2-1-5-1-5-1s1-3 3-4 5 1 5 4-2 3-3 3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        forest <b id="seedNum">#00000</b>
+      </span>
+      <span class="progress" id="progress" aria-label="Story progress"></span>
+      <span class="top-btns">
+        <button type="button" class="chip-btn" id="forestBtn">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4.5 8.5a8 8 0 0 1 13.8-2.6M19.5 15.5a8 8 0 0 1-13.8 2.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M18.6 2.8v3.6h-3.6M5.4 21.2v-3.6H9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Grow a new forest
+        </button>
+        <button type="button" class="chip-btn magic" id="demoBtn">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" id="demoIcon">
+            <path d="M6 4.5 18 12 6 19.5Z" fill="currentColor" stroke="#2B2118" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+          <span id="demoLabel">Watch it play</span>
+        </button>
+      </span>
+    </div>
+
+    <div class="canvas-wrap" id="canvasWrap">
+      <div class="no-p5" id="noP5" hidden>
+        <p><b>The Living Forest is asleep.</b><br>
+        This mockup grows its world with the p5.js library &mdash; check your connection and refresh!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BEAT 0: MAKE YOUR HERO ============ -->
+  <section class="maker-card" id="makerCard">
+    <h2 class="maker-title">Make your hero!</h2>
+    <p class="maker-sub">Your blob is already wiggling up there &mdash; dress it up, then off it goes.</p>
+
+    <div class="maker-grid">
+      <div class="mgroup">
+        <p class="mlabel">Body color</p>
+        <div class="swatches" id="swatches">
+          <button type="button" class="swatch sel" data-col="#7CC57C" data-belly="#CDEFD3" style="--c:#7CC57C" aria-label="leaf green"></button>
+          <button type="button" class="swatch" data-col="#5DA9E9" data-belly="#D3EBFF" style="--c:#5DA9E9" aria-label="sky blue"></button>
+          <button type="button" class="swatch" data-col="#FF6B57" data-belly="#FFD7D0" style="--c:#FF6B57" aria-label="coral red"></button>
+          <button type="button" class="swatch" data-col="#FFC53D" data-belly="#FFEEC4" style="--c:#FFC53D" aria-label="sun yellow"></button>
+          <button type="button" class="swatch" data-col="#B565D8" data-belly="#EBD6FA" style="--c:#B565D8" aria-label="berry purple"></button>
+          <button type="button" class="swatch" data-col="#FF8FAB" data-belly="#FFE0E9" style="--c:#FF8FAB" aria-label="bubblegum pink"></button>
+        </div>
+      </div>
+
+      <div class="mgroup">
+        <p class="mlabel">Squish-o-meter <span class="squish-word" id="squishWord">nice &amp; jiggly</span></p>
+        <input type="range" id="squishRange" class="squish-range" min="1" max="10" value="5"
+               aria-label="how wobbly the hero is">
+      </div>
+
+      <div class="mgroup">
+        <p class="mlabel">Eyes</p>
+        <div class="opt-row" id="eyeRow">
+          <button type="button" class="opt-btn sel" data-eye="one">One big eye</button>
+          <button type="button" class="opt-btn" data-eye="two">Two peepers</button>
+          <button type="button" class="opt-btn" data-eye="sleepy">Sleepy lids</button>
+        </div>
+      </div>
+
+      <div class="mgroup">
+        <p class="mlabel">Headgear</p>
+        <div class="opt-row" id="gearRow">
+          <button type="button" class="opt-btn" data-gear="sprout">Sprout</button>
+          <button type="button" class="opt-btn sel" data-gear="horns">Horns</button>
+          <button type="button" class="opt-btn" data-gear="antennae">Antennae</button>
+          <button type="button" class="opt-btn" data-gear="ears">Floppy ears</button>
+          <button type="button" class="opt-btn" data-gear="bald">Bare noggin</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="maker-actions">
+      <button type="button" class="btn-ghost" id="surpriseBtn">Surprise me!</button>
+      <button type="button" class="done-btn" id="startBtn">
+        <svg viewBox="0 0 24 24" class="done-star" aria-hidden="true">
+          <path d="M12 2.5 14.4 9.1 21.5 11.2 14.4 13.4 12 20 9.6 13.4 2.5 11.2 9.6 9.1Z" fill="#FFFDF6" stroke="#2B2118" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+        Start the adventure!
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ THE SENTENCE BAR ============ -->
+  <section class="sentence-card" id="sentenceCard" hidden>
+    <p class="sentence-line" id="sentenceLine"></p>
+    <p class="dym-row" id="dymRow" hidden>
+      Hmm&hellip; did you mean
+      <button type="button" class="dym-chip" id="dymChip"></button>?
+    </p>
+    <div class="send-row">
+      <button type="button" class="done-btn" id="tellBtn">
+        <svg viewBox="0 0 24 24" class="done-star" aria-hidden="true">
+          <path d="M12 2.5 14.4 9.1 21.5 11.2 14.4 13.4 12 20 9.6 13.4 2.5 11.2 9.6 9.1Z" fill="#FFFDF6" stroke="#2B2118" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+        Tell the tale!
+      </button>
+      <span class="hint-line">try: <b id="hintWords"></b></span>
+    </div>
+    <p class="pip-says" id="pipSays">Pip is wobbling with excitement. Type a word!</p>
+  </section>
+
+  <!-- ============ PAYOFF: chapter done ============ -->
+  <section class="payoff" id="payoff" hidden>
+    <div class="payoff-inner">
+      <h2 class="payoff-title">Chapter written!</h2>
+      <p class="payoff-sub">Your words carried Pip all the way home &mdash; and the meadow bloomed!</p>
+      <div class="payoff-row">
+        <div class="gem-card">
+          <svg class="gem-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <polygon points="60,8 108,42 88,110 32,110 12,42" fill="#5DA9E9" stroke="#2B2118" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M60 8 L60 58 M12 42 L60 58 M108 42 L60 58 M60 58 L46 110 M60 58 L74 110" fill="none" stroke="#FFFDF6" stroke-width="4" opacity=".55"/>
+            <text id="gemLetter" x="60" y="80" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="46" fill="#FFFDF6" stroke="#2B2118" stroke-width="7" paint-order="stroke">L</text>
+          </svg>
+          <p class="gem-text">Letter gem earned!<br><b id="gemLine">L is for Log!</b></p>
+        </div>
+        <div class="recap-card">
+          <p class="recap-title">Your chapter, by YOU:</p>
+          <ul class="recap-list" id="recapList"></ul>
+        </div>
+      </div>
+      <div class="payoff-actions">
+        <button type="button" class="btn-ghost" id="againBtn">&larr; Write a new chapter</button>
+        <button type="button" class="btn-ghost next-link" id="bloomBtn">Grow a new forest too &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>Pip &amp; the Storywood &middot; KnightHacks 2026 &middot; hardcoded demo &mdash;
+    every hill, cloud, and petal is generated by p5.js</footer>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>

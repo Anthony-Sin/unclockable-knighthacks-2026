@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fill the Tale — Monster Maker edition</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='8' width='24' height='20' rx='9' fill='%23FF6B57' stroke='%233A2E2A' stroke-width='2.5'/%3E%3Ccircle cx='12' cy='18' r='3' fill='%23fff' stroke='%233A2E2A' stroke-width='2'/%3E%3Ccircle cx='20' cy='18' r='3' fill='%23fff' stroke='%233A2E2A' stroke-width='2'/%3E%3Cpath d='M12 24q4 3 8 0' fill='none' stroke='%233A2E2A' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M9 8V4m14 4V4' stroke='%233A2E2A' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{
+  "imports": {
+    "@dicebear/core":   "./vendor/dicebear/core/lib/index.js",
+    "@dicebear/bottts": "./vendor/dicebear/bottts/lib/index.js"
+  }
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">Fill the Tale · Monster Maker edition</span>
+    <h1>Fill the <span class="coral">Tale</span></h1>
+    <svg class="squiggle" width="220" height="14" viewBox="0 0 220 14" fill="none" aria-hidden="true">
+      <path d="M3 9 C 18 3, 36 12, 55 8 S 92 3, 112 8 S 150 13, 168 7 S 200 4, 217 9" stroke="#FF6B57" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Build a monster. Type the story. Watch the words come alive.</p>
+  </header>
+
+  <main class="board">
+
+    <!-- ================= LEFT : WORLD + MAKER ================= -->
+    <section class="stage-col">
+
+      <div class="stage-card" aria-label="Storywood diorama">
+        <div class="diorama" id="diorama" data-area="path">
+
+          <!-- ---- AREA 1 · blocked path ---- -->
+          <div class="area area-path">
+            <div class="sun"></div>
+            <div class="cloud washi cloud-a"></div>
+            <div class="cloud washi cloud-b"></div>
+            <div class="hill hill-a"></div>
+            <div class="hill hill-b"></div>
+            <div class="path-ribbon"></div>
+            <svg class="boulder" viewBox="0 0 150 110" aria-hidden="true">
+              <path d="M14 96 C 4 56, 30 14, 76 12 C 122 10, 146 50, 138 96 C 96 106, 50 106, 14 96 Z" fill="#B8B2A6" stroke="#2B2118" stroke-width="6" stroke-linejoin="round"/>
+              <path d="M42 50 l20 -16 M82 34 l26 12 M50 78 h34 M96 70 l18 10" stroke="#8f897c" stroke-width="5" stroke-linecap="round"/>
+              <path d="M10 96 h130" stroke="#2B2118" stroke-width="4"/>
+            </svg>
+            <svg class="bramble bramble-l" viewBox="0 0 90 60" aria-hidden="true">
+              <path d="M8 54 C 20 30, 10 20, 30 12 M30 54 C 40 32, 34 18, 56 10 M52 54 C 62 34, 60 22, 82 16" fill="none" stroke="#3E8E5A" stroke-width="6" stroke-linecap="round"/>
+              <path d="M24 30 l-10 -4 M40 26 l10 -8 M62 30 l-8 -10 M70 38 l12 -4" stroke="#2E7D4F" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            <div class="grass"></div>
+          </div>
+
+          <!-- ---- AREA 2 · rain ---- -->
+          <div class="area area-rain">
+            <div class="cloud storm cloud-c"></div>
+            <div class="cloud storm cloud-d"></div>
+            <div class="cloud washi cloud-e"></div>
+            <div class="rain-fx"></div>
+            <div class="hill hill-c"></div>
+            <div class="hill hill-d"></div>
+            <div class="pud pud-1"></div>
+            <div class="pud pud-2"></div>
+            <div class="grass grass-wet"></div>
+          </div>
+
+          <!-- ---- AREA 3 · river ---- -->
+          <div class="area area-river">
+            <div class="sun sun-low"></div>
+            <div class="cloud washi cloud-f"></div>
+            <div class="hill hill-e"></div>
+            <div class="water">
+              <svg class="waves" viewBox="0 0 600 26" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0 14 Q 25 4, 50 14 T 100 14 T 150 14 T 200 14 T 250 14 T 300 14 T 350 14 T 400 14 T 450 14 T 500 14 T 550 14 T 600 14" fill="none" stroke="#FFFDF6" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+              </svg>
+            </div>
+            <div class="bank bank-l"></div>
+            <div class="bank bank-r"></div>
+          </div>
+
+          <!-- ---- AREA 4 · cave ---- -->
+          <div class="area area-cave">
+            <svg class="cave-arch" viewBox="0 0 600 400" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0 0 H600 V400 H0 Z M60 400 C 50 260, 90 120, 180 80 C 260 44, 380 44, 460 90 C 530 130, 560 260, 545 400 Z" fill="#5b4a63" fill-rule="evenodd"/>
+              <path d="M120 78 l-16 44 30 0 Z M250 56 l-14 40 28 0 Z M380 60 l-16 46 32 0 Z M480 96 l-14 38 28 0 Z" fill="#4a3b52"/>
+            </svg>
+            <div class="cave-floor"></div>
+          </div>
+
+          <!-- darkness overlay lives OUTSIDE the area layers so it can
+               cover the whole scene (hero stays lit above it) -->
+          <div class="cave-dark" id="caveDark"></div>
+
+          <!-- ---- AREA 5 · home ---- -->
+          <div class="area area-home">
+            <div class="sun sun-set"></div>
+            <div class="cloud washi cloud-g"></div>
+            <div class="hill hill-f"></div>
+            <svg class="cottage" viewBox="0 0 220 190" aria-hidden="true">
+              <rect x="42" y="76" width="136" height="104" rx="10" fill="#FFF3DC" stroke="#2B2118" stroke-width="6"/>
+              <path d="M28 82 L110 18 L192 82 Z" fill="#FF6B57" stroke="#2B2118" stroke-width="6" stroke-linejoin="round"/>
+              <rect x="142" y="34" width="20" height="34" fill="#B8B2A6" stroke="#2B2118" stroke-width="5"/>
+              <path id="cottageDoor" d="M88 180 V126 C88 104 132 104 132 126 V180 Z" fill="#8A4B2C" stroke="#2B2118" stroke-width="6"/>
+              <circle cx="124" cy="152" r="5" fill="#FFC53D" stroke="#2B2118" stroke-width="3"/>
+              <circle cx="62" cy="110" r="17" fill="#BFE8FF" stroke="#2B2118" stroke-width="5"/>
+              <path d="M62 93 v34 M45 110 h34" stroke="#2B2118" stroke-width="4"/>
+              <circle cx="158" cy="110" r="17" fill="#FFD980" stroke="#2B2118" stroke-width="5"/>
+              <path d="M158 93 v34 M141 110 h34" stroke="#2B2118" stroke-width="4"/>
+            </svg>
+            <div class="flower fl-1"></div>
+            <div class="flower fl-2"></div>
+            <div class="flower fl-3"></div>
+            <div class="path-ribbon path-home"></div>
+            <div class="grass"></div>
+          </div>
+
+          <!-- ---- spawned props & pals land here ---- -->
+          <div class="prop-layer" id="propLayer"></div>
+
+          <!-- ---- HERO ---- -->
+          <div class="hero-wrap" id="heroWrap">
+            <div class="stars" aria-hidden="true">
+              <svg class="star s1" viewBox="0 0 24 24"><path d="M12 1l3 7 7 .8-5.2 4.8L18.5 21 12 17.2 5.5 21l1.7-7.4L2 8.8 9 8z"/></svg>
+              <svg class="star s2" viewBox="0 0 24 24"><path d="M12 1l3 7 7 .8-5.2 4.8L18.5 21 12 17.2 5.5 21l1.7-7.4L2 8.8 9 8z"/></svg>
+              <svg class="star s3" viewBox="0 0 24 24"><path d="M12 1l3 7 7 .8-5.2 4.8L18.5 21 12 17.2 5.5 21l1.7-7.4L2 8.8 9 8z"/></svg>
+            </div>
+            <div class="speech" id="speech" role="status"></div>
+            <div class="hero" id="hero" aria-label="Your hero monster">
+              <div class="egg" id="egg">
+                <div class="egg-shell">?</div>
+                <span class="egg-cap">hatch me!</span>
+              </div>
+            </div>
+            <div class="dust dust-l"></div>
+            <div class="dust dust-r"></div>
+            <div class="hero-shadow"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= MONSTER MAKER ================= -->
+      <div class="maker-card" id="makerCard">
+        <div class="card-tag tag-berry">step 1 · build your monster</div>
+        <div class="maker-top">
+          <label class="opt-label" for="nameInput">Name:</label>
+          <input id="nameInput" class="name-input" type="text" maxlength="14"
+                 placeholder="type a name — it grows the monster!" autocomplete="off" spellcheck="false">
+          <button id="surpriseBtn" class="chip chip-big" type="button">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 4v6h6M20 20v-6h-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 8.5A8 8 0 0 0 5.6 6M4 15.5A8 8 0 0 0 18.4 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            Surprise me!
+          </button>
+        </div>
+        <p class="seed-note" id="seedNote">Same name = same monster. Try yours!</p>
+
+        <div class="opt-rows" id="optRows">
+          <div class="opt-row" data-opt="color">
+            <span class="opt-label">Body</span>
+            <div class="opt-chips" id="colorChips"></div>
+          </div>
+          <div class="opt-row" data-opt="eyes">
+            <span class="opt-label">Eyes</span>
+            <div class="opt-chips" id="eyesChips"></div>
+          </div>
+          <div class="opt-row" data-opt="top">
+            <span class="opt-label">Headgear</span>
+            <div class="opt-chips" id="topChips"></div>
+          </div>
+          <div class="opt-row" data-opt="mouth">
+            <span class="opt-label">Mouth</span>
+            <div class="opt-chips" id="mouthChips"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RIGHT : PLAY ================= -->
+    <section class="play-col">
+      <div class="sentence-card">
+        <div class="card-tag" id="beatTag">make your monster first</div>
+        <p class="sentence" id="sentenceLine"><span id="sentPre"></span><span class="blank-slot"><input id="blankInput" class="blank" type="text" maxlength="24" placeholder="&nbsp;" autocomplete="off" spellcheck="false" aria-label="Fill in the blank" disabled></span><span id="sentPost"></span></p>
+        <p class="feedback" id="feedback">Hatch a monster to start the story!</p>
+        <div class="dym-zone" id="dymZone"></div>
+        <div class="btn-row">
+          <button id="goBtn" class="btn btn-coral" type="button" disabled>Put it in the story!</button>
+          <button id="demoBtn" class="btn btn-sun" type="button">Watch it play</button>
+        </div>
+      </div>
+
+      <div class="page-card">
+        <div class="gem-row" id="gemRow" aria-hidden="true"></div>
+        <h2>Chapter One — Through the Storywood</h2>
+        <div class="lined" id="storyLines">
+          <p class="ghost-line">Your story words land here…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>DiceBear monsters · paper-craft world · every name grows a different hero</footer>
+</div>
+
+<!-- ================= ENDING ================= -->
+<div class="ending hidden" id="ending" role="dialog" aria-modal="true" aria-label="Chapter complete">
+  <div class="end-card">
+    <div class="gem-big" id="endGem"></div>
+    <h2>Chapter written!</h2>
+    <p class="end-sub" id="endSub">Your monster collected a letter-gem for the bedtime story.</p>
+    <p class="recap-label">Your story words:</p>
+    <div class="recap" id="wordRecap"></div>
+    <div class="silly-recap" id="sillyRecap"></div>
+    <div class="signature">
+      <div class="sig-avatar" id="sigAvatar"></div>
+      <div class="sig-text">
+        <span class="sig-label">signed,</span>
+        <svg viewBox="0 0 160 60" class="sig-svg" aria-hidden="true">
+          <path d="M14 38 C 20 14, 34 12, 32 30 C 30 46, 18 50, 22 34 C 26 20, 44 18, 50 30 M60 40 C 58 28, 70 22, 74 32 M86 24 L86 44 C 90 30, 104 26, 108 36 C 112 46, 100 52, 96 44 M120 34 C 136 28, 148 36, 142 44 C 136 52, 120 50, 126 40"
+                fill="none" stroke="#2B2118" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <span class="sig-name" id="sigName">Pip</span>
+      </div>
+    </div>
+    <button id="againBtn" class="btn btn-coral" type="button">Play the chapter again</button>
+  </div>
+</div>
+
+<script type="module" src="game.js"></script>
+</body>
+</html>

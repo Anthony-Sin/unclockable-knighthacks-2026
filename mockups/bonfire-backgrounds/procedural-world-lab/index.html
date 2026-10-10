@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Eight instant, local procedural landscape and plant generators for Storywood.">
+  <title>Storywood · Living landscape lab</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <nav><a href="../">← Background gallery</a><span>STORYWOOD / GENERATIVE WORLD STUDY</span><a href="../emberwood-transitions/">Season walk ↗</a></nav>
+    <div class="hero"><div><p class="eyebrow">EIGHT WAYS TO GROW A WORLD</p><h1>Beyond the<br><em>painted backdrop.</em></h1><p class="dek">A story can ask for a marsh, a coast, a mountain path, or a place we did not draw in advance. These eight local generators turn a short brief into a continuous walkable landscape. No characters, no image downloads, no waiting for a model.</p></div><div class="hero-art" aria-hidden="true"><span class="halo"></span><span class="hill far"></span><span class="hill near"></span><span class="tree one"></span><span class="tree two"></span><span class="tree three"></span></div></div>
+  </header>
+  <main>
+    <section class="controls" aria-label="World generator controls">
+      <div class="controls-top"><div><span class="eyebrow">TRY A STORY BEAT</span><h2>One idea, eight interpretations.</h2><p>Press <strong>Show me</strong> for a surprise. The left side of each frame begins as the Highland Path; keep walking to enter the new place.</p></div><div class="action-row"><button id="show" class="primary" type="button">✦ Show me a place</button><button id="remix" type="button">↻ Same place, new seed</button></div></div>
+      <form id="brief-form"><label for="brief">Or describe a place</label><div class="brief-row"><input id="brief" maxlength="130" autocomplete="off" spellcheck="false" value="misty marsh with willow trees and an old stone road" placeholder="e.g. moonlit coast with wild grasses"><button type="submit">Make world →</button></div></form>
+      <div class="brief-meta"><span id="status" aria-live="polite">Misty marsh · willow trees · old stone road</span><span id="generation-time">Ready instantly</span></div>
+      <div class="walk"><div class="walk-head"><span>THE HIGHLAND PATH</span><span id="destination">MISTY MARSH</span></div><input id="position" type="range" min="0" max="2200" step="1" value="1250" aria-label="Move forward through the landscape"><div class="walk-foot"><span>← familiar ground</span><span>Drag to walk forward →</span><button id="play" type="button" aria-pressed="false">▶ Walk forward</button></div></div>
+    </section>
+    <section class="gallery-head"><div><span class="eyebrow">THE EIGHT GENERATORS</span><h2>Same brief. Different rules.</h2></div><p>The labels explain what actually decides the land and plants. Open any frame for a closer view.</p></section>
+    <section id="gallery" class="gallery" aria-label="Eight procedural landscape generators"></section>
+    <section class="explainer"><div><span class="eyebrow">HOW A STORY BECOMES SCENERY</span><h2>A tiny scene specification.</h2></div><div><p id="recipe">The brief sets moisture, elevation, vegetation, light, and landmark hints. A seeded generator then places the landscape in world coordinates.</p><p>There is no remote model call in this demo. Known words shape the scene; unfamiliar words still change its seed and colors, but do not gain a new meaning by magic. A later LLM could produce the same small scene specification, while the browser renderer remains fast and reproducible.</p><a href="README.md">Read the method and limit notes ↗</a></div></section>
+  </main>
+  <footer><span>STORYWOOD / LOCAL GENERATIVE LANDSCAPES</span><span>No characters · no stored sprites · seeded and repeatable</span></footer>
+  <dialog id="detail"><button id="close" type="button" aria-label="Close enlarged view">×</button><div id="detail-content"></div></dialog>
+</body>
+</html>

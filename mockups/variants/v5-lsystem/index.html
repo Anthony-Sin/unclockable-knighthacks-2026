@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fill the Tale · Garden Glade edition — Pip the sprout-hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="backlink" href="../../">← all mockups</a>
+    <span class="badge">Variant 05 · L-system garden</span>
+    <h1>Fill the <span class="amp">Tale</span></h1>
+    <span class="edition">Garden Glade edition</span>
+    <svg class="squiggle" width="240" height="14" viewBox="0 0 240 14" fill="none" aria-hidden="true">
+      <path d="M3 9 C 20 3, 40 12, 60 8 S 100 3, 120 8 S 160 13, 180 7 S 220 4, 237 9" stroke="#FF6B57" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">The garden grows itself, branch by branch. Type a word — it sprouts into a real prop.
+      Silly words make Pip go <i>splat</i>.</p>
+  </header>
+
+  <section class="game">
+    <div class="stage" id="stage">
+      <div class="world" id="world">
+        <div class="pan" id="pan">
+
+          <!-- sky decor (world coords) -->
+          <svg class="sun" width="150" height="150" viewBox="0 0 150 150" aria-hidden="true">
+            <g stroke="#F5A623" stroke-width="6" stroke-linecap="round">
+              <line x1="75" y1="6" x2="75" y2="22"/><line x1="75" y1="128" x2="75" y2="144"/>
+              <line x1="6" y1="75" x2="22" y2="75"/><line x1="128" y1="75" x2="144" y2="75"/>
+              <line x1="26" y1="26" x2="37" y2="37"/><line x1="113" y1="113" x2="124" y2="124"/>
+              <line x1="124" y1="26" x2="113" y2="37"/><line x1="37" y1="113" x2="26" y2="124"/>
+            </g>
+            <circle cx="75" cy="75" r="42" fill="#FFC53D" stroke="#2B2118" stroke-width="4"/>
+            <circle cx="62" cy="68" r="4" fill="#2B2118"/><circle cx="88" cy="68" r="4" fill="#2B2118"/>
+            <path d="M63 82 Q75 92 87 82" stroke="#2B2118" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <circle cx="54" cy="78" r="5" fill="#FF6B57" opacity=".5"/>
+            <circle cx="96" cy="78" r="5" fill="#FF6B57" opacity=".5"/>
+          </svg>
+          <svg class="cloud c1" width="170" height="80" viewBox="0 0 170 80" aria-hidden="true">
+            <g fill="#FFFDF6" stroke="#2B2118" stroke-width="3">
+              <ellipse cx="52" cy="52" rx="26" ry="16"/><ellipse cx="86" cy="40" rx="34" ry="22"/>
+              <ellipse cx="118" cy="52" rx="26" ry="16"/><rect x="52" y="46" width="66" height="18" rx="9"/>
+            </g>
+          </svg>
+          <svg class="cloud c2" width="130" height="62" viewBox="0 0 170 80" aria-hidden="true">
+            <g fill="#FFFDF6" stroke="#2B2118" stroke-width="3">
+              <ellipse cx="52" cy="52" rx="26" ry="16"/><ellipse cx="86" cy="40" rx="34" ry="22"/>
+              <ellipse cx="118" cy="52" rx="26" ry="16"/><rect x="52" y="46" width="66" height="18" rx="9"/>
+            </g>
+          </svg>
+          <!-- the grumpy drizzle cloud over zone 2 -->
+          <svg class="raincloud" id="rainCloud" width="200" height="100" viewBox="0 0 200 100" aria-hidden="true">
+            <g fill="#C9D6DC" stroke="#2B2118" stroke-width="3.5">
+              <ellipse cx="62" cy="64" rx="30" ry="19"/><ellipse cx="102" cy="48" rx="40" ry="26"/>
+              <ellipse cx="140" cy="64" rx="30" ry="19"/><rect x="62" y="56" width="78" height="22" rx="11"/>
+            </g>
+            <circle cx="88" cy="56" r="4" fill="#2B2118"/><circle cx="118" cy="56" r="4" fill="#2B2118"/>
+            <path d="M92 74 Q103 70 114 74" stroke="#2B2118" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M70 40 Q76 34 84 39" stroke="#2B2118" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M124 39 Q132 34 138 40" stroke="#2B2118" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+
+          <!-- everything procedural paints onto this -->
+          <canvas id="groundCv" width="2900" height="540" aria-hidden="true"></canvas>
+
+          <div class="plants back" id="plantsBack"></div>
+
+          <!-- hollow-log cave interior (behind the hero) -->
+          <svg class="caveback" id="caveBack" viewBox="0 0 420 190" aria-hidden="true">
+            <ellipse class="cavedark" cx="210" cy="98" rx="206" ry="94" fill="#1D140D"/>
+            <g class="cavelines" fill="none" stroke="#4A3423" stroke-width="3" stroke-linecap="round">
+              <path d="M60 120 Q120 96 190 112"/>
+              <path d="M120 156 Q200 138 300 150"/>
+              <path d="M230 70 Q300 60 350 92"/>
+              <path d="M80 88 Q110 66 150 70"/>
+            </g>
+            <g class="caveroots" stroke="#5B3B2E" stroke-width="4" fill="none" stroke-linecap="round">
+              <path d="M120 10 Q118 34 130 44"/>
+              <path d="M250 8 Q254 30 244 46"/>
+              <path d="M330 14 Q326 30 336 40"/>
+            </g>
+            <ellipse class="cavewarm" cx="210" cy="100" rx="190" ry="82" fill="url(#caveGlowGrad)"/>
+          </svg>
+          <div class="cavedim" id="caveDim"></div>
+          <div class="fireflies" id="fireflies"></div>
+
+          <!-- Pip, the grown sprout-hero -->
+          <div class="pip" id="pip" data-face="norm">
+            <div class="say" id="say">
+              <span class="glabel">Pip says</span>
+              <span id="sayText"></span>
+            </div>
+            <div class="dstars" aria-hidden="true">
+              <svg class="d1" viewBox="0 0 20 20"><path d="M10 1 L12.5 7.2 19 8 14.2 12.4 15.6 19 10 15.4 4.4 19 5.8 12.4 1 8 7.5 7.2 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="1.3"/></svg>
+              <svg class="d2" viewBox="0 0 20 20"><path d="M10 1 L12.5 7.2 19 8 14.2 12.4 15.6 19 10 15.4 4.4 19 5.8 12.4 1 8 7.5 7.2 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="1.3"/></svg>
+              <svg class="d3" viewBox="0 0 20 20"><path d="M10 1 L12.5 7.2 19 8 14.2 12.4 15.6 19 10 15.4 4.4 19 5.8 12.4 1 8 7.5 7.2 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="1.3"/></svg>
+            </div>
+            <div class="pipmove" id="pipMove"></div>
+          </div>
+
+          <!-- Bitsy the ladybug — crawls the grown stems, points the way -->
+          <div class="bug" id="bug" aria-hidden="true">
+            <svg width="46" height="40" viewBox="0 0 46 40">
+              <g class="bugbody">
+                <path d="M10 26 L6 32 M18 28 L16 34 M30 28 L32 34 M38 26 L42 32" stroke="#2B2118" stroke-width="2.5" stroke-linecap="round"/>
+                <ellipse cx="24" cy="20" rx="17" ry="14" fill="#E5484D" stroke="#2B2118" stroke-width="3"/>
+                <path d="M24 7 L24 33" stroke="#2B2118" stroke-width="2.5"/>
+                <circle cx="17" cy="15" r="3" fill="#2B2118"/><circle cx="31" cy="15" r="3" fill="#2B2118"/>
+                <circle cx="16" cy="24" r="2.4" fill="#2B2118"/><circle cx="32" cy="24" r="2.4" fill="#2B2118"/>
+                <circle cx="24" cy="19" r="2.2" fill="#2B2118"/>
+                <circle cx="38" cy="16" r="6.5" fill="#2B2118"/>
+                <circle cx="40" cy="14" r="1.6" fill="#FFFDF6"/>
+                <path d="M41 8 Q45 3 44 1 M36 7 Q34 2 35 0" stroke="#2B2118" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="bugwing" d="M10 12 Q4 8 6 2 Q12 4 13 10 Z" fill="#FFFDF6" stroke="#2B2118" stroke-width="2"/>
+              </g>
+            </svg>
+          </div>
+          <div class="bugglow" id="bugGlow"></div>
+
+          <!-- pennant that points the way -->
+          <div class="waypoint" id="waypoint" aria-hidden="true">
+            <svg width="30" height="52" viewBox="0 0 30 52">
+              <path d="M6 50 L6 8" stroke="#8A5E2E" stroke-width="4" stroke-linecap="round"/>
+              <path d="M8 6 L28 12 L8 20 Z" fill="#FF6B57" stroke="#2B2118" stroke-width="2.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div id="props"></div>
+          <div class="plants front" id="plantsFront"></div>
+
+          <!-- hollow-log cave shell (in front of the hero) -->
+          <svg class="cavearch" id="caveArch" viewBox="0 0 560 300" aria-hidden="true">
+            <path d="M0 300 L0 168 Q8 42 280 20 Q552 42 560 168 L560 300 L472 300
+                     L472 180 Q468 104 280 94 Q92 104 88 180 L88 300 Z"
+                  fill="#8A5E2E" stroke="#2B2118" stroke-width="4" fill-rule="evenodd"/>
+            <path d="M30 130 Q120 96 260 88 M300 86 Q440 92 530 134" fill="none" stroke="#6E4525" stroke-width="5" stroke-linecap="round"/>
+            <path d="M14 200 L84 200 M14 236 L84 236 M476 200 L546 200 M476 236 L546 236" stroke="#6E4525" stroke-width="4" stroke-linecap="round"/>
+            <ellipse cx="88" cy="212" rx="16" ry="104" fill="#5B3B2E" stroke="#2B2118" stroke-width="4"/>
+            <ellipse cx="472" cy="212" rx="16" ry="104" fill="#5B3B2E" stroke="#2B2118" stroke-width="4"/>
+            <g fill="#4FB06D" stroke="#2B2118" stroke-width="3">
+              <path d="M70 74 Q60 52 78 44 Q92 56 84 74 Z"/>
+              <path d="M430 44 Q450 34 462 50 Q452 66 434 62 Z"/>
+              <path d="M250 24 Q266 10 284 20 Q276 38 256 36 Z"/>
+            </g>
+            <ellipse cx="150" cy="120" rx="16" ry="9" fill="#5B3B2E" stroke="#2B2118" stroke-width="3"/>
+            <ellipse cx="400" cy="140" rx="12" ry="7" fill="#5B3B2E" stroke="#2B2118" stroke-width="3"/>
+          </svg>
+
+          <div class="rainlayer" id="rainLayer"></div>
+          <div class="confetti" id="confetti"></div>
+        </div>
+      </div>
+
+      <div class="hintchip" id="hintChip">type a word, then Enter — or just start typing</div>
+      <button class="stopdemo" id="stopBtn" type="button"><span class="stopsq"></span>Stop demo</button>
+
+      <!-- beat 0: grow your hero -->
+      <div class="overlay show" id="makerOv">
+        <div class="card card-maker" id="makerCard">
+          <span class="sticker">Beat zero · grow a friend</span>
+          <h2 id="makerTitle">Plant a seed.<br>Grow your hero.</h2>
+          <div class="makewrap" id="makerWrap">
+            <div class="potstage">
+              <div class="potclip">
+                <div class="sproutspot" id="sproutSpot"></div>
+                <div class="heroPrev" id="heroPrev"></div>
+                <div class="seeddot" id="seedDot"></div>
+              </div>
+              <svg class="potsvg" width="120" height="70" viewBox="0 0 120 70" aria-hidden="true">
+                <ellipse cx="60" cy="12" rx="52" ry="10" fill="#6E4525" stroke="#2B2118" stroke-width="3.5"/>
+                <path d="M12 14 L20 62 Q60 72 100 62 L108 14 Q60 26 12 14 Z" fill="#C0764B" stroke="#2B2118" stroke-width="3.5" stroke-linejoin="round"/>
+                <path d="M18 32 Q60 42 102 32" fill="none" stroke="#8A5E2E" stroke-width="4" stroke-linecap="round"/>
+                <ellipse cx="60" cy="12" rx="42" ry="6.5" fill="#5B3B2E"/>
+              </svg>
+            </div>
+            <div class="optrows">
+              <div class="orow">
+                <span class="olabel">seed color</span>
+                <div class="ochips" id="colorChips"></div>
+              </div>
+              <div class="orow">
+                <span class="olabel">sprout top</span>
+                <div class="ochips" id="topChips"></div>
+              </div>
+              <div class="orow">
+                <span class="olabel">face style</span>
+                <div class="ochips" id="faceChips"></div>
+              </div>
+            </div>
+          </div>
+          <div class="readyrow" id="readyRow" hidden>
+            <p class="meetline">Meet <b>Pip</b> — a sprout-creature grown just for this garden.</p>
+          </div>
+          <div class="btnrow">
+            <button class="btn" id="growBtn">Grow my friend!</button>
+            <button class="btn btn-ghost" id="surpriseBtn">Surprise me</button>
+            <button class="btn btn-ghost" id="watchBtn">Watch it play</button>
+          </div>
+          <p class="mini">every seed grows a different sprout — and a different garden</p>
+        </div>
+      </div>
+
+      <!-- payoff overlay -->
+      <div class="overlay" id="endOverlay" hidden>
+        <div class="card card-win">
+          <span class="sticker sticker-sun">Chapter written!</span>
+          <h2>You grew a whole tale!</h2>
+          <div class="gem-row">
+            <svg class="gem" width="86" height="86" viewBox="0 0 100 100" aria-hidden="true">
+              <g filter="url(#wob)">
+                <path d="M50 8 L82 30 L72 78 L28 78 L18 30 Z" fill="#4FB06D" stroke="#2B2118" stroke-width="4" stroke-linejoin="round"/>
+                <path d="M18 30 L82 30 M50 8 L38 30 50 78 M50 8 L62 30 50 78 M38 30 L28 78 M62 30 L72 78" stroke="#2B2118" stroke-width="2.5" fill="none" opacity=".55"/>
+                <path d="M30 22 L44 14" stroke="#FFFDF6" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+              </g>
+              <text x="50" y="58" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="34" fill="#FFFDF6" stroke="#2B2118" stroke-width="1.2">G</text>
+            </svg>
+            <div class="gem-copy">
+              <b>Letter-gem earned!</b>
+              <span>“G” is for Garden — and for the Glow-mushrooms that lit the hollow log.</span>
+            </div>
+          </div>
+          <div class="recap" id="recap"></div>
+          <div class="btnrow">
+            <button class="btn" id="againBtn">Write it again</button>
+            <button class="btn btn-ghost" id="newGardenBtn">Grow a new garden</button>
+            <a class="btn btn-ghost" href="../../">All mockups</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- the story page -->
+    <section class="page">
+      <div class="ptag">
+        Chapter 1 · line <b id="lineNum">1</b> of 5
+        <span class="pgem" id="gemChip" hidden>
+          <svg viewBox="0 0 100 100" width="17" height="17" aria-hidden="true"><path d="M50 8 L82 30 L72 78 L28 78 L18 30 Z" fill="#4FB06D" stroke="#2B2118" stroke-width="6" stroke-linejoin="round"/></svg>
+          G gem earned!
+        </span>
+      </div>
+      <p class="sentence">
+        <span id="sentPre"></span><span class="blankwrap" id="blankWrap"></span><span id="sentPost"></span>
+        <span class="wordbubble" id="wordBubble">Is that a word?</span>
+      </p>
+      <div class="prow2">
+        <span class="hintline" id="hintLine"></span>
+        <span class="meanchip" id="meanChip" hidden>did you mean
+          <button class="meanbtn" id="meanBtn" type="button"></button>?</span>
+        <span class="stamp" id="stamp">line written!</span>
+      </div>
+      <div class="tools">
+        <button class="chipbtn" id="reseedBtn" type="button">
+          <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="M10 17 V7 M10 10 Q4 10 3 4 Q10 4 10 10 M10 12 Q16 12 17 6 Q10 6 10 12" fill="none" stroke="#2B2118" stroke-width="2" stroke-linecap="round"/></svg>
+          Grow a new garden
+        </button>
+        <button class="chipbtn" id="watchChip" type="button">
+          <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="M6 4 L16 10 L6 16 Z" fill="#2B2118"/></svg>
+          Watch it play
+        </button>
+      </div>
+    </section>
+
+    <p class="foot">
+      <span class="footchip">In the real game, every plant, bridge and beanstalk is grown live from an
+      L-system grammar — the turtle-graphics rewriting trick from The Coding Train’s fractal-tree
+      challenge — so the Garden Glade is never the same place twice.</span>
+    </p>
+  </section>
+
+  <footer>Type a good word, it grows. Type a silly word… timber.</footer>
+</div>
+
+<!-- shared SVG defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="wob" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" result="n" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3"/>
+    </filter>
+    <radialGradient id="caveGlowGrad" cx="50%" cy="55%" r="60%">
+      <stop offset="0%" stop-color="#FFD98A" stop-opacity=".85"/>
+      <stop offset="55%" stop-color="#E8A94B" stop-opacity=".38"/>
+      <stop offset="100%" stop-color="#E8A94B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
+
+<script src="lsystem.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

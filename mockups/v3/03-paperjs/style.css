@@ -1,0 +1,244 @@
+/* Pip & the Storywood — v3 03-paperjs — warm paper kid UI */
+:root {
+  --paper: #FFF8EC;
+  --paper2: #FDF3E3;
+  --ink: #2B2118;
+  --coral: #FF6B57;
+  --sun: #FFC53D;
+  --leaf: #4FB06D;
+  --sky: #5DA9E9;
+  --berry: #B565D8;
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Nunito', 'Comic Sans MS', system-ui, sans-serif;
+  font-weight: 700;
+  min-height: 100vh;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 18px 16px 40px; }
+[hidden] { display: none !important; }   /* app.js toggles hidden AND .show */
+
+/* ---------- header ---------- */
+header { text-align: center; margin-bottom: 14px; position: relative; }
+.backlink {
+  position: absolute; left: 0; top: 4px;
+  font-family: 'Patrick Hand', cursive; font-size: 15px;
+  color: var(--ink); text-decoration: none; opacity: .7;
+}
+.backlink:hover { opacity: 1; text-decoration: underline wavy var(--coral); }
+.badge {
+  display: inline-block; background: var(--sun); border: 2.5px solid var(--ink);
+  border-radius: 999px; padding: 3px 14px; font-size: 12.5px; font-weight: 800;
+  transform: rotate(-1.5deg); box-shadow: 0 2px 0 var(--ink); margin-bottom: 8px;
+}
+h1 {
+  font-family: 'Fredoka', 'Baloo 2', sans-serif; font-weight: 700;
+  font-size: clamp(30px, 5.4vw, 44px); margin: 4px 0 0; letter-spacing: .5px;
+}
+h1 .amp { color: var(--coral); }
+/* the squiggle: an inline SVG placeholder that boot() swaps for a live paper.js canvas */
+.squiggle { display: block; width: min(320px, 66%); height: auto; margin: 2px auto 0; }
+.sub { margin: 4px auto 0; font-family: 'Patrick Hand', cursive; font-size: 19px; opacity: .85; max-width: 620px; }
+
+/* ---------- stage ---------- */
+.game { display: flex; flex-direction: column; gap: 12px; }
+.stage {
+  position: relative; border: 3px solid var(--ink); border-radius: 26px;
+  background: var(--paper2); overflow: hidden;
+  box-shadow: 0 6px 0 rgba(43, 33, 24, .9);
+  height: clamp(340px, 48vw, 460px);
+}
+#worldCv { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* ---------- HUD ---------- */
+.hud { position: absolute; left: 12px; right: 12px; display: flex; gap: 10px; align-items: center; z-index: 5; pointer-events: none; }
+.hud-top { top: 10px; justify-content: space-between; }
+.hud-bottom { bottom: 10px; justify-content: space-between; }
+.goalwrap, .wolfwrap {
+  display: flex; align-items: center; gap: 7px;
+  background: #FFFDF6; border: 2.5px solid var(--ink); border-radius: 999px;
+  padding: 5px 12px; box-shadow: 0 2.5px 0 var(--ink);
+}
+.goallabel, .wolflabel { font-family: 'Patrick Hand', cursive; font-size: 15px; }
+.goalbar {
+  position: relative; width: clamp(110px, 22vw, 190px); height: 14px;
+  background: #EFE3CC; border: 2px solid var(--ink); border-radius: 999px; overflow: visible;
+}
+.goalfill {
+  height: 100%; width: 0%; border-radius: 999px;
+  background: repeating-linear-gradient(-45deg, var(--leaf) 0 8px, #63C07E 8px 16px);
+  transition: width .6s var(--spring);
+}
+.goalpig { position: absolute; top: -13px; left: 0%; width: 30px; height: 22px; transition: left .6s var(--spring); }
+.wolfbar { width: clamp(70px, 13vw, 120px); height: 14px; background: #EFE3CC; border: 2px solid var(--ink); border-radius: 999px; overflow: hidden; }
+.wolffill { height: 100%; width: 0%; background: repeating-linear-gradient(-45deg, #8B93A8 0 8px, #6E768C 8px 16px); transition: width .6s var(--spring); }
+.wolffill.hot { background: repeating-linear-gradient(-45deg, var(--coral) 0 8px, #E0483A 8px 16px); }
+.wolfmood { font-family: 'Patrick Hand', cursive; font-size: 13.5px; min-width: 74px; }
+
+.chip {
+  display: inline-block; background: #FFFDF6; border: 2.5px solid var(--ink);
+  border-radius: 999px; padding: 5px 14px; font-size: 13.5px; font-weight: 800;
+  box-shadow: 0 2.5px 0 var(--ink); max-width: 60%;
+}
+.chip-ms { background: var(--sun); font-size: 12.5px; }
+.chip-mode { background: #E8DDF5; border-style: dashed; font-size: 12.5px; }
+.chip-mode.live { background: #D9F2D3; border-style: solid; border-color: #4FB06D; }
+@keyframes chipthink { 0%, 100% { transform: scale(1) rotate(-1deg); } 50% { transform: scale(1.06) rotate(1deg); } }
+.chip.thinking { animation: chipthink .7s ease-in-out infinite; }
+
+.stopdemo {
+  position: absolute; right: 14px; top: 52px; z-index: 30;
+  display: none; align-items: center; gap: 8px;
+  background: var(--coral); color: #FFFDF6; border: 3px solid var(--ink);
+  border-radius: 999px; padding: 8px 16px; font-family: 'Fredoka', sans-serif;
+  font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 3px 0 var(--ink);
+}
+.stopdemo.show { display: flex; }
+.stopdemo:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.stopsq { width: 11px; height: 11px; background: #FFFDF6; border: 2px solid var(--ink); border-radius: 2px; }
+
+/* ---------- overlays (fades: app.js waits ~320ms before hiding) ---------- */
+.overlay {
+  position: absolute; inset: 0; z-index: 20; display: flex;
+  align-items: center; justify-content: center;
+  background: rgba(253, 243, 227, .85); backdrop-filter: blur(2px);
+  opacity: 0; visibility: hidden;
+  transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.overlay.show { opacity: 1; visibility: visible; transition: opacity .3s ease, visibility 0s; }
+.card {
+  background: #FFFDF6; border: 3px solid var(--ink); border-radius: 24px;
+  padding: 20px 26px; max-width: 560px; width: calc(100% - 40px);
+  box-shadow: 0 7px 0 var(--ink); text-align: center; position: relative;
+  max-height: 96%; overflow: auto;
+}
+.card h2 { font-family: 'Fredoka', sans-serif; font-size: 27px; margin: 8px 0 6px; }
+.sticker {
+  display: inline-block; background: var(--coral); color: #FFFDF6;
+  border: 2.5px solid var(--ink); border-radius: 999px; padding: 3px 14px;
+  font-family: 'Patrick Hand', cursive; font-size: 15px;
+  transform: rotate(-2deg); box-shadow: 0 2.5px 0 var(--ink);
+}
+.sticker-sun { background: var(--sun); color: var(--ink); transform: rotate(2deg); }
+.makernote, .winbody { margin: 4px 0 12px; font-size: 15px; line-height: 1.45; }
+.makernote b { font-family: monospace; font-size: 13.5px; }
+.mini { font-size: 12.5px; opacity: .7; margin: 10px 0 0; font-family: 'Patrick Hand', cursive; }
+
+/* maker — the pad IS a paper.js canvas (paper sheet + ruled lines drawn in-app) */
+.maker { display: flex; gap: 12px; justify-content: center; align-items: stretch; }
+#makerCv {
+  flex: 1; width: 100%; height: 264px; display: block;
+  border: 2.5px dashed #B9A78A; border-radius: 18px; background: #FFFDF6;
+  cursor: crosshair; touch-action: none;
+}
+@keyframes shakenope { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-7px); } 45% { transform: translateX(6px); } 70% { transform: translateX(-4px); } }
+#makerCv.nope { animation: shakenope .4s ease; }
+.swatches { display: flex; flex-direction: column; gap: 7px; justify-content: center; }
+.swatch {
+  width: 30px; height: 30px; border-radius: 50%; border: 2.5px solid var(--ink);
+  cursor: pointer; padding: 0; transition: transform .15s var(--spring);
+}
+.swatch.sel { transform: scale(1.22); box-shadow: 0 0 0 3px #FFFDF6, 0 0 0 5.5px var(--ink); }
+
+/* buttons */
+.btnrow { display: flex; gap: 10px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+.btnrow-ghost { margin-top: 8px; }
+.btn {
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 17px;
+  background: var(--leaf); color: #FFFDF6; border: 3px solid var(--ink);
+  border-radius: 999px; padding: 9px 22px; cursor: pointer;
+  box-shadow: 0 4px 0 var(--ink); transition: transform .12s var(--spring);
+  text-decoration: none; display: inline-block;
+}
+.btn:hover { transform: translateY(-1px) rotate(-.5deg); }
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+.btn-ghost { background: #FFFDF6; color: var(--ink); font-size: 14.5px; padding: 7px 16px; border-width: 2.5px; }
+.btn-go { background: var(--coral); font-size: 16px; padding: 8px 20px; }
+.btn[disabled] { opacity: .55; cursor: wait; }
+
+/* ---------- sentence card ---------- */
+.sentence-card {
+  background: #FFFDF6; border: 3px solid var(--ink); border-radius: 22px;
+  padding: 12px 20px 12px; box-shadow: 0 5px 0 var(--ink); transform: rotate(-.4deg);
+}
+/* the freshest storyteller line — big, warm, always readable */
+.narrative {
+  margin: 0 0 8px; padding: 8px 16px; min-height: 1.4em;
+  font-family: 'Patrick Hand', cursive; font-size: 22px; line-height: 1.3;
+  color: var(--ink); background: #FFF6DE;
+  border: 2.5px solid var(--ink); border-radius: 14px;
+  box-shadow: 0 3px 0 rgba(43, 33, 24, .18);
+}
+.narrative:empty { display: none; }
+.narrative::before { content: 'the storyteller says… '; color: var(--coral); font-size: 14px; display: block; line-height: 1; }
+@keyframes narrfresh { 0% { transform: scale(.96) rotate(-.8deg); } 55% { transform: scale(1.02) rotate(.4deg); } 100% { transform: scale(1); } }
+.narrative.fresh { animation: narrfresh .45s ease-out; }
+.storylog {
+  max-height: 112px; overflow-y: auto; margin: 0 0 8px;
+  background: #FFFCF4; border: 2px dashed #E4D6B8; border-radius: 14px; padding: 7px 14px;
+}
+.line { font-family: 'Patrick Hand', cursive; font-size: 17px; margin: 2px 0; line-height: 1.35; }
+.line.storyteller { color: #5B4633; }
+.line.storyteller:first-letter { color: var(--coral); }
+.line.ghost { opacity: .55; }
+.obstacles { display: flex; gap: 7px; flex-wrap: wrap; margin: 0 0 8px; }
+.obstacles:empty { display: none; }
+.obchip {
+  font-size: 12.5px; font-weight: 800; background: #FFE9E4; color: #8C3A2B;
+  border: 2px dashed #D98A7A; border-radius: 999px; padding: 3px 11px;
+}
+.typerow { display: flex; gap: 10px; align-items: center; }
+.blankbox { position: relative; flex: 1; }
+#wordInput {
+  width: 100%; font-family: 'Patrick Hand', cursive; font-size: 24px;
+  color: var(--ink); background: transparent; border: none; outline: none;
+  border-bottom: 3px solid var(--ink); padding: 2px 6px 4px;
+}
+#wordInput::placeholder { color: #C4B69C; }
+#wordInput[disabled] { opacity: .45; }
+.coach { display: flex; gap: 10px; align-items: baseline; margin: 10px 0 4px; font-size: 14.5px; flex-wrap: wrap; }
+.dym { font-family: 'Patrick Hand', cursive; font-size: 16px; }
+.dymbtn {
+  font-family: 'Patrick Hand', cursive; font-size: 17px; color: var(--sky);
+  background: #EAF4FE; border: 2px solid var(--sky); border-radius: 999px;
+  padding: 1px 12px; cursor: pointer; font-weight: 700;
+}
+.dymbtn:hover { background: var(--sky); color: #fff; }
+.choices { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 6px; }
+.choices:empty { display: none; }
+.choicechip {
+  font-family: 'Patrick Hand', cursive; font-size: 15.5px;
+  background: #EFF8EF; border: 2px dashed var(--leaf); color: #2E7A46;
+  border-radius: 999px; padding: 3px 13px; cursor: pointer;
+}
+.choicechip:hover { background: var(--leaf); color: #fff; border-style: solid; }
+
+/* win recap — the words the kid typed */
+.recap-label { font-size: 13px; opacity: .7; margin: 8px 0 2px; font-family: 'Patrick Hand', cursive; }
+.recap { max-width: 430px; margin: 2px auto 4px; }
+.recap-word {
+  display: inline-block; font-family: 'Patrick Hand', cursive; font-size: 15px;
+  background: #FFF3D8; border: 2px solid #E4C98A; border-radius: 999px;
+  padding: 1px 12px; margin: 2px 4px; transform: rotate(-1deg);
+}
+.recap-word:nth-child(2n) { transform: rotate(1.5deg); }
+
+.foot { text-align: center; margin: 4px 0 0; }
+.footchip {
+  display: inline-block; font-size: 12.5px; font-weight: 700; opacity: .78;
+  background: var(--paper2); border: 2px dashed #B9A78A; border-radius: 14px;
+  padding: 6px 14px; max-width: 660px; line-height: 1.45;
+}
+footer { text-align: center; margin-top: 16px; font-family: 'Patrick Hand', cursive; font-size: 15px; opacity: .65; }
+
+@media (max-width: 620px) {
+  .maker { flex-direction: column; }
+  .swatches { flex-direction: row; justify-content: center; }
+  .hud-top { flex-wrap: wrap; }
+  .chip { max-width: 52%; }
+  .backlink { position: static; display: inline-block; margin-bottom: 6px; }
+}

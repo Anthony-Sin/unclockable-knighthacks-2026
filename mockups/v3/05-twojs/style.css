@@ -1,0 +1,287 @@
+/* Springy Scribble — Two.js edition · "Pip & the Storywood" v3
+   Warm paper UI per mockups/CONVENTIONS.md */
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }   /* author display rules must not un-hide */
+
+:root {
+  --ink: #2B2118;
+  --paper: #FFF8EC;
+  --paper2: #FDF3E3;
+  --coral: #FF6B57;
+  --sun: #FFC53D;
+  --leaf: #4FB06D;
+  --sky: #5DA9E9;
+  --berry: #B565D8;
+  --spring: cubic-bezier(.34,1.56,.64,1);
+}
+
+html, body { margin: 0; padding: 0; }
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255,197,61,.14), transparent 32%),
+    radial-gradient(circle at 88% 92%, rgba(93,169,233,.12), transparent 36%),
+    var(--paper);
+  color: var(--ink);
+  font-family: 'Nunito', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+.wrap { max-width: 980px; margin: 0 auto; padding: 18px 16px 40px; }
+
+/* ---------- header ---------- */
+header { text-align: center; margin-bottom: 14px; }
+.badge {
+  display: inline-block;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 15px;
+  background: #fff;
+  border: 2px dashed var(--ink);
+  border-radius: 999px;
+  padding: 3px 14px;
+  transform: rotate(-1.4deg);
+  box-shadow: 0 2px 0 rgba(43,33,24,.15);
+}
+h1 {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: clamp(34px, 5.4vw, 52px);
+  margin: 8px 0 2px;
+  letter-spacing: .5px;
+}
+h1 .amp { color: var(--coral); }
+.sub {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 19px;
+  margin: 2px 0 0;
+  color: #6b5b48;
+}
+
+/* ---------- stage ---------- */
+.game { position: relative; }
+.stage {
+  position: relative;
+  height: min(56vh, 470px);
+  min-height: 380px;
+  border: 3px solid var(--ink);
+  border-radius: 26px;
+  background: var(--paper2);
+  overflow: hidden;
+  box-shadow: 0 6px 0 rgba(43,33,24,.18);
+}
+.stage > svg { position: absolute; inset: 0; display: block; }
+
+/* ---------- HUD chips ---------- */
+.hud { position: absolute; display: flex; gap: 8px; align-items: center; z-index: 5; }
+.hud-tl { top: 12px; left: 12px; }
+.hud-tr { top: 12px; right: 12px; }
+.hud-bl { bottom: 12px; left: 12px; right: 12px; justify-content: center; pointer-events: none; }
+
+.chip {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 15px;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 3px 12px;
+  box-shadow: 0 2px 0 rgba(43,33,24,.2);
+}
+.chip-mode { background: #FFE9A8; border-style: dashed; }
+.chip-mode.live { background: #CDEBD3; border-style: solid; border-color: var(--leaf); }
+.chip-mode.demo { background: #FFE9A8; border-style: dashed; }
+
+/* wolf meter */
+.wolfwrap {
+  display: flex; align-items: center; gap: 7px;
+  background: #fff; border: 2px solid var(--ink); border-radius: 999px;
+  padding: 4px 12px; box-shadow: 0 2px 0 rgba(43,33,24,.2);
+}
+.wolflabel { font-family: 'Patrick Hand', cursive; font-size: 15px; }
+.wolfmeter { display: flex; gap: 4px; }
+.wolfmeter i {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid var(--ink); background: #fff;
+  transition: background .25s var(--spring), transform .25s var(--spring);
+}
+.wolfmeter i.on { background: var(--coral); transform: scale(1.12); }
+.wolfmeter i.on.hot { background: #E8402A; animation: hotpulse .5s infinite alternate; }
+@keyframes hotpulse { from { transform: scale(1.1); } to { transform: scale(1.35); } }
+
+/* goal bar */
+.goalwrap {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,253,246,.94); border: 2px solid var(--ink);
+  border-radius: 999px; padding: 5px 16px;
+  box-shadow: 0 2px 0 rgba(43,33,24,.2);
+  width: min(430px, 70%);
+}
+.goallabel { font-family: 'Patrick Hand', cursive; font-size: 15px; white-space: nowrap; }
+.goalbar { position: relative; flex: 1; height: 14px; }
+.goalfill {
+  position: absolute; left: 0; top: 2px; height: 10px; width: 0%;
+  border-radius: 6px; border: 2px solid var(--ink);
+  background: repeating-linear-gradient(-45deg, var(--leaf) 0 8px, #69C586 8px 16px);
+  /* width is eased per-frame by JS (goalShown) — no CSS transition fights */
+}
+.goalpig {
+  position: absolute; top: -8px; left: 0%;
+  width: 34px; height: 25px; margin-left: -17px;
+}
+
+/* stop button */
+.stopdemo {
+  position: absolute; bottom: 52px; right: 12px; z-index: 6;
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px;
+  display: flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--ink);
+  border: 2.5px solid var(--ink); border-radius: 999px;
+  padding: 7px 16px; cursor: pointer;
+  box-shadow: 0 3px 0 rgba(43,33,24,.25);
+}
+.stopdemo:active { transform: translateY(2px); box-shadow: none; }
+.stopsq { width: 11px; height: 11px; background: var(--coral); border: 2px solid var(--ink); border-radius: 3px; }
+
+/* ---------- overlays ---------- */
+.overlay {
+  position: absolute; inset: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,248,236,.82);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.overlay.show {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transition: opacity .3s ease, visibility 0s;
+}
+.card {
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 24px;
+  padding: 18px 26px 20px;
+  max-width: 560px; width: calc(100% - 40px);
+  text-align: center;
+  box-shadow: 0 8px 0 rgba(43,33,24,.18);
+  transform: rotate(-.6deg);
+  max-height: calc(100% - 24px);
+  overflow: auto;
+}
+.card h2 { font-family: 'Fredoka', sans-serif; font-size: 30px; margin: 6px 0 4px; }
+.sticker {
+  display: inline-block;
+  font-family: 'Patrick Hand', cursive; font-size: 15px;
+  background: var(--sun); border: 2px solid var(--ink); border-radius: 999px;
+  padding: 2px 14px; transform: rotate(-2deg);
+  box-shadow: 0 2px 0 rgba(43,33,24,.25);
+}
+.sticker-sun { background: #B7E6C3; transform: rotate(1.6deg); }
+.makernote { margin: 4px 0 10px; font-size: 15px; color: #6b5b48; }
+.mini { font-family: 'Patrick Hand', cursive; font-size: 14px; color: #8a7a64; margin: 8px 0 0; }
+
+.maker { display: flex; gap: 12px; align-items: stretch; justify-content: center; }
+#makerCv {
+  flex: 1; max-width: 420px; height: 240px;
+  background: var(--paper2);
+  border: 2.5px dashed var(--ink); border-radius: 18px;
+  cursor: crosshair; touch-action: none;
+}
+#makerCv.nope { animation: nope .4s; }
+@keyframes nope { 25% { transform: translateX(-7px) rotate(-1deg); } 75% { transform: translateX(7px) rotate(1deg); } }
+
+.swatches { display: flex; flex-direction: column; gap: 7px; justify-content: center; }
+.swatch {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 2.5px solid var(--ink); cursor: pointer;
+  transition: transform .18s var(--spring);
+}
+.swatch.sel { transform: scale(1.25); box-shadow: 0 0 0 3px #fff, 0 0 0 5.5px var(--ink); }
+
+.btnrow { display: flex; gap: 10px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+.btn {
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 17px;
+  background: var(--coral); color: #fff;
+  border: 2.5px solid var(--ink); border-radius: 999px;
+  padding: 9px 22px; cursor: pointer;
+  box-shadow: 0 4px 0 rgba(43,33,24,.3);
+  transition: transform .15s var(--spring), box-shadow .15s;
+}
+.btn:hover { transform: translateY(-2px) rotate(-.5deg); }
+.btn:active { transform: translateY(2px); box-shadow: none; }
+.btn-ghost { background: #fff; color: var(--ink); font-size: 15px; padding: 7px 16px; }
+.btn-go { background: var(--leaf); }
+
+/* ---------- sentence card ---------- */
+.sentence-card {
+  margin-top: 14px;
+  background: #fff; border: 3px solid var(--ink); border-radius: 22px;
+  padding: 14px 20px 12px;
+  box-shadow: 0 5px 0 rgba(43,33,24,.15);
+  transform: rotate(.4deg);
+}
+.narrative {
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(18px, 2.6vw, 23px);
+  margin: 0 0 6px; line-height: 1.35; min-height: 30px;
+}
+.narrative.pop { animation: narrpop .45s var(--spring); }
+@keyframes narrpop {
+  0% { transform: scale(.92) rotate(-.6deg); opacity: .4; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+.obstacles { margin: 0 0 4px; display: flex; flex-wrap: wrap; gap: 6px; min-height: 0; }
+.obchip {
+  font-family: 'Patrick Hand', cursive; font-size: 14px;
+  background: #FFE3DE; border: 2px dashed var(--coral); border-radius: 999px;
+  padding: 1px 11px;
+}
+.dym { margin: 2px 0 6px; font-family: 'Patrick Hand', cursive; font-size: 16px; }
+.dymbtn {
+  font-family: 'Fredoka', sans-serif; font-size: 15px;
+  background: var(--sun); border: 2px solid var(--ink); border-radius: 999px;
+  padding: 2px 12px; margin: 0 2px; cursor: pointer;
+  transition: transform .15s var(--spring);
+}
+.dymbtn:hover { transform: scale(1.1) rotate(-2deg); }
+
+.inputrow { display: flex; gap: 10px; margin-top: 6px; }
+#word {
+  flex: 1;
+  font-family: 'Patrick Hand', cursive; font-size: 21px;
+  color: var(--ink);
+  border: none; border-bottom: 3px dashed var(--ink);
+  background: transparent; padding: 4px 8px; outline: none;
+}
+#word:focus { border-bottom-color: var(--coral); }
+#word:disabled { opacity: .45; }
+.choices { margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 7px; }
+.choicechip {
+  font-family: 'Patrick Hand', cursive; font-size: 15px;
+  background: #E4F3E9; border: 2px solid var(--leaf); border-radius: 999px;
+  padding: 3px 13px; cursor: pointer;
+  transition: transform .15s var(--spring);
+}
+.choicechip:hover { transform: scale(1.07) rotate(1deg); }
+.coach { margin: 8px 0 0; font-size: 14px; color: #8a7a64; font-weight: 700; }
+.coach .uhoh { color: var(--coral); }
+
+/* ---------- end card ---------- */
+.winline { font-family: 'Patrick Hand', cursive; font-size: 18px; margin: 4px 0 10px; }
+.recap { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 8px 0 4px; }
+.recap span {
+  font-family: 'Patrick Hand', cursive; font-size: 15px;
+  background: var(--paper2); border: 2px solid var(--ink); border-radius: 999px;
+  padding: 2px 12px;
+}
+.recap span.silly { background: #FFE3DE; border-style: dashed; border-color: var(--coral); }
+
+footer {
+  margin-top: 14px; text-align: center;
+  font-family: 'Patrick Hand', cursive; font-size: 15px; color: #8a7a64;
+}
+
+@media (max-width: 560px) {
+  .stage { min-height: 330px; }
+  .maker { flex-direction: column; }
+  .swatches { flex-direction: row; }
+  .goalwrap { width: 92%; }
+  .hud-bl { bottom: 8px; }
+}

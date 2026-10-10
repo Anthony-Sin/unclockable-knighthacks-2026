@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pip & the Storywood — v3 · Three Little Pigs, 8 engines + 6 worlds</title>
+<style>
+  :root{
+    --paper:#faf5ea; --ink:#2b2b2b; --red:#d94f3d; --amber:#e8a33d;
+    --green:#4a9e5c; --blue:#4a7fbf; --purple:#8a6fbf; --teal:#3d9e93;
+    --pink:#d95f8f; --gray:#8a8a7a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font-family:"Comic Sans MS","Chalkboard SE","Segoe Print",cursive,sans-serif}
+  header{padding:18px 24px 10px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  h1{font-size:26px;margin:0}
+  h1 small{font-size:14px;color:#777;font-weight:normal}
+  .back{color:var(--blue);text-decoration:none;font-size:14px}
+  .bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:0 24px 12px}
+  .pill{border:2px solid var(--ink);border-radius:999px;padding:4px 14px;font-size:13px;
+        background:#fff;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+  .pill:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
+  .pill.on{background:var(--amber)}
+  #sysstat{font-size:12px;color:#666;margin-left:auto}
+  #grid{display:grid;gap:10px;padding:0 24px 24px;
+        grid-template-columns:repeat(auto-fit,minmax(380px,1fr))}
+  .cell{background:#fff;border:3px solid var(--ink);border-radius:14px;overflow:hidden;
+        box-shadow:4px 4px 0 var(--ink);display:flex;flex-direction:column}
+  .cell .cap{display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:2px dashed #ccc;
+             font-size:13px}
+  .dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--ink);flex:none}
+  .cap b{font-size:14px}
+  .cap .ms{margin-left:auto;font-family:monospace;font-size:11px;color:#777}
+  .cap a{color:var(--blue);font-size:12px}
+  .frameWrap{position:relative;aspect-ratio:16/10;background:repeating-conic-gradient(#f5efe0 0 25%,#efe7d3 0 50%) 0 0/24px 24px}
+  iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent}
+  .err{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+       font-size:13px;color:#a00;background:rgba(255,255,255,.75);padding:12px;text-align:center}
+  .lazyCover{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;gap:8px;
+       align-items:center;justify-content:center;cursor:pointer;background:rgba(250,245,234,.92);
+       font-size:13px;color:#776}
+  .lazyCover b{border:2px solid var(--ink);border-radius:999px;padding:5px 18px;background:#fff;
+       box-shadow:2px 2px 0 var(--ink);color:var(--ink);font-size:14px}
+  .lazyCover:hover b{background:var(--amber)}
+  footer{padding:0 24px 24px;font-size:12px;color:#777}
+  .solo #grid{grid-template-columns:1fr}
+  .solo .cell{display:none}
+  .solo .cell.keep{display:flex}
+  .solo .frameWrap{aspect-ratio:16/7}
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="../index.html">← all mockups</a>
+  <h1>v3 · The Three Little Pigs <small>same goal, 8 engines + 6 painted worlds, real LLM (glm-4-7-flash)</small></h1>
+</header>
+<div class="bar">
+  <button class="pill" id="watchAll">▶ Watch all play</button>
+  <button class="pill" id="reloadAll">↻ Reload all</button>
+  <button class="pill" id="stopAll">■ Stop all</button>
+  <button class="pill" id="speed">⏱ Fetch speed stats</button>
+  <span id="sysstat">checking system…</span>
+</div>
+<div id="grid"></div>
+<footer>
+  Same goal in every frame: help the pig friends reach the brick house before the wolf huffs and puffs.
+  Hero is kid-drawn → words spawn real props → silly words slapstick-fail → “did you mean…?” helps spelling.
+  LLM via <code>shared/llm.js</code> → <code>/api/chat</code> proxy (key stays server-side). Fallback = labeled demo mode.
+</footer>
+<script>
+const VARIANTS = [
+  {id:"01-rough-canvas", name:"Rough canvas",  c:"--red"},
+  {id:"02-rough-svg",    name:"Rough SVG",     c:"--blue"},
+  {id:"03-paperjs",      name:"Paper.js",      c:"--green"},
+  {id:"04-konva",        name:"Konva",         c:"--purple"},
+  {id:"05-twojs",        name:"Two.js",        c:"--amber"},
+  {id:"06-zdog",         name:"Zdog 3D",       c:"--teal"},
+  {id:"07-vanilla",      name:"Vanilla",       c:"--gray"},
+  {id:"08-pixi",         name:"Pixi WebGL",    c:"--pink"},
+  // painted-world variants of 07-vanilla (see PAINTED.md) — loaded on demand
+  {id:"09-van-meadow",   name:"Meadowpath",    c:"--green",  lazy:true},
+  {id:"10-van-paintbox", name:"Painty Road",   c:"--red",    lazy:true},
+  {id:"11-van-breeze",   name:"Breezefield",   c:"--blue",   lazy:true},
+  {id:"12-van-lantern",  name:"Lantern Trail", c:"--purple", lazy:true},
+  {id:"13-van-puddle",   name:"Puddlejump",    c:"--teal",   lazy:true},
+  {id:"14-van-highland", name:"Highland Trek", c:"--amber",  lazy:true},
+];
+const grid = document.getElementById("grid");
+const frames = [];
+
+for (const v of VARIANTS){
+  const cell = document.createElement("div");
+  cell.className = "cell";
+  cell.innerHTML = `
+    <div class="cap">
+      <span class="dot" style="background:var(${v.c})"></span>
+      <b>${v.name}</b>
+      <span class="ms" data-ms>…</span>
+      <a href="./${v.id}/" target="_blank">open ↗</a>
+    </div>
+    <div class="frameWrap"><iframe data-src="./${v.id}/" title="${v.name}"></iframe></div>`;
+  grid.appendChild(cell);
+  const ifr = cell.querySelector("iframe");
+  const entry = {v, ifr, cell, t0:0};
+  ifr.addEventListener("load", () => {
+    const ms = Math.round(performance.now() - entry.t0);
+    cell.querySelector("[data-ms]").textContent = `load ${ms}ms`;
+  });
+  cell.querySelector("b").addEventListener("click", () => { if (entry.lazy) loadCell(entry); solo(cell, ifr); });
+  if (v.lazy) {
+    entry.lazy = true;
+    const wrap = cell.querySelector(".frameWrap");
+    const cover = document.createElement("div");
+    cover.className = "lazyCover";
+    cover.innerHTML = `<span>vanilla-world variant — tap to load</span><b>▶ load ${v.name}</b>`;
+    cover.addEventListener("click", () => loadCell(entry));
+    wrap.appendChild(cover);
+    cell.querySelector("[data-ms]").textContent = "sleeping";
+  } else {
+    frames.push(entry);
+  }
+}
+
+function loadCell(entry){
+  if (!entry.lazy) return;
+  entry.lazy = false;
+  entry.cell.querySelector(".lazyCover")?.remove();
+  frames.push(entry);
+  entry.t0 = performance.now();
+  entry.ifr.src = entry.ifr.dataset.src;
+}
+
+function solo(cell, ifr){
+  document.body.classList.add("solo");
+  document.querySelectorAll(".cell").forEach(c => c.classList.remove("keep"));
+  cell.classList.add("keep");
+  ifr.src = "./" + VARIANTS.find(v=>ifr.dataset.src.endsWith(v.id)).id + "/";
+  window.addEventListener("keydown", e => {
+    if (e.key === "Escape") document.body.classList.remove("solo");
+  }, {once:true});
+}
+
+// sysguard status every 5s
+async function tick(){
+  try{
+    const g = await (await fetch("/api/sysguard")).json();
+    document.getElementById("sysstat").textContent =
+      `RAM free ${g.mem_avail_gb}/${g.mem_total_gb}GB` +
+      (g.gpu && g.gpu.name ? ` · GPU ${g.gpu.name.split(" ").slice(-3).join(" ")} ${g.gpu.free_gb}GB free` : "");
+  }catch{ document.getElementById("sysstat").textContent = "sysguard unreachable (server on :8001?)"; }
+}
+tick(); setInterval(tick, 5000);
+
+// stagger iframe loading so 8 pages don't slam the machine at once
+// (memory guardrail: 2 at a time, skip ahead if a frame errors)
+let qi = 0;
+function loadNext(){
+  if (qi >= frames.length) return;
+  const batch = frames.slice(qi, qi+2); qi += batch.length;
+  for (const f of batch){ f.t0 = performance.now(); f.ifr.src = f.ifr.dataset.src; }
+  setTimeout(loadNext, 2500);
+}
+loadNext();
+
+function postAll(fn){
+  frames.forEach(f => {
+    try{ f.ifr.contentWindow?.[fn]?.(); }catch(e){}
+  });
+}
+document.getElementById("reloadAll").onclick = () => {
+  frames.forEach(f => { f.t0 = performance.now(); f.ifr.src = f.ifr.dataset.src; });
+};
+document.getElementById("watchAll").onclick = () =>
+  postAll("watchItPlay") || frames.forEach(f => {
+    // fall back to clicking the button inside each frame
+    try{
+      const w = f.ifr.contentWindow;
+      const btn = w.document.querySelector("[data-watch],#watch,#watchBtn,.watch-btn");
+      btn && btn.click();
+    }catch(e){}
+  });
+document.getElementById("stopAll").onclick = () => postAll("stopWatch");
+document.getElementById("speed").onclick = async () => {
+  try{
+    const s = await (await fetch("/api/stats")).json();
+    const ms = s.calls.map(c=>c.ms);
+    const avg = ms.length ? Math.round(ms.reduce((a,b)=>a+b)/ms.length) : 0;
+    alert(`LLM calls: ${ms.length}\navg ${avg}ms\nlast: ${ms.slice(-8).join(", ")}`);
+  }catch{ alert("no stats — server on :8001?"); }
+};
+</script>
+</body>
+</html>

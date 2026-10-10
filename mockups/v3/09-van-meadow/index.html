@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pip &amp; the Storywood — Meadowpath · The Three Little Pigs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M5 20 Q10 10 16 15 T27 12' fill='none' stroke='%232B2118' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='25' cy='11' r='4' fill='%23FFC53D' stroke='%232B2118' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script src="../shared/llm.js" defer></script>
+<script src="sketch.js" defer></script>
+<script src="props.js" defer></script>
+<script src="world.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="backlink" href="../../">&larr; all mockups</a>
+    <span class="badge">Wave 3 &middot; Painted world &middot; every hill is a soft brushstroke</span>
+    <h1>Pip &amp; the <span class="amp">Meadowpath</span></h1>
+    <svg class="squiggle" width="250" height="16" viewBox="0 0 250 16" aria-hidden="true">
+      <path d="M4 10 C 22 4, 44 13, 66 8 S 104 3, 126 9 S 166 14, 188 7 S 226 4, 246 10"
+            fill="none" stroke="#4FA15F" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">The painted-world baseline &mdash; one endless meadow rolls by in soft
+      brushstrokes. Props draw themselves on in crayon &mdash; tap one and see what happens!</p>
+  </header>
+
+  <section class="game">
+    <div class="stage" id="stage">
+      <!-- bottom: ONE painted-world canvas (repainted every frame at cam)
+           + one live play canvas for the crayon actors -->
+      <canvas id="worldCv" class="layer"></canvas>
+      <canvas id="playCv" class="layer" aria-label="Painted meadow with crayon story actors"></canvas>
+
+      <!-- HUD -->
+      <div class="hud hud-top">
+        <div class="goalwrap" title="Story progress — reach the brick house!">
+          <span class="goallabel">brick house</span>
+          <div class="goalbar"><div class="goalfill" id="goalFill"></div>
+            <svg class="goalpig" id="goalPig" viewBox="0 0 24 18" aria-hidden="true">
+              <ellipse cx="11" cy="10" rx="9" ry="6.5" fill="#FF9EBB" stroke="#2B2118" stroke-width="1.8"/>
+              <circle cx="18" cy="7.5" r="4.4" fill="#FF9EBB" stroke="#2B2118" stroke-width="1.8"/>
+              <circle cx="19.5" cy="8" r="1.7" fill="#FFC9D9" stroke="#2B2118" stroke-width="1.2"/>
+              <circle cx="17" cy="6.2" r=".9" fill="#2B2118"/>
+            </svg>
+          </div>
+        </div>
+        <div class="wolfwrap" title="Wolf pressure — he is huffy, not harmful">
+          <span class="wolflabel">wolf</span>
+          <div class="wolfbar"><div class="wolffill" id="wolfFill"></div></div>
+          <span class="wolfmood" id="wolfMood">far away</span>
+        </div>
+      </div>
+      <div class="hud hud-bottom">
+        <span class="chip chip-line" id="lineChip">Draw your hero to begin!</span>
+        <span class="chip chip-poke" id="pokeChip" hidden>&#10022; 0 pokes</span>
+        <span class="chip chip-ms" id="msChip" hidden></span>
+      </div>
+      <button class="stopdemo" id="stopBtn" type="button" hidden><span class="stopsq"></span>Stop the show</button>
+
+      <!-- BEAT 0: draw your hero (a tiny crayon pad, same wobble engine) -->
+      <div class="overlay show" id="makerOverlay">
+        <div class="card card-maker">
+          <span class="sticker">The pigs need a helper!</span>
+          <h2>Draw your hero</h2>
+          <p class="makernote">Scribble on the pad &mdash; your strokes are replayed through the same
+            hand-rolled wobbler that draws the whole world. Give your hero a name, too!</p>
+          <div class="maker">
+            <div class="padwrap"><canvas id="makerCv"></canvas></div>
+            <div class="swatches" id="swatches" role="radiogroup" aria-label="Crayon colors"></div>
+          </div>
+          <div class="namerow">
+            <label for="heroName">Hero name:</label>
+            <input id="heroName" type="text" maxlength="14" placeholder="Pip" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="btnrow">
+            <button class="btn" id="doneBtn" type="button">Done &mdash; start the story!</button>
+          </div>
+          <div class="btnrow btnrow-ghost">
+            <button class="btn btn-ghost" id="surpriseBtn" type="button">Surprise me</button>
+            <button class="btn btn-ghost" id="clearBtn" type="button">Clear page</button>
+            <button class="btn btn-ghost" id="watchBtn" data-watch type="button">Watch it play</button>
+          </div>
+          <p class="mini">&ldquo;Watch it play&rdquo; scribbles a hero, then asks the real story-brain
+            to run the whole journey &mdash; live, not canned.</p>
+        </div>
+      </div>
+
+      <!-- win payoff -->
+      <div class="overlay" id="endOverlay" hidden>
+        <div class="card card-win">
+          <span class="sticker sticker-sun">Safe inside!</span>
+          <h2 id="winTitle">Your hero made it to the brick house!</h2>
+          <p class="winbody" id="winBlurb">The wolf huffed and puffed, but brick is brick.
+            Three pigs and one brave doodle &mdash; all home safe.</p>
+          <div class="recap" id="recap"></div>
+          <div class="btnrow">
+            <button class="btn" id="againBtn" type="button">Draw a new hero</button>
+            <button class="btn btn-ghost" id="watchAgainBtn" type="button">Watch it again</button>
+            <a class="btn btn-ghost" href="../../">All mockups</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- the story line + input -->
+    <div class="sentence-card" id="sentenceCard">
+      <p class="sentence" id="narrative">First, draw your hero&hellip;</p>
+      <div class="obstacles" id="obstacles"></div>
+      <div class="typerow">
+        <span class="blankbox">
+          <input id="blank" type="text" autocomplete="off" autocorrect="off" autocapitalize="none"
+                 spellcheck="false" maxlength="40" placeholder="type what to do next!"
+                 aria-label="Type a word or phrase for what happens next" disabled>
+          <svg class="underln" id="underSvg" aria-hidden="true"></svg>
+        </span>
+        <button class="btn btn-go" id="goBtn" type="button" disabled>Go!</button>
+      </div>
+      <p class="coach">
+        <span id="coach">The crayons are waiting!</span>
+        <span class="dym" id="dym" hidden>Did you mean
+          <button class="dymbtn" id="dymBtn" type="button">word</button>?
+        </span>
+      </p>
+      <div class="choices" id="choices"></div>
+    </div>
+
+    <p class="foot">
+      <span class="footchip">Meadowpath &mdash; painted world, sticker actors. One wrapping world-ring
+      of hills, clouds and trees is repainted every frame at camera <b>cam</b>; each
+      <b>scene_seed</b> morphs the road ahead into the next palette &mdash; no wipe, ever.
+      Every prop is crayon-scribbled on &hellip; and tappable.</span>
+    </p>
+  </section>
+
+  <footer>Brushstroke hills, a winding dashed trail, three pigs and one very real game master &mdash; painted fresh every frame.</footer>
+</div>
+</body>
+</html>

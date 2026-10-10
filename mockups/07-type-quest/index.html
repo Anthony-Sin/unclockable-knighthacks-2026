@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Type the Tale — Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="backlink" href="../">← all mockups</a>
+    <span class="badge">Mockup 07 · keyboard typing</span>
+    <h1>Type the <span class="amp">Tale</span></h1>
+    <svg class="squiggle" width="240" height="14" viewBox="0 0 240 14" fill="none" aria-hidden="true">
+      <path d="M3 9 C 20 3, 40 12, 60 8 S 100 3, 120 8 S 160 13, 180 7 S 220 4, 237 9" stroke="#FF6B57" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Type the words and Pip walks the path — five little words lead him home.</p>
+  </header>
+
+  <section class="game">
+    <div class="stage" id="stage">
+
+      <!-- Parallax layer: sky (slowest) -->
+      <div class="layer layer-sky" data-depth="0.14">
+        <svg class="drift" width="2600" height="460" viewBox="0 0 2600 460" aria-hidden="true">
+          <g class="sun">
+            <g stroke="#F5A623" stroke-width="6" stroke-linecap="round">
+              <line x1="200" y1="18" x2="200" y2="34"/>
+              <line x1="200" y1="146" x2="200" y2="162"/>
+              <line x1="118" y1="90" x2="134" y2="90"/>
+              <line x1="266" y1="90" x2="282" y2="90"/>
+              <line x1="142" y1="32" x2="154" y2="44"/>
+              <line x1="246" y1="136" x2="258" y2="148"/>
+              <line x1="258" y1="32" x2="246" y2="44"/>
+              <line x1="154" y1="136" x2="142" y2="148"/>
+            </g>
+            <circle cx="200" cy="90" r="46" fill="#FFC53D" stroke="#2B2118" stroke-width="4"/>
+            <circle cx="186" cy="82" r="4" fill="#2B2118"/>
+            <circle cx="212" cy="82" r="4" fill="#2B2118"/>
+            <path d="M188 98 Q200 108 212 98" stroke="#2B2118" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <circle cx="178" cy="94" r="5" fill="#FF6B57" opacity=".5"/>
+            <circle cx="222" cy="94" r="5" fill="#FF6B57" opacity=".5"/>
+          </g>
+          <use href="#cloud" transform="translate(620,72)"/>
+          <use href="#cloud" transform="translate(1080,110) scale(.8)"/>
+          <use href="#cloud" transform="translate(1560,58) scale(1.1)"/>
+          <use href="#cloud" transform="translate(2150,120) scale(.75)"/>
+          <use href="#cloud" transform="translate(2450,60) scale(.9)"/>
+          <g class="moon" transform="translate(1860,84)">
+            <circle r="30" fill="#FFF1C4" stroke="#2B2118" stroke-width="3.5" mask="url(#mooncut)"/>
+            <circle r="30" fill="none" stroke="#2B2118" stroke-width="3.5" opacity="0"/>
+            <use href="#spark" transform="translate(44,-22) scale(1.1)" fill="#FFC53D" stroke="#2B2118" stroke-width="1.6"/>
+            <use href="#spark" transform="translate(30,34) scale(.7)" fill="#FFC53D"/>
+          </g>
+          <g stroke="#2B2118" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".55">
+            <path d="M560 118 l9 -7 9 7"/>
+            <path d="M596 108 l8 -6 8 6"/>
+            <path d="M980 84 l9 -7 9 7"/>
+            <path d="M2080 96 l8 -6 8 6"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Parallax layer: far hills -->
+      <div class="layer layer-far" data-depth="0.32">
+        <svg width="2600" height="460" viewBox="0 0 2600 460" aria-hidden="true">
+          <path d="M-40 326 Q 180 218 420 292 Q 620 348 860 302 Q 1080 256 1300 308 Q 1540 356 1780 296 Q 2020 242 2240 302 Q 2440 352 2640 302 L2640 480 -40 480 Z"
+                fill="#B9E3B4" stroke="#2B2118" stroke-width="3"/>
+          <path d="M-40 352 Q 300 290 620 340 Q 940 388 1240 336 Q 1540 288 1840 344 Q 2140 394 2640 336 L2640 480 -40 480 Z"
+                fill="#9BD8A0" stroke="#2B2118" stroke-width="3" opacity=".85"/>
+        </svg>
+      </div>
+
+      <!-- Parallax layer: mid hills + trees -->
+      <div class="layer layer-mid" data-depth="0.58">
+        <svg width="2600" height="460" viewBox="0 0 2600 460" aria-hidden="true">
+          <path d="M-40 372 Q 200 292 460 352 Q 720 408 980 344 Q 1240 292 1490 356 Q 1740 410 2000 348 Q 2260 296 2640 358 L2640 480 -40 480 Z"
+                fill="#7CC97F" stroke="#2B2118" stroke-width="3"/>
+          <use href="#tree" transform="translate(250,330) scale(1.05)"/>
+          <use href="#tree" transform="translate(720,352) scale(.85)"/>
+          <use href="#tree" transform="translate(1150,330) scale(.7)"/>
+          <use href="#tree" transform="translate(1560,360) scale(1.15)"/>
+          <use href="#tree" transform="translate(2050,354) scale(.9)"/>
+          <use href="#tree" transform="translate(2340,336) scale(1.05)"/>
+        </svg>
+      </div>
+
+      <!-- Ground layer (moves 1:1 with world) -->
+      <div class="layer layer-ground" data-depth="1">
+        <svg width="2600" height="460" viewBox="0 0 2600 460" aria-hidden="true">
+          <!-- grass foreground -->
+          <path d="M-40 358 Q 160 330 340 346 Q 540 366 720 350 Q 900 336 1080 348 Q 1260 360 1440 350 Q 1620 340 1800 352 Q 1980 364 2160 352 Q 2340 338 2640 330 L2640 480 -40 480 Z"
+                fill="#58BC7B" stroke="#2B2118" stroke-width="3"/>
+          <path d="M-40 392 Q 400 380 800 388 T 1600 386 T 2640 380 L2640 480 -40 480 Z"
+                fill="#4CA96C" opacity=".55"/>
+
+          <!-- river under the bridge -->
+          <path d="M1246 346 C 1236 376 1258 402 1248 430 C 1243 446 1246 456 1245 462 L1449 462 C 1446 446 1460 420 1448 395 C 1438 372 1453 356 1447 346 Z"
+                fill="#7CC4F2" stroke="#2B2118" stroke-width="3"/>
+          <path d="M1278 372 q14 8 28 0 M1350 400 q14 8 28 0 M1290 428 q14 8 28 0 M1390 372 q12 7 24 0"
+                stroke="#C4E7FB" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+          <!-- the path (two stitched ribbons, gap at the river) -->
+          <path class="ribbon" d="M-30 366 C 40 362 60 358 90 358 S 180 350 220 350 S 300 356 350 360 S 420 367 470 369 S 560 364 620 362 S 700 356 760 354 S 830 350 880 351 S 970 355 1030 358 S 1100 362 1150 364 S 1210 366 1243 367"/>
+          <path class="stitch" d="M-30 366 C 40 362 60 358 90 358 S 180 350 220 350 S 300 356 350 360 S 420 367 470 369 S 560 364 620 362 S 700 356 760 354 S 830 350 880 351 S 970 355 1030 358 S 1100 362 1150 364 S 1210 366 1243 367"/>
+          <path class="ribbon" d="M1447 367 C 1500 363 1530 360 1560 360 S 1650 360 1690 360 S 1750 362 1790 364 S 1880 368 1920 370 S 2000 372 2040 372 S 2110 366 2160 364 S 2180 364 2210 364 S 2280 356 2330 352 S 2380 350 2420 349 S 2500 344 2540 342 L2600 340"/>
+          <path class="stitch" d="M1447 367 C 1500 363 1530 360 1560 360 S 1650 360 1690 360 S 1750 362 1790 364 S 1880 368 1920 370 S 2000 372 2040 372 S 2110 366 2160 364 S 2180 364 2210 364 S 2280 356 2330 352 S 2380 350 2420 349 S 2500 344 2540 342 L2600 340"/>
+
+          <!-- plank bridge over the river -->
+          <g>
+            <path d="M1245 360 Q 1345 330 1445 360" stroke="#C08A4B" stroke-width="26" fill="none" stroke-linecap="round"/>
+            <path d="M1245 360 Q 1345 330 1445 360" stroke="#8A5E2E" stroke-width="26" fill="none" stroke-dasharray="4 20"/>
+            <path d="M1258 338 Q 1345 309 1432 338" stroke="#8A5E2E" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <line x1="1258" y1="338" x2="1258" y2="364" stroke="#8A5E2E" stroke-width="6" stroke-linecap="round"/>
+            <line x1="1432" y1="338" x2="1432" y2="364" stroke="#8A5E2E" stroke-width="6" stroke-linecap="round"/>
+          </g>
+
+          <!-- a fallen log to hop over -->
+          <g transform="translate(1010,352) rotate(-7)">
+            <rect x="-28" y="-11" width="58" height="20" rx="10" fill="#A9713C" stroke="#2B2118" stroke-width="3"/>
+            <circle cx="26" cy="-1" r="9" fill="#D9A96B" stroke="#2B2118" stroke-width="3"/>
+            <circle cx="26" cy="-1" r="4" fill="none" stroke="#8A5E2E" stroke-width="2"/>
+            <path d="M-18 -4 l14 0 M-18 2 l18 0" stroke="#8A5E2E" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+
+          <!-- signpost -->
+          <g transform="translate(300,352)">
+            <rect x="-5" y="-38" width="10" height="42" rx="4" fill="#9A6A3B" stroke="#2B2118" stroke-width="3"/>
+            <rect x="-34" y="-62" width="76" height="30" rx="10" fill="#FFFDF6" stroke="#2B2118" stroke-width="3"/>
+            <path d="M-20 -47 q14 -8 26 0 M12 -52 l10 5 -10 5" stroke="#B565D8" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+
+          <!-- flowers + grass + mushrooms -->
+          <use href="#flowerC" transform="translate(200,368)"/>
+          <use href="#flowerW" transform="translate(560,378) scale(.9)"/>
+          <use href="#flowerC" transform="translate(810,362) scale(.8)"/>
+          <use href="#flowerW" transform="translate(1160,376)"/>
+          <use href="#flowerC" transform="translate(1660,372) scale(.9)"/>
+          <use href="#flowerW" transform="translate(1970,384) scale(.85)"/>
+          <use href="#flowerC" transform="translate(2300,364)"/>
+          <use href="#tuft" transform="translate(140,374)"/>
+          <use href="#tuft" transform="translate(410,378) scale(1.2)"/>
+          <use href="#tuft" transform="translate(690,366)"/>
+          <use href="#tuft" transform="translate(950,362) scale(1.15)"/>
+          <use href="#tuft" transform="translate(1200,378)"/>
+          <use href="#tuft" transform="translate(1520,372) scale(1.1)"/>
+          <use href="#tuft" transform="translate(1880,378)"/>
+          <use href="#tuft" transform="translate(2130,368) scale(1.2)"/>
+          <use href="#tuft" transform="translate(2500,352)"/>
+          <g transform="translate(630,372)">
+            <rect x="-5" y="-14" width="10" height="14" rx="4" fill="#FFF1D6" stroke="#2B2118" stroke-width="2.5"/>
+            <path d="M-14 -12 A14 12 0 0 1 14 -12 Z" fill="#FF6B57" stroke="#2B2118" stroke-width="2.5"/>
+            <circle cx="-5" cy="-17" r="2" fill="#FFFDF6"/>
+            <circle cx="5" cy="-19" r="2" fill="#FFFDF6"/>
+          </g>
+          <g transform="translate(2090,374) scale(.8)">
+            <rect x="-5" y="-14" width="10" height="14" rx="4" fill="#FFF1D6" stroke="#2B2118" stroke-width="2.5"/>
+            <path d="M-14 -12 A14 12 0 0 1 14 -12 Z" fill="#B565D8" stroke="#2B2118" stroke-width="2.5"/>
+            <circle cx="-4" cy="-18" r="2" fill="#FFFDF6"/>
+            <circle cx="6" cy="-17" r="2" fill="#FFFDF6"/>
+          </g>
+
+          <!-- the storybook at the end of the path -->
+          <g id="book" transform="translate(2410,296)">
+            <circle class="bookglow" r="62" fill="#FFC53D" opacity=".32"/>
+            <g class="bookbody">
+              <path d="M-46 -30 L46 -30 50 26 -46 26 Z" fill="#FF6B57" stroke="#2B2118" stroke-width="3.5" stroke-linejoin="round"/>
+              <path d="M0 -22 C -14 -30 -34 -32 -44 -26 L-44 18 C -34 12 -14 14 0 22 Z" fill="#FFFDF6" stroke="#2B2118" stroke-width="3"/>
+              <path d="M0 -22 C 14 -30 34 -32 44 -26 L44 18 C 34 12 14 14 0 22 Z" fill="#FFFDF6" stroke="#2B2118" stroke-width="3"/>
+              <g stroke="#C9B69A" stroke-width="3" stroke-linecap="round">
+                <path d="M-36 -16 l24 -3 M-36 -8 l24 -3 M-36 0 l24 -3"/>
+                <path d="M14 -19 l24 -3 M14 -11 l24 -3 M14 -3 l24 -3"/>
+              </g>
+              <path d="M0 -22 L0 22" stroke="#2B2118" stroke-width="3"/>
+            </g>
+            <use href="#spark" class="bk-spark s1" transform="translate(-56,-42)" fill="#FFC53D"/>
+            <use href="#spark" class="bk-spark s2" transform="translate(58,-30) scale(.8)" fill="#FFC53D"/>
+            <use href="#spark" class="bk-spark s3" transform="translate(30,-56) scale(.65)" fill="#FFC53D"/>
+          </g>
+        </svg>
+        <div class="bubbles" id="bubbles"></div>
+      </div>
+
+      <!-- Pip -->
+      <div class="pip" id="pip">
+        <div class="guide" id="guide">
+          <span class="glabel">Pip · Story Guide</span>
+          <span id="guideText"></span>
+        </div>
+        <div class="cheer" id="cheer"></div>
+        <svg class="pipsvg" width="96" height="104" viewBox="0 0 120 128" aria-hidden="true">
+          <g filter="url(#wob)">
+            <g class="feet">
+              <ellipse class="foot foot-l" cx="44" cy="112" rx="11" ry="8" fill="#8E49BC" stroke="#2B2118" stroke-width="3.5"/>
+              <ellipse class="foot foot-r" cx="76" cy="112" rx="11" ry="8" fill="#8E49BC" stroke="#2B2118" stroke-width="3.5"/>
+            </g>
+            <path d="M36 24 L27 4 L50 14 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M80 22 L91 3 L99 20 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M21 62 C 10 62 6 73 12 79 C 17 84 25 77 25 70 Z" fill="#B565D8" stroke="#2B2118" stroke-width="3.5"/>
+            <path d="M99 60 C 110 57 117 66 113 74 C 109 81 100 76 99 68 Z" fill="#B565D8" stroke="#2B2118" stroke-width="3.5"/>
+            <path d="M18 66 C14 34 40 18 62 17 C88 15 106 40 102 70 C99 98 78 110 58 110 C36 110 21 94 18 66 Z"
+                  fill="#B565D8" stroke="#2B2118" stroke-width="4"/>
+            <ellipse cx="61" cy="84" rx="21" ry="18" fill="#DCC3F2" stroke="#2B2118" stroke-width="3"/>
+            <circle cx="50" cy="46" r="15" fill="#FFFDF6" stroke="#2B2118" stroke-width="3.5"/>
+            <circle cx="54" cy="48" r="6.5" fill="#2B2118"/>
+            <circle cx="56.5" cy="45.5" r="2.2" fill="#FFFDF6"/>
+            <circle cx="84" cy="51" r="8.5" fill="#FFFDF6" stroke="#2B2118" stroke-width="3"/>
+            <circle cx="86" cy="52.5" r="3.8" fill="#2B2118"/>
+            <circle cx="36" cy="63" r="5" fill="#FF6B57" opacity=".5"/>
+            <circle cx="93" cy="65" r="4" fill="#FF6B57" opacity=".45"/>
+            <path d="M52 69 Q 62 77 74 68" stroke="#2B2118" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <path d="M60 74.5 L65 74.5 62.5 80 Z" fill="#FFFDF6" stroke="#2B2118" stroke-width="2.5" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- confetti + HUD -->
+      <div class="confetti" id="confetti"></div>
+      <div class="hud hud-left"><span class="chip" id="wordChip">Word 1 of 5</span></div>
+      <div class="hud hud-right">
+        <div class="meter chip">
+          <span class="mlabel">Reading level</span>
+          <span class="stars" id="stars"></span>
+          <span class="rank" id="rank">New Reader</span>
+        </div>
+      </div>
+      <div class="hintchip" id="hintChip">Just type — the keyboard is already listening</div>
+      <button class="stopdemo" id="stopBtn" type="button"><span class="stopsq"></span>Stop demo</button>
+
+      <!-- start overlay: hero moment -->
+      <div class="overlay show" id="startOverlay">
+        <div class="card">
+          <span class="sticker">Pip needs your help!</span>
+          <h2>Type each word,<br>walk Pip home.</h2>
+          <p>Letters appear in the floating bubbles. Every letter you type right fills in with ink — finish a word and Pip trots down the path to the storybook.</p>
+          <div class="btnrow">
+            <button class="btn" id="startBtn">Start walking</button>
+            <button class="btn btn-ghost" id="watchBtn">Watch it play</button>
+          </div>
+          <p class="mini">or just start typing — the keyboard is listening</p>
+        </div>
+      </div>
+
+      <!-- payoff overlay -->
+      <div class="overlay" id="endOverlay" hidden>
+        <div class="card card-win">
+          <span class="sticker sticker-sun">Chapter complete</span>
+          <h2>You read the way home!</h2>
+          <div class="gem-row">
+            <svg class="gem" width="86" height="86" viewBox="0 0 100 100" aria-hidden="true">
+              <g filter="url(#wob)">
+                <path d="M50 8 L82 30 L72 78 L28 78 L18 30 Z" fill="#5DA9E9" stroke="#2B2118" stroke-width="4" stroke-linejoin="round"/>
+                <path d="M18 30 L82 30 M50 8 L38 30 50 78 M50 8 L62 30 50 78 M38 30 L28 78 M62 30 L72 78" stroke="#2B2118" stroke-width="2.5" fill="none" opacity=".55"/>
+                <path d="M30 22 L44 14" stroke="#FFFDF6" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+              </g>
+              <text x="50" y="58" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="34" fill="#FFFDF6" stroke="#2B2118" stroke-width="1.2">R</text>
+            </svg>
+            <div class="gem-copy">
+              <b>Letter-gem earned!</b>
+              <span>“R” is for Reading — Pip adds it to the bedtime story.</span>
+            </div>
+          </div>
+          <div class="recap" id="recap"></div>
+          <p class="slips" id="slips"></p>
+          <div class="btnrow">
+            <button class="btn" id="againBtn">Walk it again</button>
+            <button class="btn btn-ghost" id="watchAgainBtn">Watch it again</button>
+            <a class="btn btn-ghost" href="../">All mockups</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot">
+      <span class="footchip">In the real game, an adaptive AI tutor — like the tech behind TypingClub-style adaptive lessons or Google&rsquo;s Read Along — picks words at your reading level and helps when you get stuck.</span>
+    </p>
+    <button class="taptype" id="tapType" type="button">Tap here to type</button>
+  </section>
+
+  <footer>Five words, one path, zero wrong answers — wrong keys just wobble.</footer>
+</div>
+
+<!-- hidden input so mobile keyboards can join in -->
+<input id="ghost" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Type story words here">
+
+<!-- shared SVG defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="wob" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" result="n" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3"/>
+    </filter>
+    <mask id="mooncut">
+      <rect x="-60" y="-60" width="120" height="120" fill="#fff"/>
+      <circle cx="12" cy="-6" r="26" fill="#000"/>
+    </mask>
+    <g id="cloud" fill="#FFFDF6" stroke="#2B2118" stroke-width="3">
+      <ellipse cx="-30" cy="8" rx="24" ry="16"/>
+      <ellipse cx="0" cy="-4" rx="32" ry="22"/>
+      <ellipse cx="30" cy="8" rx="24" ry="16"/>
+      <rect x="-32" y="2" width="64" height="16" rx="8"/>
+    </g>
+    <g id="tree" stroke="#2B2118" stroke-width="3">
+      <rect x="-8" y="-6" width="16" height="42" rx="6" fill="#9A6A3B"/>
+      <circle cx="-22" cy="-14" r="19" fill="#58BC7B"/>
+      <circle cx="22" cy="-16" r="19" fill="#58BC7B"/>
+      <circle cx="0" cy="-30" r="28" fill="#4FB06D"/>
+    </g>
+    <g id="flowerC">
+      <path d="M0 0 L0 -16" stroke="#3E8F57" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <g stroke="#2B2118" stroke-width="2.5">
+        <circle cx="0" cy="-31" r="5.5" fill="#FF6B57"/>
+        <circle cx="9" cy="-24" r="5.5" fill="#FF6B57"/>
+        <circle cx="-9" cy="-24" r="5.5" fill="#FF6B57"/>
+        <circle cx="6" cy="-15" r="5.5" fill="#FF6B57"/>
+        <circle cx="-6" cy="-15" r="5.5" fill="#FF6B57"/>
+        <circle cx="0" cy="-23" r="5" fill="#FFC53D"/>
+      </g>
+    </g>
+    <g id="flowerW">
+      <path d="M0 0 L0 -16" stroke="#3E8F57" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <g stroke="#2B2118" stroke-width="2.5">
+        <circle cx="0" cy="-31" r="5.5" fill="#FFFDF6"/>
+        <circle cx="9" cy="-24" r="5.5" fill="#FFFDF6"/>
+        <circle cx="-9" cy="-24" r="5.5" fill="#FFFDF6"/>
+        <circle cx="6" cy="-15" r="5.5" fill="#FFFDF6"/>
+        <circle cx="-6" cy="-15" r="5.5" fill="#FFFDF6"/>
+        <circle cx="0" cy="-23" r="5" fill="#5DA9E9"/>
+      </g>
+    </g>
+    <g id="tuft" stroke="#3E8F57" stroke-width="3" fill="none" stroke-linecap="round">
+      <path d="M0 0 C -2 -6 -4 -10 -9 -14"/>
+      <path d="M0 0 C 0 -8 0 -12 1 -16"/>
+      <path d="M0 0 C 2 -6 5 -10 9 -13"/>
+    </g>
+    <path id="spark" d="M0 -11 L2.8 -2.8 11 0 2.8 2.8 0 11 -2.8 2.8 -11 0 -2.8 -2.8 Z"/>
+    <path id="star" d="M10 1.6 L12.8 7.2 19 7.9 14.4 12.3 15.6 18.4 10 15.4 4.4 18.4 5.6 12.3 1 7.9 7.2 7.2 Z"/>
+  </defs>
+</svg>
+
+<script src="app.js"></script>
+</body>
+</html>

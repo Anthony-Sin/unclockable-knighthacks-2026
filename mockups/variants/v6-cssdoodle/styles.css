@@ -1,0 +1,973 @@
+/* ============================================================
+   Fill the Tale — Sticker Sky edition (css-doodle variant)
+   Warm paper, chunky stickers, generated skies that re-roll.
+   ============================================================ */
+
+:root {
+  --paper: #FFF8EC;
+  --paper-deep: #FDF3E3;
+  --ink: #2B2118;
+  --coral: #FF6B57;
+  --sun: #FFC53D;
+  --leaf: #4FB06D;
+  --sky: #5DA9E9;
+  --berry: #B565D8;
+  --pink: #FF8FA3;
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 500px at 15% -5%, #fff3d9 0%, transparent 60%),
+    radial-gradient(900px 420px at 90% -8%, #ffe9e4 0%, transparent 55%),
+    var(--paper);
+  color: var(--ink);
+  font-family: "Baloo 2", "Comic Sans MS", system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* ==================== header / title moment ==================== */
+
+.page-head {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 34px 20px 8px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: "Patrick Hand", cursive;
+  font-size: 17px;
+  color: #8a6d4d;
+  letter-spacing: .02em;
+  margin-bottom: 10px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.mini-mark {
+  width: 46px;
+  height: 46px;
+  display: inline-block;
+  transform: rotate(-6deg);
+}
+
+h1 {
+  font-family: "Fredoka", "Baloo 2", sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 7vw, 62px);
+  margin: 0;
+  letter-spacing: -.01em;
+  line-height: 1;
+}
+
+.edition-chip {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  background: var(--sun);
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 5px 14px 6px;
+  transform: rotate(-2.5deg);
+  box-shadow: 0 3px 0 rgba(43, 33, 24, .9);
+  align-self: flex-end;
+  margin-bottom: 8px;
+}
+
+.squiggle {
+  width: 220px;
+  height: 12px;
+  margin: 6px auto 0;
+  display: block;
+}
+
+.lede {
+  font-family: "Patrick Hand", cursive;
+  font-size: 20px;
+  color: #6b5335;
+  margin: 14px auto 0;
+  max-width: 620px;
+  line-height: 1.35;
+}
+
+/* ==================== stage ==================== */
+
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 18px 16px 8px;
+}
+
+.stage-wrap { position: relative; }
+
+.stage {
+  position: relative;
+  border: 3px solid var(--ink);
+  border-radius: 28px;
+  overflow: hidden;
+  height: 480px;
+  box-shadow: 0 6px 0 rgba(43, 33, 24, .85), 0 18px 40px rgba(43, 33, 24, .12);
+  transition: background .7s ease;
+}
+
+/* per-area stage gradients — the doodle sits on top of these */
+.stage.area-0 { background: linear-gradient(180deg, #FFD9A0 0%, #FFB08A 34%, #F7E9C9 62%, #BFE0B0 82%, #9CCF92 100%); }
+.stage.area-1 { background: linear-gradient(180deg, #A9C4DE 0%, #8FB4D8 40%, #B8D4E8 66%, #7FB587 84%, #6FA877 100%); }
+.stage.area-2 { background: linear-gradient(180deg, #9FD4F2 0%, #7CC0EA 44%, #6FB4E4 62%, #5DA9E9 78%, #4E97D8 100%); }
+.stage.area-3 { background: linear-gradient(180deg, #23233F 0%, #2E2E52 45%, #3A3A63 72%, #2A2A48 100%); }
+.stage.area-3.lit { background: linear-gradient(180deg, #4A4470 0%, #5C5488 45%, #8A7FB0 72%, #6E6494 100%); }
+.stage.area-4 { background: linear-gradient(180deg, #BFE8FF 0%, #DFF4E0 52%, #CDEBB8 76%, #A5D68F 100%); }
+
+.doodle { position: absolute; pointer-events: none; }
+
+/* raw grammar text never flashes before the component upgrades */
+css-doodle:not(:defined) { visibility: hidden; }
+
+.doodle.sky {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.doodle.sun {
+  width: 128px;
+  height: 128px;
+  top: -20px;
+  right: 26px;
+  z-index: 1;
+  transition: opacity .5s;
+}
+.stage.area-3 .doodle.sun { opacity: .25; }
+
+/* ==================== water band (river beat) ==================== */
+
+.water {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity .6s;
+  background: linear-gradient(180deg, rgba(124, 199, 239, .0) 0%, #5DA9E9 30%, #3D8BC9 100%);
+}
+.stage.area-2 .water { opacity: 1; }
+
+.water-lip {
+  position: absolute;
+  top: -14px;
+  left: 0;
+  width: 100%;
+  height: 26px;
+}
+
+/* ==================== constellation critter ==================== */
+
+.cat-zone {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  width: 218px;
+  z-index: 2;
+  transform: rotate(-4deg);
+  pointer-events: none;
+  animation: catBob 7s ease-in-out infinite;
+}
+@keyframes catBob {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50%      { transform: rotate(-3deg) translateY(-7px); }
+}
+
+#catSvg { width: 100%; height: auto; display: block; overflow: visible; }
+
+.cat-lines { stroke: rgba(255, 253, 246, .55); stroke-width: 1.4; stroke-dasharray: 4 5; fill: none; }
+.stage.area-0 .cat-lines, .stage.area-1 .cat-lines, .stage.area-4 .cat-lines { stroke: rgba(43, 33, 24, .4); }
+
+.cat-star { animation: cattwinkle 3.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+.cat-star.eye { animation-duration: 2.2s; }
+@keyframes cattwinkle {
+  0%, 100% { transform: scale(.7) rotate(-8deg); opacity: .65; }
+  50%      { transform: scale(1.18) rotate(8deg); opacity: 1; }
+}
+
+.cat-tag {
+  margin-top: -6px;
+  text-align: center;
+  font-family: "Fredoka", sans-serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  color: rgba(43, 33, 24, .55);
+}
+.stage.area-3 .cat-tag { color: rgba(255, 253, 246, .6); }
+
+/* ==================== hero rig ==================== */
+
+.hero-rig {
+  position: absolute;
+  left: 12%;
+  bottom: 13%;
+  width: 128px;
+  height: 158px;
+  z-index: 3;
+  transition: left 1.5s ease-in-out, bottom .7s var(--spring), transform .7s ease, opacity .5s;
+  transform: translateX(-50%);
+}
+
+.hero-inner { width: 100%; height: 100%; }
+
+.hero-fig {
+  width: 100%;
+  height: 100%;
+  /* the white sticker border: a halo of directional shadows + soft ground shadow */
+  filter:
+    drop-shadow(0 0 3px #fff)
+    drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff)
+    drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff)
+    drop-shadow(2.2px 2.2px 0 #fff) drop-shadow(-2.2px 2.2px 0 #fff)
+    drop-shadow(2.2px -2.2px 0 #fff) drop-shadow(-2.2px -2.2px 0 #fff)
+    drop-shadow(0 5px 4px rgba(43, 33, 24, .28));
+}
+
+.hero-rig.walking .hero-fig { animation: herobob .42s ease-in-out infinite; }
+@keyframes herobob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-9px) rotate(2deg); }
+}
+
+.hero-rig.happy .hero-fig { animation: herohop .85s var(--spring); }
+@keyframes herohop {
+  0%   { transform: translateY(0) rotate(0); }
+  35%  { transform: translateY(-30px) rotate(-6deg) scale(1.04); }
+  60%  { transform: translateY(0) scale(.97); }
+  80%  { transform: translateY(-10px) rotate(3deg); }
+  100% { transform: translateY(0); }
+}
+
+.hero-rig.slip .hero-fig { animation: heroslip 1.05s ease-in both; }
+@keyframes heroslip {
+  0%   { transform: rotate(0) translateY(0); }
+  22%  { transform: rotate(-38deg) translateY(-18px); }
+  50%  { transform: rotate(-72deg) translateY(6px); }
+  68%  { transform: rotate(-64deg) translateY(0); }
+  100% { transform: rotate(-70deg) translateY(4px); }
+}
+
+.hero-rig.soggy .hero-fig { animation: herosoggy 1.6s ease both; }
+@keyframes herosoggy {
+  0%   { transform: rotate(0) scaleY(1); filter: none; }
+  30%  { transform: rotate(-6deg) scaleY(.9); filter: saturate(.6) brightness(.94); }
+  100% { transform: rotate(-4deg) scaleY(.92); filter: saturate(.65) brightness(.95); }
+}
+
+.hero-rig.fizzleface .hero-fig { animation: heroSlump 1.1s ease both; }
+@keyframes heroSlump {
+  0%   { transform: rotate(0) translateY(0); }
+  40%  { transform: rotate(7deg) translateY(8px) scaleY(.92); }
+  100% { transform: rotate(5deg) translateY(6px) scaleY(.94); }
+}
+
+.hero-rig.wobble .hero-fig { animation: heroWobble .65s ease; }
+@keyframes heroWobble {
+  0%, 100% { transform: rotate(0) translateX(0); }
+  20% { transform: rotate(-5deg) translateX(-8px); }
+  45% { transform: rotate(4deg) translateX(7px); }
+  70% { transform: rotate(-3deg) translateX(-4px); }
+}
+
+.hero-rig.entering .hero-fig { animation: heroEnter .9s ease both; }
+@keyframes heroEnter {
+  to { transform: scale(.55) translateY(6px); opacity: 0; }
+}
+
+/* face states toggled by JS on #heroSvg */
+.eyes-set, .mouth-set, .dizzy-face { display: none; }
+.eyes-set.active, .mouth-set.active { display: block; }
+#heroSvg.dizzy .eyes-set.active { display: none; }
+#heroSvg.dizzy .mouth-set { display: none; }
+#heroSvg.dizzy .dizzy-face { display: block; }
+
+/* dizzy stars orbit above hero */
+.dizzy {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s;
+}
+.dizzy.on { opacity: 1; }
+
+.dstar {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  animation: orbit 1.4s linear infinite;
+}
+.dstar.d1 { top: 0; left: 42%; animation-delay: 0s; }
+.dstar.d2 { top: 8px; left: 10%; animation-delay: -.45s; }
+.dstar.d3 { top: 8px; right: 10%; animation-delay: -.9s; }
+
+@keyframes orbit {
+  0%   { transform: rotate(0deg) translateX(14px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(14px) rotate(-360deg); }
+}
+
+/* ==================== props ==================== */
+
+.prop-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.prop {
+  position: absolute;
+  transform: translateX(-50%) scale(0);
+  transition: left 1.5s ease-in-out, bottom .7s var(--spring), opacity .45s ease, transform .35s;
+  z-index: 2;
+}
+.prop.in { transform: translateX(-50%) scale(1); animation: propIn .5s var(--spring); }
+.prop.out { opacity: 0; transform: translateX(-50%) translateY(14px) scale(.85); }
+
+@keyframes propIn {
+  0%   { transform: translateX(-50%) scale(.2) rotate(-8deg); }
+  60%  { transform: translateX(-50%) scale(1.12) rotate(3deg); }
+  100% { transform: translateX(-50%) scale(1) rotate(0); }
+}
+
+.prop svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter:
+    drop-shadow(0 0 2px #fff)
+    drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff)
+    drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff)
+    drop-shadow(1.8px 1.8px 0 #fff) drop-shadow(-1.8px 1.8px 0 #fff)
+    drop-shadow(1.8px -1.8px 0 #fff) drop-shadow(-1.8px -1.8px 0 #fff)
+    drop-shadow(0 5px 5px rgba(43, 33, 24, .3));
+}
+
+/* riding props bob on the water */
+.prop.riding svg { animation: propbob 1.1s ease-in-out infinite; }
+@keyframes propbob {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50%      { transform: translateY(-8px) rotate(1.5deg); }
+}
+
+/* the banana peel slips underfoot */
+.prop.peel-slide { transition: left .55s cubic-bezier(.2, .9, .3, 1.4), bottom .3s, transform .35s; }
+
+/* soggy props droop */
+.prop.soggy svg { animation: propsoggy 1.4s ease both; }
+@keyframes propsoggy {
+  0%   { transform: rotate(0) scaleY(1); filter: none; }
+  100% { transform: rotate(-9deg) scaleY(.88); filter: saturate(.5) brightness(.9); }
+}
+
+/* props that splash down into the river */
+.prop.splashdown { transition: bottom .5s cubic-bezier(.5, -.2, .8, .4), transform .3s, opacity .4s ease .55s; opacity: 0; }
+
+/* fizzle props flash then die */
+.prop.fizzled svg { animation: propfizzle 1.3s ease both; }
+@keyframes propfizzle {
+  0%   { filter: none; transform: rotate(0); }
+  18%  { filter: brightness(2.4) saturate(0); }
+  30%  { filter: brightness(.4); }
+  45%  { filter: brightness(1.8) saturate(0); }
+  100% { transform: rotate(8deg) scaleY(.85); filter: saturate(.15) brightness(.75); }
+}
+
+/* glow wrapper for light props */
+.prop.glowing::before {
+  content: "";
+  position: absolute;
+  inset: -46%;
+  background: radial-gradient(closest-side, rgba(255, 214, 110, .85), rgba(255, 214, 110, 0));
+  border-radius: 50%;
+  z-index: -1;
+  animation: glowpulse 2s ease-in-out infinite;
+}
+@keyframes glowpulse {
+  0%, 100% { transform: scale(.9); opacity: .8; }
+  50%      { transform: scale(1.08); opacity: 1; }
+}
+
+/* door panel swings open */
+.door-panel {
+  transform-box: fill-box;
+  transform-origin: left center;
+  transition: transform .8s var(--spring);
+}
+.prop.door-open .door-panel { transform: rotateY(74deg); }
+.prop .door-light { opacity: 0; transition: opacity .8s ease .3s; }
+.prop.door-open .door-light { opacity: 1; }
+
+/* cookie jar lid pops */
+.prop.jar-open .jar-lid { animation: lidpop .7s var(--spring) both; transform-box: fill-box; transform-origin: center; }
+@keyframes lidpop {
+  0%   { transform: translateY(0) rotate(0); }
+  40%  { transform: translateY(-26px) rotate(-18deg); }
+  100% { transform: translateY(-14px) rotate(-32deg); }
+}
+.prop.jar-open .jar-cookie { animation: cookiepop .8s var(--spring) .15s both; transform-box: fill-box; transform-origin: center; }
+@keyframes cookiepop {
+  0%   { transform: translateY(0) scale(.4); opacity: 0; }
+  60%  { transform: translateY(-30px) scale(1.15); opacity: 1; }
+  100% { transform: translateY(-22px) scale(1); opacity: 1; }
+}
+
+/* key turns */
+.prop.key-turn svg { animation: keyturn .7s ease .2s both; transform-box: fill-box; transform-origin: center; }
+@keyframes keyturn {
+  0%   { transform: rotate(0); }
+  60%  { transform: rotate(95deg); }
+  100% { transform: rotate(90deg); }
+}
+
+/* firefly jar's generated glow-dots sit inside the jar */
+.jar-doodle {
+  position: absolute;
+  left: 18%;
+  top: 22%;
+  width: 64%;
+  height: 62%;
+  border-radius: 30%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* mini doodle patches inside props (sail, door sparkle) */
+.prop .prop-doodle { position: absolute; pointer-events: none; }
+
+/* confetti / splat / splash / smoke overlays */
+.doodle.burst {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.doodle.burst.show { opacity: 1; }
+
+/* reaction caption */
+.stage-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  z-index: 6;
+  background: #FFFDF6;
+  border: 2.5px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 0 3px 0 rgba(43, 33, 24, .85);
+  padding: 8px 18px;
+  font-family: "Patrick Hand", cursive;
+  font-size: 19px;
+  max-width: 88%;
+  text-align: center;
+  line-height: 1.25;
+}
+.stage-caption.good { border-color: var(--leaf); }
+.stage-caption.bad  { border-color: var(--coral); }
+.stage-caption.pop  { animation: captionPop .35s var(--spring); }
+
+@keyframes captionPop {
+  0% { transform: translateX(-50%) scale(.8); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* sky shock-flip flash + jolt */
+.shock-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: radial-gradient(closest-side, rgba(255, 253, 246, .95), rgba(255, 253, 246, 0));
+  opacity: 0;
+  pointer-events: none;
+}
+.stage.shock .shock-flash, .stage.fresh .shock-flash {
+  animation: flash .55s ease-out;
+}
+.stage.shock .doodle.sky {
+  animation: skyjolt .55s ease-out;
+}
+@keyframes flash {
+  0% { opacity: 0; }
+  35% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes skyjolt {
+  0%   { transform: rotate(0deg) scale(1); filter: saturate(1); }
+  30%  { transform: rotate(-1.2deg) scale(1.015); filter: saturate(1.6) hue-rotate(-12deg); }
+  60%  { transform: rotate(.8deg) scale(1.005); }
+  100% { transform: rotate(0deg) scale(1); filter: saturate(1); }
+}
+
+/* controls row */
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.progress { display: flex; gap: 8px; }
+
+.pdot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ink);
+  background: #FFFDF6;
+  transition: transform .25s var(--spring), background .25s;
+}
+.pdot.done { background: var(--leaf); transform: scale(1.15); }
+.pdot.now  { background: var(--sun); transform: scale(1.25); }
+
+.controls-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.sky-tag {
+  font-family: "Patrick Hand", cursive;
+  font-size: 15px;
+  color: #8a6d4d;
+  border: 2px dashed #c9a97a;
+  border-radius: 999px;
+  padding: 3px 12px;
+  transform: rotate(-1.5deg);
+}
+
+/* buttons */
+.btn {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 8px 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: transform .16s var(--spring), box-shadow .16s;
+}
+.btn:active { transform: translateY(2px) scale(.97); }
+.btn:disabled { opacity: .55; cursor: default; }
+.btn-icon { width: 15px; height: 15px; }
+
+.btn.primary {
+  background: var(--coral);
+  color: #FFFDF6;
+  box-shadow: 0 3px 0 rgba(43, 33, 24, .9);
+}
+.btn.primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 0 rgba(43,33,24,.9); }
+
+.btn.secondary {
+  background: var(--ink);
+  color: #FFFDF6;
+  box-shadow: 0 3px 0 rgba(43, 33, 24, .35);
+}
+
+.btn.ghost {
+  background: #FFFDF6;
+  color: var(--ink);
+  box-shadow: 0 3px 0 rgba(43, 33, 24, .9);
+}
+
+/* ==================== hero maker panel ==================== */
+
+.maker-panel {
+  margin-top: 22px;
+  background: #FFFDF6;
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: 0 4px 0 rgba(43, 33, 24, .85);
+  padding: 20px 24px 18px;
+  transform: rotate(-.4deg);
+}
+.maker-panel[hidden] { display: none; }
+
+.maker-head { text-align: center; margin-bottom: 12px; }
+.maker-head h2 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 26px;
+  margin: 0 0 4px;
+}
+.maker-head p {
+  font-family: "Patrick Hand", cursive;
+  font-size: 18px;
+  color: #6b5335;
+  margin: 0;
+}
+
+.opt-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 6px;
+  border-top: 2px dashed #e6d3b3;
+  flex-wrap: wrap;
+}
+.opt-row:first-of-type { border-top: none; }
+
+.opt-label {
+  font-family: "Fredoka", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #8a6d4d;
+  width: 56px;
+  flex: none;
+}
+
+.swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.swatch {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  border: 2.5px solid var(--ink);
+  background: var(--paper-deep);
+  cursor: pointer;
+  padding: 6px;
+  color: #9bb79f;
+  transition: transform .18s var(--spring), background .18s, box-shadow .18s;
+  box-shadow: 0 3px 0 rgba(43, 33, 24, .8);
+}
+.swatch svg { width: 100%; height: 100%; }
+.swatch:hover { transform: translateY(-3px) rotate(-2deg); background: #fff; }
+.swatch.sel {
+  background: #fff;
+  box-shadow: 0 3px 0 rgba(43, 33, 24, .8), 0 0 0 3px var(--sun) inset;
+  transform: translateY(-2px) rotate(-2deg);
+}
+.swatch:nth-child(even) { transform: rotate(1.4deg); }
+.swatch:nth-child(even).sel { transform: translateY(-2px) rotate(2deg); }
+
+.swatch.dot { padding: 8px; }
+.swatch.dot .dot-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--dot);
+  border: 2.5px solid var(--ink);
+}
+.swatch.dot.sel { box-shadow: 0 3px 0 rgba(43, 33, 24, .8), 0 0 0 3px var(--sun) inset; }
+
+.swatch.picked { animation: swatchPop .4s var(--spring); }
+@keyframes swatchPop {
+  0% { transform: scale(.7); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.maker-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* ==================== sentence panel ==================== */
+
+.sentence-panel {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sentence-panel[hidden] { display: none; }
+
+.beat-title {
+  text-align: center;
+  font-family: "Patrick Hand", cursive;
+  font-size: 21px;
+  color: #6b5335;
+}
+
+.sentence-form {
+  background: #FFFDF6;
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: 0 4px 0 rgba(43, 33, 24, .85);
+  padding: 20px 22px 16px;
+}
+
+.sentence-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: clamp(20px, 3.4vw, 28px);
+}
+
+#wordInput {
+  font-family: "Patrick Hand", cursive;
+  font-size: clamp(20px, 3.4vw, 27px);
+  color: var(--coral);
+  background: transparent;
+  border: none;
+  border-bottom: 3px dashed var(--coral);
+  outline: none;
+  text-align: center;
+  padding: 0 2px 2px;
+  min-width: 3ch;
+  max-width: 220px;
+}
+#wordInput::placeholder { color: #c9a97a; }
+#wordInput:disabled { opacity: .55; }
+
+.blank-wrap { display: inline-flex; }
+
+.didyou-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  animation: chipIn .35s var(--spring);
+}
+.didyou-row[hidden] { display: none; }
+.didyou-label, .didyou-q {
+  font-family: "Patrick Hand", cursive;
+  font-size: 17px;
+  color: #8a6d4d;
+}
+.didyou-chip {
+  border-color: var(--sky) !important;
+  background: #EAF5FF !important;
+  font-size: 18px !important;
+}
+
+.chips-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.chips-label {
+  font-family: "Patrick Hand", cursive;
+  font-size: 16px;
+  color: #8a6d4d;
+}
+
+.chips { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+
+.word-chip {
+  font-family: "Patrick Hand", cursive;
+  font-size: 16.5px;
+  background: var(--paper-deep);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 4px 14px;
+  cursor: pointer;
+  transition: transform .18s var(--spring), background .18s;
+}
+.word-chip:hover:not(:disabled) { transform: translateY(-2px) rotate(-1deg); background: #fff; }
+.word-chip:disabled { opacity: .5; cursor: default; }
+.word-chip:nth-child(odd) { transform: rotate(-1.2deg); }
+.word-chip:nth-child(even) { transform: rotate(1.1deg); }
+.word-chip:hover:not(:disabled):nth-child(odd) { transform: translateY(-2px) rotate(-2.4deg); }
+.word-chip:hover:not(:disabled):nth-child(even) { transform: translateY(-2px) rotate(2.2deg); }
+
+.sentence-form.shake .sentence-line { animation: lineshake .5s ease; }
+@keyframes lineshake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  50% { transform: translateX(7px); }
+  75% { transform: translateX(-4px); }
+}
+
+/* tale recap strip */
+.tale-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 2px 6px;
+}
+
+.tale-label {
+  font-family: "Fredoka", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #8a6d4d;
+}
+
+.tale-words { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+.tale-empty {
+  font-family: "Patrick Hand", cursive;
+  font-size: 16px;
+  color: #b0906a;
+}
+
+.tale-word {
+  font-family: "Patrick Hand", cursive;
+  font-size: 17px;
+  background: #FFFDF6;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 3px 12px;
+  box-shadow: 0 2px 0 rgba(43, 33, 24, .8);
+  animation: chipIn .35s var(--spring);
+}
+.tale-word .tw-n {
+  font-family: "Fredoka", sans-serif;
+  font-size: 11px;
+  color: #8a6d4d;
+  margin-right: 6px;
+}
+.tale-word.good { border-color: var(--leaf); }
+.tale-word.oops { border-style: dashed; border-color: var(--coral); color: #a88; }
+
+@keyframes chipIn {
+  from { transform: scale(.6) rotate(-6deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ==================== ending overlay ==================== */
+
+.ending[hidden] { display: none; }
+
+.ending {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(43, 33, 24, .28);
+  backdrop-filter: blur(2px);
+}
+
+.ending-card {
+  background: #FFFDF6;
+  border: 3px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 0 8px 0 rgba(43, 33, 24, .85);
+  padding: 26px 30px 22px;
+  max-width: 480px;
+  width: 88%;
+  text-align: center;
+  transform: rotate(-1deg);
+  animation: endingIn .5s var(--spring);
+  max-height: 90%;
+  overflow: auto;
+}
+
+@keyframes endingIn {
+  from { transform: rotate(-4deg) scale(.7); opacity: 0; }
+  to   { transform: rotate(-1deg) scale(1); opacity: 1; }
+}
+
+.gem { width: 84px; height: 84px; margin-bottom: 6px; animation: gemBob 2.6s ease-in-out infinite; }
+@keyframes gemBob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-7px) rotate(3deg); }
+}
+
+.ending-card h2 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 30px;
+  margin: 0 0 6px;
+}
+
+.ending-sub {
+  font-family: "Patrick Hand", cursive;
+  font-size: 18px;
+  color: #6b5335;
+  margin: 0 0 14px;
+}
+
+.recap-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  text-align: left;
+}
+
+.recap-list li {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 15px;
+  background: var(--paper-deep);
+  border: 2px dashed #c9a97a;
+  border-radius: 12px;
+  padding: 7px 12px;
+}
+.recap-list li b {
+  color: var(--coral);
+  font-family: "Patrick Hand", cursive;
+  font-size: 17px;
+}
+.recap-list li:nth-child(odd) { transform: rotate(-.6deg); }
+.recap-list li:nth-child(even) { transform: rotate(.6deg); }
+
+.silly-recap {
+  font-family: "Patrick Hand", cursive;
+  font-size: 15.5px;
+  color: #a1766a;
+  margin: 0 0 14px;
+}
+
+.ending-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ==================== footer ==================== */
+
+.page-foot {
+  max-width: 880px;
+  margin: 26px auto 40px;
+  padding: 0 20px;
+  text-align: center;
+  font-family: "Patrick Hand", cursive;
+  font-size: 16px;
+  color: #a78a63;
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .dstar, .gem, .doodle, .cat-zone, .cat-star { animation: none !important; }
+}

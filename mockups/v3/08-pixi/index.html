@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Three Little Pigs · PixiJS — Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='4' width='24' height='24' rx='7' fill='%23FFC53D' stroke='%232B2118' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script src="vendor/pixi.min.js" defer></script>
+<script src="vendor/rough.js" defer></script>
+<script src="../shared/llm.js" defer></script>
+<script src="props.js" defer></script>
+<script src="world.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="backlink" href="../../">&larr; all mockups</a>
+    <span class="badge">Wave 3 &middot; PixiJS WebGL &middot; every crayon doodle becomes a GPU sprite</span>
+    <h1>The Three Little <span class="amp">Pigs</span></h1>
+    <svg class="squiggle" width="250" height="16" viewBox="0 0 250 16" aria-hidden="true">
+      <path d="M4 10 Q 20 2 36 9 T 68 9 T 100 9 T 132 9 T 164 9 T 196 9 T 228 9 T 246 8"
+            fill="none" stroke="#FF6B57" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Draw your hero. Type words. A real game-master AI re-draws the world
+      &mdash; and WebGL makes every scribble wiggle like it&rsquo;s alive.</p>
+  </header>
+
+  <section class="game">
+    <div class="stage" id="stage">
+      <!-- PixiJS canvas is injected here by app.js (960x540, WebGL) -->
+      <div class="gpuoff" id="gpuOff" hidden>
+        <div class="card">
+          <h2>The crayons need a minute</h2>
+          <p>This demo uses WebGL. If the stage stays blank, your browser blocked
+            GPU access &mdash; but the story still works in the flagship build
+            <a href="../01-rough-canvas/">over here</a>.</p>
+        </div>
+      </div>
+
+      <!-- HUD -->
+      <div class="hud hud-left">
+        <span class="chip" id="modeChip">draw your hero!</span>
+        <span class="chip chip-lat" id="latChip" hidden>GLM &mdash;</span>
+      </div>
+      <div class="hud hud-right">
+        <button class="chip chipbtn" id="watchBtn2" type="button" title="The story plays itself through the real LLM">
+          <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2.2v11.6L13.4 8Z" fill="#2B2118"/></svg>
+          watch it play
+        </button>
+      </div>
+      <button class="stopdemo" id="stopBtn" type="button" hidden><span class="stopsq"></span>Stop the show</button>
+
+      <!-- BEAT 0: draw your hero -->
+      <div class="overlay show" id="makerOverlay">
+        <div class="card card-maker">
+          <span class="sticker">The pigs need a hero!</span>
+          <h2>Draw your hero</h2>
+          <p class="makernote">Your drawing becomes a real WebGL sprite &mdash; it walks,
+            rides unicorns, slips on peels and hides inside the brick house.</p>
+          <div class="maker">
+            <canvas id="makerCv"></canvas>
+            <div class="swatches" id="swatches" role="radiogroup" aria-label="Crayon colors"></div>
+          </div>
+          <div class="namerow">
+            <label for="heroName">Hero name:</label>
+            <input id="heroName" type="text" maxlength="14" placeholder="Pip" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="btnrow">
+            <button class="btn" id="doneBtn" type="button">Done &mdash; into the story!</button>
+          </div>
+          <div class="btnrow btnrow-ghost">
+            <button class="btn btn-ghost" id="surpriseBtn" type="button">Surprise me</button>
+            <button class="btn btn-ghost" id="clearBtn" type="button">Clear page</button>
+            <button class="btn btn-ghost" id="watchBtn" type="button">Watch it play</button>
+          </div>
+          <p class="mini">&ldquo;Watch it play&rdquo; scribbles a hero, then types real
+            words to the real game-master AI &mdash; live, not canned.</p>
+        </div>
+      </div>
+
+      <!-- goal-complete payoff -->
+      <div class="overlay" id="endOverlay" hidden>
+        <div class="card card-win">
+          <span class="sticker sticker-sun">Safe and sound!</span>
+          <h2 id="endTitle">The brick house holds!</h2>
+          <p class="endblurb" id="endBlurb">The wolf huffed and puffed and&hellip; gave up
+            and went home for cocoa. Your hero did that!</p>
+          <div class="recap" id="recap"></div>
+          <p class="slips" id="slips"></p>
+          <div class="btnrow">
+            <button class="btn" id="againBtn" type="button">Draw a new hero</button>
+            <button class="btn btn-ghost" id="watchAgainBtn" type="button">Watch it again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- the story card: narrative + typed input -->
+    <div class="sentence-card" id="sentenceCard">
+      <div class="goalbar" title="Road to the strong brick house">
+        <svg class="goalpig" viewBox="0 0 30 26" aria-hidden="true">
+          <ellipse cx="15" cy="14" rx="11" ry="9" fill="#F5A0B5" stroke="#2B2118" stroke-width="2.4"/>
+          <ellipse cx="22" cy="13" rx="5" ry="4.4" fill="#F5A0B5" stroke="#2B2118" stroke-width="2.2"/>
+          <circle cx="21" cy="13" r="1" fill="#2B2118"/><circle cx="24" cy="13" r="1" fill="#2B2118"/>
+          <path d="M8 6 L5 2 L11 4 Z" fill="#F5A0B5" stroke="#2B2118" stroke-width="2"/>
+        </svg>
+        <div class="goaltrack"><div class="goalfill" id="goalFill"></div></div>
+        <span class="goallabel">brick house</span>
+      </div>
+      <div class="wolfbar" title="How huffy the wolf is feeling">
+        <svg class="wolficon" viewBox="0 0 30 26" aria-hidden="true">
+          <ellipse cx="14" cy="15" rx="10" ry="8" fill="#9AA0AE" stroke="#2B2118" stroke-width="2.4"/>
+          <ellipse cx="22" cy="14" rx="5.4" ry="4.6" fill="#9AA0AE" stroke="#2B2118" stroke-width="2.2"/>
+          <circle cx="23.5" cy="14" r="1.4" fill="#2B2118"/>
+          <path d="M7 8 L4 3 L11 5 Z M15 7 L13 2 L19 4 Z" fill="#9AA0AE" stroke="#2B2118" stroke-width="2"/>
+        </svg>
+        <div class="wolftrack" id="wolfTrack">
+          <i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <span class="wolflabel" id="wolfLabel">wolf is far away</span>
+      </div>
+
+      <p class="narrative" id="narrative">The crayons are warming up&hellip;</p>
+      <div class="obstacles" id="obstacles"></div>
+
+      <div class="inputrow">
+        <span class="inputlead">What happens next?</span>
+        <span class="blankbox"><input id="blank" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" maxlength="28" placeholder="type a word!" aria-label="Type a word for what happens next"><svg id="underSvg" aria-hidden="true"></svg></span>
+        <button class="btn btn-go" id="goBtn" type="button">Go!</button>
+      </div>
+      <div class="choices" id="choices"></div>
+      <p class="coach"><span id="coach">Draw your hero first &mdash; the crayons are waiting!</span>
+        <span class="dym" id="dym" hidden>Did you mean
+          <button class="dymbtn" id="dymBtn" type="button">bridge</button>?
+        </span>
+      </p>
+    </div>
+
+    <p class="foot">
+      <span class="footchip">PixiJS renders: every rough.js doodle is baked once into a GPU
+      texture, then sprites jitter like living sketches. When the wolf huffs, straw
+      particles fly &mdash; all on the graphics card, not the CPU.</span>
+    </p>
+    <button class="taptype" id="tapType" type="button">Tap here to type</button>
+  </section>
+
+  <footer>Paper, crayons, three pigs, one WebGL stage and one very real game master.</footer>
+</div>
+</body>
+</html>

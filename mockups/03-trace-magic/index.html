@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trace &amp; Spell — Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../index.html">&larr; all mockups</a>
+
+  <header>
+    <span class="badge">KnightHacks 2026 · mockup 03 · pointer tracing</span>
+    <h1>Trace <span class="amp">&amp;</span> Spell</h1>
+    <svg class="squiggle" width="240" height="14" viewBox="0 0 240 14" fill="none" aria-hidden="true">
+      <path d="M3 9 C 20 3, 40 12, 60 8 S 100 3, 120 8 S 160 13, 180 7 S 220 4, 237 9" stroke="#FF6B57" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Trace the letters to open the story!</p>
+  </header>
+
+  <!-- story prompt -->
+  <section class="prompt card tilt-l">
+    <div class="pip-slot" id="pipSlot"></div>
+    <p class="prompt-text" id="promptText"></p>
+  </section>
+
+  <!-- word strip -->
+  <section class="card wordbar tilt-r">
+    <div class="wordmeta">
+      <span class="word-count" id="wordCount">Word 1 of 3</span>
+      <span class="word-label">write the word <b id="wordName">“map”</b></span>
+    </div>
+    <div class="chips" id="letterChips"></div>
+    <div class="bar"><div class="barfill leaf" id="wordBar"></div></div>
+  </section>
+
+  <!-- tracing stage -->
+  <section class="card stage" id="stageCard">
+    <div class="stage-head">
+      <span class="stage-title" id="stageTitle">Trace the letter “m”</span>
+      <span class="stage-btns">
+        <button class="mini-btn" id="eraseBtn" type="button">erase &amp; retry</button>
+        <button class="mini-btn auto-btn" id="autoBtn" type="button">Watch Pip trace it</button>
+      </span>
+    </div>
+
+    <div class="svgbox" id="svgBox">
+      <svg id="traceSvg" viewBox="0 0 200 260" role="img" aria-label="Letter tracing pad">
+        <defs>
+          <mask id="covMask" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="260">
+            <g id="covCircles"></g>
+          </mask>
+        </defs>
+
+        <!-- handwriting paper lines -->
+        <g class="rules">
+          <line x1="8" y1="55"  x2="192" y2="55"  class="rule dash"/>
+          <line x1="8" y1="110" x2="192" y2="110" class="rule dash"/>
+          <line x1="8" y1="190" x2="192" y2="190" class="rule base"/>
+          <line x1="8" y1="235" x2="192" y2="235" class="rule dash"/>
+        </g>
+
+        <g id="guideLayer"></g>
+        <g id="fillLayer" mask="url(#covMask)"></g>
+        <g id="dotLayer"></g>
+        <g id="inkLayer"></g>
+        <circle id="tipDot" r="8" class="tip" cx="-50" cy="-50"/>
+
+        <!-- Pip's virtual pen for the auto-demo -->
+        <g id="pen" opacity="0">
+          <path d="M0 0 L13 -8 L13 8 Z" fill="#F5D8A8" stroke="#2B2118" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M0 0 L5.5 -3.3 L5.5 3.3 Z" fill="#2B2118"/>
+          <rect x="13" y="-8" width="30" height="16" rx="4" fill="#FFC53D" stroke="#2B2118" stroke-width="2.5"/>
+          <rect x="13" y="-8" width="30" height="5.3" fill="#FF6B57" stroke="#2B2118" stroke-width="2.5"/>
+          <rect x="13" y="2.7" width="30" height="5.3" fill="#FF6B57" stroke="#2B2118" stroke-width="2.5"/>
+          <rect x="43" y="-8" width="10" height="16" rx="4" fill="#B565D8" stroke="#2B2118" stroke-width="2.5"/>
+        </g>
+      </svg>
+
+      <div class="auto-tag" id="autoTag">Pip's pen is tracing — press stop anytime</div>
+      <div class="scan" id="scan"></div>
+      <div class="sparkle-slot" id="sparkleSlot"></div>
+      <div class="toast" id="toast" role="status"></div>
+    </div>
+
+    <div class="stage-foot">
+      <div class="bar big"><div class="barfill inkfill" id="coverBar"></div></div>
+      <span class="pct" id="coverPct">0%</span>
+    </div>
+
+    <div class="readout" id="readout" aria-live="polite"></div>
+  </section>
+
+  <!-- story beats -->
+  <section class="story">
+    <h2 class="story-h">The story so far</h2>
+    <div class="beats" id="beats">
+      <div class="beat placeholder" id="beatPlaceholder">
+        <span class="ph-txt">Finish a word and a story moment pops in here!</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- payoff -->
+  <section class="finale card" id="finale" hidden>
+    <div class="gem-slot" id="gemSlot"></div>
+    <h2 class="finale-h">You wrote the way through the woods!</h2>
+    <p class="finale-p">Pip earned a letter-gem for your beautiful tracing.</p>
+    <button class="big-btn" id="againBtn" type="button">Trace again</button>
+  </section>
+
+  <p class="footnote">In the real game, handwriting-recognition AI (like Google Handwriting Input or MyScript) reads what you wrote and understands mistakes.</p>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

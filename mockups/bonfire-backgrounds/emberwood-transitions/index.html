@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Seven continuously scrolling, procedurally generated seasonal routes through Emberwood.">
+  <title>Emberwood · Walk through the year</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="topline"><a href="../">← Background gallery</a><span>STORYWOOD / EMBERWOOD EXPERIMENT</span><span class="tag">LOCAL MOTION STUDY</span></div>
+    <div class="hero"><div class="hero-copy"><div class="kicker">A moving world · seven transition systems</div><h1>Walk through<br><em>the year.</em></h1><p>Winter, spring, summer, and fall are places on one continuous path. Watch the world approach from the right as an unseen traveler moves forward through Emberwood.</p></div><div class="hero-mark" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span><span class="sun"></span><span class="land"></span><span class="tree t1"></span><span class="tree t2"></span><span class="tree t3"></span></div></div>
+  </header>
+
+  <main>
+    <section class="playbar" aria-label="Journey controls"><div class="playbar-head"><div><span class="eyebrow">SHARED ROUTE</span><h2>Move forward to compare the transitions.</h2></div><div class="journey-actions"><button id="play" class="primary" type="button" aria-pressed="true">Ⅱ Pause walk</button><button id="restart" type="button">↶ Start at winter</button><label>Speed <select id="speed"><option value="32">Stroll</option><option value="70" selected>Walk</option><option value="135">Run</option></select></label></div></div><div class="route"><div class="season-labels"><span>WINTER</span><span>SPRING</span><span>SUMMER</span><span>FALL</span><span>WINTER</span></div><input id="position" type="range" min="0" max="3840" step="1" value="0" aria-label="Position along the year-long route"><div class="route-status"><span id="where">Winter → Spring</span><span>DRAG TO SCRUB · THE CAMERA ALWAYS FACES FORWARD →</span><span id="distance">0 / 3840 m</span></div></div></section>
+    <p class="legend"><span class="legend-mark">✳</span> Every frame is drawn from a seed and a world coordinate. The route loops from fall back into winter without a scene swap. No characters are shown so the background transition is easier to judge.</p>
+    <section id="gallery" class="gallery" aria-label="Seven Emberwood season transition studies"></section>
+    <section class="build-note"><div><span class="eyebrow">FOR THE GAME PIPELINE</span><h2>One world coordinate.<br>Many ways to change season.</h2></div><p>Each study samples the same four-season climate curve at the camera’s world position. Trees, terrain, snowfall, flowers, water, and light are placed with deterministic seeds. A future story beat can move the camera forward or set a target distance; the art remains spatial and continuous.</p></section>
+  </main>
+  <footer><span>EMBERWOOD / FOUR SEASONS / SEVEN ROUTES</span><a href="../procedural-world-lab/">Explore eight world generators ↗</a><a href="README.md">How this is generated</a></footer>
+  <dialog id="detail"><button id="close" type="button" aria-label="Close enlarged route">×</button><div id="detail-content"></div></dialog>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pip &amp; the Storywood — Paper.js Vector-Morph · The Three Little Pigs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='6' y='12' width='20' height='15' rx='3' fill='%23D96A4E' stroke='%232B2118' stroke-width='2.4'/%3E%3Cpath d='M4 13 L16 5 L28 13' fill='none' stroke='%232B2118' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M9 17h14M9 21h14M13 12v15M19 12v15' stroke='%23A8492F' stroke-width='1.4'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script src="vendor/paper-full.js" defer></script>
+<script src="../shared/llm.js" defer></script>
+<script src="world.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="backlink" href="../../">&larr; all mockups</a>
+    <span class="badge">Wave 3 &middot; 03-paperjs &middot; the house really morphs &mdash; straw &rarr; sticks &rarr; brick</span>
+    <h1>Pip &amp; the <span class="amp">Storywood</span></h1>
+    <svg id="titleSquiggle" class="squiggle" viewBox="0 0 500 32" aria-hidden="true">
+      <path d="M8 18 C 58 6, 100 28, 152 14 S 244 4, 296 20 S 400 26, 492 12"
+            fill="none" stroke="#FF6B57" stroke-width="7" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Paper.js Vector-Morph edition &mdash; nothing on stage swaps pictures.
+      Paths melt, wobble and huff while a real story-brain narrates.</p>
+  </header>
+
+  <section class="game">
+    <div class="stage" id="stage">
+      <canvas id="worldCv" aria-label="The Storywood — a living vector sketch world"></canvas>
+
+      <!-- HUD -->
+      <div class="hud hud-top">
+        <div class="goalwrap" title="Story progress — reach the brick house!">
+          <span class="goallabel">brick house</span>
+          <div class="goalbar"><div class="goalfill" id="goalFill"></div>
+            <svg class="goalpig" id="goalPig" viewBox="0 0 24 18" aria-hidden="true">
+              <ellipse cx="11" cy="10" rx="9" ry="6.5" fill="#FF9EBB" stroke="#2B2118" stroke-width="1.8"/>
+              <circle cx="18" cy="7.5" r="4.4" fill="#FF9EBB" stroke="#2B2118" stroke-width="1.8"/>
+              <circle cx="19.5" cy="8" r="1.7" fill="#FFC9D9" stroke="#2B2118" stroke-width="1.2"/>
+              <circle cx="17" cy="6.2" r=".9" fill="#2B2118"/>
+            </svg>
+          </div>
+        </div>
+        <div class="wolfwrap" title="Wolf pressure — he is huffy, not harmful">
+          <span class="wolflabel">wolf</span>
+          <div class="wolfbar"><div class="wolffill" id="wolfFill"></div></div>
+          <span class="wolfmood" id="wolfChip">far away</span>
+        </div>
+      </div>
+      <div class="hud hud-bottom">
+        <span class="chip chip-ms" id="latChip" title="How fast the story-brain answered">story-brain is snoozing</span>
+        <span class="chip chip-mode" id="modeBadge" hidden>demo mode &mdash; offline narrator</span>
+      </div>
+      <button class="stopdemo" id="stopBtn" type="button"><span class="stopsq"></span>Stop the show</button>
+
+      <!-- BEAT 0: draw your hero (a second Paper.js scope — real paths!) -->
+      <div class="overlay show" id="makerOverlay">
+        <div class="card card-maker">
+          <span class="sticker">The pigs need a helper!</span>
+          <h2>Draw your hero</h2>
+          <p class="makernote" id="makerNote">Scribble on the pad. Every crayon stroke you make
+            becomes a real <b>paper.Path</b> &mdash; it gets smoothed, given little jointed
+            legs, and set loose to walk, ride and slip through the story.</p>
+          <div class="maker">
+            <canvas id="makerCv" aria-label="Draw your hero here"></canvas>
+            <div class="swatches" id="swatches" role="radiogroup" aria-label="Crayon colors"></div>
+          </div>
+          <div class="btnrow">
+            <button class="btn" id="doneBtn" type="button">Done &mdash; start the story!</button>
+          </div>
+          <div class="btnrow btnrow-ghost">
+            <button class="btn btn-ghost" id="surpriseBtn" type="button">Surprise me</button>
+            <button class="btn btn-ghost" id="clearBtn" type="button">Clear page</button>
+            <button class="btn btn-ghost" id="watchBtn" type="button" data-watch>Watch it play</button>
+          </div>
+          <p class="mini">&ldquo;Watch it play&rdquo; auto-draws a hero, then types real words
+            to the real story-brain &mdash; one turn at a time.</p>
+        </div>
+      </div>
+
+      <!-- win payoff -->
+      <div class="overlay" id="endOverlay" hidden>
+        <div class="card card-win">
+          <span class="sticker sticker-sun">Safe inside!</span>
+          <h2>The brick house held!</h2>
+          <p class="winbody" id="endSub">The wolf huffed and puffed, but brick is brick.
+            Three pigs and one brave doodle &mdash; all home safe.</p>
+          <p class="recap-label">The words that carried the story:</p>
+          <div class="recap" id="recap"></div>
+          <div class="btnrow">
+            <button class="btn" id="againBtn" type="button">Draw a new hero</button>
+            <a class="btn btn-ghost" href="../../">All mockups</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- the story line + input -->
+    <div class="sentence-card" id="sentenceCard">
+      <p class="narrative" id="narrative" aria-live="polite"></p>
+      <div class="storylog" id="storyLines" aria-live="polite">
+        <p class="line ghost">Draw your hero to open the storybook&hellip;</p>
+      </div>
+      <div class="obstacles" id="obstacleRow"></div>
+      <div class="typerow">
+        <span class="blankbox">
+          <input id="wordInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="none"
+                 spellcheck="false" maxlength="28" placeholder="type what happens next!"
+                 aria-label="Type a word or phrase for what happens next" disabled>
+        </span>
+        <button class="btn btn-go" id="goBtn" type="button" disabled>Go!</button>
+      </div>
+      <p class="coach">
+        <span id="coach">The crayons are waiting!</span>
+        <span class="dym" id="dym" hidden>Did you mean
+          <button class="dymbtn" id="dymBtn" type="button">word</button>?
+        </span>
+      </p>
+      <div class="choices" id="choiceRow"></div>
+    </div>
+
+    <p class="foot">
+      <span class="footchip">A real LLM is the game master: your word goes to it, and its
+      <b>scene_seed</b> re-grows the whole vector sketch. The house is one set of paths whose
+      points and bezier handles <b>morph</b> between straw, sticks and brick &mdash; that is
+      the Paper.js trick.</span>
+    </p>
+  </section>
+
+  <footer>One brave doodle, three little pigs, one very huffy wolf &mdash; typed fresh, vectored fresh.</footer>
+</div>
+</body>
+</html>

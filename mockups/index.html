@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pip &amp; the Storywood — Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FFF8EC;
+    --ink: #2B2118;
+    --coral: #FF6B57;
+    --sun: #FFC53D;
+    --leaf: #4FB06D;
+    --sky: #5DA9E9;
+    --berry: #B565D8;
+    --cream: #FFFDF6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    background-image: radial-gradient(#F3E4C8 1.4px, transparent 1.4px);
+    background-size: 26px 26px;
+    color: var(--ink);
+    font-family: 'Nunito', system-ui, sans-serif;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 52px; }
+  .badge {
+    display: inline-block;
+    background: var(--sun);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 18px;
+    transform: rotate(-2deg);
+    box-shadow: 3px 3px 0 var(--ink);
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 6vw, 62px);
+    line-height: 1.05;
+  }
+  h1 .amp { color: var(--coral); }
+  .sub {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 22px;
+    margin-top: 14px;
+    color: #6d5c49;
+  }
+  .squiggle { display: block; margin: 10px auto 0; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 26px;
+  }
+  a.card {
+    display: block;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--cream);
+    border: 3px solid var(--ink);
+    border-radius: 22px;
+    padding: 24px 22px 20px;
+    box-shadow: 5px 5px 0 var(--ink);
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s;
+    position: relative;
+  }
+  a.card:hover { transform: translate(-2px,-4px) rotate(-1deg); box-shadow: 8px 9px 0 var(--ink); }
+  a.card:nth-child(even):hover { transform: translate(-2px,-4px) rotate(1deg); }
+  .thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    object-position: top center;
+    border: 3px solid var(--ink);
+    border-radius: 14px;
+    margin-bottom: 14px;
+    background: #F3E9D4;
+  }
+  .num {
+    position: absolute; top: -14px; left: -10px;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 3px solid var(--ink);
+    display: grid; place-items: center;
+    font-family: 'Fredoka'; font-weight: 700; font-size: 18px;
+    background: var(--coral); color: var(--cream);
+  }
+  a.card:nth-child(2) .num { background: var(--sun); color: var(--ink); }
+  a.card:nth-child(3) .num { background: var(--leaf); }
+  a.card:nth-child(4) .num { background: var(--sky); }
+  a.card:nth-child(5) .num { background: var(--berry); }
+  a.card:nth-child(6) .num { background: var(--coral); }
+  a.card:nth-child(7) .num { background: var(--sun); color: var(--ink); }
+  .mode {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 15px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #8a7457;
+  }
+  .name {
+    font-family: 'Fredoka'; font-weight: 600;
+    font-size: 24px; margin: 2px 0 8px;
+  }
+  .desc { font-size: 15px; line-height: 1.45; color: #5c4d3a; }
+  .go {
+    margin-top: 14px;
+    display: inline-block;
+    font-family: 'Fredoka'; font-weight: 600; font-size: 14px;
+    color: var(--coral);
+  }
+  footer { text-align: center; margin-top: 56px; font-family: 'Patrick Hand'; font-size: 17px; color: #8a7457; }
+  a.card.wip { opacity: .55; border-style: dashed; cursor: default; }
+  a.card.wip:hover { transform: none; box-shadow: 5px 5px 0 var(--ink); }
+  a.card.wip .go { color: #8a7457; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="badge">KnightHacks 2026 · interactive mockups</span>
+    <h1>Pip <span class="amp">&amp;</span> the Storywood</h1>
+    <svg class="squiggle" width="240" height="14" viewBox="0 0 240 14" fill="none">
+      <path d="M3 9 C 20 3, 40 12, 60 8 S 100 3, 120 8 S 160 13, 180 7 S 220 4, 237 9" stroke="#FF6B57" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Seven ways kids can draw, snap, trace, read, and type their way through a story.</p>
+  </header>
+  <div class="grid">
+    <a class="card" href="01-draw-hero/">
+      <span class="num">1</span>
+      <img class="thumb" src="previews/01-draw-hero-demo.png" alt="Draw Your Hero mockup" onerror="this.remove()">
+      <div class="mode">Draw with mouse / touch</div>
+      <div class="name">Draw Your Hero</div>
+      <p class="desc">Sketch a character on the canvas — it pops off the page and joins Pip in the story.</p>
+      <span class="go">Open mockup →</span>
+    </a>
+    <a class="card" href="02-photo-world/">
+      <span class="num">2</span>
+      <img class="thumb" src="previews/02-photo-world-demo.png" alt="Snap-a-World mockup" onerror="this.remove()">
+      <div class="mode">Webcam photo</div>
+      <div class="name">Snap-a-World</div>
+      <p class="desc">Take a photo of a paper drawing or toy — it becomes the next scene of the adventure.</p>
+      <span class="go">Open mockup →</span>
+    </a>
+    <a class="card" href="03-trace-magic/">
+      <span class="num">3</span>
+      <img class="thumb" src="previews/03-trace-magic-demo.png" alt="Trace and Spell mockup" onerror="this.remove()">
+      <div class="mode">Trace letters</div>
+      <div class="name">Trace &amp; Spell</div>
+      <p class="desc">Follow the dashed guides to write letters — each finished word unlocks a story moment.</p>
+      <span class="go">Open mockup →</span>
+    </a>
+    <a class="card" href="04-voice-tale/">
+      <span class="num">4</span>
+      <img class="thumb" src="previews/04-voice-tale-demo.png" alt="Read It Aloud mockup" onerror="this.remove()">
+      <div class="mode">Microphone</div>
+      <div class="name">Read It Aloud</div>
+      <p class="desc">Read the highlighted word into the mic and watch the story react to your voice.</p>
+      <span class="go">Open mockup →</span>
+    </a>
+    <a class="card" href="05-story-blocks/">
+      <span class="num">5</span>
+      <img class="thumb" src="previews/05-story-blocks-demo.png" alt="Story Blocks mockup" onerror="this.remove()">
+      <div class="mode">Drag &amp; drop</div>
+      <div class="name">Story Blocks</div>
+      <p class="desc">Arrange picture-and-word cards into the right order, then press play to see the tale.</p>
+      <span class="go">Open mockup →</span>
+    </a>
+    <a class="card" href="06-letter-hunt/">
+      <span class="num">6</span>
+      <img class="thumb" src="previews/06-letter-hunt-demo.png" alt="Letter Hunt mockup" onerror="this.remove()">
+      <div class="mode">Camera AR hunt</div>
+      <div class="name">Letter Hunt</div>
+      <p class="desc">Point the camera around the room and find real things that start with today's letter.</p>
+      <span class="go">Open mockup →</span>
+    </a>
+    <a class="card" href="07-type-quest/">
+      <span class="num">7</span>
+      <img class="thumb" src="previews/07-type-quest-demo.png" alt="Type the Tale mockup" onerror="this.remove()">
+      <div class="mode">Keyboard typing</div>
+      <div class="name">Type the Tale</div>
+      <p class="desc">Type each story word correctly and Pip trots forward through a paper-craft world.</p>
+      <span class="go">Open mockup →</span>
+    </a>
+  </div>
+  <header style="margin-top:72px">
+    <span class="badge" style="background:var(--berry);color:var(--cream)">wave 2 · one game, seven art engines</span>
+    <h1 style="font-size:clamp(30px,4.5vw,46px)">Fill the Tale <span class="amp">— variants</span></h1>
+    <p class="sub">Kid builds the hero → types words into the story → each word spawns the real prop in the world. Silly word? The hero slips on it. Same game, seven procedural looks.</p>
+  </header>
+  <div class="grid">
+    <a class="card" href="variants/v1-roughjs/">
+      <span class="num">1</span>
+      <img class="thumb" src="previews/v1-roughjs-demo.png" alt="Crayon Woods variant" onerror="this.remove()">
+      <div class="mode">rough.js · kid draws hero</div>
+      <div class="name">Crayon Woods</div>
+      <p class="desc">Sketch your hero on a crayon canvas — it walks the hatched forest while your words draw props into it.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="variants/v2-dicebear/">
+      <span class="num">2</span>
+      <img class="thumb" src="previews/v2-dicebear-demo.png" alt="Monster Maker variant" onerror="this.remove()">
+      <div class="mode">dicebear · name-seeded hero</div>
+      <div class="name">Monster Maker</div>
+      <p class="desc">Type your name, hatch a monster — sticker props and generated pals join the journey.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="variants/v3-p5-perlin/">
+      <span class="num">3</span>
+      <img class="thumb" src="previews/v3-p5-perlin-demo.png" alt="Living Forest variant" onerror="this.remove()">
+      <div class="mode">p5.js · blob customizer</div>
+      <div class="name">Living Forest</div>
+      <p class="desc">Perlin hills breathe under a hand-tuned blob hero; ducks and firefly swarms answer your words.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="variants/v4-trianglify/">
+      <span class="num">4</span>
+      <img class="thumb" src="previews/v4-trianglify-demo.png" alt="Crystal Caves variant" onerror="this.remove()">
+      <div class="mode">trianglify · facet builder</div>
+      <div class="name">Crystal Caves</div>
+      <p class="desc">Forge a low-poly hero; silly words shatter it into shards that reassemble in a new mosaic world.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="variants/v5-lsystem/">
+      <span class="num">5</span>
+      <img class="thumb" src="previews/v5-lsystem-demo.png" alt="Garden Glade variant" onerror="this.remove()">
+      <div class="mode">L-systems · grow a friend</div>
+      <div class="name">Garden Glade</div>
+      <p class="desc">Grow a sprout-creature from a seed — then grow bridges, vines and lanterns straight out of your words.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="variants/v6-cssdoodle/">
+      <span class="num">6</span>
+      <img class="thumb" src="previews/v6-cssdoodle-demo.png" alt="Sticker Sky variant" onerror="this.remove()">
+      <div class="mode">css-doodle · sticker builder</div>
+      <div class="name">Sticker Sky</div>
+      <p class="desc">Build a sticker hero under a generated sky that re-rolls its pattern with every word you type.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="variants/v7-pixelmon/">
+      <span class="num">7</span>
+      <img class="thumb" src="previews/v7-pixelmon-demo.png" alt="Pixel Woods variant" onerror="this.remove()">
+      <div class="mode">seeded pixels · paint your pal</div>
+      <div class="name">Pixel Woods</div>
+      <p class="desc">Paint a 12×12 pixel monster, then watch pixel bridges, unicorns and banana peels pop into the world.</p>
+      <span class="go">Play it →</span>
+    </a>
+  </div>
+  <header style="margin-top:72px">
+    <span class="badge" style="background:var(--leaf);color:var(--cream)">wave 3 · one story, eight engines, real LLM</span>
+    <h1 style="font-size:clamp(30px,4.5vw,46px)">The Three Little Pigs <span class="amp">— v3</span></h1>
+    <p class="sub">Same shared goal — gather materials and reach the brick house before the wolf huffs and puffs — rebuilt in eight rendering engines, narrated live by a real LLM (glm-4-7-flash) through the local proxy. Kid draws the hero, typed words physically spawn props, silly words slapstick-fail, "did you mean…?" helps spelling.</p>
+    <p class="sub" style="font-size:17px;margin-top:10px">The live model needs the v3 server: <code>python3 v3/server.py</code> → open this same page at <a href="http://localhost:8001/" style="color:var(--coral)">localhost:8001</a>. Served from the plain static server (:8000) the v3 pages still run, but in labeled demo mode.</p>
+  </header>
+  <div class="grid">
+    <a class="card" href="v3/" style="border-color:var(--leaf)">
+      <span class="num" style="background:var(--leaf)">&#9654;</span>
+      <div class="mode">all engines · side-by-side</div>
+      <div class="name">v3 Dashboard</div>
+      <p class="desc">Every engine loaded side-by-side with Watch-All-Play, reload-all, per-frame load times, live LLM latency stats, and a RAM/GPU sysguard readout.</p>
+      <span class="go">Open dashboard →</span>
+    </a>
+    <a class="card" href="v3/01-rough-canvas/">
+      <span class="num">1</span>
+      <img class="thumb" src="previews/v3-01-rough-canvas-demo.png" alt="Rough Canvas v3 mockup" onerror="this.remove()">
+      <div class="mode">rough.js → canvas · flagship</div>
+      <div class="name">Rough Canvas</div>
+      <p class="desc">Crayon-hatched canvas world — draw your hero on the maker canvas, then watch your words scribble real props into the tale.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/02-rough-svg/">
+      <span class="num">2</span>
+      <img class="thumb" src="previews/v3-02-rough-svg-demo.png" alt="Sketch-DOM Pigs v3 mockup" onerror="this.remove()">
+      <div class="mode">rough.js → svg dom</div>
+      <div class="name">Sketch-DOM Pigs</div>
+      <p class="desc">The same journey drawn as sketchy SVG nodes — the whole world is a live DOM you can watch re-render per scene seed.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/03-paperjs/">
+      <span class="num">3</span>
+      <img class="thumb" src="previews/v3-03-paperjs-demo.png" alt="Paper.js v3 mockup" onerror="this.remove()">
+      <div class="mode">paper.js vector morphs</div>
+      <div class="name">Paper Morphs</div>
+      <p class="desc">Nothing swaps pictures — paths melt and wobble between shapes while scenes slide by like a page turn.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/04-konva/">
+      <span class="num">4</span>
+      <img class="thumb" src="previews/v3-04-konva-demo.png" alt="Konva Sketchbook v3 mockup" onerror="this.remove()">
+      <div class="mode">konva scene graph</div>
+      <div class="name">Konva Sketchbook</div>
+      <p class="desc">A layered scene-graph storybook — props spawn as real nodes on the stage as the LLM narrates.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/05-twojs/">
+      <span class="num">5</span>
+      <img class="thumb" src="previews/v3-05-twojs-demo.png" alt="Springy Scribble v3 mockup" onerror="this.remove()">
+      <div class="mode">two.js springy motion</div>
+      <div class="name">Springy Scribble</div>
+      <p class="desc">Bouncy spring physics on every stroke — the silliest-looking engine of the eight.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/06-zdog/">
+      <span class="num">6</span>
+      <img class="thumb" src="previews/v3-06-zdog-demo.png" alt="Zdog 3D v3 mockup" onerror="this.remove()">
+      <div class="mode">zdog pseudo-3d diorama</div>
+      <div class="name">Zdog 3D</div>
+      <p class="desc">The whole world is a toy lazy susan — every turn spins a fresh stretch of diorama into view.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/07-vanilla/">
+      <span class="num">7</span>
+      <img class="thumb" src="previews/v3-07-vanilla-demo.png" alt="Vanilla v3 mockup" onerror="this.remove()">
+      <div class="mode">hand-rolled canvas wobble · baseline</div>
+      <div class="name">Vanilla</div>
+      <p class="desc">Zero-dependency hand-rolled canvas wobble — scrolls a torn-paper page per turn, the baseline of the set.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/08-pixi/">
+      <span class="num">8</span>
+      <img class="thumb" src="previews/v3-08-pixi-demo.png" alt="PixiJS v3 mockup" onerror="this.remove()">
+      <div class="mode">pixijs webgl sketch</div>
+      <div class="name">Pixi Pigs</div>
+      <p class="desc">WebGL-speed sketch world — rough-textured sprites with the fastest render loop of the set.</p>
+      <span class="go">Play it →</span>
+    </a>
+  </div>
+  <header style="margin-top:72px">
+    <span class="badge" style="background:var(--sky);color:var(--cream)">wave 3b · six painted worlds — one vanilla heart</span>
+    <h1 style="font-size:clamp(30px,4.5vw,46px)">The Vanilla Worlds <span class="amp">— same game, new weather</span></h1>
+    <p class="sub">Same Three-Little-Pigs loop as <code>07-vanilla</code>, but the backdrop becomes a continuous <em>painted</em> world — soft Highland-Path-style hills, clouds and trail that morph into the next biome as you walk, never a wipe. Characters, animals and houses keep their crayon-sticker look. Each world has its own way props arrive and its own way to play.</p>
+  </header>
+  <div class="grid">
+    <a class="card" href="v3/09-van-meadow/">
+      <span class="num">9</span>
+      <img class="thumb" src="previews/v3-09-meadow-demo.png" alt="Meadowpath mockup" onerror="this.remove()">
+      <div class="mode">painted meadow · tappable props</div>
+      <div class="name">Meadowpath</div>
+      <p class="desc">The baseline painted world — every spawned prop draws itself on stroke-by-stroke, then you can tap it to make it bonk and hop.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/10-van-paintbox/">
+      <span class="num">10</span>
+      <img class="thumb" src="previews/v3-10-paintbox-demo.png" alt="Painty Road mockup" onerror="this.remove()">
+      <div class="mode">world draws itself on</div>
+      <div class="name">Painty Road</div>
+      <p class="desc">The hills, clouds and trail literally paint themselves stroke-by-stroke just ahead of your hero — and your word becomes the brush stroke.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/11-van-breeze/">
+      <span class="num">11</span>
+      <img class="thumb" src="previews/v3-11-breeze-demo.png" alt="Breezefield mockup" onerror="this.remove()">
+      <div class="mode">windy meadow · gust physics</div>
+      <div class="name">Breezefield</div>
+      <p class="desc">Everything sways and drifts. Props blow in on the wind — type "blow" or tap the gust to shove the light ones around. The anvil barely budges.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/12-van-lantern/">
+      <span class="num">12</span>
+      <img class="thumb" src="previews/v3-12-lantern-demo.png" alt="Lantern Trail mockup" onerror="this.remove()">
+      <div class="mode">dusk world · name it to light it</div>
+      <div class="name">Lantern Trail</div>
+      <p class="desc">Fireflies carry new props in glowing — but they arrive dim. Name what you see to light it up and grow your streak.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/13-van-puddle/">
+      <span class="num">13</span>
+      <img class="thumb" src="previews/v3-13-puddle-demo.png" alt="Puddlejump mockup" onerror="this.remove()">
+      <div class="mode">marsh world · hop the tufts</div>
+      <div class="name">Puddlejump</div>
+      <p class="desc">A drizzly marsh where the hero hops tuft to tuft, props splash in with rings, and gathered materials visibly build the house.</p>
+      <span class="go">Play it →</span>
+    </a>
+    <a class="card" href="v3/14-van-highland/">
+      <span class="num">14</span>
+      <img class="thumb" src="previews/v3-14-highland-demo.png" alt="Highland Trek mockup" onerror="this.remove()">
+      <div class="mode">mountain pass · rolling props</div>
+      <div class="name">Highland Trek</div>
+      <p class="desc">The faithful Highland Path — snowy peaks, a climbing trail, and props that tumble and roll down the slope to your hero.</p>
+      <span class="go">Play it →</span>
+    </a>
+  </div>
+  <footer>Waves 1–2 are hardcoded front-end demos — no backend, no real AI. Wave 3 (v3) talks to a real LLM through <code>v3/server.py</code> on :8001; without it the pages fall back to labeled demo mode.</footer>
+</div>
+</body>
+</html>

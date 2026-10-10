@@ -1,0 +1,394 @@
+/* ============================================================
+   The Three Little Pigs · PixiJS edition — style.css
+   Paper-and-crayon kid UI (CONVENTIONS.md): warm paper, chunky
+   rounded cards, thick ink outlines, sticker chips, no emojis.
+   ============================================================ */
+:root {
+  --paper: #FFF8EC;
+  --paper-2: #FDF3E3;
+  --ink: #2B2118;
+  --coral: #FF6B57;
+  --sun: #FFC53D;
+  --leaf: #4FB06D;
+  --sky: #5DA9E9;
+  --berry: #B565D8;
+  --pop: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+* { box-sizing: border-box; }
+
+/* the [hidden] attribute must always win — .gpuoff's display:flex used to
+   flash the WebGL warning card on every load before app.init resolved */
+[hidden] { display: none !important; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  background-image:
+    radial-gradient(#f0e4cd 1px, transparent 1px),
+    radial-gradient(#f0e4cd 1px, transparent 1px);
+  background-size: 26px 26px, 26px 26px;
+  background-position: 0 0, 13px 13px;
+  color: var(--ink);
+  font-family: 'Nunito', 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 980px; margin: 0 auto; padding: 18px 16px 40px; }
+
+/* ---------- header ---------- */
+header { text-align: center; padding: 10px 0 4px; position: relative; }
+
+.backlink {
+  position: absolute; left: 4px; top: 12px;
+  font-family: 'Patrick Hand', cursive; font-size: 17px;
+  color: #8a7a5f; text-decoration: none;
+}
+.backlink:hover { color: var(--coral); }
+
+.badge {
+  display: inline-block;
+  background: var(--sun);
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 5px 16px;
+  font-size: 12.5px; font-weight: 800;
+  letter-spacing: .4px; text-transform: uppercase;
+  transform: rotate(-1.2deg);
+  box-shadow: 0 3px 0 var(--ink);
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-family: 'Fredoka', 'Baloo 2', sans-serif;
+  font-size: clamp(34px, 6vw, 52px);
+  font-weight: 700; margin: 6px 0 0;
+  letter-spacing: .5px;
+}
+h1 .amp { color: var(--coral); }
+
+.squiggle { display: block; margin: 2px auto 6px; }
+
+.sub {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 19px; color: #6d5f4a;
+  max-width: 620px; margin: 0 auto;
+}
+
+/* ---------- stage ---------- */
+.game { margin-top: 14px; }
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 3.5px solid var(--ink);
+  border-radius: 26px;
+  background: var(--paper-2);
+  box-shadow: 0 6px 0 rgba(43, 33, 24, .9), 0 18px 34px rgba(43, 33, 24, .12);
+  overflow: hidden;
+}
+
+.stage > canvas {
+  position: absolute; inset: 0;
+  width: 100% !important; height: 100% !important;
+  display: block;
+}
+
+.gpuoff {
+  position: absolute; inset: 0; z-index: 40;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--paper-2); padding: 20px;
+}
+.gpuoff .card { max-width: 420px; text-align: center; }
+.gpuoff a { color: var(--sky); }
+
+/* ---------- HUD chips ---------- */
+.hud { position: absolute; top: 10px; z-index: 15; display: flex; gap: 8px; }
+.hud-left { left: 12px; }
+.hud-right { right: 12px; }
+
+.chip {
+  background: #fff;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 4px 13px;
+  font-size: 12.5px; font-weight: 800;
+  box-shadow: 0 2.5px 0 var(--ink);
+  white-space: nowrap;
+}
+.chip-lat { background: var(--sun); font-variant-numeric: tabular-nums; }
+.chip-lat.demo { background: #E9DCC8; }
+
+.chipbtn {
+  cursor: pointer; font-family: inherit;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: transform .15s var(--pop);
+}
+.chipbtn:hover { transform: translateY(-2px) rotate(-1deg); }
+.chipbtn:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--ink); }
+
+.stopdemo {
+  position: absolute; bottom: 12px; right: 12px; z-index: 16;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--coral); color: #fff;
+  border: 2.5px solid var(--ink); border-radius: 999px;
+  padding: 6px 16px; font-family: inherit;
+  font-size: 13px; font-weight: 800; cursor: pointer;
+  box-shadow: 0 3px 0 var(--ink);
+}
+.stopdemo .stopsq {
+  width: 10px; height: 10px; background: #fff;
+  border: 2px solid var(--ink); border-radius: 2px;
+}
+
+/* ---------- overlays (maker / win) ---------- */
+.overlay {
+  position: absolute; inset: 0; z-index: 30;
+  display: none; align-items: center; justify-content: center;
+  background: rgba(255, 248, 236, .82);
+  backdrop-filter: blur(2px);
+  padding: 14px;
+}
+.overlay.show { display: flex; }
+
+.card {
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 0 8px 0 rgba(43, 33, 24, .85), 0 20px 40px rgba(43, 33, 24, .14);
+  padding: 18px 22px 16px;
+  position: relative;
+  transform: rotate(-.4deg);
+}
+.card h2 {
+  font-family: 'Fredoka', sans-serif; font-weight: 700;
+  font-size: 27px; margin: 8px 0 4px;
+}
+
+.sticker {
+  position: absolute; top: -14px; left: 22px;
+  background: var(--coral); color: #fff;
+  border: 2.5px solid var(--ink); border-radius: 999px;
+  padding: 3px 14px; font-size: 12.5px; font-weight: 800;
+  transform: rotate(-2.5deg);
+  box-shadow: 0 2.5px 0 var(--ink);
+}
+.sticker-sun { background: var(--sun); color: var(--ink); }
+
+.card-maker { width: min(560px, 96%); }
+.makernote { font-family: 'Patrick Hand', cursive; font-size: 17px; color: #6d5f4a; margin: 2px 0 8px; }
+
+.maker { display: flex; gap: 12px; align-items: stretch; }
+#makerCv {
+  flex: 1; height: 210px;
+  background:
+    linear-gradient(#fff 93%, #f6ecd9 100%);
+  border: 2.5px dashed #c9b896;
+  border-radius: 16px;
+  cursor: crosshair;
+  touch-action: none;
+}
+.swatches { display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+.swatch {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 2.5px solid var(--ink); cursor: pointer;
+  transition: transform .15s var(--pop);
+}
+.swatch.sel { transform: scale(1.22); box-shadow: 0 0 0 3px #fff, 0 0 0 5.5px var(--ink); }
+
+.namerow { display: flex; align-items: center; gap: 10px; margin: 10px 0 4px; }
+.namerow label { font-family: 'Patrick Hand', cursive; font-size: 18px; }
+.namerow input {
+  font-family: 'Patrick Hand', cursive; font-size: 19px;
+  border: none; border-bottom: 3px dashed #b9a888;
+  background: transparent; padding: 2px 6px; width: 170px;
+  color: var(--ink); outline: none;
+}
+.namerow input:focus { border-bottom-color: var(--coral); }
+
+.btnrow { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.btnrow-ghost { margin-top: 8px; }
+
+.btn {
+  font-family: 'Fredoka', sans-serif; font-weight: 600;
+  font-size: 16.5px;
+  background: var(--leaf); color: #fff;
+  border: 2.5px solid var(--ink); border-radius: 999px;
+  padding: 8px 22px; cursor: pointer;
+  box-shadow: 0 4px 0 var(--ink);
+  transition: transform .15s var(--pop);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.btn:disabled { opacity: .55; cursor: default; transform: none; }
+
+.btn-ghost {
+  background: #fff; color: var(--ink);
+  font-size: 14px; padding: 6px 16px;
+  box-shadow: 0 3px 0 var(--ink);
+}
+
+.mini { font-size: 12.5px; color: #9a8a6f; margin: 10px 0 0; font-weight: 600; }
+
+/* win card */
+.card-win { width: min(520px, 94%); text-align: center; }
+.endblurb { font-family: 'Patrick Hand', cursive; font-size: 18px; color: #6d5f4a; margin: 4px 0 10px; }
+.recap {
+  display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+  margin: 6px 0;
+}
+.recap span {
+  background: var(--paper-2); border: 2px solid var(--ink);
+  border-radius: 10px; padding: 3px 10px;
+  font-family: 'Patrick Hand', cursive; font-size: 15px;
+}
+.recap span:nth-child(odd) { transform: rotate(-1.4deg); }
+.recap span:nth-child(even) { transform: rotate(1.2deg); }
+.slips { font-size: 13px; color: #9a8a6f; font-weight: 700; min-height: 18px; }
+.card-win .btnrow { justify-content: center; }
+
+/* ---------- sentence card ---------- */
+.sentence-card {
+  margin-top: 16px;
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: 0 5px 0 rgba(43, 33, 24, .85);
+  padding: 12px 18px 12px;
+  position: relative;
+}
+
+.goalbar, .wolfbar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 6px;
+}
+.wolfbar { margin-top: 4px; }
+.goalpig, .wolficon { width: 34px; height: 30px; flex: none; }
+
+.goaltrack {
+  flex: 1; height: 16px;
+  border: 2.5px solid var(--ink); border-radius: 999px;
+  background: repeating-linear-gradient(-45deg, #f6ecd9 0 8px, #efe2c8 8px 16px);
+  overflow: hidden;
+}
+.goalfill {
+  height: 100%; width: 4%;
+  background: repeating-linear-gradient(-45deg, var(--leaf) 0 10px, #65c387 10px 20px);
+  border-radius: 999px;
+  transition: width .8s var(--pop);
+}
+.goallabel, .wolflabel {
+  font-family: 'Patrick Hand', cursive; font-size: 15.5px; color: #6d5f4a;
+  min-width: 76px; text-align: right;
+}
+
+.wolftrack { display: flex; gap: 5px; flex: 1; }
+.wolftrack i {
+  flex: 1; height: 12px; max-width: 52px;
+  border: 2px solid var(--ink); border-radius: 6px;
+  background: #f6ecd9; transform: skewX(-12deg);
+  transition: background .3s;
+}
+.wolftrack i.on { background: var(--coral); }
+.wolftrack i.on.hot { background: #D94F3D; animation: huffpulse .7s infinite alternate; }
+@keyframes huffpulse { from { transform: skewX(-12deg) scaleY(1); } to { transform: skewX(-12deg) scaleY(1.35); } }
+
+.narrative {
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(18px, 2.6vw, 22px);
+  line-height: 1.28; margin: 8px 2px 6px;
+  min-height: 30px;
+}
+
+.obstacles { display: flex; flex-wrap: wrap; gap: 6px; min-height: 4px; }
+.obstacles span {
+  font-size: 12.5px; font-weight: 800;
+  background: #FFF1D6; border: 2px solid var(--ink);
+  border-radius: 999px; padding: 2px 11px;
+  transform: rotate(-.8deg);
+}
+.obstacles span:nth-child(even) { transform: rotate(1deg); background: #FDE3DE; }
+
+.inputrow {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 10px; flex-wrap: wrap;
+}
+.inputlead { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; }
+
+.blankbox { position: relative; flex: 1; min-width: 160px; max-width: 340px; }
+#blank {
+  width: 100%; border: none; outline: none; background: transparent;
+  font-family: 'Patrick Hand', cursive; font-size: 24px;
+  color: var(--ink); padding: 4px 6px 6px;
+}
+#underSvg { position: absolute; left: 0; bottom: -2px; width: 100%; height: 10px; }
+#underSvg path { fill: none; stroke: var(--sky); stroke-width: 3.4; stroke-linecap: round; }
+.blankbox:focus-within #underSvg path { stroke: var(--coral); }
+
+.btn-go { background: var(--coral); font-size: 18px; padding: 7px 26px; }
+
+.choices { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 9px; min-height: 4px; }
+.choices button {
+  font-family: 'Patrick Hand', cursive; font-size: 15.5px;
+  background: #EAF5FC; color: var(--ink);
+  border: 2px solid var(--ink); border-radius: 12px;
+  padding: 3px 12px; cursor: pointer;
+  transform: rotate(-.7deg);
+  transition: transform .15s var(--pop);
+}
+.choices button:nth-child(even) { transform: rotate(.9deg); background: #EFF9EF; }
+.choices button:hover { transform: translateY(-2px) rotate(0); }
+
+.coach { font-size: 13.5px; color: #9a8a6f; margin: 8px 2px 0; font-weight: 700; }
+.dym { margin-left: 8px; }
+.dymbtn {
+  font-family: 'Patrick Hand', cursive; font-size: 15.5px;
+  background: var(--sun); border: 2px solid var(--ink);
+  border-radius: 10px; padding: 1px 10px; cursor: pointer;
+  transform: rotate(-1.5deg); display: inline-block;
+}
+
+.foot { margin: 12px 4px 0; }
+.footchip {
+  display: inline-block;
+  font-size: 12.5px; font-weight: 700; color: #7d6d52;
+  background: var(--paper-2);
+  border: 2px dashed #c9b896; border-radius: 12px;
+  padding: 6px 14px; line-height: 1.45;
+}
+
+.taptype { display: none; }
+
+footer {
+  text-align: center; margin-top: 18px;
+  font-family: 'Patrick Hand', cursive; font-size: 15px; color: #9a8a6f;
+}
+
+/* ---------- small screens ---------- */
+@media (max-width: 640px) {
+  .maker { flex-direction: column; }
+  .swatches { flex-direction: row; }
+  #makerCv { height: 180px; }
+  .hud { top: 6px; }
+  .chip { font-size: 11px; padding: 3px 9px; }
+  .inputlead { width: 100%; }
+}
+
+/* touch: a tap-to-focus helper for the word field */
+@media (pointer: coarse) {
+  .taptype {
+    display: block; margin: 10px auto 0;
+    font-family: 'Patrick Hand', cursive; font-size: 17px;
+    background: #fff; border: 2.5px solid var(--ink); border-radius: 14px;
+    padding: 8px 20px; box-shadow: 0 3px 0 var(--ink);
+  }
+}
+
+/* reduced motion: keep it calm */
+@media (prefers-reduced-motion: reduce) {
+  .wolftrack i.on.hot { animation: none; }
+  * { transition-duration: .01ms !important; }
+}

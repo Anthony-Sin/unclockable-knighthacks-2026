@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fill the Tale — Pixel Woods edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">KnightHacks 2026 &middot; mockup variant 07</span>
+    <h1>Fill the Tale</h1>
+    <span class="edition">Pixel Woods edition</span>
+    <svg class="squiggle" width="240" height="14" viewBox="0 0 240 14" fill="none" aria-hidden="true">
+      <path d="M3 9 C 20 3, 40 12, 60 8 S 100 3, 120 8 S 160 13, 180 7 S 220 4, 237 9" stroke="#FF6B57" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Paint your own pixel hero, then type words into the story — every word pops into the world as real pixels.</p>
+  </header>
+
+  <main class="board">
+
+    <!-- ============ STAGE ============ -->
+    <section class="stage-card" id="stageCard" aria-label="Pixel story scene">
+      <canvas id="sceneCanvas" width="144" height="84"></canvas>
+      <canvas id="heroCanvas" width="192" height="192" aria-label="Your pixel hero"></canvas>
+      <canvas id="fxCanvas"></canvas>
+      <span class="area-tag" id="areaTag">Green Woods</span>
+      <span class="seed-tag" id="seedTag">hand-painted</span>
+      <span class="name-tag" id="nameTag">Pip</span>
+    </section>
+
+    <!-- ============ CONTROLS ============ -->
+    <div class="panel">
+
+      <!-- ============ BEAT 0: HERO MAKER ============ -->
+      <section class="card maker-card" id="makerCard">
+        <h2>Make your hero</h2>
+        <p class="hint">Paint a pixel monster, square by square. It pops onto the stage while you draw!</p>
+
+        <div class="painter-row">
+          <canvas id="paintCanvas" width="240" height="240" aria-label="Pixel painter — click and drag to paint"></canvas>
+          <div class="painter-tools">
+            <div class="swatches" id="swatches" role="group" aria-label="Paint colors"></div>
+            <label class="mirror-row" for="mirrorToggle">
+              <input type="checkbox" id="mirrorToggle" checked>
+              <span class="mirror-box" aria-hidden="true"></span>
+              Mirror magic <em>(paint both sides at once!)</em>
+            </label>
+            <button id="clearBtn" class="chip-btn small" type="button">Wipe it clean</button>
+          </div>
+        </div>
+
+        <div class="name-row">
+          <input id="nameInput" type="text" maxlength="14" value="Pip" autocomplete="off"
+                 spellcheck="false" aria-label="Name your hero">
+          <button id="surpriseBtn" class="chip-btn silly" type="button">Surprise me!</button>
+        </div>
+        <p class="hint tiny">"Surprise me" grows a monster from the name — same name, same monster, every time.</p>
+
+        <p class="hint maker-msg" id="makerMsg" role="status" aria-live="polite">Paint, erase, mirror — make it yours.</p>
+        <div class="actions">
+          <button id="startBtn" class="big-btn" type="button">Start the story!</button>
+        </div>
+      </section>
+
+      <!-- ============ BEATS 1-5: FILL THE TALE ============ -->
+      <section class="card tale-card" id="taleCard" hidden>
+        <h2>Fill the tale</h2>
+        <p class="sentence" id="sentence">
+          <span id="sPre">Pip needs a</span><input id="wordInput" type="text" maxlength="20" autocomplete="off"
+                 spellcheck="false" placeholder="word" aria-label="Type a word for the blank"><span id="sPost"></span><span class="period">.</span>
+        </p>
+        <div class="chips" id="chips" aria-label="Word ideas"></div>
+        <div class="feedback" id="feedback" role="status" aria-live="polite">
+          Type a word to fill the blank — silly words make your hero go bonkers!
+        </div>
+        <div class="spell-row" id="spellRow" hidden>
+          <span>Did you mean</span>
+          <button id="spellBtn" class="word-chip spell" type="button">bridge</button>
+          <span>?</span>
+        </div>
+        <div class="actions">
+          <button id="goBtn" class="big-btn" type="button">Fill it in!</button>
+          <div class="choice-row" id="choiceRow" hidden>
+            <button id="keepBtn" class="chip-btn silly" type="button">Keep the silly word!</button>
+            <button id="retryBtn" class="chip-btn" type="button">Try another word</button>
+          </div>
+        </div>
+        <div class="pips" id="pips" aria-label="Chapter progress"></div>
+      </section>
+
+      <section class="card demo-card">
+        <h2>Hands-free</h2>
+        <p class="hint">Want to watch instead? The game paints a monster, then plays the whole chapter — with at least one glorious crash.</p>
+        <button id="demoBtn" class="big-btn ghost" type="button">Watch it play</button>
+      </section>
+
+      <!-- ============ ENDING ============ -->
+      <section class="card ending-card" id="endingCard" hidden>
+        <span class="sticker-label">The End&hellip; for now!</span>
+        <h2>Chapter written!</h2>
+        <div class="gem-row">
+          <svg class="gem" viewBox="0 0 48 48" shape-rendering="crispEdges" aria-hidden="true">
+            <polygon points="24,2 40,10 46,22 24,46 2,22 8,10" fill="#FFC53D" stroke="#2B2118" stroke-width="3"/>
+            <polygon points="24,8 34,13 38,22 24,38 10,22 14,13" fill="#FFDF7E"/>
+            <rect x="14" y="13" width="6" height="4" fill="#FFF3C4"/>
+          </svg>
+          <div>
+            <p class="gem-line">You earned the letter-gem</p>
+            <p class="gem-letter" id="gemLetter">P</p>
+          </div>
+        </div>
+        <ol class="recap" id="recap"></ol>
+        <p class="hint">Your hero is doing a victory spin on the stage!</p>
+        <div class="actions">
+          <button id="againBtn" class="big-btn" type="button">Write another chapter</button>
+          <button id="easelBtn" class="chip-btn" type="button">Back to the easel</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Everything on stage is drawn from code — heroes from a 12&times;12 painter,
+       surprise monsters from <span class="mono">name &rarr; hash &rarr; mirrored pixel grid</span>,
+       and every prop is a hand-built pixel sprite. No pictures, no emoji.</p>
+  </footer>
+</div>
+
+<script src="pixelpal.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

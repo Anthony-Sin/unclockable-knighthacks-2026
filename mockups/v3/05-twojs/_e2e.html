@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>e2e</title>
+<script>
+window.__errs = [];
+window.addEventListener('error', (e) => {
+  window.__errs.push(e.message + ' @ ' + (e.filename||'') + ':' + e.lineno);
+  document.title = 'ERR ' + window.__errs.length;
+});
+window.addEventListener('unhandledrejection', (e) => {
+  window.__errs.push('REJ ' + (e.reason && e.reason.message || e.reason));
+  document.title = 'REJ ' + window.__errs.length;
+});
+</script>
+<link rel="stylesheet" href="style.css">
+<script src="vendor/two.min.js"></script>
+<script src="../shared/llm.js"></script>
+</head><body>
+<div class="wrap"><section class="game">
+<div class="stage" id="stage">
+  <div class="hud hud-tl"><span class="chip" id="latChip" hidden></span><span class="chip" id="modeChip" hidden></span></div>
+  <div class="hud hud-tr"><div class="wolfwrap"><span class="wolfmeter" id="wolfMeter"><i></i><i></i><i></i><i></i><i></i></span></div></div>
+  <div class="hud hud-bl"><div class="goalwrap"><div class="goalbar"><div class="goalfill" id="goalFill"></div>
+    <svg class="goalpig" id="goalPig" viewBox="0 0 30 22"></svg></div></div></div>
+  <button class="stopdemo" id="stopBtn" hidden></button>
+  <div class="overlay show" id="makerOverlay"><div class="card">
+    <canvas id="makerCv" width="420" height="240"></canvas>
+    <div class="swatches" id="swatches"></div>
+    <button id="doneBtn"></button><button id="surpriseBtn"></button>
+    <button id="clearBtn"></button><button id="watchBtn"></button></div></div>
+  <div class="overlay" id="endOverlay" hidden><div class="card">
+    <p id="winLine"></p><div id="recap"></div>
+    <button id="againBtn"></button><button id="watchAgainBtn"></button></div></div>
+</div>
+<div class="sentence-card">
+  <p id="narrative"></p><p id="obstacles"></p>
+  <p id="dym" hidden><button id="dymBtn"></button></p>
+  <input id="word" disabled><button id="goBtn" disabled></button>
+  <p id="choices"></p><p class="coach"><span id="coach"></span></p>
+</div></section></div>
+<pre id="errlog">RUNNING</pre>
+<script src="app.js"></script>
+<script>
+/* E2E driver — the REAL "Watch it play" path (typing animation skipped):
+   surprise hero -> buildHero -> startStory -> takeTurn(word) x N.
+   Each takeTurn does waitForHeadroom -> llm.next -> renderScene -> props.
+   Report lands in #errlog for --dump-dom to scrape. */
+(async () => {
+  const report = { errs: window.__errs, steps: [], lat: [], progress: 0,
+                   wolf: 0, props: 0, paths: 0, done: false };
+  const out = () => {
+    report.errs = window.__errs;
+    report.progress = +heroProgress.toFixed(2);
+    report.wolf = +wolf.meter.toFixed(2);
+    report.props = liveProps.length;
+    report.paths = document.querySelectorAll('#stage svg path').length;
+    report.lat = window.__lat.slice();
+    document.getElementById('errlog').textContent = 'E2E ' + JSON.stringify(report);
+    document.title = report.done ? 'DONE' : 'RUNNING ' + report.steps.length;
+  };
+  try {
+    const words = ['straw', 'sticks', 'unicorn', 'banana peel', 'bricks',
+                   'brick house', 'hide inside'];
+    await surpriseMe(true);
+    if (!buildHero()) throw new Error('buildHero failed');
+    startStory();
+    for (const w of words) {
+      await takeTurn(w);
+      const gm = 'n/a';
+      report.steps.push({ word: w,
+        narr: (narrativeEl.textContent || '').slice(0, 80),
+        mode: modeChip.textContent,
+        progress: +heroProgress.toFixed(2) });
+      out();
+      if (heroProgress >= 1) break;
+      await new Promise(r => setTimeout(r, 400));
+    }
+  } catch (e) {
+    window.__errs.push('E2E ' + e.message);
+  }
+  report.done = true;
+  out();
+})();
+</script>
+</body></html>

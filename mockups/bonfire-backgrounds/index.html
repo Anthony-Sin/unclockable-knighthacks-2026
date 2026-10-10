@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Storywood · Background laboratory</title>
+  <meta name="description" content="Seven seeded, procedural landscape studies for Pip and the Storywood.">
+  <link rel="stylesheet" href="style.css">
+  <script src="../v3/07-vanilla/sketch.js" defer></script>
+  <script src="../v3/07-vanilla/props.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-top"><a class="back" href="../">← All mockups</a><span class="eyebrow">PIP & THE STORYWOOD / VISUAL STUDY 04</span><span class="edition">LOCAL ART LAB</span></div>
+    <div class="intro"><div><span class="kicker">Seven procedural worlds · one cast</span><h1>Where should the<br><em>story happen?</em></h1><p>Atmospheric, storybook landscapes inspired by the calm layers and glowing campfire of <i>The Bonfire: Forsaken Lands</i>. Every scene is generated from a seed. Keep the foreground fixed to judge how the world feels around Pip and the pig friends.</p></div><div class="intro-art" aria-hidden="true"><span class="orb"></span><span class="ridge ridge-a"></span><span class="ridge ridge-b"></span><span class="fir fir-a"></span><span class="fir fir-b"></span><span class="fir fir-c"></span></div></div>
+  </header>
+
+  <main>
+    <section class="toolbar" aria-label="Gallery controls">
+      <div class="toolbar-title"><span class="small-cap">THE COMPARISON</span><strong>Same story beat. Seven ways to build the world.</strong></div>
+      <div class="controls">
+        <label class="control seed-control">Seed <input id="seed" type="number" min="0" max="999999" value="31415" inputmode="numeric"></label>
+        <button id="reroll" class="button primary" type="button">New seed <span aria-hidden="true">↗</span></button>
+        <label class="control">Mood <select id="mood"><option value="dusk">Ember dusk</option><option value="day">Soft daylight</option><option value="night">Blue night</option></select></label>
+        <label class="toggle"><input id="cast" type="checkbox" checked><span class="toggle-track"></span>Show cast</label>
+      </div>
+    </section>
+    <form id="brief-form" class="brief-form"><label for="brief">Try a scene brief <span>· local keyword preview</span></label><input id="brief" type="text" value="forest clearing at ember dusk" placeholder="a moonlit marsh with a river" maxlength="120"><button class="button" type="submit">Apply to all scenes</button><output id="brief-result" aria-live="polite">Forest · clearing · ember dusk</output></form>
+    <div class="gallery-note"><span class="note-mark">✳</span> Change the seed or mood to see what the pipeline can produce. The foreground is the same on every card. Open a scene for a closer look.</div>
+    <section id="gallery" class="gallery" aria-label="Seven background concepts"></section>
+    <section class="handoff"><div><span class="small-cap">BUILDING TOWARD V3</span><h2>A background system, not seven fixed paintings.</h2></div><p>Each renderer accepts the same <code>{ seed, mood, biome, landmarks }</code> scene brief. That makes an LLM response easy to map into a repeatable landscape while the game keeps its character and prop layer. These studies use a local, editable scene brief; no model call is needed to browse them.</p></section>
+  </main>
+  <footer>Storywood background lab <span>·</span> <a href="procedural-world-lab/">Eight-method world lab ↗</a> <span>·</span> <a href="README.md">Implementation notes & sources</a></footer>
+
+  <dialog id="lightbox"><button id="close" class="close" type="button" aria-label="Close scene">×</button><div id="lightbox-content"></div></dialog>
+</body>
+</html>

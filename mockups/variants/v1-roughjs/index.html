@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fill the Tale · Crayon Woods edition — Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23FFD93B' stroke='%232D2A26' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script src="vendor/rough.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="backlink" href="../../">&larr; all mockups</a>
+    <span class="badge">Variant V1 &middot; Crayon Woods &middot; every scribble by rough.js</span>
+    <h1>Fill the <span class="amp">Tale</span></h1>
+    <svg class="squiggle" id="titleSquiggle" width="250" height="16" viewBox="0 0 250 16" aria-hidden="true"></svg>
+    <p class="sub">Crayon Woods edition &mdash; draw your hero, then type words that draw the story.</p>
+  </header>
+
+  <section class="game">
+    <div class="stage" id="stage">
+
+      <!-- the whole scrolling world is one big crayon drawing -->
+      <div class="viewport" id="viewport">
+        <div class="world" id="world">
+          <canvas id="worldCv" aria-hidden="true"></canvas>
+          <div class="proplayer" id="propLayer"></div>
+
+          <div class="hero" id="hero">
+            <div class="hinner" id="hinner">
+              <canvas id="heroCv" role="img" aria-label="Your hero, drawn by you in crayon"></canvas>
+              <div class="headprop" id="headprop" aria-hidden="true"></div>
+              <div class="heldprop" id="heldprop" aria-hidden="true"></div>
+              <div class="dizzy" id="dizzy"><canvas id="dizzyCv" width="130" height="66"></canvas></div>
+              <div class="cheer" id="cheer"></div>
+            </div>
+          </div>
+
+          <div class="bird" id="bird" aria-hidden="true">
+            <canvas id="birdCv" width="80" height="66"></canvas>
+            <div class="chirp" id="chirp"></div>
+          </div>
+
+          <div class="ridelayer" id="rideLayer"></div>
+          <div class="fx" id="fx"></div>
+          <canvas id="darkCv" aria-hidden="true"></canvas>
+        </div>
+      </div>
+
+      <div class="hud hud-left"><span class="chip" id="lineChip">Draw your hero!</span></div>
+      <div class="hud hud-right">
+        <button class="chip chipbtn" id="sceneBtn" type="button" title="Re-crayon the whole woods">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2B2118" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M1.5 4.5h9M10.5 1.8l3 2.7-3 2.7M14.5 11.5h-9M5.5 8.8l-3 2.7 3 2.7"/>
+          </svg>
+          re-crayon
+        </button>
+      </div>
+      <button class="stopdemo" id="stopBtn" type="button"><span class="stopsq"></span>Stop demo</button>
+
+      <!-- BEAT 0: draw your hero -->
+      <div class="overlay show" id="makerOverlay">
+        <div class="card card-maker">
+          <span class="sticker">Pip is missing from the story!</span>
+          <h2>Draw your hero</h2>
+          <p class="makernote">Your drawing becomes the hero &mdash; it will walk, ride,
+            slip and splat through Crayon Woods.</p>
+          <div class="maker">
+            <canvas id="makerCv"></canvas>
+            <div class="swatches" id="swatches" role="radiogroup" aria-label="Crayon colors"></div>
+          </div>
+          <div class="btnrow">
+            <button class="btn" id="doneBtn" type="button">Done &mdash; start the story!</button>
+          </div>
+          <div class="btnrow btnrow-ghost">
+            <button class="btn btn-ghost" id="surpriseBtn" type="button">Surprise me</button>
+            <button class="btn btn-ghost" id="clearBtn" type="button">Clear page</button>
+            <button class="btn btn-ghost" id="watchBtn" type="button">Watch it play</button>
+          </div>
+          <p class="mini">&ldquo;Watch it play&rdquo; paints a hero and types every word for you.</p>
+        </div>
+      </div>
+
+      <!-- chapter-written payoff -->
+      <div class="overlay" id="endOverlay" hidden>
+        <div class="card card-win">
+          <span class="sticker sticker-sun">Chapter written!</span>
+          <h2>Your hero made it home!</h2>
+          <div class="gem-row">
+            <div class="gemwrap">
+              <canvas id="gemCv" width="92" height="92" aria-hidden="true"></canvas>
+              <span class="gemletter">C</span>
+            </div>
+            <div class="gem-copy">
+              <b>Letter-gem earned!</b>
+              <span>&ldquo;C&rdquo; is for Crayon &mdash; the bird tucks it into the bedtime story.</span>
+            </div>
+          </div>
+          <div class="recap" id="recap"></div>
+          <p class="slips" id="slips"></p>
+          <div class="btnrow">
+            <button class="btn" id="againBtn" type="button">Draw a new hero</button>
+            <button class="btn btn-ghost" id="watchAgainBtn" type="button">Watch it again</button>
+            <a class="btn btn-ghost" href="../../">All mockups</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- the big story sentence -->
+    <div class="sentence-card" id="sentenceCard">
+      <p class="sentence">
+        <span id="preText">First, draw your hero&hellip;</span><span class="blankbox"><input id="blank" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" maxlength="24" placeholder="a word!" aria-label="Type a word for the blank"><svg id="underSvg" aria-hidden="true"></svg></span><span id="postText"></span>
+      </p>
+      <p class="coach"><span id="coach">The crayons are waiting!</span>
+        <span class="dym" id="dym" hidden>Did you mean
+          <button class="dymbtn" id="dymBtn" type="button">bridge</button>?
+        </span>
+      </p>
+    </div>
+
+    <p class="foot">
+      <span class="footchip">In the real game, an adaptive tutor reads each word &mdash; dictionary lookups and a
+      kid-safe model decide if it&rsquo;s a helper word or a giggle word, and story art re-renders for every new scene.</span>
+    </p>
+    <button class="taptype" id="tapType" type="button">Tap here to type</button>
+  </section>
+
+  <footer>Five blanks, one brave doodle, one bossy little bird &mdash; typed fresh, drawn fresh.</footer>
+</div>
+<span id="mirror" aria-hidden="true"></span>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pip &amp; the Storywood — Sketch-DOM Pigs · v3</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='12' fill='%23FFC9BF' stroke='%232B2118' stroke-width='2.5'/%3E%3Ccircle cx='11' cy='14' r='2' fill='%232B2118'/%3E%3Ccircle cx='21' cy='14' r='2' fill='%232B2118'/%3E%3Cellipse cx='16' cy='20' rx='4.5' ry='3.5' fill='%23FF9C86' stroke='%232B2118' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="vendor/rough.js" defer></script>
+<script src="../shared/llm.js" defer></script>
+<script src="props.js" defer></script>
+<script src="world.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">Wave 3 &middot; rough.js SVG &middot; every doodle is a DOM node you can poke</span>
+    <h1>Pip &amp; the <span class="amp">Storywood</span></h1>
+    <svg class="squiggle" width="250" height="16" viewBox="0 0 250 16" aria-hidden="true">
+      <path d="M4 10 C 22 4, 44 13, 66 8 S 104 3, 126 9 S 166 14, 188 7 S 226 4, 246 10"
+            fill="none" stroke="#FF6B57" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">The Three Little Pigs &mdash; draw a hero, type words, and a real story-brain
+      grows a hand-sketched SVG world out of them.</p>
+  </header>
+
+  <section class="game">
+
+    <!-- ============ THE WORLD (one big addressable SVG) ============ -->
+    <div class="stage" id="stage">
+      <svg id="worldSvg" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid meet"
+           role="img" aria-label="A hand-drawn storybook world that re-sketches itself">
+        <g id="camG"><g id="shakeG">
+        <g id="skyLayer"></g>
+        <g id="fxBackLayer"></g>
+        <g id="terrainLayer"></g>
+        <g id="buildLayer"></g>
+        <g id="propLayer"></g>
+        <g id="wolfPos" transform="translate(-150 432)"><g id="wolfG"></g></g>
+        <g id="heroPos" transform="translate(140 430)">
+          <g id="heroG" class="idle">
+            <g id="heroInk"></g>
+            <g id="heroDizzy" opacity="0"></g>
+          </g>
+        </g>
+        <g id="fxLayer"></g>
+        </g></g>
+      </svg>
+
+      <!-- HUD chips -->
+      <div class="hud hud-top">
+        <span class="chip chip-goal" title="Journey to the brick house">
+          <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 9 L8 3 L14 9 M4 8v5h8V8" fill="none" stroke="#2B2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="goaltrack"><span class="goalfill" id="goalFill"></span></span>
+          <span id="goalPct">0%</span>
+        </span>
+        <span class="chip chip-wolf" title="Wolf huff-o-meter">
+          <svg width="15" height="15" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 8 L5 2 L8 6 L9 5 L10 6 L13 2 L15 8 Q15 14 9 14 Q3 14 3 8 Z" fill="#8d7b68" stroke="#2B2118" stroke-width="1.4"/><circle cx="6.5" cy="8.5" r="1" fill="#2B2118"/><circle cx="11.5" cy="8.5" r="1" fill="#2B2118"/><ellipse cx="9" cy="11.5" rx="1.8" ry="1.3" fill="#2B2118"/></svg>
+          <span class="wolftrack"><span class="wolffill" id="wolfFill"></span></span>
+          <span id="wolfLabel">wolf</span>
+        </span>
+      </div>
+      <div class="hud hud-right">
+        <span class="chip chip-lat" id="latChip" title="How fast the story-brain answered">story-brain is snoozing</span>
+        <span class="chip chip-mode" id="modeChip">live LLM</span>
+      </div>
+      <button class="stopdemo" id="stopBtn" type="button"><span class="stopsq"></span>Stop the show</button>
+
+      <!-- ============ BEAT 0 : MAKE YOUR HERO ============ -->
+      <div class="overlay show" id="makerOverlay">
+        <div class="card card-maker">
+          <span class="sticker">Beat 0 &middot; the hero is missing!</span>
+          <h2>Draw your hero</h2>
+          <p class="makernote">Scribble on the pad. Every stroke you lift off becomes a
+            <b>real SVG node</b> &mdash; your drawing literally joins the DOM and stars in the story.</p>
+          <div class="maker">
+            <div class="padwrap">
+              <svg id="makerSvg" viewBox="0 0 420 264" aria-hidden="true"><g id="makerG"></g></svg>
+              <canvas id="makerCv" width="420" height="264"></canvas>
+            </div>
+            <div class="swatches" id="swatches" role="radiogroup" aria-label="Crayon colors"></div>
+          </div>
+          <p class="nodecount" id="nodeCount">0 strokes &middot; 0 DOM nodes</p>
+          <div class="btnrow">
+            <button class="btn" id="doneBtn" type="button">Done &mdash; into the story!</button>
+          </div>
+          <div class="btnrow btnrow-ghost">
+            <button class="btn btn-ghost" id="surpriseBtn" type="button">Surprise me</button>
+            <button class="btn btn-ghost" id="clearBtn" type="button">Clear page</button>
+            <button class="btn btn-ghost" id="watchBtn" data-watch type="button">Watch it play</button>
+          </div>
+          <p class="mini">&ldquo;Watch it play&rdquo; draws a hero, then types real words to the real story-brain.</p>
+        </div>
+      </div>
+
+      <!-- ============ WIN ============ -->
+      <div class="overlay" id="endOverlay" hidden>
+        <div class="card card-win">
+          <span class="sticker sticker-sun">Safe and sound!</span>
+          <h2>The brick house held!</h2>
+          <p class="winline" id="winLine">Your hero scampered inside. The wolf huffed, puffed, and gave up.</p>
+          <div class="recap" id="recap"></div>
+          <div class="btnrow">
+            <button class="btn" id="againBtn" type="button">Play again</button>
+            <button class="btn btn-ghost" id="watchAgainBtn" type="button">Watch it play again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ STORY BAR ============ -->
+    <div class="sentence-card" id="sentenceCard">
+      <p class="narrative" id="narrative">Draw your hero to open the storybook&hellip;</p>
+      <div class="obstacles" id="obstacles"></div>
+      <div class="askrow">
+        <label class="asklabel" for="blank">What does your hero do?</label>
+        <span class="blankbox">
+          <input id="blank" type="text" autocomplete="off" autocorrect="off" autocapitalize="none"
+                 spellcheck="false" maxlength="28" placeholder="type a word!" aria-label="Type what the hero does" disabled>
+        </span>
+        <button class="btn btn-go" id="goBtn" type="button" disabled>Go!</button>
+      </div>
+      <div class="chips-row">
+        <span class="dym" id="dym" hidden>Did you mean
+          <button class="dymbtn" id="dymBtn" type="button">bridge</button>?
+        </span>
+        <span class="choices" id="choices"></span>
+      </div>
+      <p class="coach" id="coach">The crayons are waiting!</p>
+    </div>
+
+    <!-- ============ DOM PEEK — the differentiator ============ -->
+    <div class="dompeek" id="domPeek">
+      <div class="dompeek-head">
+        <span class="dompeek-title">DOM peek &mdash; live sketch nodes</span>
+        <span class="dompeek-note">tap a node name to wiggle it — every prop is a <b>&lt;g&gt;</b> you can address</span>
+      </div>
+      <div class="domlist" id="domList">
+        <span class="domchip domchip-muted">g#skyLayer</span>
+        <span class="domchip domchip-muted">g#terrainLayer</span>
+        <span class="domchip domchip-muted">g#propLayer <i>(empty — type a word)</i></span>
+        <span class="domchip domchip-muted">g#heroG</span>
+      </div>
+    </div>
+
+    <!-- ============ STORY LOG ============ -->
+    <div class="logcard">
+      <div class="card-tag">the story so far</div>
+      <div class="log" id="log"><p class="ghost-line">Your story words land here&hellip;</p></div>
+    </div>
+
+  </section>
+
+  <footer>Rough.js draws every line as a real SVG node &mdash; props, puffs, pigs and peel are all just &lt;g&gt; tags in a sketchy little DOM.</footer>
+</div>
+<span id="mirror" aria-hidden="true"></span>
+</body>
+</html>

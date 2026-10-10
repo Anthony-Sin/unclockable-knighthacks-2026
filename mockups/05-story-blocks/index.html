@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story Blocks — Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../index.html">&larr; all mockups</a>
+
+  <header>
+    <span class="badge">KnightHacks 2026 · drag &amp; drop</span>
+    <h1>Story Blocks</h1>
+    <svg class="squiggle" width="240" height="14" viewBox="0 0 240 14" fill="none" aria-hidden="true">
+      <path d="M3 9 C 20 3, 40 12, 60 8 S 100 3, 120 8 S 160 13, 180 7 S 220 4, 237 9" stroke="#FF6B57" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Put the story in order, then watch it play!</p>
+  </header>
+
+  <main>
+    <!-- ============ ARRANGE BOARD ============ -->
+    <section class="board" id="board" aria-label="Story arranging board">
+      <p class="howto">Drag the cards into the numbered slots &mdash; or tap a card, then tap a slot.</p>
+
+      <div class="slots-wrap">
+        <div class="slots" id="slots"></div>
+        <div class="scan-beam" id="scanBeam" aria-hidden="true"></div>
+      </div>
+
+      <div class="hint-row">
+        <div class="hint-bubble" id="hintBubble" role="status"></div>
+      </div>
+
+      <div class="tray-wrap">
+        <div class="tray-label">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 8h16M4 8l2 12h12l2-12M9 8V6a3 3 0 0 1 6 0v2" stroke="#8a7457" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Story card tray
+        </div>
+        <div class="tray" id="tray"></div>
+      </div>
+
+      <div class="controls">
+        <button class="btn btn-primary" id="checkBtn" type="button">Tell the story!</button>
+        <button class="btn btn-berry" id="autoBtn" type="button">Watch it work</button>
+        <button class="btn btn-ghost" id="shuffleBtn" type="button">Shuffle again</button>
+      </div>
+    </section>
+
+    <!-- ============ STORY STAGE (payoff) ============ -->
+    <section class="stage" id="stage" aria-label="Story stage" hidden>
+      <div class="stage-badge">Now playing&hellip;</div>
+      <div class="stage-screen">
+        <div class="scene" id="scene"></div>
+        <div class="stage-caption" id="stageCaption"></div>
+        <div class="stage-endcard" id="endCard" hidden>
+          <div class="endcard-title">The End</div>
+          <svg class="endcard-gem" width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+            <polygon points="55,6 96,30 96,78 55,104 14,78 14,30" fill="#FFC53D" stroke="#2B2118" stroke-width="4" stroke-linejoin="round"/>
+            <polygon points="55,6 96,30 55,44 14,30" fill="#FFDE7A" stroke="#2B2118" stroke-width="3" stroke-linejoin="round"/>
+            <polygon points="55,44 96,30 96,78 55,104" fill="#F0A818" stroke="#2B2118" stroke-width="3" stroke-linejoin="round"/>
+            <text x="55" y="78" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="40" fill="#2B2118">K</text>
+          </svg>
+          <div class="endcard-gemtext">You earned the letter-gem <b>&ldquo;K&rdquo;</b> &mdash; K is for Key!</div>
+        </div>
+      </div>
+      <div class="stage-controls">
+        <button class="btn btn-ghost" id="replayBtn" type="button" disabled>Play it again</button>
+        <button class="btn btn-primary" id="againBtn" type="button" disabled>Shuffle &amp; play again</button>
+      </div>
+    </section>
+
+    <p class="footnote">
+      <span class="footnote-chip">How the real game works</span>
+      In the real game, a language-model story checker (LLM-based narrative AI) understands what makes sense and can help kids fix their tales.
+    </p>
+  </main>
+</div>
+
+<button class="btn btn-stop" id="stopDemoBtn" type="button" hidden>Stop demo</button>
+
+<script src="app.js"></script>
+</body>
+</html>

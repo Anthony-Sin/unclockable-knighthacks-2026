@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>dbg</title>
+<script>
+window.__errs = [];
+window.addEventListener('error', (e) => {
+  window.__errs.push(e.message + ' @ ' + (e.filename||'') + ':' + e.lineno);
+  document.title = 'ERR ' + window.__errs.length;
+});
+window.addEventListener('unhandledrejection', (e) => {
+  window.__errs.push('REJ ' + (e.reason && e.reason.message || e.reason));
+  document.title = 'REJ ' + window.__errs.length;
+});
+</script>
+<link rel="stylesheet" href="style.css">
+<script src="vendor/two.min.js"></script>
+<script src="../shared/llm.js"></script>
+</head><body>
+<div class="wrap"><section class="game">
+<div class="stage" id="stage">
+  <div class="hud hud-tl"><span class="chip" id="latChip" hidden></span><span class="chip" id="modeChip" hidden></span></div>
+  <div class="hud hud-tr"><div class="wolfwrap"><span class="wolfmeter" id="wolfMeter"><i></i><i></i><i></i><i></i><i></i></span></div></div>
+  <div class="hud hud-bl"><div class="goalwrap"><div class="goalbar"><div class="goalfill" id="goalFill"></div>
+    <svg class="goalpig" id="goalPig" viewBox="0 0 30 22"></svg></div></div></div>
+  <button class="stopdemo" id="stopBtn" hidden></button>
+  <div class="overlay show" id="makerOverlay"><div class="card">
+    <canvas id="makerCv" width="420" height="240"></canvas>
+    <div class="swatches" id="swatches"></div>
+    <button id="doneBtn"></button><button id="surpriseBtn"></button>
+    <button id="clearBtn"></button><button id="watchBtn"></button></div></div>
+  <div class="overlay" id="endOverlay" hidden><div class="card">
+    <p id="winLine"></p><div id="recap"></div>
+    <button id="againBtn"></button><button id="watchAgainBtn"></button></div></div>
+</div>
+<div class="sentence-card">
+  <p id="narrative"></p><p id="obstacles"></p>
+  <p id="dym" hidden><button id="dymBtn"></button></p>
+  <input id="word" disabled><button id="goBtn" disabled></button>
+  <p id="choices"></p><p class="coach"><span id="coach"></span></p>
+</div></section></div>
+<pre id="errlog"></pre>
+<script src="app.js"></script>
+<script>
+setTimeout(() => {
+  document.getElementById('errlog').textContent =
+    'ERRS:' + JSON.stringify(window.__errs) +
+    ' SCENE:' + (window.Two && window.Two.Instances && window.Two.Instances[0] ? window.Two.Instances[0].scene.children.length : 'na') +
+    ' PATHS:' + document.querySelectorAll('#stage svg path').length;
+}, 4000);
+</script>
+</body></html>

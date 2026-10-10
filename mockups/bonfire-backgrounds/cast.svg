@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" aria-label="Pip, three pig friends, a tiny brick house and a glowing campfire">
+<defs>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+  <radialGradient id="fireglow"><stop stop-color="#ffb559" stop-opacity=".52"/><stop offset="1" stop-color="#ffb559" stop-opacity="0"/></radialGradient>
+  <linearGradient id="pipbody" x2=".8" y2="1"><stop stop-color="#b0c878"/><stop offset="1" stop-color="#6e9e67"/></linearGradient>
+</defs>
+<ellipse cx="479" cy="478" rx="302" ry="25" fill="#283d2c" opacity=".17" filter="url(#shadow)"/>
+<ellipse cx="557" cy="434" rx="132" ry="86" fill="url(#fireglow)"/>
+<!-- small storybook house -->
+<g transform="translate(717 312)" stroke="#4a392f" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M5 62 80 11 150 62 142 151 12 151Z" fill="#d9aa82" stroke-width="4"/>
+  <path d="M-5 62 79 2 157 60 144 70 78 21 8 71Z" fill="#aa664e" stroke-width="5"/>
+  <path d="M68 151V94q0-18 18-18t18 18v57" fill="#704f40" stroke-width="4"/>
+  <circle cx="94" cy="119" r="3" fill="#f7cc74" stroke="none"/>
+  <path d="M22 89h27v28H22zM116 86h25v27h-25z" fill="#ffe5a4" stroke-width="3"/>
+  <path d="M35 89v28m-13-14h27m79-17v27m-12-13h25" fill="none" stroke-width="2"/>
+  <g stroke="#a36d55" stroke-width="2" opacity=".6"><path d="M18 132h42m52-5h30M33 74h31m45-5h33M15 148h54m41-5h35"/></g>
+</g>
+<!-- pig friends -->
+<g stroke="#59453d" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(258 404) rotate(-4)"><path d="M-21 34q-10 10-11 20m34-20 4 20" fill="none" stroke-width="5"/><ellipse cx="0" cy="12" rx="31" ry="32" fill="#eaa9a2" stroke-width="3"/><path d="M-22-5q-14-32-2-29l16 19M15-15l14-20q12-3 6 29" fill="#eaa9a2" stroke-width="3"/><ellipse cx="6" cy="11" rx="15" ry="11" fill="#efb9ad" stroke-width="2.5"/><circle cx="0" cy="11" r="2" fill="#9e6b68" stroke="none"/><circle cx="10" cy="11" r="2" fill="#9e6b68" stroke="none"/><circle cx="-13" cy="-3" r="3" fill="#302b2a" stroke="none"/><circle cx="20" cy="-4" r="3" fill="#302b2a" stroke="none"/><path d="M-35 18q-13-8-13 5" fill="none" stroke-width="3"/></g>
+  <g transform="translate(339 430) rotate(6)"><path d="M-16 24v19m26-19 2 19" fill="none" stroke-width="4"/><ellipse cx="0" cy="7" rx="25" ry="27" fill="#f2bbb1" stroke-width="3"/><path d="M-18-8q-13-30-2-25l12 15M10-18l14-17q10-2 4 24" fill="#f2bbb1" stroke-width="3"/><ellipse cx="4" cy="6" rx="12" ry="9" fill="#fad0bf" stroke-width="2"/><circle cx="0" cy="6" r="1.7" fill="#9e6b68" stroke="none"/><circle cx="8" cy="6" r="1.7" fill="#9e6b68" stroke="none"/><circle cx="-11" cy="-8" r="2.5" fill="#302b2a" stroke="none"/><circle cx="16" cy="-8" r="2.5" fill="#302b2a" stroke="none"/></g>
+  <g transform="translate(194 437) rotate(-8)"><path d="M-14 22v16m25-16v16" fill="none" stroke-width="4"/><ellipse cy="3" rx="23" ry="25" fill="#e8a49e" stroke-width="3"/><path d="M-18-9q-13-25-5-24l15 16M9-17l16-15q8 0 3 23" fill="#e8a49e" stroke-width="3"/><ellipse cx="3" cy="3" rx="11" ry="8" fill="#f2c1b4" stroke-width="2"/><circle cx="-1" cy="3" r="1.5" fill="#9e6b68" stroke="none"/><circle cx="6" cy="3" r="1.5" fill="#9e6b68" stroke="none"/><circle cx="-10" cy="-8" r="2" fill="#302b2a" stroke="none"/><circle cx="15" cy="-8" r="2" fill="#302b2a" stroke="none"/></g>
+</g>
+<!-- Pip: large one-eyed child-drawn helper, echoed from the project's green doodle -->
+<g transform="translate(425 384) rotate(-3)" stroke="#354936" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M-38 50q-8 22-12 39m49-36-1 36m-46-1q-18-3-23 4 3 10 27 6m42-8q20-5 29 4-6 9-31 5" fill="#7cae6e" stroke-width="5"/>
+  <path d="M-36 1q-28 17-26 50 8 31 39 36 30 3 47-17 21-30 4-64-14-29-40-30-17-2-24 25Z" fill="url(#pipbody)" stroke-width="4"/>
+  <path d="M-25-22-34-50-9-33M8-26 31-50l-1 34" fill="#98bb70" stroke-width="4"/>
+  <path d="M-50 27q-27 1-41-13m-1 0-8-15m8 15-15-6m15 6-5 18M25 23q29-2 43-30m0 0 17-4M68-7l8-17m-8 17 14 8" fill="none" stroke-width="5"/>
+  <ellipse cx="-7" cy="2" rx="18" ry="20" fill="#fff8e7" stroke-width="3"/><ellipse cx="-2" cy="4" rx="8" ry="10" fill="#344337" stroke="none"/><circle cx="0" cy="1" r="3" fill="#fff" stroke="none"/>
+  <path d="M-8 39q11 12 21 1" fill="none" stroke-width="3"/><circle cx="-28" cy="34" r="5" fill="#e49a7c" stroke="none" opacity=".65"/>
+  <path d="M-20 68q17 9 32-1" fill="none" stroke="#65975d" stroke-width="3"/>
+</g>
+<!-- small fire and stones; warm focal point -->
+<g transform="translate(554 438)" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M-35 19 28-1M-25-5l62 25" stroke="#715043" stroke-width="9"/>
+  <path d="M-14 14q-12-28 6-40 0 18 12 18 3-21 18-33 18 28 13 43-5 19-24 22Z" fill="#e47f43" stroke="#9e5b34" stroke-width="3"/>
+  <path d="M0 12q-8-13 3-23 4 10 9 7 2-9 7-14 10 19 2 28-7 8-21 2Z" fill="#ffe09a"/>
+  <ellipse cx="-37" cy="25" rx="14" ry="6" fill="#a39b86" stroke="#6e7466" stroke-width="2"/><ellipse cx="36" cy="26" rx="15" ry="6" fill="#a39b86" stroke="#6e7466" stroke-width="2"/>
+</g>
+</svg>

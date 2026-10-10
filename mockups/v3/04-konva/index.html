@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pip &amp; the Storywood — Konva Sketchbook · The Three Little Pigs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='5' y='9' width='22' height='18' rx='4' fill='%23FF6B57' stroke='%232B2118' stroke-width='2.5'/%3E%3Ccircle cx='13' cy='16' r='2.4' fill='%232B2118'/%3E%3Ccircle cx='20' cy='16' r='2.4' fill='%232B2118'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script src="vendor/konva.min.js" defer></script>
+<script src="../shared/llm.js" defer></script>
+<script src="sketch.js" defer></script>
+<script src="props.js" defer></script>
+<script src="world.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="backlink" href="../../">&larr; all mockups</a>
+    <span class="badge">Wave 3 &middot; 04-konva &middot; every doodle is a scene-graph node</span>
+    <h1>Pip &amp; the <span class="amp">Storywood</span></h1>
+    <p class="sub">Konva Sketchbook edition &mdash; the Three Little Pigs, re-drawn by a real story-brain
+      every time you type.</p>
+  </header>
+
+  <section class="game">
+    <div class="stage" id="stage">
+      <div class="konva-host" id="konvaHost" aria-label="Hand-sketched story scene"></div>
+
+      <!-- HUD -->
+      <div class="hud hud-top">
+        <div class="goalwrap" title="Story progress — reach the brick house!">
+          <span class="goallabel">brick house</span>
+          <div class="goalbar"><div class="goalfill" id="goalFill"></div>
+            <svg class="goalpig" id="goalPig" viewBox="0 0 24 18" aria-hidden="true">
+              <ellipse cx="11" cy="10" rx="9" ry="6.5" fill="#FF9EBB" stroke="#2B2118" stroke-width="1.8"/>
+              <circle cx="18" cy="7.5" r="4.4" fill="#FF9EBB" stroke="#2B2118" stroke-width="1.8"/>
+              <circle cx="19.5" cy="8" r="1.7" fill="#FFC9D9" stroke="#2B2118" stroke-width="1.2"/>
+              <circle cx="17" cy="6.2" r=".9" fill="#2B2118"/>
+            </svg>
+          </div>
+        </div>
+        <div class="wolfwrap" title="Wolf pressure — he is huffy, not harmful">
+          <span class="wolflabel">wolf</span>
+          <div class="wolfbar"><div class="wolffill" id="wolfFill"></div></div>
+          <span class="wolfmood" id="wolfMood">far away</span>
+        </div>
+      </div>
+      <div class="hud hud-bottom">
+        <span class="chip chip-line" id="lineChip">Draw your hero to begin!</span>
+        <span class="chip chip-ms" id="msChip" hidden></span>
+      </div>
+      <button class="stopdemo" id="stopBtn" type="button" hidden><span class="stopsq"></span>Stop the show</button>
+
+      <!-- BEAT 0: draw your hero (a tiny Konva stage of its own) -->
+      <div class="overlay show" id="makerOverlay">
+        <div class="card card-maker">
+          <span class="sticker">The pigs need a helper!</span>
+          <h2>Draw your hero</h2>
+          <p class="makernote">Every crayon stroke you make becomes a real node on the stage
+            &mdash; your hero will walk, ride, slip and dance through the story.</p>
+          <div class="maker">
+            <div class="maker-stage" id="makerHost"></div>
+            <div class="swatches" id="swatches" role="radiogroup" aria-label="Crayon colors"></div>
+          </div>
+          <div class="btnrow">
+            <button class="btn" id="doneBtn" type="button">Done &mdash; start the story!</button>
+          </div>
+          <div class="btnrow btnrow-ghost">
+            <button class="btn btn-ghost" id="surpriseBtn" type="button">Surprise me</button>
+            <button class="btn btn-ghost" id="clearBtn" type="button">Clear page</button>
+            <button class="btn btn-ghost" id="watchBtn" type="button">Watch it play</button>
+          </div>
+          <p class="mini">&ldquo;Watch it play&rdquo; paints a hero, then asks the real story-brain
+            to run the whole journey.</p>
+        </div>
+      </div>
+
+      <!-- win payoff -->
+      <div class="overlay" id="endOverlay" hidden>
+        <div class="card card-win">
+          <span class="sticker sticker-sun">Safe inside!</span>
+          <h2 id="winTitle">Your hero made it to the brick house!</h2>
+          <p class="winbody">The wolf huffed and puffed, but brick is brick.
+            Three pigs and one brave doodle &mdash; all home safe.</p>
+          <div class="recap" id="recap"></div>
+          <div class="btnrow">
+            <button class="btn" id="againBtn" type="button">Draw a new hero</button>
+            <button class="btn btn-ghost" id="watchAgainBtn" type="button">Watch it again</button>
+            <a class="btn btn-ghost" href="../../">All mockups</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- the story line + input -->
+    <div class="sentence-card" id="sentenceCard">
+      <p class="sentence" id="narrative">First, draw your hero&hellip;</p>
+      <div class="obstacles" id="obstacles"></div>
+      <div class="typerow">
+        <span class="blankbox">
+          <input id="blank" type="text" autocomplete="off" autocorrect="off" autocapitalize="none"
+                 spellcheck="false" maxlength="40" placeholder="type what to do next!"
+                 aria-label="Type a word or phrase for what happens next">
+          <svg class="underln" id="underSvg" aria-hidden="true"></svg>
+        </span>
+        <button class="btn btn-go" id="goBtn" type="button">Go!</button>
+      </div>
+      <p class="coach">
+        <span id="coach">The crayons are waiting!</span>
+        <span class="dym" id="dym" hidden>Did you mean
+          <button class="dymbtn" id="dymBtn" type="button">word</button>?
+        </span>
+      </p>
+      <div class="choices" id="choices"></div>
+    </div>
+
+    <p class="foot">
+      <span class="footchip">A real LLM is the game master: your word goes to it, and its
+      <b>scene_seed</b> re-grows the whole sketch. Hover any prop to see its name &mdash;
+      everything on stage is a Konva node.</span>
+    </p>
+    <button class="taptype" id="tapType" type="button" hidden>Tap here to type</button>
+  </section>
+
+  <footer>One brave doodle, three little pigs, one very huffy wolf &mdash; typed fresh, sketched fresh.</footer>
+</div>
+</body>
+</html>

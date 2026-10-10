@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read It Aloud · Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="back" href="../">← all mockups</a>
+<div class="wrap">
+
+  <header class="hero" id="hero">
+    <span class="badge">KnightHacks 2026 · microphone magic</span>
+    <h1>Read It <span class="pop">Aloud</span></h1>
+    <svg class="squiggle" width="240" height="14" viewBox="0 0 240 14" fill="none" aria-hidden="true">
+      <path d="M3 9 C 20 3, 40 12, 60 8 S 100 3, 120 8 S 160 13, 180 7 S 220 4, 237 9" stroke="#5DA9E9" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Say the magic word to move the story!</p>
+    <p class="sub2">Pip the monster needs help finishing a bedtime story. Read the shiny word out loud and watch the tale come alive — one word at a time.</p>
+    <button class="btn big" id="startBtn">Open the storybook</button>
+    <p class="tiny">Works with your mic — or pretend mode, if you're on a stage.</p>
+  </header>
+
+  <main class="game hidden" id="game">
+    <div class="storybook" id="storybook">
+      <div class="page-head">
+        <span class="page-label" id="pageLabel">Page 1 of 4</span>
+        <div class="dots" id="dots" aria-hidden="true"></div>
+        <div class="gems-earned" id="gemsEarned" title="Letter-gems you have earned"></div>
+      </div>
+
+      <div class="scene-wrap">
+        <svg id="sceneSvg" data-scene="moon" viewBox="0 0 360 200" role="img" aria-label="A paper-craft scene from the story">
+          <rect class="sky" x="0" y="0" width="360" height="200"/>
+
+          <g class="hills">
+            <path d="M-5 158 Q55 120 120 148 Q180 172 240 150 Q310 126 365 152 V205 H-5 Z" fill="#B7DE9B"/>
+            <path d="M-5 176 Q80 152 170 172 Q260 190 365 172 V205 H-5 Z" fill="#8FCB78"/>
+            <path d="M232 52 C232 44 240 40 247 43 C251 34 264 33 269 40 C279 37 287 44 284 52 C289 58 283 64 275 62 L243 62 C235 63 229 57 232 52 Z" fill="#FFFDF6" stroke="#2B2118" stroke-width="2.5"/>
+            <g class="tree">
+              <rect x="52" y="118" width="11" height="38" rx="4" fill="#A9713D" stroke="#2B2118" stroke-width="2.5"/>
+              <path d="M30 118 C24 100 36 90 48 93 C52 80 70 76 78 87 C94 85 101 103 92 114 C99 126 84 133 71 129 C57 137 37 132 30 118 Z" fill="#4FB06D" stroke="#2B2118" stroke-width="2.5"/>
+              <circle cx="47" cy="108" r="3" fill="#FFC53D" stroke="#2B2118" stroke-width="1.5"/>
+              <circle cx="70" cy="104" r="3" fill="#FF6B57" stroke="#2B2118" stroke-width="1.5"/>
+            </g>
+          </g>
+
+          <g class="scene" id="s-moon">
+            <circle cx="296" cy="46" r="20" fill="#FFE9A8" stroke="#2B2118" stroke-width="3"/>
+            <circle cx="290" cy="40" r="3.5" fill="#F2D488"/>
+            <circle cx="303" cy="52" r="2.5" fill="#F2D488"/>
+            <g transform="translate(96,40)"><path class="star" d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#FFC53D"/></g>
+            <g transform="translate(158,62) scale(.8)"><path class="star" style="animation-delay:.5s" d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#FFC53D"/></g>
+            <g transform="translate(222,34) scale(1.1)"><path class="star" style="animation-delay:1s" d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#FFC53D"/></g>
+            <g transform="translate(60,80) scale(.7)"><path class="star" style="animation-delay:.3s" d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#FFC53D"/></g>
+          </g>
+
+          <g class="scene" id="s-bridge">
+            <path d="M-5 148 Q60 136 120 148 Q180 160 240 148 Q310 136 365 146 V205 H-5 Z" fill="#A9D8F0"/>
+            <path d="M20 170 q10 -6 20 0 M84 178 q10 -6 20 0 M150 172 q10 -6 20 0 M238 176 q10 -6 20 0 M302 170 q10 -6 20 0" stroke="#5DA9E9" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M74 158 Q182 108 290 158" fill="none" stroke="#2B2118" stroke-width="15" stroke-linecap="round"/>
+            <path d="M74 158 Q182 108 290 158" fill="none" stroke="#D98E4A" stroke-width="10" stroke-linecap="round"/>
+            <path d="M74 148 Q182 98 290 148" fill="none" stroke="#2B2118" stroke-width="4"/>
+            <path d="M74 148 Q182 98 290 148" fill="none" stroke="#D98E4A" stroke-width="2"/>
+            <g stroke="#2B2118" stroke-width="3">
+              <line x1="100" y1="137.5" x2="100" y2="147"/>
+              <line x1="140" y1="122" x2="140" y2="131.5"/>
+              <line x1="182" y1="123" x2="182" y2="133"/>
+              <line x1="224" y1="122" x2="224" y2="131.5"/>
+              <line x1="264" y1="137.5" x2="264" y2="147"/>
+            </g>
+          </g>
+
+          <g class="scene" id="s-dance">
+            <path d="M98 100 q30 -22 62 -8" stroke="#B565D8" stroke-width="2.5" fill="none" stroke-dasharray="5 6" opacity=".65" stroke-linecap="round"/>
+            <path d="M262 100 q-28 -20 -58 -8" stroke="#B565D8" stroke-width="2.5" fill="none" stroke-dasharray="5 6" opacity=".65" stroke-linecap="round"/>
+            <g transform="translate(70,70)"><g class="fly"><circle r="9" fill="#FFC53D" opacity=".28"/><circle r="3.5" fill="#FFC53D" stroke="#2B2118" stroke-width="1.5"/></g></g>
+            <g transform="translate(122,46)"><g class="fly" style="animation-delay:.4s"><circle r="9" fill="#FFC53D" opacity=".28"/><circle r="3.5" fill="#FFC53D" stroke="#2B2118" stroke-width="1.5"/></g></g>
+            <g transform="translate(196,58)"><g class="fly" style="animation-delay:.8s"><circle r="9" fill="#FFC53D" opacity=".28"/><circle r="3.5" fill="#FFC53D" stroke="#2B2118" stroke-width="1.5"/></g></g>
+            <g transform="translate(252,44)"><g class="fly" style="animation-delay:.2s"><circle r="9" fill="#FFC53D" opacity=".28"/><circle r="3.5" fill="#FFC53D" stroke="#2B2118" stroke-width="1.5"/></g></g>
+            <g transform="translate(310,88)"><g class="fly" style="animation-delay:.6s"><circle r="9" fill="#FFC53D" opacity=".28"/><circle r="3.5" fill="#FFC53D" stroke="#2B2118" stroke-width="1.5"/></g></g>
+            <g transform="translate(88,116)"><g class="fly" style="animation-delay:1s"><circle r="9" fill="#FFC53D" opacity=".28"/><circle r="3.5" fill="#FFC53D" stroke="#2B2118" stroke-width="1.5"/></g></g>
+            <g transform="translate(282,130)"><g class="fly" style="animation-delay:.5s"><circle r="9" fill="#FFC53D" opacity=".28"/><circle r="3.5" fill="#FFC53D" stroke="#2B2118" stroke-width="1.5"/></g></g>
+          </g>
+
+          <g class="scene" id="s-home">
+            <circle cx="54" cy="42" r="17" fill="#FFC53D" stroke="#2B2118" stroke-width="3"/>
+            <g stroke="#FFC53D" stroke-width="3" stroke-linecap="round">
+              <line x1="54" y1="16" x2="54" y2="10"/><line x1="54" y1="68" x2="54" y2="74"/>
+              <line x1="28" y1="42" x2="22" y2="42"/><line x1="80" y1="42" x2="86" y2="42"/>
+              <line x1="36" y1="24" x2="31" y2="19"/><line x1="72" y1="24" x2="77" y2="19"/>
+              <line x1="36" y1="60" x2="31" y2="65"/><line x1="72" y1="60" x2="77" y2="65"/>
+            </g>
+            <path d="M318 84 q4 -6 0 -12 q-4 -6 1 -11" stroke="#C9B896" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="312" y="88" width="13" height="22" fill="#A9713D" stroke="#2B2118" stroke-width="2.5"/>
+            <path d="M244 116 L290 80 L336 116 Z" fill="#FF6B57" stroke="#2B2118" stroke-width="3" stroke-linejoin="round"/>
+            <rect x="252" y="116" width="76" height="56" rx="6" fill="#FFFDF6" stroke="#2B2118" stroke-width="3"/>
+            <circle cx="266" cy="136" r="9" fill="#FFE9A8" stroke="#2B2118" stroke-width="2.5"/>
+            <path d="M266 128 V144 M258 136 H274" stroke="#2B2118" stroke-width="1.8"/>
+            <rect x="280" y="132" width="24" height="40" rx="5" fill="#5DA9E9" stroke="#2B2118" stroke-width="3"/>
+            <circle cx="299" cy="153" r="2.5" fill="#FFFDF6"/>
+            <path d="M226 168 q-12 -2 -8 -14 q10 -10 20 -2 q14 -6 18 8 q4 12 -10 14 Z" fill="#4FB06D" stroke="#2B2118" stroke-width="2.5"/>
+            <path d="M292 174 Q276 188 250 197" stroke="#C98F55" stroke-width="5" fill="none" stroke-dasharray="2 9" stroke-linecap="round"/>
+          </g>
+
+          <g class="pip"><g class="bob">
+            <path d="M8 34 Q2 38 7 43" stroke="#2B2118" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M55 33 Q62 36 58 42" stroke="#2B2118" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <ellipse cx="24" cy="58" rx="6" ry="4" fill="#4FB06D" stroke="#2B2118" stroke-width="2.5"/>
+            <ellipse cx="41" cy="58" rx="6" ry="4" fill="#4FB06D" stroke="#2B2118" stroke-width="2.5"/>
+            <path d="M18 40 C12 24 20 12 33 11 C48 10 56 22 54 36 C53 50 44 56 32 55 C24 55 18 48 18 40 Z" fill="#4FB06D" stroke="#2B2118" stroke-width="3"/>
+            <path d="M26 12 L23 3 L31 9 Z" fill="#FF6B57" stroke="#2B2118" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M41 11 L45 3 L47 11 Z" fill="#FF6B57" stroke="#2B2118" stroke-width="2" stroke-linejoin="round"/>
+            <ellipse cx="33" cy="45" rx="9" ry="6.5" fill="#FFF6D8"/>
+            <circle cx="27" cy="29" r="5.5" fill="#FFFDF6" stroke="#2B2118" stroke-width="2"/>
+            <circle cx="41" cy="30" r="4.5" fill="#FFFDF6" stroke="#2B2118" stroke-width="2"/>
+            <circle cx="28" cy="30" r="2.2" fill="#2B2118"/>
+            <circle cx="42" cy="31" r="1.8" fill="#2B2118"/>
+            <circle cx="21" cy="37" r="2.2" fill="#FF6B57" opacity=".55"/>
+            <circle cx="48" cy="38" r="2.2" fill="#FF6B57" opacity=".55"/>
+            <path d="M28 42 Q34 47.5 42 43" stroke="#2B2118" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </g></g>
+        </svg>
+      </div>
+
+      <p class="sentence" id="sentence" aria-live="polite"></p>
+      <p class="hint" id="hint">Only the shiny word matters — say it out loud!</p>
+    </div>
+
+    <div class="controls" id="controls">
+      <button class="orb" id="micOrb" aria-label="Microphone — tap or hold, then read the shiny word">
+        <canvas id="wave" width="120" height="120"></canvas>
+        <svg class="orb-icon icon-mic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="8.5" y="2.5" width="7" height="12" rx="3.5" fill="#FF6B57" stroke="#2B2118" stroke-width="2"/>
+          <path d="M5.5 11.5 a6.5 6.5 0 0 0 13 0" stroke="#2B2118" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M12 18.5 V21 M9 21.5 h6" stroke="#2B2118" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <svg class="orb-icon icon-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4.5 12.5 L10 18 L19.5 6.5" stroke="#4FB06D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="orb-spin" aria-hidden="true"></span>
+        <span class="orb-ring" aria-hidden="true"></span>
+      </button>
+      <p class="orb-caption" id="orbCaption">Tap or hold the mic, then say the shiny word.</p>
+      <span class="mic-note hidden" id="micNote"></span>
+
+      <div class="stage" id="stage" aria-live="polite">
+        <div class="stage-text" id="stageText"></div>
+        <p class="stage-sub" id="stageSub"></p>
+        <div class="chip" id="chip"><span class="said">&ldquo;<span id="chipWord">moon</span>&rdquo;</span> &mdash; you said it!</div>
+        <p class="chip-sub" id="chipSub"></p>
+      </div>
+
+      <div class="alt-row">
+        <button class="btn small sun" id="autoBtn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14 C5 8 9 4.5 13.5 4.5 C19 4.5 21.5 9 20 14.5 C19 19.5 14 21.5 10 20.8 C6.6 20 6 17 6 14 Z" fill="#4FB06D" stroke="#2B2118" stroke-width="1.8"/><circle cx="11" cy="12" r="2.4" fill="#FFFDF6" stroke="#2B2118" stroke-width="1.4"/><circle cx="11.4" cy="12.4" r="1.1" fill="#2B2118"/><path d="M9 5 L7.6 2.6 M16 5.4 L17.4 3.2" stroke="#2B2118" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Let Pip read it
+        </button>
+        <button class="btn small ghost" id="pretendBtn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4 H20 V14.5 H11 L6.5 19 V14.5 H4 Z" fill="#FFFDF6" stroke="#2B2118" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6.6 l1 2 2.1 .3 -1.5 1.5 .35 2 -1.95 -1 -1.95 1 .35 -2 -1.5 -1.5 2.1 -.3 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          Pretend mode &mdash; tap when you&rsquo;ve said it
+        </button>
+      </div>
+    </div>
+
+    <section class="payoff hidden" id="payoff">
+      <span class="badge sm">story complete</span>
+      <h2>You read Pip home!</h2>
+      <p class="lead">Four magic words, four letter-gems for the bedtime story.</p>
+      <div class="gem-row" id="gemRow"></div>
+      <span class="foot-chip">In the real game, speech AI like <b>Google&rsquo;s Read&nbsp;Along</b> listens to how you read and helps with tricky words.</span>
+      <br>
+      <button class="btn big" id="againBtn">Read it again</button>
+    </section>
+  </main>
+
+  <footer class="foot hidden" id="foot">A front-end demo — the squiggles are your real voice, the listening is make-believe.</footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

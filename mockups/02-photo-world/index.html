@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snap-a-World · Pip &amp; the Storywood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">&larr; all mockups</a>
+
+  <header>
+    <span class="badge">Mockup 02 &middot; webcam photo</span>
+    <h1>Snap&#8209;a&#8209;World</h1>
+    <svg class="squiggle" width="240" height="14" viewBox="0 0 240 14" fill="none" aria-hidden="true">
+      <path d="M3 9 C 20 3, 40 12, 60 8 S 100 3, 120 8 S 160 13, 180 7 S 220 4, 237 9" stroke="#5DA9E9" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">Take a picture of your drawing &mdash; it becomes the story!</p>
+  </header>
+
+  <main>
+
+    <!-- ============ STAGE 1 : CAMERA ============ -->
+    <section class="stage is-active" id="stage-camera">
+      <div class="card vf-card">
+        <div class="vf" id="vf">
+          <span class="bracket tl"></span><span class="bracket tr"></span>
+          <span class="bracket bl"></span><span class="bracket br"></span>
+
+          <video id="cam" autoplay playsinline muted></video>
+          <div class="vf-msg" id="vfMsg">Waking up the camera&hellip;</div>
+          <div class="flash" id="flash"></div>
+
+          <!-- no-camera fallback picker -->
+          <div class="picker" id="picker" hidden>
+            <p class="picker-note" id="pickerNote">Camera is resting. Pick a doodle instead!</p>
+            <div class="picks">
+              <button class="pick" data-world="dragon" type="button">
+                <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" width="640" height="480" aria-hidden="true">
+                  <circle cx="272" cy="44" r="16" fill="#FFC53D" stroke="#E89A2B" stroke-width="4"/>
+                  <path d="M272 16 L272 8 M294 24 L300 18 M294 60 L301 66 M251 62 L245 69 M250 26 L244 20" stroke="#E89A2B" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M8 204 C 50 195 90 208 140 200 S 240 192 312 203" fill="none" stroke="#58A55C" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M96 168 C 60 172 42 152 55 139 C 62 132 71 141 66 149" fill="none" stroke="#3F9C58" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M172 128 C 196 104 218 110 211 133 C 206 149 187 147 176 139 Z" fill="#8FC7EC" stroke="#4E8FB8" stroke-width="5" stroke-linejoin="round"/>
+                  <ellipse cx="150" cy="152" rx="62" ry="46" fill="#5FBF72" stroke="#2E7D43" stroke-width="6"/>
+                  <ellipse cx="156" cy="164" rx="33" ry="24" fill="#B7E3A5"/>
+                  <path d="M104 118 L112 99 L124 115 Z" fill="#FFC53D" stroke="#E89A2B" stroke-width="4" stroke-linejoin="round"/>
+                  <path d="M132 108 L142 88 L153 107 Z" fill="#FFC53D" stroke="#E89A2B" stroke-width="4" stroke-linejoin="round"/>
+                  <path d="M163 108 L174 90 L183 109 Z" fill="#FFC53D" stroke="#E89A2B" stroke-width="4" stroke-linejoin="round"/>
+                  <circle cx="220" cy="120" r="30" fill="#5FBF72" stroke="#2E7D43" stroke-width="6"/>
+                  <path d="M205 95 L201 77 L217 89 Z" fill="#FFC53D" stroke="#E89A2B" stroke-width="4" stroke-linejoin="round"/>
+                  <ellipse cx="240" cy="130" rx="17" ry="12" fill="#5FBF72" stroke="#2E7D43" stroke-width="5"/>
+                  <circle cx="248" cy="127" r="2.6" fill="#2B2118"/>
+                  <circle cx="219" cy="112" r="7.5" fill="#FFFDF6" stroke="#2B2118" stroke-width="3.5"/>
+                  <circle cx="221" cy="114" r="3.4" fill="#2B2118"/>
+                  <path d="M230 141 C 237 147 248 147 253 140" fill="none" stroke="#2B2118" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M118 192 L115 208" stroke="#2E7D43" stroke-width="9" stroke-linecap="round"/>
+                  <path d="M180 192 L183 208" stroke="#2E7D43" stroke-width="9" stroke-linecap="round"/>
+                  <path d="M262 128 C 273 122 279 130 272 137 C 282 137 285 146 275 148" fill="none" stroke="#FF6B57" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+                <span>Dragon</span>
+              </button>
+              <button class="pick" data-world="house" type="button">
+                <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" width="640" height="480" aria-hidden="true">
+                  <circle cx="50" cy="46" r="16" fill="#FFC53D" stroke="#E89A2B" stroke-width="4"/>
+                  <path d="M50 18 L50 10 M72 26 L78 20 M72 64 L79 70 M29 66 L23 72 M28 28 L22 22" stroke="#E89A2B" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M8 208 C 60 198 110 212 160 204 S 260 196 312 206" fill="none" stroke="#58A55C" stroke-width="5" stroke-linecap="round"/>
+                  <rect x="196" y="54" width="22" height="36" fill="#C98A4B" stroke="#8F5E2C" stroke-width="5"/>
+                  <path d="M82 104 L160 42 L238 104 Z" fill="#FF6B57" stroke="#C33B2A" stroke-width="6" stroke-linejoin="round"/>
+                  <rect x="98" y="100" width="124" height="92" fill="#FFF3D6" stroke="#C98A4B" stroke-width="6"/>
+                  <rect x="143" y="140" width="36" height="52" rx="7" fill="#5DA9E9" stroke="#33689C" stroke-width="5"/>
+                  <circle cx="171" cy="168" r="3.6" fill="#FFC53D" stroke="#B8841F" stroke-width="2.5"/>
+                  <circle cx="122" cy="130" r="14" fill="#BFE4F7" stroke="#33689C" stroke-width="5"/>
+                  <path d="M122 116 L122 144 M108 130 L136 130" stroke="#33689C" stroke-width="3.5"/>
+                  <rect x="188" y="118" width="24" height="24" fill="#BFE4F7" stroke="#33689C" stroke-width="5"/>
+                  <path d="M200 118 L200 142 M188 130 L212 130" stroke="#33689C" stroke-width="3.5"/>
+                  <path d="M60 206 L60 190" stroke="#3F9C58" stroke-width="4" stroke-linecap="round"/>
+                  <circle cx="60" cy="184" r="7" fill="#FF8FB3" stroke="#D15B86" stroke-width="3.5"/>
+                  <path d="M262 207 L262 193" stroke="#3F9C58" stroke-width="4" stroke-linecap="round"/>
+                  <circle cx="262" cy="187" r="7" fill="#B565D8" stroke="#7A3FA0" stroke-width="3.5"/>
+                </svg>
+                <span>House</span>
+              </button>
+              <button class="pick" data-world="sun" type="button">
+                <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" width="640" height="480" aria-hidden="true">
+                  <circle cx="160" cy="98" r="46" fill="#FFC53D" stroke="#E89A2B" stroke-width="6"/>
+                  <path d="M160 34 L160 18 M196 48 L206 36 M220 82 L236 78 M222 118 L236 126 M198 148 L206 162 M160 154 L160 170 M122 148 L114 162 M100 118 L86 126 M98 82 L84 76 M124 48 L114 36" stroke="#E89A2B" stroke-width="5" stroke-linecap="round"/>
+                  <circle cx="144" cy="92" r="5" fill="#2B2118"/>
+                  <circle cx="178" cy="90" r="5" fill="#2B2118"/>
+                  <path d="M138 108 C 148 122 172 123 184 106" fill="none" stroke="#2B2118" stroke-width="5" stroke-linecap="round"/>
+                  <circle cx="131" cy="104" r="6" fill="#FF8A5B" opacity=".6"/>
+                  <circle cx="192" cy="102" r="6" fill="#FF8A5B" opacity=".6"/>
+                  <path d="M36 60 C 44 48 60 48 66 58 C 76 50 92 56 90 68 C 88 78 74 79 62 78 C 48 78 30 74 36 60 Z" fill="#FFFDF6" stroke="#9BB7C9" stroke-width="4.5" stroke-linejoin="round"/>
+                  <path d="M238 44 C 246 34 260 34 266 42 C 276 36 290 42 288 52 C 286 62 272 62 262 62 C 250 62 232 56 238 44 Z" fill="#FFFDF6" stroke="#9BB7C9" stroke-width="4.5" stroke-linejoin="round"/>
+                  <path d="M8 206 C 60 178 120 172 168 190 C 216 208 268 196 312 184" fill="none" stroke="#58A55C" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M30 214 C 30 204 40 204 40 214 M52 214 C 52 204 62 204 62 214" fill="none" stroke="#58A55C" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M96 32 C 100 26 106 26 110 32 M116 26 C 120 20 126 20 130 26" fill="none" stroke="#5DA9E9" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+                <span>Sun</span>
+              </button>
+            </div>
+            <button class="textlink" id="backToCam" type="button" hidden>or use the camera &rarr;</button>
+          </div>
+        </div>
+
+        <div class="vf-actions">
+          <button class="shutter" id="shutter" type="button" aria-label="Snap the picture" disabled>
+            <span class="shutter-ring"></span>
+          </button>
+          <div class="vf-side">
+            <p class="vf-hint" id="vfHint">Hold your drawing up to the camera</p>
+            <div class="vf-links">
+              <button class="textlink" id="pickInstead" type="button">No camera? Pick a doodle</button>
+              <button class="watch" id="watchDemo" type="button">
+                <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M4.5 2.8 L13 8 L4.5 13.2 Z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                Watch it work
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STAGE 2 : SCANNING ============ -->
+    <section class="stage" id="stage-scan">
+      <div class="card scan-card">
+        <p class="scan-title">Reading your picture&hellip;</p>
+        <div class="scan-frame">
+          <span class="bracket tl"></span><span class="bracket tr"></span>
+          <span class="bracket bl"></span><span class="bracket br"></span>
+          <img id="scanImg" alt="Your snapped drawing">
+          <div class="scanline" id="scanline"></div>
+          <div class="chips" id="chips"></div>
+        </div>
+        <ul class="steps" id="steps">
+          <li class="step" data-step="0">
+            <span class="step-ic">
+              <span class="spin"></span>
+              <svg class="check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 L8.5 15 L16.5 5.5"/></svg>
+            </span>
+            <span class="step-t">Cutting out your drawing&hellip;</span>
+          </li>
+          <li class="step" data-step="1">
+            <span class="step-ic">
+              <span class="spin"></span>
+              <svg class="check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 L8.5 15 L16.5 5.5"/></svg>
+            </span>
+            <span class="step-t">Reading the colors&hellip;</span>
+          </li>
+          <li class="step" data-step="2">
+            <span class="step-ic">
+              <span class="spin"></span>
+              <svg class="check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 L8.5 15 L16.5 5.5"/></svg>
+            </span>
+            <span class="step-t">Building the world&hellip;</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ STAGE 3 : THE WORLD ============ -->
+    <section class="stage" id="stage-world">
+      <div class="world-head">
+        <h2 id="worldName">Welcome to Dragon Valley!</h2>
+        <svg class="squiggle small" width="220" height="12" viewBox="0 0 240 14" fill="none" aria-hidden="true">
+          <path d="M3 9 C 20 3, 40 12, 60 8 S 100 3, 120 8 S 160 13, 180 7 S 220 4, 237 9" stroke="#4FB06D" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="world" id="world">
+        <img class="l l-photo" id="worldPhoto" alt="Your drawing, turned into a world">
+        <div class="l l-sky"></div>
+
+        <svg class="l l-sun" viewBox="0 0 120 120" aria-hidden="true">
+          <g class="rays">
+            <path d="M60 6 L60 20 M98 22 L88 32 M114 60 L100 60 M98 98 L88 88 M60 114 L60 100 M22 98 L32 88 M6 60 L20 60 M22 22 L32 32" stroke="#E89A2B" stroke-width="6" stroke-linecap="round"/>
+          </g>
+          <circle cx="60" cy="60" r="28" fill="#FFC53D" stroke="#2B2118" stroke-width="4"/>
+          <circle cx="51" cy="56" r="3.4" fill="#2B2118"/>
+          <circle cx="69" cy="56" r="3.4" fill="#2B2118"/>
+          <path d="M50 66 C 55 72 65 72 70 66" fill="none" stroke="#2B2118" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+
+        <svg class="l l-cloud c1" viewBox="0 0 150 80" aria-hidden="true">
+          <path d="M24 62 C 10 62 6 44 20 38 C 24 22 46 16 60 26 C 72 12 98 16 104 32 C 122 30 136 42 132 54 C 128 64 114 66 100 65 Z" fill="#FFFDF6" stroke="#2B2118" stroke-width="4" stroke-linejoin="round"/>
+        </svg>
+        <svg class="l l-cloud c2" viewBox="0 0 150 80" aria-hidden="true">
+          <path d="M24 62 C 10 62 6 44 20 38 C 24 22 46 16 60 26 C 72 12 98 16 104 32 C 122 30 136 42 132 54 C 128 64 114 66 100 65 Z" fill="#FFFDF6" stroke="#2B2118" stroke-width="4" stroke-linejoin="round"/>
+        </svg>
+
+        <svg class="l l-hills" viewBox="0 0 960 220" preserveAspectRatio="none" aria-hidden="true">
+          <path class="hill-back" d="M0 118 C 160 44 330 150 490 92 C 650 34 800 142 960 84 L960 220 L0 220 Z"/>
+          <path class="hill-front" d="M0 162 C 190 104 370 192 560 142 C 720 100 850 172 960 140 L960 220 L0 220 Z"/>
+        </svg>
+
+        <div class="l l-pip" id="pip">
+          <svg viewBox="0 0 200 225" aria-hidden="true">
+            <ellipse cx="100" cy="212" rx="54" ry="9" fill="#2B2118" opacity=".14"/>
+            <path d="M146 158 C 172 156 180 132 166 124" fill="none" stroke="#2B2118" stroke-width="6" stroke-linecap="round"/>
+            <path d="M50 132 C 34 138 28 152 36 158" fill="none" stroke="#2B2118" stroke-width="7" stroke-linecap="round"/>
+            <path d="M152 130 C 168 136 174 150 166 156" fill="none" stroke="#2B2118" stroke-width="7" stroke-linecap="round"/>
+            <path d="M100 42 C 148 44 160 94 156 140 C 152 182 130 202 100 202 C 70 202 48 182 44 140 C 40 94 52 44 100 42 Z" fill="#4FB06D" stroke="#2B2118" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M100 120 C 126 120 139 142 135 164 C 131 186 117 198 100 198 C 83 198 69 186 65 164 C 61 142 74 120 100 120 Z" fill="#CDE9B4" stroke="#2B2118" stroke-width="4"/>
+            <path d="M70 46 C 63 28 68 16 76 21 C 82 25 79 38 82 46 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M128 46 C 135 28 131 14 122 20 C 116 24 121 38 118 46 Z" fill="#FFC53D" stroke="#2B2118" stroke-width="4" stroke-linejoin="round"/>
+            <circle cx="80" cy="88" r="16" fill="#FFFDF6" stroke="#2B2118" stroke-width="4.5"/>
+            <circle cx="84" cy="91" r="6.5" fill="#2B2118"/>
+            <circle cx="86.5" cy="88" r="2" fill="#FFFDF6"/>
+            <circle cx="128" cy="84" r="10" fill="#FFFDF6" stroke="#2B2118" stroke-width="4"/>
+            <circle cx="130" cy="86" r="4" fill="#2B2118"/>
+            <circle cx="60" cy="114" r="6.5" fill="#FF6B57" opacity=".55"/>
+            <circle cx="140" cy="110" r="5.5" fill="#FF6B57" opacity=".55"/>
+            <path d="M78 122 C 90 134 116 134 128 118" fill="none" stroke="#2B2118" stroke-width="5" stroke-linecap="round"/>
+            <rect x="98" y="126" width="10" height="12" rx="2.5" fill="#FFFDF6" stroke="#2B2118" stroke-width="3"/>
+            <ellipse cx="76" cy="202" rx="16" ry="10" fill="#3E9357" stroke="#2B2118" stroke-width="4"/>
+            <ellipse cx="124" cy="202" rx="16" ry="10" fill="#3E9357" stroke="#2B2118" stroke-width="4"/>
+          </svg>
+        </div>
+
+        <div class="l gem-pop" id="gemPop" aria-hidden="true">
+          <span class="spark s1"><svg viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z"/></svg></span>
+          <span class="spark s2"><svg viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z"/></svg></span>
+          <span class="spark s3"><svg viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z"/></svg></span>
+          <svg class="gem" viewBox="0 0 80 86">
+            <path id="gemBody" d="M40 4 L70 28 L40 80 L10 28 Z" fill="#4FB06D" stroke="#2B2118" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M10 28 L70 28 M40 4 L26 28 M40 4 L54 28 M40 80 L26 28 M40 80 L54 28" fill="none" stroke="#2B2118" stroke-width="2.5" opacity=".45"/>
+            <text id="gemLetter" x="40" y="55" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="28" fill="#FFFDF6">D</text>
+          </svg>
+          <span class="gem-tag" id="gemTag">Letter gem &mdash; &ldquo;D&rdquo;</span>
+        </div>
+      </div>
+
+      <div class="caption-wrap">
+        <p class="caption" id="caption">Pip stomped into Dragon Valley.</p>
+        <div class="world-actions">
+          <button class="btn btn-coral" id="again" type="button">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 9 a8 8 0 1 1 -1 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M3.5 4.5 L4 9.5 L9 9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Snap another world
+          </button>
+          <span class="note-chip">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3 L19 7.5 V16.5 L12 21 L5 16.5 V7.5 Z" fill="none" stroke="#8a7457" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 10.5 L12 16 M12 7.6 L12 8" stroke="#8a7457" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <span>In the real game, a world model like <a class="chip-link" href="https://deepmind.google/research/publications/60474" target="_blank" rel="noopener">Google&nbsp;DeepMind&rsquo;s&nbsp;Genie</a> (deepmind.google/research/publications/60474) turns your photo into a playable level.</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>Pip &amp; the Storywood &middot; KnightHacks 2026 &middot; Snap-a-World mockup</footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
