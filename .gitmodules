@@ -1,0 +1,3 @@
+[submodule "spatial-objects"]
+	path = spatial-objects
+	url = https://github.com/Anthony-Sin/spatial-objects.git

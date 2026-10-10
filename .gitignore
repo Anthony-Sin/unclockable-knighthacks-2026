@@ -1,7 +1,14 @@
 node_modules/
 .env
+.env.*
+.env*.local
+!.env.example
+*.pem
+*.key
+
 __pycache__/
 .DS_Store
 *.log
 site-build.tar.gz
 live-qr.png
+
