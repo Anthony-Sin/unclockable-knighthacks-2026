@@ -11,4 +11,5 @@ __pycache__/
 *.log
 site-build.tar.gz
 live-qr.png
+*.lock
 

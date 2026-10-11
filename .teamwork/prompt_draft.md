@@ -1,57 +1,69 @@
-# Teamwork Project Prompt — Draft
+# Teamwork Project Prompt — QE Pass on SCRAP! (spatial-objects)
 
-> Status: Step 2 — confirming scope decisions with user
-> Goal: Craft prompt → get user approval → delegate to agent team
-> Requested team: multiple parallel subagents (user explicitly asked)
+> Status: APPROVED by user → delegating to 3-agent QE team
+> Requested team: 3 subagents, iterative fix loop until clean
 
-Pivot the `spatial-objects` hand-tracking sim into a **cartoon boxing game**:
-a cute Nintendo-style NPC boxer in a ring, automatic footwork/pathfinding for
-both fighters, and real-hand punches/blocks/dodges via webcam (hand size =
-depth: bigger hand = closer to screen = punch).
+QE pass on the live SCRAP! boxing game + spatial-objects pages: build
+reusable error-detection tooling, hunt bugs, fix them, and iterate until
+the test suite and headless page runs come back clean. Measure FPS.
 
 Working directory: /home/ANT/unclockable-knighthacks-2026/spatial-objects
-Approach policy: development (existing libs ok, copy conventions)
-Save point: `backstop-pre-boxing` tag in both repos — break things freely.
+Live server under test: http://127.0.0.1:34149/ (serves the repo dir;
+file edits appear on reload — do NOT kill or restart this server)
+Approach policy: development (any approach that works; no new npm deps —
+project rule from .teamwork/CONTRACT.md)
 
 ## Requirements
 
-### R1. Boxing game page
-New `boxing.html` in spatial-objects, same conventions as job.html (self-contained
-module page, vendored three.js via importmap, hands.js + face.js + glove.js,
-mouse fallback, `window.__forceHands` synthetic-input test hook). Existing
-pages must keep working.
+### R1. Reusable QE tooling
+Headless page-QE runner (puppeteer-core + /usr/bin/chromium) that captures
+pageerrors, console errors/warnings, failed requests, and samples FPS —
+plus a resource governor that checks CPU load / free RAM / GPU memory
+before and during headless runs, and a static check over the HTML files'
+inline modules. Wired into package.json scripts.
 
-### R2. Punch-Out-style fight
-First-person-ish view: player's tracked hands render as boxing gloves on
-screen; thrusting a hand toward the camera (landmark span grows) = punch.
-Block = gloves up. Head sway (face.js nose.x) = dodge/lean. NPC boxer
-telegraphs attacks, can be hit, blocks, and gets KO'd. HP/stamina, scoring,
-round flow.
+### R2. Resource governance (hard user requirement)
+Every headless browser launch must be gated on system resources:
+1-min loadavg < 10 AND MemAvailable > 2500 MB; nvidia-smi GPU memory used
+< 6 GB when Vulkan flags are used. Wait+retry when over; never more than
+one Chromium instance per worker at a time; `nice` heavy processes.
 
-### R3. Auto pathfinding footwork
-Both fighters move around the ring automatically (ring bounds, NPC
-pursuit/circling/retreat, player drifts with sway). Player never manually
-walks — pathfinding moves both.
+### R3. Bug hunt + fix
+Exercise the app (npm test suite, e2e page test, headless runs of every
+page on the live server) and audit code. Fix every bug found inside your
+file boundaries; report out-of-boundary bugs for routing. Iterate until
+no more errors are found. Do NOT git commit/reset/checkout or touch .env.
 
-### R4. Cohesive cute graphics
-Everything matches the house style: warm paper bg, ink outlines, chunky
-rounded forms, saturated accents — Nintendo/Punch-Out cute. Toon-shaded
-boxer, cartoon ring, glove overlay recolored as boxing gloves.
-
-### R5. Tests
-Pure-logic modules node-testable; puppeteer smoke test drives the page via
-`__forceHands` (pattern in test/jobverify.mjs, chromium at /usr/bin/chromium,
-server on :8890).
+### R4. Measurement
+FPS numbers for boxing.html under the test-video input (median frame
+time, avg fps, worst 1s fps), before/after fixes.
 
 ## Acceptance Criteria
 
-### Functional
-- [ ] `node test/boxing-*.mjs` unit tests pass for fight logic, ring pathfinding, fist classification
-- [ ] Puppeteer e2e: page loads with zero console errors, NPC visible in ring, synthetic punch event registers a hit on NPC
-- [ ] Synthetic NPC attack → guard blocks or hit lands on player
-- [ ] Both fighters auto-move; NPC closes distance over time; sway shifts player laterally
-- [ ] `npm test` (existing suite) still passes — no regressions
-- [ ] Visual cohesion check: single palette, no mixed-art-style assets
+### Tooling
+- [ ] `npm run qe` runs the headless runner against a URL and exits
+      nonzero on pageerrors/console-errors; writes JSON to .teamwork/qe/
+- [ ] Resource gate demonstrably delays a launch when load/mem/GPU over
+      threshold (unit-testable or logged evidence)
+- [ ] `npm run qe:static` checks all 4 top-level HTML files
+
+### Quality
+- [ ] `npm test` (7 boxing scripts) + `npm run test:e2e` pass
+- [ ] qe-runner reports zero pageerrors/console-errors on index, lineup,
+      gallery, boxing pages on the live server
+- [ ] Every bug in the reports is either fixed-in-boundary with a passing
+      re-verification, or filed with file:line evidence for the owner
+- [ ] boxing FPS reported before/after; no regression >5% from fixes
+
+### Hygiene
+- [ ] No git mutations, no .env changes, no edits outside file boundaries
+
+## Verification Resources
+- Existing suite: `npm test`, `npm run test:e2e`, `node test/fps-probe.mjs`
+- Chromium: /usr/bin/chromium; flags used by existing probes
+  (--use-fake-device-for-media-stream, --use-fake-ui-for-media-stream,
+  --use-angle=vulkan --enable-features=Vulkan --ignore-gpu-blocklist)
+- Test video input: boxing.html?vid=test-input.mp4
 
 ---
-*Next: confirm 2 scope questions with user → write briefs → spawn team*
+*Delegation: 3 background subagents — w1 qe-tools, w2 qe-boxing, w3 qe-pages.*

@@ -1,0 +1,65 @@
+{
+ "tool": "qe-runner",
+ "name": "w1-404-test",
+ "url": "http://127.0.0.1:34149/does-not-exist.html",
+ "gpu": false,
+ "startedAt": "2026-10-11T02:20:31.178Z",
+ "gate": {
+  "load1": 3.98,
+  "load5": 4.43,
+  "memAvailMB": 8211,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 6,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 15
+ },
+ "fps": {
+  "frames": 181,
+  "avgFps": 60,
+  "p50Ms": 16.7,
+  "p95Ms": 16.8,
+  "worstMs": 16.8,
+  "worst1sFps": 60
+ },
+ "ramMB": {
+  "peak": 1131,
+  "samples": [
+   1131,
+   1131,
+   1127,
+   1129,
+   1129,
+   1129
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [
+   {
+    "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "benign": false
+   },
+   {
+    "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "benign": false
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": [
+   {
+    "url": "http://127.0.0.1:34149/does-not-exist.html",
+    "status": 404
+   },
+   {
+    "url": "http://127.0.0.1:34149/favicon.ico",
+    "status": 404
+   }
+  ]
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 1,
+ "durationMs": 6261
+}

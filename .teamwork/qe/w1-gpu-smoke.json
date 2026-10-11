@@ -1,0 +1,49 @@
+{
+ "tool": "qe-runner",
+ "name": "w1-gpu-smoke",
+ "url": "http://127.0.0.1:34149/gallery.html",
+ "gpu": true,
+ "startedAt": "2026-10-11T02:20:47.077Z",
+ "gate": {
+  "load1": 3.57,
+  "load5": 4.31,
+  "memAvailMB": 8131,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 6,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 17
+ },
+ "fps": {
+  "frames": 301,
+  "avgFps": 60.1,
+  "p50Ms": 16.7,
+  "p95Ms": 16.7,
+  "worstMs": 16.7,
+  "worst1sFps": 60
+ },
+ "ramMB": {
+  "peak": 1190,
+  "samples": [
+   1182,
+   1187,
+   1187,
+   1189,
+   1190,
+   1190,
+   1190,
+   1190
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 8279
+}

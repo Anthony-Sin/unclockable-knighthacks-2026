@@ -1,0 +1,46 @@
+{
+ "tool": "qe-runner",
+ "name": "w1-abort-demo",
+ "url": "http://127.0.0.1:34149/gallery.html",
+ "gpu": false,
+ "startedAt": "2026-10-11T02:20:17.546Z",
+ "gate": {
+  "load1": 1,
+  "load5": 1,
+  "memAvailMB": 8192,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 6,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 14
+ },
+ "fps": {
+  "error": "TargetCloseError: Protocol error (Runtime.callFunctionOn): Target closed"
+ },
+ "ramMB": {
+  "peak": 1401,
+  "samples": [
+   1312,
+   1356,
+   1401,
+   1394,
+   1395,
+   1398,
+   1397,
+   1397,
+   1398,
+   0
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": "resources",
+ "loadError": null,
+ "exitCode": 2,
+ "durationMs": 10183
+}
