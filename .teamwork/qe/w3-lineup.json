@@ -3,7 +3,7 @@
  "name": "w3-lineup",
  "url": "http://127.0.0.1:34149/lineup.html",
  "gpu": false,
- "startedAt": "2026-10-11T02:25:04.889Z",
+ "startedAt": "2026-10-11T02:27:17.619Z",
  "gate": null,
  "fps": null,
  "ramMB": {
@@ -20,6 +20,6 @@
  "aborted": null,
  "loadError": null,
  "exitCode": 1,
- "fatal": "Error: waitForResources timed out after 120000ms — load1 12.42 >= 10",
- "durationMs": 121378
+ "fatal": "Error: waitForResources timed out after 120000ms — load1 15.43 >= 10",
+ "durationMs": 120620
 }
