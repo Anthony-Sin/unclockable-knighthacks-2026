@@ -4,11 +4,15 @@
 
 Deployed live on a custom domain registered via GoDaddy Registry, **SCRAP!** turns everyday webcams into serious gaming hardware without requiring specialized peripherals.
 
+![SCRAP! Title Arena](assets/images/title-screen.jpeg)
+
 ---
 
 ## Inspiration
 
 Every boxing game ever made asks you to memorize which button throws a hook. We wanted to know: what if you just *threw the punch*? **SCRAP!** is our answer — an immersive first-person boxing experience running entirely in your browser where your webcam acts as the controller, your head movement dictates spatial dodges, and your fists deliver real strikes.
+
+---
 
 ## What it does
 
@@ -21,6 +25,18 @@ Step straight into a stylized ring and fight using physical perception and real-
 - **Unlockable career progression** — Climb the ladder against unique procedural archetypes, from sharp counter-snipers to towering heavyweight brawlers.
 - **Accessible controls** — Seamless fallback support for mouse and keyboard controls alongside a sparring tutorial mode.
 
+| In-Ring Combat & Telegraph Dodging | Rival Exhibition Lineup |
+| :---: | :---: |
+| ![In-Ring Combat Action](assets/images/in-game-bout.jpeg) | ![Rival Lineup Selection](assets/images/lineup-selection.png) |
+
+| Beat the Count QTE Minigame | "The Tape" Post-Bout Stats & AI Analysis |
+| :---: | :---: |
+| ![Beat the Count Minigame](assets/images/beat-the-count-minigame.jpeg) | ![The Tape Stats Slip](assets/images/post-bout-tape.jpeg) |
+
+![Victory Celebration](assets/images/victory-screen.png)
+
+---
+
 ## How we built it
 
 Everything is hand-rolled web tech engineered for lightweight, zero-dependency performance:
@@ -32,6 +48,8 @@ Everything is hand-rolled web tech engineered for lightweight, zero-dependency p
 - **Deployment & Production:** The platform is hosted and served live on a dedicated custom domain using GoDaddy Registry.
 - **Procedural Sound & Headless CI:** Procedural WebAudio handles glove impacts, bells, and rope creaks, while Puppeteer automated tests run headless bouts to verify tracking accuracy.
 
+---
+
 ## Challenges we ran into
 
 - **Client-Side Open-Source Vision Inference:** Running Hugging Face vision models directly inside the browser at high frame rates required aggressive optimization, frame skipping, and quantization to avoid frame drops on integrated GPUs.
@@ -39,9 +57,13 @@ Everything is hand-rolled web tech engineered for lightweight, zero-dependency p
 - **First-person perspective tuning:** Keeping agile opponents framed inside a front-facing viewing cone while they circle and pivot required an intelligent lane-pull steering layer inside the ring simulation.
 - **Synchronizing real-time voice and gameplay:** Streaming ElevenLabs voice commentary alongside the Gemini API's fight analysis without interrupting active Three.js rendering loops.
 
+---
+
 ## What we learned
 
 Game feel relies heavily on micro-feedback: hit-stop freezes, rope jolts, telegraph flashes, and dynamic ringside banter. We also discovered that pairing open-source AI with deterministic simulation makes vision-driven physical gameplay fully testable in automated pipelines.
+
+---
 
 ## What's next
 
