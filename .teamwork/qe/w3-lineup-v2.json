@@ -1,0 +1,64 @@
+{
+ "tool": "qe-runner",
+ "name": "w3-lineup-v2",
+ "url": "http://127.0.0.1:34149/lineup.html",
+ "gpu": false,
+ "startedAt": "2026-10-11T02:44:40.159Z",
+ "gate": {
+  "load1": 9.69,
+  "load5": 10.63,
+  "memAvailMB": 6428,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 6,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 12504
+ },
+ "fps": {
+  "frames": 63,
+  "avgFps": 3.1,
+  "p50Ms": 150,
+  "p95Ms": 783.3,
+  "worstMs": 850,
+  "worst1sFps": 2.1
+ },
+ "ramMB": {
+  "peak": 1260,
+  "samples": [
+   1122,
+   1181,
+   1241,
+   1252,
+   1255,
+   1257,
+   1259,
+   1260,
+   1260,
+   1257,
+   1257,
+   1259,
+   1257,
+   1257,
+   1257,
+   1257,
+   1257,
+   1257,
+   1258,
+   1258,
+   1259,
+   1259,
+   1259
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 36726
+}

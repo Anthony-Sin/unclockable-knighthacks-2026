@@ -1,0 +1,59 @@
+{
+ "tool": "qe-runner",
+ "name": "final-lineup",
+ "url": "http://127.0.0.1:34149/lineup.html",
+ "gpu": false,
+ "startedAt": "2026-10-11T02:51:02.396Z",
+ "gate": {
+  "load1": 7.32,
+  "load5": 8.28,
+  "memAvailMB": 7384,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 6,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 22
+ },
+ "fps": {
+  "frames": 179,
+  "avgFps": 11.9,
+  "p50Ms": 100,
+  "p95Ms": 116.7,
+  "worstMs": 133.3,
+  "worst1sFps": 9
+ },
+ "ramMB": {
+  "peak": 1265,
+  "samples": [
+   1248,
+   1259,
+   1262,
+   1262,
+   1263,
+   1264,
+   1264,
+   1265,
+   1265,
+   1263,
+   1261,
+   1261,
+   1262,
+   1262,
+   1255,
+   1256,
+   1256,
+   1256
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 18655
+}

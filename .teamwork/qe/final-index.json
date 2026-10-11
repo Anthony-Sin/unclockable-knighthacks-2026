@@ -1,0 +1,61 @@
+{
+ "tool": "qe-runner",
+ "name": "final-index",
+ "url": "http://127.0.0.1:34149/index.html",
+ "gpu": false,
+ "startedAt": "2026-10-11T02:50:41.491Z",
+ "gate": {
+  "load1": 4.8,
+  "load5": 7.93,
+  "memAvailMB": 7483,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 6,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 17
+ },
+ "fps": {
+  "frames": 89,
+  "avgFps": 5.9,
+  "p50Ms": 150,
+  "p95Ms": 233.3,
+  "worstMs": 833.3,
+  "worst1sFps": 4.2
+ },
+ "ramMB": {
+  "peak": 1385,
+  "samples": [
+   1184,
+   1300,
+   1361,
+   1379,
+   1379,
+   1382,
+   1383,
+   1385,
+   1384,
+   1382,
+   1383,
+   1384,
+   1379,
+   1384,
+   1385,
+   1385,
+   1385,
+   1385,
+   1385,
+   1385
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 20773
+}

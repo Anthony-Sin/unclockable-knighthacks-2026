@@ -1,0 +1,59 @@
+{
+ "tool": "qe-runner",
+ "name": "w3-gallery-v2",
+ "url": "http://127.0.0.1:34149/gallery.html",
+ "gpu": false,
+ "startedAt": "2026-10-11T02:45:17.046Z",
+ "gate": {
+  "load1": 9.91,
+  "load5": 10.71,
+  "memAvailMB": 7501,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 6,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 20634
+ },
+ "fps": {
+  "frames": 106,
+  "avgFps": 7.1,
+  "p50Ms": 150,
+  "p95Ms": 150,
+  "worstMs": 166.7,
+  "worst1sFps": 6.9
+ },
+ "ramMB": {
+  "peak": 1400,
+  "samples": [
+   1303,
+   1373,
+   1388,
+   1394,
+   1396,
+   1399,
+   1398,
+   1398,
+   1400,
+   1399,
+   1397,
+   1382,
+   1382,
+   1382,
+   1374,
+   1374,
+   1374,
+   1374
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 39174
+}
