@@ -3,46 +3,47 @@
  "name": "127.0.0.1_8791_lineup.html",
  "url": "http://127.0.0.1:8791/lineup.html",
  "gpu": false,
- "startedAt": "2026-10-11T05:35:50.634Z",
+ "gpuRequested": false,
+ "startedAt": "2026-10-11T06:55:38.402Z",
  "gate": {
-  "load1": 9.71,
-  "load5": 8.43,
-  "memAvailMB": 10033,
-  "gpuUtilPct": 0,
+  "load1": 9.53,
+  "load5": 9.02,
+  "memAvailMB": 5178,
+  "gpuUtilPct": null,
   "gpuMemUsedMB": 2,
   "ok": true,
   "reasons": [],
-  "waitedMs": 4006
+  "waitedMs": 14200
  },
  "fps": {
-  "frames": 119,
-  "avgFps": 7.9,
+  "frames": 129,
+  "avgFps": 8.5,
   "p50Ms": 133.3,
-  "p95Ms": 133.3,
+  "p95Ms": 150,
   "worstMs": 150,
-  "worst1sFps": 7.5
+  "worst1sFps": 7.4
  },
  "ramMB": {
-  "peak": 1441,
+  "peak": 1391,
   "samples": [
-   1395,
-   1438,
-   1439,
-   1439,
-   1440,
-   1440,
-   1441,
-   1441,
-   1441,
-   1437,
-   1437,
-   1437,
-   1437,
-   1437,
-   1437,
-   1438,
-   1432,
-   1432
+   1344,
+   1387,
+   1388,
+   1391,
+   1391,
+   1391,
+   1391,
+   1391,
+   1391,
+   1388,
+   1388,
+   1388,
+   1388,
+   1388,
+   1388,
+   1388,
+   1388,
+   1388
   ]
  },
  "events": {
@@ -55,5 +56,5 @@
  "aborted": null,
  "loadError": null,
  "exitCode": 0,
- "durationMs": 22487
+ "durationMs": 32854
 }

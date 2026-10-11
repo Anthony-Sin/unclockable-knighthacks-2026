@@ -1,0 +1,247 @@
+{
+ "tool": "b4-churn",
+ "startedAt": "2026-10-11T06:01:47.012Z",
+ "cycles": [
+  {
+   "cycle": 0,
+   "resolved": true,
+   "delegate": "gpu-worker",
+   "ms": 17375,
+   "err": null,
+   "workersDuringBoot": 0,
+   "timedOut": false,
+   "workersAfter": 0,
+   "heapMB": 13.38,
+   "rssMB": 1684,
+   "cycleVendorReqs": 4,
+   "cycleMs": 18886
+  },
+  {
+   "cycle": 1,
+   "resolved": true,
+   "delegate": "gpu-worker",
+   "ms": 17104,
+   "err": null,
+   "workersDuringBoot": 0,
+   "timedOut": false,
+   "workersAfter": 0,
+   "heapMB": 10.77,
+   "rssMB": 1685,
+   "cycleVendorReqs": 4,
+   "cycleMs": 18692
+  },
+  {
+   "cycle": 2,
+   "resolved": true,
+   "delegate": "gpu-worker",
+   "ms": 19895,
+   "err": null,
+   "workersDuringBoot": 0,
+   "timedOut": false,
+   "workersAfter": 0,
+   "heapMB": 9.85,
+   "rssMB": 1651,
+   "cycleVendorReqs": 4,
+   "cycleMs": 21450
+  },
+  {
+   "cycle": 3,
+   "resolved": true,
+   "delegate": "gpu-worker",
+   "ms": 23691,
+   "err": null,
+   "workersDuringBoot": 0,
+   "timedOut": false,
+   "workersAfter": 0,
+   "heapMB": 10.6,
+   "rssMB": 1655,
+   "cycleVendorReqs": 4,
+   "cycleMs": 25252
+  },
+  {
+   "cycle": 4,
+   "resolved": true,
+   "delegate": "gpu-worker",
+   "ms": 18322,
+   "err": null,
+   "workersDuringBoot": 0,
+   "timedOut": false,
+   "workersAfter": 0,
+   "heapMB": 11.37,
+   "rssMB": 1661,
+   "cycleVendorReqs": 4,
+   "cycleMs": 19848
+  },
+  {
+   "cycle": 5,
+   "resolved": false,
+   "delegate": null,
+   "ms": 0,
+   "err": null,
+   "workersDuringBoot": 1,
+   "timedOut": true,
+   "workersAfter": 0,
+   "heapMB": 11.31,
+   "rssMB": 1757,
+   "cycleVendorReqs": 4,
+   "cycleMs": 26650
+  },
+  {
+   "cycle": 6,
+   "resolved": false,
+   "delegate": null,
+   "ms": 0,
+   "err": null,
+   "workersDuringBoot": 1,
+   "timedOut": true,
+   "workersAfter": 1,
+   "heapMB": 10.85,
+   "rssMB": 1784,
+   "cycleVendorReqs": 4,
+   "cycleMs": 26612
+  },
+  {
+   "cycle": 7,
+   "resolved": false,
+   "delegate": null,
+   "ms": 0,
+   "err": null,
+   "workersDuringBoot": 1,
+   "timedOut": true,
+   "workersAfter": 1,
+   "heapMB": 12.46,
+   "rssMB": 1788,
+   "cycleVendorReqs": 4,
+   "cycleMs": 26575
+  },
+  {
+   "cycle": 8,
+   "resolved": true,
+   "delegate": "gpu-worker",
+   "ms": 20465,
+   "err": null,
+   "workersDuringBoot": 0,
+   "timedOut": false,
+   "workersAfter": 0,
+   "heapMB": 11.5,
+   "rssMB": 1688,
+   "cycleVendorReqs": 4,
+   "cycleMs": 22047
+  },
+  {
+   "cycle": 9,
+   "resolved": true,
+   "delegate": "gpu-worker",
+   "ms": 22514,
+   "err": null,
+   "workersDuringBoot": 0,
+   "timedOut": false,
+   "workersAfter": 0,
+   "heapMB": 10.73,
+   "rssMB": 1685,
+   "cycleVendorReqs": 4,
+   "cycleMs": 24099
+  }
+ ],
+ "doubleFetch": {
+  "hungRequests": [
+   "mediapipe/vision_bundle.mjs",
+   "mediapipe/vision_bundle.mjs"
+  ],
+  "hungCount": 2,
+  "perHungUrl": {
+   "mediapipe/vision_bundle.mjs": 2
+  },
+  "dupeSameUrl": [
+   2
+  ],
+  "blockMs": 73952,
+  "afterRelease": {
+   "delegate": "gpu",
+   "ms": 71387,
+   "stopped": true
+  },
+  "endedDuringBlock": [
+   {
+    "u": "mediapipe/vision_bundle.mjs",
+    "ev": "end",
+    "t": 1791699132627
+   },
+   {
+    "u": "mediapipe/vision_bundle.mjs",
+    "ev": "end",
+    "t": 1791699132675
+   },
+   {
+    "u": "mediapipe/wasm/vision_wasm_internal.js",
+    "ev": "end",
+    "t": 1791699132688
+   },
+   {
+    "u": "mediapipe/wasm/vision_wasm_internal.js",
+    "ev": "end",
+    "t": 1791699132690
+   },
+   {
+    "u": "mediapipe/wasm/vision_wasm_internal.wasm",
+    "ev": "end",
+    "t": 1791699132826
+   },
+   {
+    "u": "mediapipe/wasm/vision_wasm_internal.wasm",
+    "ev": "end",
+    "t": 1791699132866
+   },
+   {
+    "u": "mediapipe/hand_landmarker.task",
+    "ev": "end",
+    "t": 1791699132880
+   },
+   {
+    "u": "mediapipe/hand_landmarker.task",
+    "ev": "end",
+    "t": 1791699132919
+   }
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "booted": true,
+ "bootMs": 26638,
+ "fetchLedger": {
+  "total": 48,
+  "perUrl": {
+   "mediapipe/vision_bundle.mjs": 12,
+   "mediapipe/wasm/vision_wasm_internal.js": 12,
+   "mediapipe/wasm/vision_wasm_internal.wasm": 12,
+   "mediapipe/face_landmarker.task": 1,
+   "mediapipe/hand_landmarker.task": 11
+  },
+  "stillOpen": 0,
+  "sameUrlOverlaps": [
+   {
+    "u": "mediapipe/vision_bundle.mjs",
+    "gapMs": 1
+   },
+   {
+    "u": "mediapipe/wasm/vision_wasm_internal.js",
+    "gapMs": 3
+   },
+   {
+    "u": "mediapipe/wasm/vision_wasm_internal.wasm",
+    "gapMs": 4
+   }
+  ]
+ }
+}

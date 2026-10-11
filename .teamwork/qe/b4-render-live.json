@@ -1,0 +1,122 @@
+{
+ "tool": "b4-render-live",
+ "url": "http://127.0.0.1:8791/boxing.html?notrack=1",
+ "startedAt": "2026-10-11T06:12:10.381Z",
+ "checks": [
+  {
+   "name": "reset×30: geometries flat",
+   "ok": false,
+   "info": "80→148"
+  },
+  {
+   "name": "reset×30: textures flat",
+   "ok": true,
+   "info": "2→2"
+  },
+  {
+   "name": "reset×30: programs flat",
+   "ok": true,
+   "info": "7→7"
+  },
+  {
+   "name": "win/lose×10: phases alternated",
+   "ok": true,
+   "info": "[\"win\",\"lose\",\"win\",\"lose\",\"win\",\"lose\",\"win\",\"lose\",\"win\",\"lose\"]"
+  },
+  {
+   "name": "cycles×10: geometries flat",
+   "ok": false,
+   "info": "80→149"
+  },
+  {
+   "name": "cycles×10: textures flat",
+   "ok": true,
+   "info": "2→2"
+  },
+  {
+   "name": "cycles×10: programs flat",
+   "ok": false,
+   "info": "7→8"
+  },
+  {
+   "name": "mitt mid-path throw: propagates",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "mitt mid-path throw: alpha/transform/dash/comp restored",
+   "ok": true,
+   "info": "{\"threw\":true,\"alpha\":true,\"transform\":true,\"dash\":true,\"comp\":true,\"ink\":8218,\"recovered\":true}"
+  },
+  {
+   "name": "mitt next draw unaffected (pixels ink)",
+   "ok": true,
+   "info": "ink=8218"
+  },
+  {
+   "name": "mid-frame resize: mitt draws proportional + ctx clean",
+   "ok": true,
+   "info": "{\"ink\":5240,\"finite\":true,\"alpha\":true}"
+  },
+  {
+   "name": "entrance: garbage + 500 flips all map to enum",
+   "ok": true,
+   "info": "bad=0"
+  },
+  {
+   "name": "fx live hammer: pool bounded + no NaN + drains + disposes",
+   "ok": true,
+   "info": "{\"kids\":96,\"bad\":0,\"vis\":0,\"afterDispose\":0}"
+  },
+  {
+   "name": "scene.dispose: instanced dispose fired ×2",
+   "ok": true,
+   "info": "{\"g0\":149,\"g1\":159,\"g2\":149,\"instDisposed\":2}"
+  },
+  {
+   "name": "scene.dispose: geometry counter fully released + idempotent",
+   "ok": true,
+   "info": "g0=149 g1=159 g2=149"
+  },
+  {
+   "name": "zero pageerrors during probe",
+   "ok": true,
+   "info": "[]"
+  }
+ ],
+ "counters": {
+  "baseline": {
+   "geo": 80,
+   "tex": 2,
+   "prog": 7,
+   "kids": 107
+  },
+  "afterReset30": {
+   "geo": 148,
+   "tex": 2,
+   "prog": 7,
+   "kids": 107
+  },
+  "afterCycles10": {
+   "geo": 149,
+   "tex": 2,
+   "prog": 8,
+   "kids": 107
+  }
+ },
+ "fatal": null,
+ "pageerrors": [],
+ "gate": {
+  "load1": 9.94,
+  "load5": 13.55,
+  "memAvailMB": 9034,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 32854
+ },
+ "finishedAt": "2026-10-11T06:18:17.097Z",
+ "pass": 13,
+ "fail": 3
+}

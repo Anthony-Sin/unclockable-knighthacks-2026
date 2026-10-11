@@ -1,0 +1,239 @@
+{
+ "tool": "b4-render-node",
+ "startedAt": "2026-10-11T06:08:15.807Z",
+ "probes": [
+  "mitt stub-ctx (throw-at-every-op, NaN/overflow landmarks+pos, no-roundRect, degenerate pos)",
+  "fx pool hammer (burst n>pool, Infinity/NaN args, dt spikes, stains, dispose)",
+  "scene dispose (instanced dispose fired, geometry released, idempotent, malformed update)",
+  "entranceSign (invalid kinds, 1000-flip stability)"
+ ],
+ "checks": [
+  {
+   "name": "draw plain: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw plain: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw lm: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw lm: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw lm-open: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw lm-open: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw arm: balanced",
+   "ok": true,
+   "info": "saves=5 restores=5 threw=null"
+  },
+  {
+   "name": "draw arm: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw squash: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw squash: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw degen: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw degen: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw lmNaN: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw lmNaN: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw lmHuge: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw lmHuge: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw posHuge: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw posHuge: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw posHugeArm: balanced",
+   "ok": true,
+   "info": "saves=5 restores=5 threw=null"
+  },
+  {
+   "name": "draw posHugeArm: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw rescaleOf: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw rescaleOf: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw capNaN: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw capNaN: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw sizeNeg: balanced",
+   "ok": true,
+   "info": "saves=3 restores=3 threw=null"
+  },
+  {
+   "name": "draw sizeNeg: no NaN geometry",
+   "ok": true,
+   "info": "nanGeo=0"
+  },
+  {
+   "name": "draw lm: throw-at-every-op keeps balance (124 ops)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "name": "draw arm: throw-at-every-op keeps balance (134 ops)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "name": "lmHuge: mitt still draws (fallback cloud)",
+   "ok": true,
+   "info": "calls=125"
+  },
+  {
+   "name": "no-roundRect ctx: draws without throw",
+   "ok": true,
+   "info": "threw=null calls=125"
+  },
+  {
+   "name": "mid-path throw: propagates + balanced",
+   "ok": true,
+   "info": "threw=Error: mid-path s=2 r=2"
+  },
+  {
+   "name": "fx pool prealloc bounded",
+   "ok": true,
+   "info": "children=96"
+  },
+  {
+   "name": "scene children unchanged after hammer",
+   "ok": true,
+   "info": "96 vs 96"
+  },
+  {
+   "name": "no NaN pool members after hammer",
+   "ok": true,
+   "info": "nan=0"
+  },
+  {
+   "name": "no immortal sprites: all drained by dt spike",
+   "ok": true,
+   "info": "visible=0"
+  },
+  {
+   "name": "all fx drained after huge dt",
+   "ok": true,
+   "info": "visible=0"
+  },
+  {
+   "name": "burst n>pool caps at pool size",
+   "ok": true,
+   "info": "visible=72"
+  },
+  {
+   "name": "fx.dispose removes pooled nodes",
+   "ok": true,
+   "info": "children=0"
+  },
+  {
+   "name": "scene has instanced meshes (crowd+confetti)",
+   "ok": true,
+   "info": "instN=2"
+  },
+  {
+   "name": "instanced dispose fired",
+   "ok": true,
+   "info": "inst=2"
+  },
+  {
+   "name": "geometry disposals fired",
+   "ok": true,
+   "info": "geo=30"
+  },
+  {
+   "name": "dispose idempotent",
+   "ok": true,
+   "info": "geo=30 inst=2"
+  },
+  {
+   "name": "scene.update survives malformed dt/events",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "entranceSign mapping + invalid kinds",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "entranceSign stable under 1000 sign flips",
+   "ok": true,
+   "info": ""
+  }
+ ],
+ "pass": 45,
+ "fail": 0
+}

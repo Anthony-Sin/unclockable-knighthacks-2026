@@ -1,0 +1,124 @@
+{
+ "tool": "b4-render-leakzoom",
+ "startedAt": "2026-10-11T06:18:41.209Z",
+ "gate": {
+  "load1": 9.97,
+  "load5": 12.68,
+  "memAvailMB": 5184,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 88073
+ },
+ "series": [
+  {
+   "g": 80,
+   "t": 2,
+   "p": 7,
+   "ph": "countdown"
+  },
+  {
+   "g": 78,
+   "t": 2,
+   "p": 7,
+   "ph": "intro"
+  },
+  {
+   "g": 78,
+   "t": 2,
+   "p": 7,
+   "ph": "intro"
+  },
+  {
+   "g": 78,
+   "t": 2,
+   "p": 7,
+   "ph": "intro"
+  },
+  {
+   "g": 78,
+   "t": 2,
+   "p": 7,
+   "ph": "intro"
+  },
+  {
+   "g": 78,
+   "t": 2,
+   "p": 7,
+   "ph": "intro"
+  },
+  {
+   "g": 78,
+   "t": 2,
+   "p": 7,
+   "ph": "intro"
+  },
+  {
+   "g": 78,
+   "t": 2,
+   "p": 7,
+   "ph": "intro"
+  },
+  {
+   "g": 78,
+   "t": 2,
+   "p": 7,
+   "ph": "intro"
+  },
+  {
+   "g": 79,
+   "t": 2,
+   "p": 8,
+   "ph": "intro"
+  },
+  {
+   "g": 79,
+   "t": 2,
+   "p": 8,
+   "ph": "intro"
+  },
+  {
+   "g": 79,
+   "t": 2,
+   "p": 8,
+   "ph": "intro"
+  },
+  {
+   "g": 79,
+   "t": 2,
+   "p": 8,
+   "ph": "intro"
+  }
+ ],
+ "pageerrors": [],
+ "geoDeltas": [
+  -2,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  1,
+  0,
+  0,
+  0
+ ],
+ "progDeltas": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  1,
+  0,
+  0,
+  0
+ ],
+ "verdict": "first-render registration, then flat — NOT a leak"
+}

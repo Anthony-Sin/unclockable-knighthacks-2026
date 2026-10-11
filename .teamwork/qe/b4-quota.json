@@ -1,0 +1,60 @@
+{
+ "tool": "b4-quota",
+ "startedAt": "2026-10-11T06:01:25.220Z",
+ "checks": {
+  "reachedFighting": true,
+  "fill": {
+   "keys": 79,
+   "MB": 4.9,
+   "err": "QuotaExceededError"
+  },
+  "fillErrIsQuota": true,
+  "fineFill": {
+   "extra512": 125,
+   "extra1b": 21,
+   "err": "QuotaExceededError",
+   "probe": "QuotaExceededError"
+  },
+  "ko": {
+   "phase": "npcdown",
+   "npcHp": 0,
+   "koLogged": true
+  },
+  "verdictPhase": "win",
+  "endState": {
+   "phase": "win",
+   "bodyEnded": true,
+   "cardOn": true,
+   "cardTitle": "YOU WIN!",
+   "cardSub": "BUBBLE DEFEATED · 554 PTS · BEST 554",
+   "koStored": null,
+   "winsStored": null,
+   "bestStored": null,
+   "logTail": [
+    "countdown",
+    "countdown",
+    "round-start",
+    "player-punch",
+    "player-hit",
+    "npc-hit",
+    "ko",
+    "win"
+   ]
+  },
+  "cleanup": {
+   "removed": 225,
+   "okAfter": false
+  },
+  "pageerrors": 0,
+  "writesActuallyFailed": true,
+  "pass": true
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null
+}

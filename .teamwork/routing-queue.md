@@ -87,3 +87,61 @@ Bugs filed outside a worker's boundary, to be fixed by owner or orchestrator.
 
 ## Still running: b3-e2e (last one — owns qe-e2e.mjs incl. the :1065
 ## unreachable-check route from b3-render).
+
+## Wave 4 — routed (pending)
+
+| From | File:line | Issue | Status |
+|------|-----------|-------|--------|
+| b4-pages | boxing.html:304-307 | static imports of hands/face/scene/mitts — failed dep kills whole module incl. UI wiring | → orchestrator (hot file) |
+| b4-pages | boxing.html:440 | unguarded `await import(tutorial)` — chunk fail kills module | → orchestrator (hot file) |
+| b4-pages | boxing.html:466 | Number(getItem) NaN — STALE note: volume already finite-clamped at :464-465 | closed (already fixed) |
+| b4-pages | fight.js:166-168 | JSON.parse at module load on static literals — cannot throw | closed (not a bug) |
+| b4-pages | tutorial.js:110 | innerHTML = non-literal (storage-fed markup → DOM XSS) | → b4-fuzz owns file; else orchestrator |
+| b4-pages | npc.js:159 | unguarded await import | → b4-e2e owns file |
+| b4-pages | server.mjs | 3 failures vs b4-server in-flight diff | → b4-server owns |
+| b4-pages | mockups/_hero/engine.mjs:244 | contextrestored double-rAF | read-only mockup, noted |
+
+### Wave-4 closed on inspection
+- tutorial.js:110 innerHTML — interpolates only literal `<i>` pips; all
+  dynamic text via textContent (:124). Not XSS. CLOSED.
+- fight.js:166-168 — JSON.parse(JSON.stringify(static literals)) at module
+  load cannot throw. CLOSED.
+- boxing.html:466 — volume already Number.isFinite-gated. CLOSED (stale).
+
+### Wave-4 orchestrator integration run (qe-e2e snapshot mid-flight: 84/90)
+- L/N/O sections: follow-up KOs not landing within swing budget
+  (dist≈1.9, koSeen=false) — pattern looks test-sequencing, b4-e2e owns
+- P section: injected-manifest probe hits a real 404 → counts as page
+  error — b4-e2e to mark benign or exclude own probe URL
+- CONFIRMED WORKING: waitForHands hold (cd frozen + FINDING YOUR HANDS +
+  release→bell), same-tick re-arm, ghost-glove spot probes
+- boxing.html:304-307 + :440 → fixed by orchestrator (dynamic imports +
+  parkFail); scene/mitt/trackers/tutorial now degrade individually
+
+## b4-soak — routed (report-only; evidence in .teamwork/reports/b4-soak.md
+## + qe/b4-hold.json, b4-churn.json, b4-quota.json)
+
+| sev | file:line | issue | repro/evidence |
+|-----|-----------|-------|----------------|
+| P3 | shared/hands.js:50-54 (+face.js:56-64 same pattern) | 60s double-grace narrows but does NOT close worker+inline double-fetch: `_initLocal()` still fires while worker boot fetches are in flight → same ~13MB payload downloaded by BOTH realms on >60s-per-13MB links | b4-churn doubleFetch: vendor hung 70s → `vision_bundle.mjs` ×2 concurrently pending (`dupeSameUrl:[2]`); post-release every vendor file ends ×2 (both realms); create resolved `gpu` inline at 71.4s. Repro: intercept `/vendor/mediapipe/*`, hold 70s, watch request log |
+| P4 | boxing.html:396-405 + :1207 | `?vid=<bad>`: `video.src` set before `await video.play()`; on failure src stays truthy → `waitForHands` still holds the bell in "mouse mode" AND :408 spawns Face/Hands workers on a dead element (cam 0/s) | b4-hold E_bogusVid: `mouse mode` + `entranceWaiting=true` ~8.1s ("FINDING YOUR HANDS" shown), gpu-worker adopted on dead feed |
+| — | waitForHands feature | VERIFIED WORKING — do not regress: deadline release @35s while still loading; ready-release @~22s; notrack/denied never hold; countdown frozen at 3 + player untouchable during hold | b4-hold subtests A-E |
+| — | quota mid-fight | VERIFIED SAFE — recordKo/recordEnd/store.set throw→caught, endcard still renders (0 pageerrors) | b4-quota.json checks.pass=true |
+- b4-render landed: mitt save/restore try/finally, mitt-id whitelist,
+  scene dispose() idempotent + InstancedMesh release, qe-runner --gpu warn.
+  Notes the same qe-e2e L/N/O/P instability → b4-e2e boundary.
+
+### Orchestrator integration (post-soak)
+- P3 double-fetch → FIXED: grace-3 verdict-wait (bootMs×3) — never a second
+  fetch while worker plausibly boots; dead-man cap covers silent-hung
+  workers; worker kept for late-adopt (probe J contract preserved).
+- P4 bogus-?vid hold → FIXED: videoLive gate (real frames only) for
+  trackers + waitForHands + fps-status.
+- qe:static probes D/E/G/J updated to wait-for-verdict contract → CLEAN.
+- boxing.html contract imports → dynamic w/ parkFail degrade (user's
+  cornerHold halftime work preserved — they extended the re-arm predicate).
+- npm test green: fuzz 82 + server 227 + legacy. Live :8791 restart
+  pending (browser agents still attached).
+- b4-e2e in-flight (89/90): only 'ghost gloves (glove spots clear)' fails —
+  chevron-bleed into ±24px box at .3w on 390w viewport (chevron reaches
+  ~74-110px; box starts at 93). Fix post-landing: ±18px boxes at .32/.68.

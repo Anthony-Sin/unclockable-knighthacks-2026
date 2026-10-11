@@ -1,4 +1,4 @@
-# Teamwork Project Prompt — QE Wave 3 (bug hunt until clean) on SCRAP!
+# Teamwork Project Prompt — QE Wave 4 (bug hunt until clean) on SCRAP!
 
 > Status: APPROVED by user → 6-agent waves until a wave finds ZERO bugs,
 > then an optimization wave
@@ -8,12 +8,17 @@ Wave protocol (user directive): keep dispatching bug-hunt waves. If any
 real bugs are found and fixed → another wave. Stop only when a full wave
 reports zero new defects. THEN switch to optimization work.
 
-This is wave 3. Rounds 1-2 fixed ~55 bugs and built the QE tooling.
-Current contract CHANGE (user refactor, in flight): the A7 guard-pose
-holdover is GONE — a hand with no landmarks now legitimately leaves the
-canvas (drawOverlay clearRects every frame); third-person shots use the
-avatar's own 3D gloves. Do NOT report the absence of a guard-pose/glove
-holdover as a bug, and do NOT re-add it.
+This is wave 4. Waves 1–3 fixed ~85 bugs and built the QE tooling.
+The post-A7 glove contract stands: a hand with no landmarks legitimately
+leaves the canvas (drawOverlay clearRects every frame); third-person
+shots use the avatar's own 3D gloves. Do NOT report the absence of a
+guard-pose/glove holdover as a bug, and do NOT re-add it.
+
+Just-landed (verify, don't trust): waitForHands hold-the-bell in
+game.js/boxing.html (35s deadline + "FINDING YOUR HANDS" hud hint),
+corrupt-storage guards in recordKo/recordEnd/volume, endcard re-arm on
+fresh-bout phases, hands.js/face.js double-grace before inline model
+fetch, e2e glove-spot probe rework.
 
 Working directory: /home/ANT/unclockable-knighthacks-2026/spatial-objects
 Live server under test: http://127.0.0.1:8791/ (do NOT kill/restart)

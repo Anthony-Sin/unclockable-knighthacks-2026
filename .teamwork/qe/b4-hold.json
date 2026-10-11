@@ -1,0 +1,1961 @@
+{
+ "tool": "b4-hold",
+ "startedAt": "2026-10-11T05:47:25.628Z",
+ "subtests": {
+  "A_delayRelease": {
+   "wrapped": true,
+   "sampleN": 103,
+   "phasesSeen": [
+    "countdown",
+    "fighting"
+   ],
+   "countdownVals": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "waitSamples": 80,
+   "waitSawFindingHands": 81,
+   "firstWaitT": 2921,
+   "lastWaitT": 35305,
+   "fightAtT": 39351,
+   "fightAtSampleIdx": 90,
+   "npcActedWhileWaiting": 0,
+   "playerHurtWhileWaiting": false,
+   "roundStartSeen": true,
+   "afterRelease": {
+    "phase": "countdown",
+    "countdown": 3,
+    "entranceWaiting": false
+   },
+   "handDelegate": null,
+   "finalPhase": "fighting",
+   "finalRound": 1,
+   "finalCd": "ROUND 1",
+   "statusTexts": [
+    "camera live",
+    "hands loading · 7 fps",
+    "hands loading · 10 fps",
+    "hands loading · 12 fps",
+    "face · cpu-worker",
+    "hands loading · 11 fps",
+    "hands loading · 25 fps",
+    "hands loading · 27 fps",
+    "hands loading · 23 fps"
+   ],
+   "vendorRequests": [
+    "mediapipe/vision_bundle.mjs",
+    "mediapipe/vision_bundle.mjs",
+    "mediapipe/wasm/vision_wasm_internal.js",
+    "mediapipe/wasm/vision_wasm_internal.js",
+    "mediapipe/wasm/vision_wasm_internal.wasm",
+    "mediapipe/wasm/vision_wasm_internal.wasm",
+    "mediapipe/face_landmarker.task"
+   ],
+   "samples": [
+    {
+     "t": 2516,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": null,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "camera live",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 4562,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "camera live",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 6677,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "camera live",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 8733,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "camera live",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 10770,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 7 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 12814,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 7 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 14866,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 7 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 16925,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 10 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 18968,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 10 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 20997,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 12 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 23036,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 12 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 25082,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "face · cpu-worker",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 27123,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 11 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 29174,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 11 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 31230,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 11 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 33263,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 10 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 35305,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 10 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 37339,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 2,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": true,
+     "cdRound": "ROUND 1",
+     "cdN": "2",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 12 fps",
+     "logTail": [
+      "countdown",
+      "countdown"
+     ]
+    },
+    {
+     "t": 39351,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 25 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start"
+     ]
+    },
+    {
+     "t": 41423,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 87.91563999999961,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 25 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start"
+     ]
+    },
+    {
+     "t": 43442,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 85.98687999999892,
+     "playerHp": 94,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 27 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    }
+   ]
+  },
+  "B_deadline": {
+   "wrapped": true,
+   "sampleN": 129,
+   "phasesSeen": [
+    "countdown",
+    "fighting"
+   ],
+   "countdownVals": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "waitSamples": 55,
+   "waitSawFindingHands": 55,
+   "firstWaitT": 503,
+   "lastWaitT": 22249,
+   "fightAtT": 27887,
+   "fightAtSampleIdx": 68,
+   "npcActedWhileWaiting": 0,
+   "playerHurtWhileWaiting": false,
+   "roundStartSeen": true,
+   "afterRelease": {
+    "phase": "countdown",
+    "countdown": 3,
+    "entranceWaiting": false
+   },
+   "handDelegate": "gpu-worker",
+   "finalPhase": "fighting",
+   "finalRound": 1,
+   "finalCd": "ROUND 1",
+   "statusTexts": [
+    "camera live",
+    "hands loading · 32 fps",
+    "hands loading · 27 fps",
+    "hands loading · 24 fps",
+    "hands loading · 25 fps",
+    "hands loading · 26 fps",
+    "hands 0/2 · cam 59/s · track 0/s · 0ms · render 15 fps",
+    "hands 2/2 · cam 25/s · track 2/s · 810ms · render 9 fps",
+    "hands 1/2 · cam 15/s · track 1/s · 1017ms · render 8 fps",
+    "hands 0/2 · cam 31/s · track 3/s · 311ms · render 7 fps",
+    "hands 2/2 · cam 24/s · track 1/s · 942ms · render 9 fps"
+   ],
+   "vendorRequests": [
+    "mediapipe/vision_bundle.mjs",
+    "mediapipe/vision_bundle.mjs",
+    "mediapipe/wasm/vision_wasm_internal.js",
+    "mediapipe/wasm/vision_wasm_internal.js",
+    "mediapipe/wasm/vision_wasm_internal.wasm",
+    "mediapipe/wasm/vision_wasm_internal.wasm",
+    "mediapipe/hand_landmarker.task"
+   ],
+   "samples": [
+    {
+     "t": 503,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "camera live",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 2514,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 32 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 4525,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 27 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 6543,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 27 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 8557,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 24 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 10572,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 25 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 12584,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 25 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 14601,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 25 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 16613,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 26 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 18629,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 26 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 20641,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 24 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 22651,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": true,
+     "cdRound": "ROUND 1",
+     "cdN": "3",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands loading · 24 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 24666,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 2,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": true,
+     "cdRound": "ROUND 1",
+     "cdN": "2",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 59/s · track 0/s · 0ms · render 15 fps",
+     "logTail": [
+      "countdown",
+      "countdown"
+     ]
+    },
+    {
+     "t": 26680,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 1,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": true,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 59/s · track 0/s · 0ms · render 15 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown"
+     ]
+    },
+    {
+     "t": 28691,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 89.42123500000032,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "press",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 59/s · track 0/s · 0ms · render 15 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start"
+     ]
+    },
+    {
+     "t": 30810,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 88.16660999999941,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 2/2 · cam 25/s · track 2/s · 810ms · render 9 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start"
+     ]
+    },
+    {
+     "t": 32821,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 86.87144500000034,
+     "playerHp": 94,
+     "npcHp": 100,
+     "npcAction": "block",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 2/2 · cam 25/s · track 2/s · 810ms · render 9 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 34835,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 85.54726499999879,
+     "playerHp": 94,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 2/2 · cam 25/s · track 2/s · 810ms · render 9 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 36849,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 84.44456499999957,
+     "playerHp": 82,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 1/2 · cam 15/s · track 1/s · 1017ms · render 8 fps",
+     "logTail": [
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 38862,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 83.23075499999817,
+     "playerHp": 82,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 1/2 · cam 15/s · track 1/s · 1017ms · render 8 fps",
+     "logTail": [
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 40874,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 81.99947499999887,
+     "playerHp": 76,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 1/2 · cam 15/s · track 1/s · 1017ms · render 8 fps",
+     "logTail": [
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-special"
+     ]
+    },
+    {
+     "t": 43004,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 81.06267999999802,
+     "playerHp": 70,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 1/2 · cam 15/s · track 1/s · 1017ms · render 8 fps",
+     "logTail": [
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-special",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 45024,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 80.06839999999688,
+     "playerHp": 64,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 31/s · track 3/s · 311ms · render 7 fps",
+     "logTail": [
+      "player-hit-taken",
+      "npc-special",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 47037,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 79.02917999999626,
+     "playerHp": 64,
+     "npcHp": 100,
+     "npcAction": "circle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 31/s · track 3/s · 311ms · render 7 fps",
+     "logTail": [
+      "player-hit-taken",
+      "npc-special",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 49056,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 77.73857499999586,
+     "playerHp": 64,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 31/s · track 3/s · 311ms · render 7 fps",
+     "logTail": [
+      "player-hit-taken",
+      "npc-special",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 51069,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 76.58154499999564,
+     "playerHp": 58,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 31/s · track 3/s · 311ms · render 7 fps",
+     "logTail": [
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    }
+   ]
+  },
+  "C_notrack": {
+   "wrapped": true,
+   "sampleN": 38,
+   "phasesSeen": [
+    "countdown",
+    "fighting"
+   ],
+   "countdownVals": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "waitSamples": 0,
+   "waitSawFindingHands": 0,
+   "firstWaitT": null,
+   "lastWaitT": null,
+   "fightAtT": 3831,
+   "fightAtSampleIdx": 8,
+   "npcActedWhileWaiting": 0,
+   "playerHurtWhileWaiting": false,
+   "roundStartSeen": true,
+   "afterRelease": null,
+   "handDelegate": null,
+   "finalPhase": "fighting",
+   "finalRound": 1,
+   "finalCd": "ROUND 1",
+   "statusTexts": [
+    "synthetic mode"
+   ],
+   "vendorRequests": [],
+   "samples": [
+    {
+     "t": 602,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": true,
+     "cdRound": "ROUND 1",
+     "cdN": "3",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "synthetic mode",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 2617,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 1,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": true,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "synthetic mode",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown"
+     ]
+    },
+    {
+     "t": 4639,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 88.88596,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "press",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "synthetic mode",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start"
+     ]
+    },
+    {
+     "t": 6653,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 86.95747500000061,
+     "playerHp": 94,
+     "npcHp": 100,
+     "npcAction": "block",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "synthetic mode",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 8667,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 84.9544000000004,
+     "playerHp": 94,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "synthetic mode",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 10679,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 83.1001600000002,
+     "playerHp": 76,
+     "npcHp": 100,
+     "npcAction": "punch",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "synthetic mode",
+     "logTail": [
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 12735,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 81.39833999999993,
+     "playerHp": 70,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "synthetic mode",
+     "logTail": [
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-special",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 14747,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 79.38811499999936,
+     "playerHp": 64,
+     "npcHp": 100,
+     "npcAction": "circle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "synthetic mode",
+     "logTail": [
+      "player-hit-taken",
+      "npc-special",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    }
+   ]
+  },
+  "E_bogusVid": {
+   "wrapped": true,
+   "sampleN": 62,
+   "phasesSeen": [
+    "countdown",
+    "fighting"
+   ],
+   "countdownVals": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "waitSamples": 21,
+   "waitSawFindingHands": 21,
+   "firstWaitT": 609,
+   "lastWaitT": 8700,
+   "fightAtT": 12326,
+   "fightAtSampleIdx": 29,
+   "npcActedWhileWaiting": 0,
+   "playerHurtWhileWaiting": false,
+   "roundStartSeen": true,
+   "afterRelease": {
+    "phase": "countdown",
+    "countdown": 3,
+    "entranceWaiting": false
+   },
+   "handDelegate": "gpu-worker",
+   "finalPhase": "fighting",
+   "finalRound": 1,
+   "finalCd": "ROUND 1",
+   "statusTexts": [
+    "mouse mode",
+    "hands loading · 22 fps",
+    "face · cpu-worker",
+    "hands loading · 12 fps",
+    "hands 0/2 · cam 0/s · track 0/s · 0ms · render 20 fps",
+    "hands 0/2 · cam 0/s · track 0/s · 0ms · render 21 fps",
+    "hands 0/2 · cam 0/s · track 0/s · 0ms · render 19 fps",
+    "hands 0/2 · cam 0/s · track 0/s · 0ms · render 18 fps"
+   ],
+   "vendorRequests": [],
+   "samples": [
+    {
+     "t": 609,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "mouse mode",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 2622,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "mouse mode",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 4635,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "face · cpu-worker",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 6661,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "face · cpu-worker",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 8700,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": true,
+     "cdOn": true,
+     "cdRound": "FINDING YOUR HANDS",
+     "cdN": "…",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "hands loading · 12 fps",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 10715,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 2,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": true,
+     "cdRound": "ROUND 1",
+     "cdN": "2",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands loading · 12 fps",
+     "logTail": [
+      "countdown",
+      "countdown"
+     ]
+    },
+    {
+     "t": 12729,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 89.40299000000022,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "press",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 0/s · track 0/s · 0ms · render 20 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start"
+     ]
+    },
+    {
+     "t": 14813,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 87.41612000000013,
+     "playerHp": 94,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 0/s · track 0/s · 0ms · render 21 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 16836,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 85.43326499999966,
+     "playerHp": 94,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 0/s · track 0/s · 0ms · render 21 fps",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 18846,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 83.58142999999968,
+     "playerHp": 82,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 0/s · track 0/s · 0ms · render 19 fps",
+     "logTail": [
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 20861,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 81.64657999999908,
+     "playerHp": 76,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 0/s · track 0/s · 0ms · render 18 fps",
+     "logTail": [
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-special"
+     ]
+    },
+    {
+     "t": 22874,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 79.95367499999884,
+     "playerHp": 64,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 0/s · track 0/s · 0ms · render 18 fps",
+     "logTail": [
+      "player-hit-taken",
+      "npc-special",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 24894,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 77.94310999999841,
+     "playerHp": 64,
+     "npcHp": 100,
+     "npcAction": "windup",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": true,
+     "handDelegate": "gpu-worker",
+     "statusText": "hands 0/2 · cam 0/s · track 0/s · 0ms · render 18 fps",
+     "logTail": [
+      "player-hit-taken",
+      "npc-special",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    }
+   ]
+  },
+  "D_denied": {
+   "wrapped": true,
+   "sampleN": 36,
+   "phasesSeen": [
+    "countdown",
+    "fighting"
+   ],
+   "countdownVals": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "waitSamples": 0,
+   "waitSawFindingHands": 0,
+   "firstWaitT": null,
+   "lastWaitT": null,
+   "fightAtT": 6632,
+   "fightAtSampleIdx": 14,
+   "npcActedWhileWaiting": 0,
+   "playerHurtWhileWaiting": false,
+   "roundStartSeen": true,
+   "afterRelease": null,
+   "handDelegate": null,
+   "finalPhase": "fighting",
+   "finalRound": 1,
+   "finalCd": "ROUND 1",
+   "statusTexts": [
+    "mouse mode"
+   ],
+   "vendorRequests": [],
+   "samples": [
+    {
+     "t": 939,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 3,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": true,
+     "cdRound": "ROUND 1",
+     "cdN": "3",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "mouse mode",
+     "logTail": [
+      "countdown"
+     ]
+    },
+    {
+     "t": 2961,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 2,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": true,
+     "cdRound": "ROUND 1",
+     "cdN": "2",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "mouse mode",
+     "logTail": [
+      "countdown",
+      "countdown"
+     ]
+    },
+    {
+     "t": 4992,
+     "phase": "countdown",
+     "round": 1,
+     "countdown": 1,
+     "timeLeft": 90,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": true,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "mouse mode",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown"
+     ]
+    },
+    {
+     "t": 7033,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 89.60564999999944,
+     "playerHp": 100,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "mouse mode",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start"
+     ]
+    },
+    {
+     "t": 9656,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 87.75496499999895,
+     "playerHp": 94,
+     "npcHp": 100,
+     "npcAction": "punch",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "mouse mode",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 11689,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 86.52359499999977,
+     "playerHp": 94,
+     "npcHp": 100,
+     "npcAction": "block",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "mouse mode",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 13808,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 85.64156999999942,
+     "playerHp": 94,
+     "npcHp": 100,
+     "npcAction": "idle",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "mouse mode",
+     "logTail": [
+      "countdown",
+      "countdown",
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    },
+    {
+     "t": 15844,
+     "phase": "fighting",
+     "round": 1,
+     "countdown": 0,
+     "timeLeft": 84.54383999999898,
+     "playerHp": 82,
+     "npcHp": 100,
+     "npcAction": "punch",
+     "entranceWaiting": false,
+     "cdOn": false,
+     "cdRound": "ROUND 1",
+     "cdN": "1",
+     "handReady": false,
+     "handDelegate": null,
+     "statusText": "mouse mode",
+     "logTail": [
+      "countdown",
+      "round-start",
+      "npc-punch",
+      "player-hit-taken",
+      "npc-punch",
+      "player-hit-taken"
+     ]
+    }
+   ],
+   "statusText": "mouse mode"
+  }
+ },
+ "events": {
+  "a_hold": {
+   "pageerrors": [],
+   "consoleErrors": [
+    {
+     "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+     "benign": true
+    },
+    {
+     "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+     "benign": false
+    },
+    {
+     "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+     "benign": true
+    }
+   ],
+   "consoleWarnings": [],
+   "requestfailed": [
+    {
+     "url": "http://127.0.0.1:8791/no-such-file.mp4",
+     "error": "net::ERR_ABORTED",
+     "type": "media"
+    }
+   ],
+   "httpStatus": [
+    {
+     "url": "http://127.0.0.1:8791/no-such-file.mp4",
+     "status": 404
+    }
+   ]
+  },
+  "bcd": {
+   "b": [],
+   "c": [],
+   "e": []
+  },
+  "requestfailedB": [
+   {
+    "url": "http://127.0.0.1:8791/no-such-file.mp4",
+    "error": "net::ERR_ABORTED",
+    "type": "media"
+   }
+  ],
+  "d": {
+   "pageerrors": [],
+   "consoleErrors": []
+  }
+ },
+ "aborted": null
+}

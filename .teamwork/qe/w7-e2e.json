@@ -1,16 +1,16 @@
 {
  "tool": "qe-e2e",
- "startedAt": "2026-10-11T05:33:56.652Z",
+ "startedAt": "2026-10-11T05:53:02.138Z",
  "base": "http://127.0.0.1:8791",
  "gate": {
-  "load1": 9.31,
-  "load5": 7.74,
-  "memAvailMB": 10053,
+  "load1": 5.66,
+  "load5": 8.96,
+  "memAvailMB": 8251,
   "gpuUtilPct": 0,
   "gpuMemUsedMB": 2,
   "ok": true,
   "reasons": [],
-  "waitedMs": 18125
+  "waitedMs": 17
  },
  "checks": [
   {
@@ -41,17 +41,17 @@
   {
    "name": "A: telegraph → sway dodge → 'player-dodged'",
    "ok": true,
-   "info": "{\"res\":\"dodged\",\"tries\":[\"hook/right→dodged\"]}"
+   "info": "{\"res\":\"dodged\",\"tries\":[\"upper/right→dodged\"]}"
   },
   {
    "name": "A: sustained punching → KO ('ko' event + 'npcdown')",
    "ok": true,
-   "info": "{\"swings\":11,\"phase\":\"npcdown\",\"playerHp\":100,\"npcHp\":0,\"ko\":true,\"score\":1141}"
+   "info": "{\"swings\":11,\"phase\":\"npcdown\",\"playerHp\":100,\"npcHp\":0,\"ko\":true,\"score\":1151}"
   },
   {
    "name": "A: 'npcdown' resolves to 'win' + 'YOU WIN!' endcard",
    "ok": true,
-   "info": "{\"phase\":\"win\",\"win\":true,\"endOn\":true,\"title\":\"YOU WIN!\",\"score\":1141}"
+   "info": "{\"phase\":\"win\",\"win\":true,\"endOn\":true,\"title\":\"YOU WIN!\",\"score\":1151}"
   },
   {
    "name": "A: replay restart — fresh hp/score/round 1, no stale endcard",
@@ -66,12 +66,12 @@
   {
    "name": "A: in-page reset clears hp/score/combo/events/endcard",
    "ok": true,
-   "info": "{\"before\":{\"nhp\":71,\"score\":167,\"dmg\":null,\"hash0\":85428,\"hashHit\":83154},\"clean0\":{\"phase\":\"intro\",\"php\":100,\"nhp\":100,\"score\":0,\"combo\":0,\"round\":0,\"events\":0,\"endOn\":false,\"ended\":false,\"dmg\":null,\"hashAfter\":85428},\"phase\":\"fighting\",\"hitAgain\":true,\"round2\":1}"
+   "info": "{\"before\":{\"nhp\":89,\"score\":55,\"dmg\":null,\"hash0\":85428,\"hashHit\":84566},\"clean0\":{\"phase\":\"intro\",\"php\":100,\"nhp\":100,\"score\":0,\"combo\":0,\"round\":0,\"events\":0,\"endOn\":false,\"ended\":false,\"dmg\":null,\"hashAfter\":85428},\"phase\":\"fighting\",\"hitAgain\":true,\"round2\":1}"
   },
   {
    "name": "A: in-page reset clears the NPC damage wash",
    "ok": true,
-   "info": "{\"dmg\":[null,null],\"hash\":[85428,83154,85428]}"
+   "info": "{\"dmg\":[null,null],\"hash\":[85428,84566,85428]}"
   },
   {
    "name": "A: post-reset bout is a real round-1 fight again",
@@ -186,17 +186,17 @@
   {
    "name": "E: tracked hands always draw gloves",
    "ok": true,
-   "info": "tracked min total=1761"
+   "info": "tracked min total=3760"
   },
   {
    "name": "E: tracking loss leaves no ghost gloves (glove spots clear)",
    "ok": true,
-   "info": "{\"pxOn\":{\"l\":2162,\"r\":2167},\"pxLost\":{\"l\":0,\"r\":0}}"
+   "info": "{\"pxOn\":{\"l\":2162,\"r\":2166},\"pxLost\":{\"l\":0,\"r\":0}}"
   },
   {
    "name": "E: gloves return when tracking recovers",
    "ok": true,
-   "info": "{\"pxBack\":{\"total\":3867,\"guard\":0}}"
+   "info": "{\"pxBack\":{\"total\":3991,\"guard\":0}}"
   },
   {
    "name": "F1: partial dropout — dropped glove clears, tracked glove stays",
@@ -271,12 +271,12 @@
   {
    "name": "I: rAF stalled during the freeze and resumed after",
    "ok": true,
-   "info": "{\"n1\":22,\"raf\":89}"
+   "info": "{\"n1\":18,\"raf\":32}"
   },
   {
    "name": "I: 3.5s stall did not drain the fight clock (dt clamped)",
    "ok": true,
-   "info": "{\"before\":89.95,\"after\":87.7548850000007,\"phase\":\"fighting\"}"
+   "info": "{\"before\":89.95,\"after\":88.40330499999878,\"phase\":\"fighting\"}"
   },
   {
    "name": "I: npc transform stayed finite through the stall",
@@ -340,5 +340,5 @@
   }
  ],
  "fatal": null,
- "durationMs": 87026
+ "durationMs": 64107
 }
