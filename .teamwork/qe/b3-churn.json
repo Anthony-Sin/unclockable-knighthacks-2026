@@ -1,0 +1,846 @@
+{
+ "tool": "b3-churn",
+ "cycles": 10,
+ "startedAt": "2026-10-11T04:53:00.771Z",
+ "visits": [
+  {
+   "seq": 0,
+   "cycle": 0,
+   "page": "index",
+   "ready": true,
+   "msToMeasure": 4166,
+   "heapMB": 10.32,
+   "listeners": 18,
+   "nodes": 331,
+   "documents": 2,
+   "frames": 1,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 1402,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 1,
+   "cycle": 0,
+   "page": "lineup",
+   "ready": true,
+   "msToMeasure": 4073,
+   "heapMB": 17.08,
+   "listeners": 31,
+   "nodes": 522,
+   "documents": 3,
+   "frames": 2,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 1542,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 2,
+   "cycle": 0,
+   "page": "boxing",
+   "ready": true,
+   "msToMeasure": 4098,
+   "heapMB": 21.13,
+   "listeners": 54,
+   "nodes": 822,
+   "documents": 3,
+   "frames": 3,
+   "targetCounts": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 1958,
+   "phase": "fighting",
+   "cam": true,
+   "hands": null,
+   "face": "cpu-worker",
+   "rafAlive": true,
+   "workersAfterLeave": 0,
+   "targetsAfterLeave": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "rssAfterLeave": 1971
+  },
+  {
+   "seq": 3,
+   "cycle": 1,
+   "page": "index",
+   "ready": true,
+   "msToMeasure": 5118,
+   "heapMB": 18.12,
+   "listeners": 49,
+   "nodes": 844,
+   "documents": 3,
+   "frames": 3,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 1846,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 4,
+   "cycle": 1,
+   "page": "lineup",
+   "ready": true,
+   "msToMeasure": 4242,
+   "heapMB": 43.54,
+   "listeners": 62,
+   "nodes": 1039,
+   "documents": 5,
+   "frames": 4,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 1862,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 5,
+   "cycle": 1,
+   "page": "boxing",
+   "ready": true,
+   "msToMeasure": 4012,
+   "heapMB": 29.49,
+   "listeners": 84,
+   "nodes": 1338,
+   "documents": 5,
+   "frames": 5,
+   "targetCounts": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2150,
+   "phase": "fighting",
+   "cam": true,
+   "hands": null,
+   "face": null,
+   "rafAlive": true,
+   "workersAfterLeave": 0,
+   "targetsAfterLeave": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "rssAfterLeave": 2231
+  },
+  {
+   "seq": 6,
+   "cycle": 2,
+   "page": "index",
+   "ready": true,
+   "msToMeasure": 5777,
+   "heapMB": 27.72,
+   "listeners": 80,
+   "nodes": 1361,
+   "documents": 5,
+   "frames": 5,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 1973,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 7,
+   "cycle": 2,
+   "page": "lineup",
+   "ready": true,
+   "msToMeasure": 4304,
+   "heapMB": 42.62,
+   "listeners": 93,
+   "nodes": 1556,
+   "documents": 7,
+   "frames": 6,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2088,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 8,
+   "cycle": 2,
+   "page": "boxing",
+   "ready": true,
+   "msToMeasure": 4068,
+   "heapMB": 38.56,
+   "listeners": 115,
+   "nodes": 1855,
+   "documents": 7,
+   "frames": 7,
+   "targetCounts": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2362,
+   "phase": "fighting",
+   "cam": true,
+   "hands": null,
+   "face": null,
+   "rafAlive": true,
+   "workersAfterLeave": 0,
+   "targetsAfterLeave": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "rssAfterLeave": 2429
+  },
+  {
+   "seq": 9,
+   "cycle": 3,
+   "page": "index",
+   "ready": true,
+   "msToMeasure": 8154,
+   "heapMB": 36.59,
+   "listeners": 111,
+   "nodes": 2200,
+   "documents": 9,
+   "frames": 7,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2236,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 10,
+   "cycle": 3,
+   "page": "lineup",
+   "ready": true,
+   "msToMeasure": 4185,
+   "heapMB": 40.56,
+   "listeners": 106,
+   "nodes": 2076,
+   "documents": 9,
+   "frames": 8,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2251,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 11,
+   "cycle": 3,
+   "page": "boxing",
+   "ready": true,
+   "msToMeasure": 4161,
+   "heapMB": 54.12,
+   "listeners": 128,
+   "nodes": 2392,
+   "documents": 10,
+   "frames": 10,
+   "targetCounts": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2393,
+   "phase": "fighting",
+   "cam": true,
+   "hands": null,
+   "face": null,
+   "rafAlive": true,
+   "workersAfterLeave": 0,
+   "targetsAfterLeave": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "rssAfterLeave": 2441
+  },
+  {
+   "seq": 12,
+   "cycle": 4,
+   "page": "index",
+   "ready": true,
+   "msToMeasure": 5349,
+   "heapMB": 37.74,
+   "listeners": 111,
+   "nodes": 1878,
+   "documents": 7,
+   "frames": 7,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2327,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 13,
+   "cycle": 4,
+   "page": "lineup",
+   "ready": true,
+   "msToMeasure": 4179,
+   "heapMB": 43.89,
+   "listeners": 106,
+   "nodes": 2061,
+   "documents": 8,
+   "frames": 8,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2262,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 14,
+   "cycle": 4,
+   "page": "boxing",
+   "ready": true,
+   "msToMeasure": 3992,
+   "heapMB": 50.41,
+   "listeners": 128,
+   "nodes": 2392,
+   "documents": 10,
+   "frames": 10,
+   "targetCounts": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2412,
+   "phase": "fighting",
+   "cam": true,
+   "hands": null,
+   "face": null,
+   "rafAlive": true,
+   "workersAfterLeave": 0,
+   "targetsAfterLeave": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "rssAfterLeave": 2507
+  },
+  {
+   "seq": 15,
+   "cycle": 5,
+   "page": "index",
+   "ready": true,
+   "msToMeasure": 5165,
+   "heapMB": 41.91,
+   "listeners": 111,
+   "nodes": 2067,
+   "documents": 8,
+   "frames": 8,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2378,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 16,
+   "cycle": 5,
+   "page": "lineup",
+   "ready": true,
+   "msToMeasure": 4276,
+   "heapMB": 43.72,
+   "listeners": 106,
+   "nodes": 2061,
+   "documents": 8,
+   "frames": 8,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2310,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 17,
+   "cycle": 5,
+   "page": "boxing",
+   "ready": true,
+   "msToMeasure": 4162,
+   "heapMB": 47.14,
+   "listeners": 128,
+   "nodes": 2392,
+   "documents": 10,
+   "frames": 10,
+   "targetCounts": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2469,
+   "phase": "fighting",
+   "cam": true,
+   "hands": null,
+   "face": null,
+   "rafAlive": true,
+   "workersAfterLeave": 0,
+   "targetsAfterLeave": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "rssAfterLeave": 2492
+  },
+  {
+   "seq": 18,
+   "cycle": 6,
+   "page": "index",
+   "ready": true,
+   "msToMeasure": 5179,
+   "heapMB": 37.68,
+   "listeners": 111,
+   "nodes": 1878,
+   "documents": 7,
+   "frames": 7,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2285,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 19,
+   "cycle": 6,
+   "page": "lineup",
+   "ready": true,
+   "msToMeasure": 4219,
+   "heapMB": 43.66,
+   "listeners": 106,
+   "nodes": 2061,
+   "documents": 8,
+   "frames": 8,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2277,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 20,
+   "cycle": 6,
+   "page": "boxing",
+   "ready": true,
+   "msToMeasure": 4164,
+   "heapMB": 45.24,
+   "listeners": 128,
+   "nodes": 2392,
+   "documents": 10,
+   "frames": 10,
+   "targetCounts": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2437,
+   "phase": "fighting",
+   "cam": true,
+   "hands": null,
+   "face": null,
+   "rafAlive": true,
+   "workersAfterLeave": 0,
+   "targetsAfterLeave": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "rssAfterLeave": 2484
+  },
+  {
+   "seq": 21,
+   "cycle": 7,
+   "page": "index",
+   "ready": true,
+   "msToMeasure": 5112,
+   "heapMB": 37.64,
+   "listeners": 111,
+   "nodes": 1878,
+   "documents": 7,
+   "frames": 7,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2366,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 22,
+   "cycle": 7,
+   "page": "lineup",
+   "ready": true,
+   "msToMeasure": 4194,
+   "heapMB": 43.68,
+   "listeners": 106,
+   "nodes": 2061,
+   "documents": 8,
+   "frames": 8,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2275,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 23,
+   "cycle": 7,
+   "page": "boxing",
+   "ready": true,
+   "msToMeasure": 4153,
+   "heapMB": 45.17,
+   "listeners": 128,
+   "nodes": 2392,
+   "documents": 10,
+   "frames": 10,
+   "targetCounts": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2448,
+   "phase": "fighting",
+   "cam": true,
+   "hands": null,
+   "face": null,
+   "rafAlive": true,
+   "workersAfterLeave": 0,
+   "targetsAfterLeave": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "rssAfterLeave": 2527
+  },
+  {
+   "seq": 24,
+   "cycle": 8,
+   "page": "index",
+   "ready": true,
+   "msToMeasure": 5080,
+   "heapMB": 42.2,
+   "listeners": 111,
+   "nodes": 2067,
+   "documents": 8,
+   "frames": 8,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2409,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 25,
+   "cycle": 8,
+   "page": "lineup",
+   "ready": true,
+   "msToMeasure": 4237,
+   "heapMB": 43.97,
+   "listeners": 106,
+   "nodes": 2061,
+   "documents": 8,
+   "frames": 8,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2324,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 26,
+   "cycle": 8,
+   "page": "boxing",
+   "ready": true,
+   "msToMeasure": 3999,
+   "heapMB": 47.01,
+   "listeners": 129,
+   "nodes": 2393,
+   "documents": 10,
+   "frames": 10,
+   "targetCounts": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2500,
+   "phase": "fighting",
+   "cam": true,
+   "hands": null,
+   "face": "cpu-worker",
+   "rafAlive": true,
+   "workersAfterLeave": 0,
+   "targetsAfterLeave": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "rssAfterLeave": 2476
+  },
+  {
+   "seq": 27,
+   "cycle": 9,
+   "page": "index",
+   "ready": true,
+   "msToMeasure": 3591,
+   "heapMB": 37.18,
+   "listeners": 111,
+   "nodes": 2380,
+   "documents": 10,
+   "frames": 10,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2366,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 28,
+   "cycle": 9,
+   "page": "lineup",
+   "ready": true,
+   "msToMeasure": 4348,
+   "heapMB": 46.3,
+   "listeners": 124,
+   "nodes": 2076,
+   "documents": 9,
+   "frames": 9,
+   "targetCounts": {
+    "browser": 1,
+    "other": 2,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2292,
+   "phase": null,
+   "cam": false,
+   "hands": null,
+   "face": null,
+   "rafAlive": true
+  },
+  {
+   "seq": 29,
+   "cycle": 9,
+   "page": "boxing",
+   "ready": true,
+   "msToMeasure": 4368,
+   "heapMB": 48.5,
+   "listeners": 115,
+   "nodes": 2364,
+   "documents": 9,
+   "frames": 9,
+   "targetCounts": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "workerTargets": 0,
+   "rssMB": 2446,
+   "phase": "fighting",
+   "cam": true,
+   "hands": null,
+   "face": null,
+   "rafAlive": true,
+   "workersAfterLeave": 0,
+   "targetsAfterLeave": {
+    "browser": 1,
+    "other": 4,
+    "page": 2
+   },
+   "rssAfterLeave": 2506
+  }
+ ],
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null
+}

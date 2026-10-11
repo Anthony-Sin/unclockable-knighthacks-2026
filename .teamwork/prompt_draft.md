@@ -1,76 +1,59 @@
-# Teamwork Project Prompt — QE Round 2 on SCRAP! (spatial-objects)
+# Teamwork Project Prompt — QE Wave 3 (bug hunt until clean) on SCRAP!
 
-> Status: APPROVED by user → delegating to 6-agent QE team
-> Requested team: 6 subagents — 3 headless-Chromium, 3 non-browser —
-> iterative fix loop until clean
+> Status: APPROVED by user → 6-agent waves until a wave finds ZERO bugs,
+> then an optimization wave
+> Requested team: 6 subagents — 3 headless-Chromium, 3 non-browser
 
-QE round 2 on the SCRAP! boxing game + spatial-objects pages. Round 1
-(3 agents) built the QE tooling and fixed ~20 bugs; all 4 pages report
-zero console errors. Round 2 hunts what round 1 can't see: state-machine
-fuzz, soak/leak, render-layer defects, e2e fight flow, HTTP server edge
-cases, and static/code audit of the tracking + page layer. Fix every bug
-found inside file boundaries; route the rest with file:line evidence.
+Wave protocol (user directive): keep dispatching bug-hunt waves. If any
+real bugs are found and fixed → another wave. Stop only when a full wave
+reports zero new defects. THEN switch to optimization work.
+
+This is wave 3. Rounds 1-2 fixed ~55 bugs and built the QE tooling.
+Current contract CHANGE (user refactor, in flight): the A7 guard-pose
+holdover is GONE — a hand with no landmarks now legitimately leaves the
+canvas (drawOverlay clearRects every frame); third-person shots use the
+avatar's own 3D gloves. Do NOT report the absence of a guard-pose/glove
+holdover as a bug, and do NOT re-add it.
 
 Working directory: /home/ANT/unclockable-knighthacks-2026/spatial-objects
-Live server under test: http://127.0.0.1:8791/ (serves the repo dir;
-file edits appear on reload — do NOT kill or restart this server)
-Approach policy: development (any approach that works; no new npm deps —
-project rule from .teamwork/CONTRACT.md)
+Live server under test: http://127.0.0.1:8791/ (do NOT kill/restart)
+Approach policy: development — no new npm deps.
+
+## HARD: user-hot files (READ-ONLY this wave, bugs → report only)
+- `boxing.html`, `shared/boxing/game.js`, `test/boxing-page.mjs`
 
 ## Requirements
 
-### R1. Bug hunt + fix
-Exercise the app per your brief (fuzz suites, e2e drives, headless page
-runs, HTTP probes, static analysis). Fix every bug found inside your
-file boundaries; report out-of-boundary bugs with file:line + evidence.
-Do NOT git commit/reset/checkout or touch .env.
+### R1. Hunt NEW bugs
+Find defects not already reported (see `.teamwork/reports/w*.md` and
+`.teamwork/routing-queue.md` for what's fixed). Fix in-boundary bugs;
+report out-of-boundary with file:line + repro evidence.
 
-### R2. Resource governance (hard user requirement)
-Every headless browser launch must be gated: 1-min loadavg < 10 AND
-MemAvailable > 2500 MB; nvidia-smi GPU memory used < 6 GB when Vulkan
-flags are used. `node test/qe-runner.mjs` self-gates AND serializes via
-.teamwork/qe/.chromium.lock — prefer it. Custom puppeteer scripts must
-gate themselves the same way; ONE Chromium per worker; nice processes.
+### R2. Keep the green wall
+`npm test` (incl. qe-fuzz + qe-server), `npm run test:e2e`
+(boxing-page + qe-e2e), `npm run qe:static`, qe-runner on the 4 pages —
+all must stay green after your fixes.
 
-### R3. Measurement + evidence
-Every claim in a report needs evidence (JSON artifact, test output, or
-repro steps). FPS numbers where the brief asks for them.
+### R3. Resource governance
+qe-runner self-gates + serializes Chromium. Custom launches: load1<10 &&
+MemAvailable>2500MB; ONE browser per worker; nice it; Vulkan --gpu flags
+are BROKEN box-wide right now — do NOT use them (webgl2 ctx returns null).
 
-## Acceptance Criteria
-
-### Quality
-- [ ] `npm test` + `npm run test:e2e` pass after all fixes
-- [ ] qe-runner reports zero pageerrors/console-errors on index, lineup,
-      gallery, boxing on http://127.0.0.1:8791/
-- [ ] Every bug in the reports is either fixed-in-boundary with a
-      passing re-verification, or filed with file:line evidence
-
-### Hygiene
-- [ ] No git mutations, no .env changes, no edits outside file
-      boundaries, no new npm deps
-
-## Verification Resources
-- `npm test`, `npm run test:e2e`, `node test/fps-probe.mjs`
-- `node test/qe-runner.mjs <url> [--name n] [--seconds N] [--gpu]`
-- `npm run qe:static`, `npm run qe:res`
-- Chromium: /usr/bin/chromium (SwiftShader default; --gpu → Vulkan)
-- Test video input: boxing.html?vid=test-input.mp4 ; synthetic mode:
-  boxing.html?notrack=1 ; hooks: window.__forceHands/__forceFace/__boxing
-
-## Team (6 agents — file boundaries are exclusive)
+## Team (6 — boundaries exclusive)
 
 | agent | browser | owns (fix freely) |
 |-------|---------|-------------------|
-| w4-qe-fuzz   | none     | shared/boxing/{fight,fists,ring,protoBoxer,tutorial,audio}.js, test/qe-fuzz.mjs, package.json |
-| w5-qe-soak   | chromium | NOTHING — report only (.teamwork/qe/w5-*) |
-| w6-qe-render | chromium | shared/boxing/{fx,scene,entrance}.js, assetManifest.json, shared/boxing/mitts/ |
-| w7-qe-e2e    | chromium | boxing.html, shared/boxing/{game,npc}.js, test/boxing-page.mjs |
-| w8-qe-server | none     | server.mjs, test/qe-server.mjs |
-| w9-qe-pages  | none     | index.html, lineup.html, gallery.html, shared/{hands,face,glove,track-worker}.js, test/qe-static.mjs |
+| b3-fuzz   | none     | shared/boxing/{fight,fists,ring,protoBoxer,tutorial,audio}.js, test/qe-fuzz.mjs, package.json |
+| b3-soak   | chromium | NOTHING — report only (.teamwork/qe/b3-*) |
+| b3-render | chromium | shared/boxing/{fx,scene,entrance}.js, assetManifest.json, shared/boxing/mitts/ |
+| b3-e2e    | chromium | test/qe-e2e.mjs, shared/boxing/npc.js |
+| b3-server | none     | server.mjs, test/qe-server.mjs |
+| b3-pages  | none     | index.html, lineup.html, gallery.html, shared/{hands,face,glove,track-worker}.js, test/qe-static.mjs |
 
-Mockup dirs (`*-mockups/`) are read-only for everyone — audit + report.
-Bugs outside your boundary → report with file:line, orchestrator routes.
+`*-mockups/` dirs: read-only for everyone.
+No git mutations, no .env, no new deps, no edits outside boundaries.
 
----
-*Delegation: 6 background subagents (teamwork-worker), event-loop
-orchestration; fixes verified by re-running the owning suite.*
+## Report format
+`.teamwork/reports/<name>.md` — findings table
+(sev | file:line | evidence | fix | verification) + residual risks.
+A wave "finds bugs" = any sev≥P3 real defect (not style nits).

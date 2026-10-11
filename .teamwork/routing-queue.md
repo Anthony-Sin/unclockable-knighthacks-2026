@@ -41,3 +41,49 @@ Bugs filed outside a worker's boundary, to be fixed by owner or orchestrator.
 - [ ] npm run test:e2e passes (w6 was load-blocked — re-run when settled)
 - [ ] qe-runner clean on index/lineup/gallery/boxing @ :8791
 - [ ] restart :8791 to pick up server.mjs fixes
+
+---
+
+# QE Wave 3 — routed bug queue
+
+## Status: b3-server DONE (3 fixes, verified 115/115). Awaiting: fuzz, soak, render, e2e, pages.
+## Wave found bugs → wave 4 required (user rule).
+
+## b3-render DONE — 7 fixed (confetti carryover, Infinity hang, stains, NaN ops).
+## Routed: test/qe-e2e.mjs:1065 `rs===2` unreachable by construction → owner b3-e2e (may self-fix).
+## b3-e2e status: qe-e2e at 64/65 — sole fail = that harness check.
+
+## b3-pages DONE — ~6 fixes (module-import-failure kills UI wiring, DPR staleness,
+## track-worker mixed-clock ~1ms/frame bug, worker death watchdog, postMessage
+## failure pump-kill). Routed to HOT files: boxing.html recordKo `ko.n +=`
+## TypeError on corrupt 'boxing:ko' (HI), Number(getItem) volume NaN (MED);
+## boxing innerHTML sinks; tutorial innerHTML (fuzz owner may cover);
+## fight.js JSON.parse (likely covered by b3-fuzz); engine.mjs (mockup read-only).
+
+## b3-fuzz DONE — 8 fixes (tuning NaN poisons x3, reset transient leaks, audio
+## graph leaks, proto frozen-state, tutorial clamps); qe-fuzz 37→69 checks.
+
+## Integration checklist (after all 6):
+- [ ] boxing.html recordKo corrupt-storage guard (b3-pages route)
+- [ ] boxing.html volume NaN guard (b3-pages route)
+- [ ] npm test + test:e2e + qe-runner sweep on final tree
+- [ ] THEN wave 4 (bugs were found)
+
+## b3-soak DONE — 3 defects (all report-only):
+## → boxing.html/game.js (USER-HOT — orchestrator fixes at integration):
+   - P2 game.js:110 + boxing.html:434-436,1190 — waitForHands intro-hold DEAD
+     CODE: skipIntro makes `waiting` permanently false → bout starts while
+     trackers boot; real user on slow net KO'd defenseless ~39s. NOTE: fix
+     must NOT block camera-DENIED path (mouse mode must still start) —
+     gate on handStatus 'loading' only, timeout fallback.
+   - P3 boxing.html:596-600,524 — endcard re-arm race: same-tick
+     game.reset()+skipIntro() skips the rendered 'intro' frame → `ended`
+     stays latched → stale endcard over rematch + swallowed verdicts.
+     Fix: re-arm on phase!=terminal, not only on rendered 'intro'.
+   - P3 shared/hands.js:40-47 + face.js — BOOT_MS race → parallel inline+
+     worker downloads of same ~13MB MediaPipe payload (×4 wasm, ×3 mjs on
+     3G). b3-pages already done → orchestrator fixes.
+## Ops: second orphan runaway chromium killed (pid 170767, ~1037% CPU).
+
+## Still running: b3-e2e (last one — owns qe-e2e.mjs incl. the :1065
+## unreachable-check route from b3-render).

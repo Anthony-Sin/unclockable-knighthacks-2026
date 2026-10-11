@@ -1,0 +1,46 @@
+{
+ "tool": "b3-denied",
+ "url": "http://127.0.0.1:8791/boxing.html",
+ "startedAt": "2026-10-11T05:09:27.160Z",
+ "checks": {
+  "getUserMedia denial degrades to \"mouse mode\"": {
+   "ok": true,
+   "info": "{\"status\":\"mouse mode\",\"peepHidden\":true,\"cam\":false,\"hands\":null,\"face\":null,\"phase\":\"countdown\",\"msSinceNav\":1024}"
+  },
+  "webcam peep hidden after denial": {
+   "ok": true
+  },
+  "no trackers after denial": {
+   "ok": true,
+   "info": "hands=null face=null"
+  },
+  "fight reaches fighting with no camera": {
+   "ok": true,
+   "info": "phase=fighting"
+  },
+  "mouse-drag punches register through the real input path": {
+   "ok": true,
+   "info": "{\"n\":7,\"hits\":12,\"tail\":[\"player-hit\",\"npc-hit\",\"player-punch\",\"npc-blocked\",\"player-punch\",\"player-hit\",\"npc-hit\",\"player-punch\",\"player-hit\",\"npc-hit\"],\"phase\":\"fighting\",\"playerHp\":100,\"npcHp\":69.991642181535}"
+  },
+  "glove overlay renders in mouse mode (lit px)": {
+   "ok": true,
+   "info": "30446px"
+  },
+  "A-key slip works in mouse mode": {
+   "ok": true,
+   "info": "dodge=left"
+  },
+  "zero pageerrors / console errors on the denied path": {
+   "ok": true,
+   "info": "pageerr=0 conErr=0  "
+  }
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null
+}

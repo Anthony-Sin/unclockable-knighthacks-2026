@@ -1,0 +1,80 @@
+{
+ "tool": "b3-visibility",
+ "url": "http://127.0.0.1:8791/boxing.html",
+ "startedAt": "2026-10-11T04:57:13.953Z",
+ "boot": {
+  "phase": "fighting",
+  "hands": null,
+  "face": "cpu-worker",
+  "camLive": true,
+  "rafN": 80,
+  "steps": 70,
+  "maxDt": 0.1,
+  "visState": "visible",
+  "reachedFighting": true,
+  "audioCtxStates": [
+   "running"
+  ]
+ },
+ "hidden": {
+  "realHideWorks": true,
+  "during": {
+   "rafN": 92,
+   "steps": 82,
+   "trackEnabled": false,
+   "acStates": [
+    "running"
+   ],
+   "phase": "fighting",
+   "timeLeft": 89.18865500000027,
+   "rafDelta": 0,
+   "stepDelta": 0
+  },
+  "after": {
+   "rafN": 120,
+   "steps": 110,
+   "markMax": 0.1,
+   "markN": 28,
+   "trackEnabled": true,
+   "acStates": [
+    "running"
+   ],
+   "phase": "fighting",
+   "timeLeft": 87.37183000000108,
+   "trackHz": 2.115390456812265
+  }
+ },
+ "frozen": {
+  "supported": true,
+  "resume": {
+   "rafN": 120,
+   "steps": 110,
+   "markMax": 0,
+   "markN": 0,
+   "markLast": 0,
+   "acStates": [
+    "running"
+   ],
+   "phase": "fighting",
+   "timeLeft": 87.37183000000108,
+   "trackHz": 3.285347742511984,
+   "camHz": 8.970567567652761
+  },
+  "stepDelta": 0,
+  "rafDelta": 0,
+  "timeLeftDrift": 0
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null
+}

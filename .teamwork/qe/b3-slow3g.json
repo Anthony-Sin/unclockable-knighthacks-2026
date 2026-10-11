@@ -1,0 +1,593 @@
+{
+ "tool": "b3-slow3g",
+ "startedAt": "2026-10-11T05:10:12.944Z",
+ "runs": [
+  {
+   "name": "boxing-notrack",
+   "url": "http://127.0.0.1:8791/boxing.html?notrack=1",
+   "samples": [
+    {
+     "tag": "4000ms",
+     "t": 4002,
+     "readyState": "interactive",
+     "hasBoxing": false,
+     "phase": null,
+     "status": "face · —",
+     "canvases": 3,
+     "resEntries": 4,
+     "resNames": [
+      "hands.js",
+      "face.js",
+      "scene.js",
+      "index.js"
+     ],
+     "visText": "THE ROOKIE · PIP'S CHALLENGER YOU STAM RINGSIDE 1:30 PIP 0 RINGSIDE PTS YOU WIN! RUN IT BACK RETURN TO MENU FACE · —"
+    },
+    {
+     "tag": "12000ms",
+     "t": 12005,
+     "readyState": "interactive",
+     "hasBoxing": false,
+     "phase": null,
+     "status": "face · —",
+     "canvases": 3,
+     "resEntries": 4,
+     "resNames": [
+      "hands.js",
+      "face.js",
+      "scene.js",
+      "index.js"
+     ],
+     "visText": "THE ROOKIE · PIP'S CHALLENGER YOU STAM RINGSIDE 1:30 PIP 0 RINGSIDE PTS YOU WIN! RUN IT BACK RETURN TO MENU FACE · —"
+    },
+    {
+     "tag": "25000ms",
+     "t": 25014,
+     "readyState": "interactive",
+     "hasBoxing": false,
+     "phase": null,
+     "status": "face · —",
+     "canvases": 3,
+     "resEntries": 4,
+     "resNames": [
+      "hands.js",
+      "face.js",
+      "scene.js",
+      "index.js"
+     ],
+     "visText": "THE ROOKIE · PIP'S CHALLENGER YOU STAM RINGSIDE 1:30 PIP 0 RINGSIDE PTS YOU WIN! RUN IT BACK RETURN TO MENU FACE · —"
+    },
+    {
+     "tag": "45000ms",
+     "t": 45012,
+     "readyState": "complete",
+     "hasBoxing": true,
+     "phase": "fighting",
+     "status": "synthetic mode",
+     "canvases": 3,
+     "resEntries": 16,
+     "resNames": [
+      "fight.js",
+      "npc.js",
+      "fx.js",
+      "protoBoxer.js",
+      "entrance.js",
+      "assetManifest.json"
+     ],
+     "visText": "THE ROOKIE · BUBBLE'S CHALLENGER YOU STAM ROUND 1 / 3 1:23 BUBBLE JAB · SLIP ⟷ / GUARD R 0 RINGSIDE PTS OUCH −6 INCOMING"
+    },
+    {
+     "tag": "75000ms",
+     "t": 75018,
+     "readyState": "complete",
+     "hasBoxing": true,
+     "phase": "fighting",
+     "status": "synthetic mode",
+     "canvases": 3,
+     "resEntries": 16,
+     "resNames": [
+      "fight.js",
+      "npc.js",
+      "fx.js",
+      "protoBoxer.js",
+      "entrance.js",
+      "assetManifest.json"
+     ],
+     "visText": "THE ROOKIE · BUBBLE'S CHALLENGER YOU STAM ROUND 1 / 3 0:54 BUBBLE JAB · SLIP ⟷ / GUARD R 0 RINGSIDE PTS OUCH −6 INCOMING"
+    }
+   ],
+   "requests": [
+    {
+     "u": "boxing.html?notrack=1",
+     "t": 4
+    },
+    {
+     "u": "three.module.js",
+     "t": 1732
+    },
+    {
+     "u": "hands.js",
+     "t": 1733
+    },
+    {
+     "u": "face.js",
+     "t": 1733
+    },
+    {
+     "u": "scene.js",
+     "t": 1733
+    },
+    {
+     "u": "index.js",
+     "t": 1733
+    },
+    {
+     "u": "classic.js",
+     "t": 28785
+    },
+    {
+     "u": "game.js",
+     "t": 28786
+    },
+    {
+     "u": "audio.js",
+     "t": 28786
+    },
+    {
+     "u": "ring.js",
+     "t": 30237
+    },
+    {
+     "u": "fists.js",
+     "t": 30237
+    },
+    {
+     "u": "fight.js",
+     "t": 30237
+    },
+    {
+     "u": "npc.js",
+     "t": 30237
+    },
+    {
+     "u": "fx.js",
+     "t": 30237
+    },
+    {
+     "u": "protoBoxer.js",
+     "t": 30237
+    },
+    {
+     "u": "entrance.js",
+     "t": 30237
+    },
+    {
+     "u": "assetManifest.json",
+     "t": 33813
+    }
+   ],
+   "nav": "domcontentloaded @28786ms",
+   "verdict": null,
+   "requestsPerFile": {
+    "boxing.html?notrack=1": 1,
+    "three.module.js": 1,
+    "hands.js": 1,
+    "face.js": 1,
+    "scene.js": 1,
+    "index.js": 1,
+    "classic.js": 1,
+    "game.js": 1,
+    "audio.js": 1,
+    "ring.js": 1,
+    "fists.js": 1,
+    "fight.js": 1,
+    "npc.js": 1,
+    "fx.js": 1,
+    "protoBoxer.js": 1,
+    "entrance.js": 1,
+    "assetManifest.json": 1
+   },
+   "final": {
+    "phase": "fighting",
+    "status": "synthetic mode",
+    "cam": false,
+    "hands": null,
+    "handFiles": []
+   }
+  },
+  {
+   "name": "lineup",
+   "url": "http://127.0.0.1:8791/lineup.html",
+   "samples": [
+    {
+     "tag": "4000ms",
+     "t": 4004,
+     "readyState": "interactive",
+     "hasBoxing": false,
+     "phase": null,
+     "status": null,
+     "canvases": 1,
+     "resEntries": 4,
+     "resNames": [
+      "css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@700;800&family=Caveat:wght@600;700&family=Patrick+Hand&display=swap",
+      "engine.mjs",
+      "three.module.js",
+      "protoBoxer.js"
+     ],
+     "visText": "BEST 0 PTS 0 WINS 0 KOS AVG KO — ← MENU TONIGHT'S EXHIBITION BOUT BUBBLE sprout crown · springy stance BUBBLE wraps thei"
+    },
+    {
+     "tag": "12000ms",
+     "t": 12004,
+     "readyState": "complete",
+     "hasBoxing": false,
+     "phase": null,
+     "status": null,
+     "canvases": 1,
+     "resEntries": 4,
+     "resNames": [
+      "css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@700;800&family=Caveat:wght@600;700&family=Patrick+Hand&display=swap",
+      "engine.mjs",
+      "three.module.js",
+      "protoBoxer.js"
+     ],
+     "visText": "BEST 0 PTS 0 WINS 0 KOS AVG KO — ← MENU TONIGHT'S EXHIBITION BOUT BUBBLE sprout crown · springy stance BUBBLE wraps thei"
+    },
+    {
+     "tag": "25000ms",
+     "t": 25018,
+     "readyState": "complete",
+     "hasBoxing": false,
+     "phase": null,
+     "status": null,
+     "canvases": 1,
+     "resEntries": 4,
+     "resNames": [
+      "css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@700;800&family=Caveat:wght@600;700&family=Patrick+Hand&display=swap",
+      "engine.mjs",
+      "three.module.js",
+      "protoBoxer.js"
+     ],
+     "visText": "BEST 0 PTS 0 WINS 0 KOS AVG KO — ← MENU TONIGHT'S EXHIBITION BOUT BUBBLE sprout crown · springy stance BUBBLE wraps thei"
+    },
+    {
+     "tag": "45000ms",
+     "t": 45005,
+     "readyState": "complete",
+     "hasBoxing": false,
+     "phase": null,
+     "status": null,
+     "canvases": 1,
+     "resEntries": 4,
+     "resNames": [
+      "css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@700;800&family=Caveat:wght@600;700&family=Patrick+Hand&display=swap",
+      "engine.mjs",
+      "three.module.js",
+      "protoBoxer.js"
+     ],
+     "visText": "BEST 0 PTS 0 WINS 0 KOS AVG KO — ← MENU TONIGHT'S EXHIBITION BOUT BUBBLE sprout crown · springy stance BUBBLE wraps thei"
+    }
+   ],
+   "requests": [
+    {
+     "u": "lineup.html",
+     "t": 3
+    },
+    {
+     "u": "css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@700;800&family=Caveat:wght@600;700&family=Patrick+Hand&display=swap",
+     "t": 441
+    },
+    {
+     "u": "engine.mjs",
+     "t": 910
+    },
+    {
+     "u": "X7n64b87HvSqjb_WIi2yDCRwoQ_k7367_DWu89U.woff2",
+     "t": 911
+    },
+    {
+     "u": "wXKrE3kTposypRyd51jcAA.woff2",
+     "t": 911
+    },
+    {
+     "u": "Wnz6HAc5bAfYB2Q7ZjYY.woff2",
+     "t": 912
+    },
+    {
+     "u": "LDI1apSQOAYtSuYWp8ZhfYe8XsLL.woff2",
+     "t": 912
+    },
+    {
+     "u": "three.module.js",
+     "t": 2990
+    },
+    {
+     "u": "protoBoxer.js",
+     "t": 2990
+    }
+   ],
+   "nav": "domcontentloaded @910ms",
+   "verdict": null,
+   "requestsPerFile": {
+    "lineup.html": 1,
+    "css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@700;800&family=Caveat:wght@600;700&family=Patrick+Hand&display=swap": 1,
+    "engine.mjs": 1,
+    "X7n64b87HvSqjb_WIi2yDCRwoQ_k7367_DWu89U.woff2": 1,
+    "wXKrE3kTposypRyd51jcAA.woff2": 1,
+    "Wnz6HAc5bAfYB2Q7ZjYY.woff2": 1,
+    "LDI1apSQOAYtSuYWp8ZhfYe8XsLL.woff2": 1,
+    "three.module.js": 1,
+    "protoBoxer.js": 1
+   },
+   "final": {
+    "phase": null,
+    "status": null,
+    "cam": false,
+    "hands": null,
+    "handFiles": []
+   }
+  },
+  {
+   "name": "boxing-cam",
+   "url": "http://127.0.0.1:8791/boxing.html",
+   "samples": [
+    {
+     "tag": "8000ms",
+     "t": 8003,
+     "readyState": "complete",
+     "hasBoxing": true,
+     "phase": "countdown",
+     "status": "hands loading · 18 fps",
+     "canvases": 3,
+     "resEntries": 18,
+     "resNames": [
+      "fx.js",
+      "protoBoxer.js",
+      "entrance.js",
+      "track-worker.js",
+      "track-worker.js",
+      "assetManifest.json"
+     ],
+     "visText": "THE ROOKIE · BUBBLE'S CHALLENGER YOU STAM ROUND 1 / 3 1:30 BUBBLE ROUND 1 1 0 RINGSIDE PTS YOU WIN! RUN IT BACK RETURN T"
+    },
+    {
+     "tag": "20000ms",
+     "t": 20002,
+     "readyState": "complete",
+     "hasBoxing": true,
+     "phase": "fighting",
+     "status": "hands loading · 15 fps",
+     "canvases": 3,
+     "resEntries": 18,
+     "resNames": [
+      "fx.js",
+      "protoBoxer.js",
+      "entrance.js",
+      "track-worker.js",
+      "track-worker.js",
+      "assetManifest.json"
+     ],
+     "visText": "THE ROOKIE · BUBBLE'S CHALLENGER YOU STAM ROUND 1 / 3 1:20 BUBBLE COMBO ×2 — TRIPLE TAP — JAB · SLIP ⟷ / GUARD R 0 RINGS"
+    },
+    {
+     "tag": "35000ms",
+     "t": 35003,
+     "readyState": "complete",
+     "hasBoxing": true,
+     "phase": "fighting",
+     "status": "hands loading · 20 fps",
+     "canvases": 3,
+     "resEntries": 20,
+     "resNames": [
+      "entrance.js",
+      "track-worker.js",
+      "track-worker.js",
+      "assetManifest.json",
+      "vision_bundle.mjs",
+      "vision_wasm_internal.js"
+     ],
+     "visText": "THE ROOKIE · BUBBLE'S CHALLENGER YOU STAM ROUND 1 / 3 1:05 BUBBLE JAB · SLIP ⟷ / GUARD R 0 RINGSIDE PTS OUCH −6 INCOMING"
+    },
+    {
+     "tag": "55000ms",
+     "t": 55003,
+     "readyState": "complete",
+     "hasBoxing": true,
+     "phase": "lose",
+     "status": "hands loading · 26 fps",
+     "canvases": 3,
+     "resEntries": 20,
+     "resNames": [
+      "entrance.js",
+      "track-worker.js",
+      "track-worker.js",
+      "assetManifest.json",
+      "vision_bundle.mjs",
+      "vision_wasm_internal.js"
+     ],
+     "visText": "THE ROOKIE · BUBBLE'S CHALLENGER YOU STAM ROUND 1 / 3 0:51 BUBBLE TRIPLE TAP — UPPERCUT · SLIP ⟷ NO DUCK! 0 RINGSIDE PTS"
+    },
+    {
+     "tag": "75000ms",
+     "t": 75004,
+     "readyState": "complete",
+     "hasBoxing": true,
+     "phase": "lose",
+     "status": "hands loading · 17 fps",
+     "canvases": 3,
+     "resEntries": 20,
+     "resNames": [
+      "entrance.js",
+      "track-worker.js",
+      "track-worker.js",
+      "assetManifest.json",
+      "vision_bundle.mjs",
+      "vision_wasm_internal.js"
+     ],
+     "visText": "THE ROOKIE · BUBBLE'S CHALLENGER YOU STAM ROUND 1 / 3 0:51 BUBBLE TRIPLE TAP — UPPERCUT · SLIP ⟷ NO DUCK! 0 RINGSIDE PTS"
+    }
+   ],
+   "requests": [
+    {
+     "u": "boxing.html",
+     "t": 5
+    },
+    {
+     "u": "three.module.js",
+     "t": 1732
+    },
+    {
+     "u": "hands.js",
+     "t": 1732
+    },
+    {
+     "u": "face.js",
+     "t": 1732
+    },
+    {
+     "u": "scene.js",
+     "t": 1732
+    },
+    {
+     "u": "index.js",
+     "t": 1732
+    },
+    {
+     "u": "classic.js",
+     "t": 2257
+    },
+    {
+     "u": "game.js",
+     "t": 2257
+    },
+    {
+     "u": "audio.js",
+     "t": 2257
+    },
+    {
+     "u": "track-worker.js",
+     "t": 2343
+    },
+    {
+     "u": "track-worker.js",
+     "t": 2343
+    },
+    {
+     "u": "ring.js",
+     "t": 2640
+    },
+    {
+     "u": "fists.js",
+     "t": 2640
+    },
+    {
+     "u": "fight.js",
+     "t": 2641
+    },
+    {
+     "u": "npc.js",
+     "t": 2641
+    },
+    {
+     "u": "fx.js",
+     "t": 2641
+    },
+    {
+     "u": "protoBoxer.js",
+     "t": 2641
+    },
+    {
+     "u": "entrance.js",
+     "t": 2641
+    },
+    {
+     "u": "vision_bundle.mjs",
+     "t": 3226
+    },
+    {
+     "u": "vision_bundle.mjs",
+     "t": 3639
+    },
+    {
+     "u": "assetManifest.json",
+     "t": 3958
+    },
+    {
+     "u": "vision_wasm_internal.js",
+     "t": 6574
+    },
+    {
+     "u": "vision_wasm_internal.js",
+     "t": 6577
+    },
+    {
+     "u": "vision_wasm_internal.wasm",
+     "t": 11020
+    },
+    {
+     "u": "vision_wasm_internal.wasm",
+     "t": 11025
+    },
+    {
+     "u": "vision_bundle.mjs",
+     "t": 32345
+    },
+    {
+     "u": "vision_wasm_internal.js",
+     "t": 32368
+    },
+    {
+     "u": "vision_wasm_internal.wasm",
+     "t": 32396
+    },
+    {
+     "u": "vision_wasm_internal.wasm",
+     "t": 32404
+    }
+   ],
+   "nav": "domcontentloaded @2257ms",
+   "verdict": null,
+   "requestsPerFile": {
+    "boxing.html": 1,
+    "three.module.js": 1,
+    "hands.js": 1,
+    "face.js": 1,
+    "scene.js": 1,
+    "index.js": 1,
+    "classic.js": 1,
+    "game.js": 1,
+    "audio.js": 1,
+    "track-worker.js": 2,
+    "ring.js": 1,
+    "fists.js": 1,
+    "fight.js": 1,
+    "npc.js": 1,
+    "fx.js": 1,
+    "protoBoxer.js": 1,
+    "entrance.js": 1,
+    "vision_bundle.mjs": 3,
+    "assetManifest.json": 1,
+    "vision_wasm_internal.js": 3,
+    "vision_wasm_internal.wasm": 4
+   },
+   "final": {
+    "phase": "lose",
+    "status": "hands loading · 17 fps",
+    "cam": true,
+    "hands": null,
+    "handFiles": [
+     "http://127.0.0.1:8791/vendor/mediapipe/vision_bundle.mjs",
+     "http://127.0.0.1:8791/vendor/mediapipe/wasm/vision_wasm_internal.js"
+    ]
+   }
+  }
+ ],
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null
+}

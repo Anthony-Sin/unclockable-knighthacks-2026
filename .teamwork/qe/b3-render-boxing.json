@@ -1,0 +1,69 @@
+{
+ "tool": "qe-runner",
+ "name": "b3-render-boxing",
+ "url": "http://127.0.0.1:8791/boxing.html?vid=test-input.mp4",
+ "gpu": false,
+ "startedAt": "2026-10-11T04:55:30.419Z",
+ "gate": {
+  "load1": 9.55,
+  "load5": 8.33,
+  "memAvailMB": 8616,
+  "gpuUtilPct": 0,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 26228
+ },
+ "fps": {
+  "frames": 213,
+  "avgFps": 10.6,
+  "p50Ms": 66.7,
+  "p95Ms": 333.3,
+  "worstMs": 816.6,
+  "worst1sFps": 5.1
+ },
+ "ramMB": {
+  "peak": 1808,
+  "samples": [
+   1385,
+   1596,
+   1601,
+   1703,
+   1695,
+   1709,
+   1739,
+   1758,
+   1744,
+   1752,
+   1762,
+   1765,
+   1757,
+   1786,
+   1788,
+   1789,
+   1791,
+   1792,
+   1804,
+   1806,
+   1808,
+   1806,
+   1806
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 80205
+}

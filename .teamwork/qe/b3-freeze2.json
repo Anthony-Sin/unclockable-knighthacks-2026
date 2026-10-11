@@ -1,0 +1,41 @@
+{
+ "tool": "b3-freeze2",
+ "url": "http://127.0.0.1:8791/boxing.html?notrack=1",
+ "startedAt": "2026-10-11T04:59:50.094Z",
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "before": {
+  "rafN": 38,
+  "steps": 0,
+  "hidden": false,
+  "tl": 90
+ },
+ "after": {
+  "rafN": 38,
+  "steps": 0,
+  "hidden": true,
+  "markMax": 0,
+  "markN": 0,
+  "tl": 90,
+  "phase": "fighting"
+ },
+ "rafDelta": 0,
+ "stepDelta": 0,
+ "tlDrift": 0,
+ "afterFront": {
+  "rafN": 38,
+  "steps": 0,
+  "hidden": true,
+  "markMax": 0,
+  "markN": 0,
+  "tl": 90,
+  "phase": "fighting"
+ },
+ "rafDeltaPostFront": 0,
+ "stepDeltaPostFront": 0
+}
