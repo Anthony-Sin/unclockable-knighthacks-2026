@@ -1,0 +1,60 @@
+{
+ "checks": {
+  "scene.card-visible": {
+   "pass": true,
+   "extra": {
+    "pageerrors": [
+     "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+    ],
+    "cardShown": true,
+    "statusTxt": "ring failed to load",
+    "worldHidden": "hidden",
+    "rafTicks": 50
+   }
+  },
+  "game.status-note": {
+   "pass": true,
+   "extra": {
+    "pageerrors": [
+     "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+    ],
+    "cardShown": false,
+    "statusTxt": "ring ready — modules pending",
+    "worldHidden": "visible",
+    "rafTicks": 49
+   }
+  },
+  "game.raf-alive": {
+   "pass": true,
+   "extra": {
+    "pageerrors": [
+     "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+    ],
+    "cardShown": false,
+    "statusTxt": "ring ready — modules pending",
+    "worldHidden": "visible",
+    "rafTicks": 49
+   }
+  }
+ },
+ "subtests": {
+  "scene": {
+   "pageerrors": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+   ],
+   "cardShown": true,
+   "statusTxt": "ring failed to load",
+   "worldHidden": "hidden",
+   "rafTicks": 50
+  },
+  "game": {
+   "pageerrors": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+   ],
+   "cardShown": false,
+   "statusTxt": "ring ready — modules pending",
+   "worldHidden": "visible",
+   "rafTicks": 49
+  }
+ }
+}

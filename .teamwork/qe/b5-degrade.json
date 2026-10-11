@@ -1,0 +1,187 @@
+{
+ "checks": {
+  "control.gloves-draw": {
+   "pass": true,
+   "extra": {
+    "litPx": 16829
+   }
+  },
+  "scene.fail-card-shown": {
+   "pass": false,
+   "extra": {
+    "failed": [
+     "/shared/boxing/scene.js"
+    ],
+    "fatal": "TypeError: (intermediate value) is not a function",
+    "pageerrors": [
+     "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+    ]
+   }
+  },
+  "scene.no-pageerror": {
+   "pass": false,
+   "extra": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+   ]
+  },
+  "hands.page-alive-mouse-mode": {
+   "pass": true,
+   "extra": "fighting"
+  },
+  "hands.no-pageerror": {
+   "pass": true,
+   "extra": []
+  },
+  "mitts-index.page-alive": {
+   "pass": true,
+   "extra": "countdown"
+  },
+  "mitts-index.bare-fist-fallback": {
+   "pass": false,
+   "extra": {
+    "litPx": 0,
+    "control": 16829
+   }
+  },
+  "mitts-index.no-pageerror": {
+   "pass": true,
+   "extra": []
+  },
+  "mitts-classic.bare-fist-fallback": {
+   "pass": false,
+   "extra": {
+    "litPx": 0,
+    "control": 16829
+   }
+  },
+  "mitts-classic.no-pageerror": {
+   "pass": true,
+   "extra": []
+  },
+  "game.idle-ring-alive": {
+   "pass": false,
+   "extra": {
+    "failed": [
+     "/shared/boxing/game.js"
+    ],
+    "fatal": "TypeError: (intermediate value) is not a function",
+    "pageerrors": [
+     "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+    ]
+   }
+  },
+  "game.no-pageerror": {
+   "pass": false,
+   "extra": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+   ]
+  },
+  "audio.degrades-silent": {
+   "pass": true,
+   "extra": "countdown"
+  },
+  "audio.no-pageerror": {
+   "pass": false,
+   "extra": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/audio.js"
+   ]
+  },
+  "face.degrades": {
+   "pass": true,
+   "extra": "countdown"
+  },
+  "face.no-pageerror": {
+   "pass": true,
+   "extra": []
+  }
+ },
+ "subtests": {
+  "control": {
+   "failed": [],
+   "ms": 2210,
+   "phase": "countdown",
+   "litPx": 16829,
+   "pageerrors": [],
+   "consoleErrors": []
+  },
+  "scene-fail": {
+   "failed": [
+    "/shared/boxing/scene.js"
+   ],
+   "fatal": "TypeError: (intermediate value) is not a function",
+   "pageerrors": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+   ]
+  },
+  "hands-fail": {
+   "failed": [
+    "/shared/hands.js"
+   ],
+   "ms": 5829,
+   "phase": "fighting",
+   "peep": "camera live",
+   "punchesViaMouse": [],
+   "pageerrors": [],
+   "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "mitts-index-fail": {
+   "failed": [
+    "/shared/boxing/mitts/index.js"
+   ],
+   "ms": 1775,
+   "phase": "countdown",
+   "litPx": 0,
+   "pageerrors": [],
+   "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "mitts-classic-fail": {
+   "failed": [
+    "/shared/boxing/mitts/classic.js"
+   ],
+   "ms": 1760,
+   "phase": "countdown",
+   "litPx": 0,
+   "pageerrors": [],
+   "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "game-fail": {
+   "failed": [
+    "/shared/boxing/game.js"
+   ],
+   "fatal": "TypeError: (intermediate value) is not a function",
+   "pageerrors": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+   ]
+  },
+  "audio-fail": {
+   "failed": [
+    "/shared/boxing/audio.js"
+   ],
+   "ms": 477,
+   "phase": "countdown",
+   "pageerrors": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/audio.js"
+   ],
+   "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "face-fail": {
+   "failed": [
+    "/shared/face.js"
+   ],
+   "ms": 502,
+   "phase": "countdown",
+   "pageerrors": [],
+   "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+   ]
+  }
+ }
+}

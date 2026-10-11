@@ -1,0 +1,105 @@
+{
+ "checks": {
+  "hang.abort-at-apiMs": {
+   "pass": true,
+   "extra": {
+    "abortMs": 5025,
+    "apiMs": 5000
+   }
+  },
+  "hang.offline-tip-shown": {
+   "pass": true,
+   "extra": {
+    "tip": "Hands up, chin down — make them miss before you make them pay."
+   }
+  },
+  "hang.card-resolves": {
+   "pass": true,
+   "extra": {
+    "closeMs": 8042,
+    "phase": "fighting"
+   }
+  },
+  "hang.abort-observed-client-side": {
+   "pass": true,
+   "extra": [
+    {
+     "url": "/api/coach",
+     "err": "net::ERR_ABORTED",
+     "at": 1791703530118
+    }
+   ]
+  },
+  "502.quick-fallback-tip": {
+   "pass": true,
+   "extra": {
+    "tipMs": 35,
+    "tip": "Stop trading. Slip the jab, counter the hook, steal the round back."
+   }
+  },
+  "live-tip-shown": {
+   "pass": true,
+   "extra": {
+    "tip3": "MOVE YOUR HEAD OFF THE CENTERLINE"
+   }
+  }
+ },
+ "subtests": {
+  "hung": {
+   "fired": true,
+   "tipMsAfterFetchStart": 5025,
+   "tip": "Hands up, chin down — make them miss before you make them pay.",
+   "voiceAlsoHung": true
+  },
+  "fast502": {
+   "tipMs": 35,
+   "tip": "Stop trading. Slip the jab, counter the hook, steal the round back."
+  }
+ },
+ "reqFailed": [
+  {
+   "url": "/api/coach",
+   "err": "net::ERR_ABORTED",
+   "at": 1791703530118
+  }
+ ],
+ "errors": {
+  "pageerrors": [],
+  "consoleErrors": [
+   {
+    "text": "Failed to load resource: the server responded with a status of 502 (Bad Gateway)",
+    "benign": false
+   },
+   {
+    "text": "Failed to load resource: the server responded with a status of 501 (Not Implemented)",
+    "benign": false
+   },
+   {
+    "text": "Failed to load resource: the server responded with a status of 501 (Not Implemented)",
+    "benign": false
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [
+   {
+    "url": "http://127.0.0.1:8791/api/coach",
+    "error": "net::ERR_ABORTED",
+    "type": "fetch"
+   }
+  ],
+  "httpStatus": [
+   {
+    "url": "http://127.0.0.1:8791/api/coach",
+    "status": 502
+   },
+   {
+    "url": "http://127.0.0.1:8791/api/coach-voice",
+    "status": 501
+   },
+   {
+    "url": "http://127.0.0.1:8791/api/coach-voice",
+    "status": 501
+   }
+  ]
+ }
+}

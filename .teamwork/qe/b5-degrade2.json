@@ -1,0 +1,90 @@
+{
+ "checks": {
+  "scene.fail-card-visible": {
+   "pass": false,
+   "extra": {
+    "failed": [
+     "/shared/boxing/scene.js"
+    ],
+    "fatal": "TypeError: (intermediate value) is not a function\n    at evaluate (evaluate at file:///tmp/b5/degrade2.mjs:57:28, <anonymous>:3:87)\n    at #evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:347:23)\n    at async ExecutionContext.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:274:16)\n    at async IsolatedWorld.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/IsolatedWorld.js:102:16)\n    at async CdpFrame.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/api/Frame.js:359:20)\n    at async CdpPage.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/api/Page.js:826:20)\n    at async file:///tmp/b5/degrade2.mjs:57:17\n    at async sub (file:///tmp/b5/degrade2.mjs:28:17)\n    at async file:///tmp/b5/degrade2.mjs:47:3",
+    "pageerrors": [
+     "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+    ]
+   }
+  },
+  "scene.rejection-escapes-pageerror": {
+   "pass": true,
+   "extra": {
+    "pageerrors": [
+     "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+    ]
+   }
+  },
+  "game.idle-orbit-alive": {
+   "pass": false,
+   "extra": {
+    "failed": [
+     "/shared/boxing/game.js"
+    ],
+    "fatal": "TypeError: (intermediate value) is not a function\n    at evaluate (evaluate at file:///tmp/b5/degrade2.mjs:81:28, <anonymous>:3:87)\n    at #evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:347:23)\n    at async ExecutionContext.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:274:16)\n    at async IsolatedWorld.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/IsolatedWorld.js:102:16)\n    at async CdpFrame.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/api/Frame.js:359:20)\n    at async CdpPage.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/api/Page.js:826:20)\n    at async file:///tmp/b5/degrade2.mjs:81:17\n    at async sub (file:///tmp/b5/degrade2.mjs:28:17)\n    at async file:///tmp/b5/degrade2.mjs:76:3",
+    "pageerrors": [
+     "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+    ]
+   }
+  },
+  "game.rejection-escapes-pageerror": {
+   "pass": true,
+   "extra": {
+    "pageerrors": [
+     "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+    ]
+   }
+  },
+  "audio.rejection-escapes-pageerror": {
+   "pass": true,
+   "extra": {
+    "pageerrors": [
+     "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/audio.js"
+    ],
+    "unhandled": [
+     "Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/audio.js"
+    ]
+   }
+  }
+ },
+ "subtests": {
+  "scene-fail": {
+   "failed": [
+    "/shared/boxing/scene.js"
+   ],
+   "fatal": "TypeError: (intermediate value) is not a function\n    at evaluate (evaluate at file:///tmp/b5/degrade2.mjs:57:28, <anonymous>:3:87)\n    at #evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:347:23)\n    at async ExecutionContext.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:274:16)\n    at async IsolatedWorld.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/IsolatedWorld.js:102:16)\n    at async CdpFrame.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/api/Frame.js:359:20)\n    at async CdpPage.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/api/Page.js:826:20)\n    at async file:///tmp/b5/degrade2.mjs:57:17\n    at async sub (file:///tmp/b5/degrade2.mjs:28:17)\n    at async file:///tmp/b5/degrade2.mjs:47:3",
+   "pageerrors": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+   ]
+  },
+  "game-fail": {
+   "failed": [
+    "/shared/boxing/game.js"
+   ],
+   "fatal": "TypeError: (intermediate value) is not a function\n    at evaluate (evaluate at file:///tmp/b5/degrade2.mjs:81:28, <anonymous>:3:87)\n    at #evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:347:23)\n    at async ExecutionContext.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:274:16)\n    at async IsolatedWorld.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/IsolatedWorld.js:102:16)\n    at async CdpFrame.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/api/Frame.js:359:20)\n    at async CdpPage.evaluate (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/api/Page.js:826:20)\n    at async file:///tmp/b5/degrade2.mjs:81:17\n    at async sub (file:///tmp/b5/degrade2.mjs:28:17)\n    at async file:///tmp/b5/degrade2.mjs:76:3",
+   "pageerrors": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/game.js"
+   ]
+  },
+  "audio-fail": {
+   "failed": [
+    "/shared/boxing/audio.js"
+   ],
+   "phase": "countdown",
+   "unhandled": [
+    "Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/audio.js"
+   ],
+   "pageerrors": [
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8791/shared/boxing/audio.js"
+   ],
+   "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+   ]
+  }
+ }
+}

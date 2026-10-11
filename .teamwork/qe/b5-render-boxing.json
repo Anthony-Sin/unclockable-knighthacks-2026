@@ -1,0 +1,70 @@
+{
+ "tool": "qe-runner",
+ "name": "b5-render-boxing",
+ "url": "http://127.0.0.1:8791/boxing.html?notrack=1",
+ "gpu": false,
+ "gpuRequested": false,
+ "startedAt": "2026-10-11T07:48:37.715Z",
+ "gate": {
+  "load1": 9.66,
+  "load5": 11.84,
+  "memAvailMB": 8665,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 6079
+ },
+ "fps": {
+  "frames": 450,
+  "avgFps": 18,
+  "p50Ms": 50,
+  "p95Ms": 83.3,
+  "worstMs": 233.3,
+  "worst1sFps": 13.8
+ },
+ "ramMB": {
+  "peak": 1356,
+  "samples": [
+   1218,
+   1270,
+   1273,
+   1274,
+   1276,
+   1280,
+   1310,
+   1312,
+   1295,
+   1310,
+   1311,
+   1314,
+   1319,
+   1329,
+   1345,
+   1346,
+   1330,
+   1331,
+   1348,
+   1349,
+   1349,
+   1334,
+   1352,
+   1354,
+   1353,
+   1342,
+   1356,
+   1355
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 118949
+}

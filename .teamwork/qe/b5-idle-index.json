@@ -1,0 +1,252 @@
+{
+ "page": "index",
+ "checks": {
+  "heap-no-creep": {
+   "pass": true,
+   "extra": {
+    "first": 10.43,
+    "last": 10.58,
+    "drift": 0.15
+   }
+  },
+  "nodes-flat": {
+   "pass": true,
+   "extra": {
+    "a": 335,
+    "b": 327
+   }
+  },
+  "listeners-flat": {
+   "pass": true,
+   "extra": {
+    "a": 20,
+    "b": 20
+   }
+  }
+ },
+ "samples": [
+  {
+   "t": 15,
+   "rafPerSec": 13.7,
+   "p50": 65.2,
+   "p95": 104.7,
+   "heapMB": 10.43,
+   "nodes": 335,
+   "listeners": 20
+  },
+  {
+   "t": 30,
+   "rafPerSec": 10.3,
+   "p50": 97.3,
+   "p95": 108,
+   "heapMB": 10.45,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 45,
+   "rafPerSec": 10.4,
+   "p50": 95.9,
+   "p95": 104.2,
+   "heapMB": 10.54,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 60,
+   "rafPerSec": 10.4,
+   "p50": 96.1,
+   "p95": 103.3,
+   "heapMB": 10.53,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 75,
+   "rafPerSec": 10.4,
+   "p50": 95.4,
+   "p95": 103.4,
+   "heapMB": 10.54,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 90,
+   "rafPerSec": 10.4,
+   "p50": 95.7,
+   "p95": 103.1,
+   "heapMB": 10.54,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 105,
+   "rafPerSec": 10.4,
+   "p50": 96.2,
+   "p95": 105,
+   "heapMB": 10.56,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 120,
+   "rafPerSec": 10.3,
+   "p50": 96.1,
+   "p95": 104.9,
+   "heapMB": 10.55,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 135,
+   "rafPerSec": 9.6,
+   "p50": 101.6,
+   "p95": 122.4,
+   "heapMB": 10.55,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 151,
+   "rafPerSec": 10.1,
+   "p50": 96.5,
+   "p95": 119.1,
+   "heapMB": 10.57,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 166,
+   "rafPerSec": 10.2,
+   "p50": 96.6,
+   "p95": 110.3,
+   "heapMB": 10.57,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 181,
+   "rafPerSec": 10.3,
+   "p50": 95.8,
+   "p95": 104.7,
+   "heapMB": 10.57,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 196,
+   "rafPerSec": 9.2,
+   "p50": 96.2,
+   "p95": 116.7,
+   "heapMB": 10.58,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 211,
+   "rafPerSec": 4.9,
+   "p50": 91.7,
+   "p95": 685.7,
+   "heapMB": 10.57,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 226,
+   "rafPerSec": 10.9,
+   "p50": 69.8,
+   "p95": 114.7,
+   "heapMB": 10.58,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 241,
+   "rafPerSec": 10.3,
+   "p50": 96.7,
+   "p95": 104.4,
+   "heapMB": 10.58,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 256,
+   "rafPerSec": 10.4,
+   "p50": 95.9,
+   "p95": 105.5,
+   "heapMB": 10.58,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 271,
+   "rafPerSec": 10.4,
+   "p50": 95.1,
+   "p95": 101.4,
+   "heapMB": 10.58,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 286,
+   "rafPerSec": 10.4,
+   "p50": 95.4,
+   "p95": 103.8,
+   "heapMB": 10.59,
+   "nodes": 327,
+   "listeners": 20
+  },
+  {
+   "t": 301,
+   "rafPerSec": 10.4,
+   "p50": 96,
+   "p95": 102.1,
+   "heapMB": 10.58,
+   "nodes": 327,
+   "listeners": 20
+  }
+ ],
+ "finalUrl": "http://127.0.0.1:8791/index.html",
+ "subtests": {
+  "rafPerSecSeries": [
+   13.7,
+   10.3,
+   10.4,
+   10.4,
+   10.4,
+   10.4,
+   10.4,
+   10.3,
+   9.6,
+   10.1,
+   10.2,
+   10.3,
+   9.2,
+   4.9,
+   10.9,
+   10.3,
+   10.4,
+   10.4,
+   10.4,
+   10.4
+  ],
+  "rafNote": "rAF either throttled (~0/s) or steady-cheap; monotone growth = bad",
+  "vis": {
+   "t": 15,
+   "rafPerSec": 13.7,
+   "p50": 65.2,
+   "p95": 104.7,
+   "heapMB": 10.43,
+   "nodes": 335,
+   "listeners": 20
+  }
+ },
+ "errors": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "treeRssMB": 1206
+}

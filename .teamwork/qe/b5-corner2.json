@@ -1,0 +1,287 @@
+{
+ "checks": {
+  "J.no-fire-intro": {
+   "pass": true,
+   "extra": {
+    "phase": "intro",
+    "round": 0,
+    "php": 30,
+    "coachOn": false,
+    "rise": {
+     "active": false,
+     "got": 0,
+     "need": 0,
+     "x": 0.5,
+     "y": 0.5
+    },
+    "log": [
+     "countdown"
+    ]
+   }
+  },
+  "K.ko-above-threshold-no-corner": {
+   "pass": true,
+   "extra": {
+    "thrown": true,
+    "koSeen": "playerdown",
+    "phase": "playerdown",
+    "php": 0,
+    "coachOn": false
+   }
+  },
+  "L.no-fire-playerdown": {
+   "pass": true,
+   "extra": {
+    "phase": "playerdown",
+    "round": 1,
+    "php": 30,
+    "coachOn": false,
+    "rise": {
+     "active": true,
+     "got": 0,
+     "need": 3,
+     "x": 0.1817508615553379,
+     "y": 0.512076697582379
+    },
+    "log": [
+     "countdown",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "npc-punch",
+     "player-hit-taken",
+     "ko",
+     "rise"
+    ]
+   }
+  },
+  "M.revive-then-corner": {
+   "pass": true,
+   "extra": {
+    "revived": true,
+    "sawCard": true,
+    "phase": "countdown",
+    "php": 55.00000000000001,
+    "coachOn": true
+   }
+  },
+  "M.post-revive-bout-sane": {
+   "pass": true,
+   "extra": 55.00000000000001
+  },
+  "N.no-fire-npcdown": {
+   "pass": true,
+   "extra": {
+    "phase": "npcdown",
+    "round": 1,
+    "php": 30,
+    "coachOn": false,
+    "rise": {
+     "active": false,
+     "got": 0,
+     "need": 0,
+     "x": 0.5,
+     "y": 0.5
+    },
+    "log": [
+     "countdown",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "npc-punch",
+     "player-hit-taken",
+     "ko",
+     "rise",
+     "player-punch",
+     "rise-hit",
+     "player-punch",
+     "rise-hit",
+     "player-punch",
+     "rise-hit",
+     "revive",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "player-punch",
+     "player-hit",
+     "npc-hit",
+     "ko"
+    ]
+   }
+  },
+  "N.no-fire-win": {
+   "pass": true,
+   "extra": {
+    "phase": "win",
+    "round": 1,
+    "php": 30,
+    "coachOn": false,
+    "rise": {
+     "active": false,
+     "got": 0,
+     "need": 0,
+     "x": 0.5,
+     "y": 0.5
+    },
+    "log": [
+     "countdown",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "npc-punch",
+     "player-hit-taken",
+     "ko",
+     "rise",
+     "player-punch",
+     "rise-hit",
+     "player-punch",
+     "rise-hit",
+     "player-punch",
+     "rise-hit",
+     "revive",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "player-punch",
+     "player-hit",
+     "npc-hit",
+     "ko",
+     "win"
+    ]
+   }
+  },
+  "O.no-fire-lose": {
+   "pass": true,
+   "extra": {
+    "phase": "lose",
+    "round": 1,
+    "php": 30,
+    "coachOn": false,
+    "rise": {
+     "active": false,
+     "got": 0,
+     "need": 3,
+     "x": 0.6412756103277206,
+     "y": 0.46735065892338756
+    },
+    "log": [
+     "countdown",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "npc-punch",
+     "player-hit-taken",
+     "ko",
+     "rise",
+     "player-punch",
+     "rise-hit",
+     "player-punch",
+     "rise-hit",
+     "player-punch",
+     "rise-hit",
+     "revive",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "player-punch",
+     "player-hit",
+     "npc-hit",
+     "ko",
+     "win",
+     "countdown",
+     "countdown",
+     "countdown",
+     "round-start",
+     "npc-punch",
+     "player-hit-taken",
+     "ko",
+     "rise",
+     "rise-fade",
+     "rise-fade",
+     "rise-fade",
+     "lose"
+    ]
+   }
+  }
+ },
+ "subtests": {
+  "K_koBoundary": {
+   "thrown": true,
+   "koSeen": "playerdown",
+   "phase": "playerdown",
+   "round": 1,
+   "php": 0,
+   "coachOn": false,
+   "rise": {
+    "active": true,
+    "got": 0,
+    "need": 3,
+    "x": 0.1817508615553379,
+    "y": 0.512076697582379
+   },
+   "logTail": [
+    "countdown",
+    "countdown",
+    "countdown",
+    "round-start",
+    "npc-punch",
+    "player-hit-taken",
+    "ko",
+    "rise"
+   ]
+  },
+  "M_reviveCorner": {
+   "revived": true,
+   "sawCard": true,
+   "phase": "countdown",
+   "round": 2,
+   "php": 55.00000000000001,
+   "coachOn": true,
+   "rise": {
+    "active": false,
+    "got": 3,
+    "need": 3,
+    "x": 0.3599062418937683,
+    "y": 0.5496490986645222
+   },
+   "logTail": [
+    "player-hit-taken",
+    "ko",
+    "rise",
+    "player-punch",
+    "rise-hit",
+    "player-punch",
+    "rise-hit",
+    "player-punch",
+    "rise-hit",
+    "revive"
+   ]
+  }
+ },
+ "errors": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ }
+}

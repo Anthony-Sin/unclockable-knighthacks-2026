@@ -1,0 +1,842 @@
+{
+ "tool": "qe-e2e",
+ "startedAt": "2026-10-11T14:07:04.480Z",
+ "base": "http://127.0.0.1:8791",
+ "gate": {
+  "load1": 8.26,
+  "load5": 12.28,
+  "memAvailMB": 8222,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 15
+ },
+ "checks": [
+  {
+   "name": "A: boots clean in ?notrack=1",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "A: countdown → fighting transition",
+   "ok": true,
+   "info": "{\"phases\":[\"countdown\",\"fighting\"],\"round\":1,\"ev\":[\"countdown\",\"countdown\",\"round-start\"]}"
+  },
+  {
+   "name": "A: round-start bell rang at round 1",
+   "ok": true,
+   "info": "round=1"
+  },
+  {
+   "name": "A: player punches land — npc.hp drops + damage events",
+   "ok": true,
+   "info": "{\"swings\":1,\"hp0\":100,\"hp\":93,\"lastBlow\":{\"who\":\"player\",\"kind\":\"jab\",\"dmg\":7,\"result\":\"hit\",\"counter\":false,\"combo\":1,\"flurry\":false},\"ev\":[\"player-punch\",\"player-hit\",\"npc-hit\"]}"
+  },
+  {
+   "name": "A: lastBlow.dmg recorded on the landed blow",
+   "ok": true,
+   "info": "lastBlow={\"who\":\"player\",\"kind\":\"jab\",\"dmg\":7,\"result\":\"hit\",\"counter\":false,\"combo\":1,\"flurry\":false}"
+  },
+  {
+   "name": "A: telegraph → sway dodge → 'player-dodged'",
+   "ok": true,
+   "info": "{\"res\":\"dodged\",\"tries\":[\"jab/left→dodged\"]}"
+  },
+  {
+   "name": "A: sustained punching → KO ('ko' event + 'npcdown')",
+   "ok": true,
+   "info": "{\"swings\":11,\"phase\":\"npcdown\",\"playerHp\":100,\"npcHp\":0,\"ko\":true,\"score\":1328}"
+  },
+  {
+   "name": "A: 'npcdown' resolves to 'win' + 'YOU WIN!' endcard",
+   "ok": true,
+   "info": "{\"phase\":\"win\",\"win\":true,\"endOn\":true,\"title\":\"YOU WIN!\",\"score\":1328}"
+  },
+  {
+   "name": "A: THE TAPE — slip up, cells filled, verdict line resolved",
+   "ok": true,
+   "info": "{\"hidden\":false,\"npc\":\"VS BUBBLE\",\"cells\":[\"0\",\"0\",\"—\",\"0\",\"×11\",\"0\",\"0.0m\",\"KEYS\"],\"line\":\"One round of wasted effort. You swang at shadows, Bubble counted on phantom hands.\"}"
+  },
+  {
+   "name": "A: replay restart — fresh hp/score/round 1, no stale endcard",
+   "ok": true,
+   "info": "{\"phase\":\"fighting\",\"php\":100,\"pmax\":100,\"nhp\":100,\"nmax\":100,\"score\":0,\"round\":1,\"hash0\":85428,\"endOn\":false,\"ended\":false,\"hitAgain\":true,\"afterHp\":89}"
+  },
+  {
+   "name": "A: post-restart fight still lands hits",
+   "ok": true,
+   "info": "npc.hp=89/100"
+  },
+  {
+   "name": "A: in-page reset clears hp/score/combo/events/endcard",
+   "ok": true,
+   "info": "{\"before\":{\"nhp\":89,\"score\":55,\"dmg\":null,\"hash0\":85428,\"hashHit\":84566},\"clean0\":{\"phase\":\"intro\",\"php\":100,\"nhp\":100,\"score\":0,\"combo\":0,\"round\":0,\"events\":0,\"endOn\":false,\"ended\":false,\"dmg\":null,\"hashAfter\":85428},\"phase\":\"fighting\",\"hitAgain\":true,\"round2\":1}"
+  },
+  {
+   "name": "A: in-page reset clears the NPC damage wash",
+   "ok": true,
+   "info": "{\"dmg\":[null,null],\"hash\":[85428,84566,85428]}"
+  },
+  {
+   "name": "A: post-reset bout is a real round-1 fight again",
+   "ok": true,
+   "info": "{\"phase\":\"fighting\",\"hit\":true,\"round\":1}"
+  },
+  {
+   "name": "A: defenceless player gets KO'd → 'playerdown'",
+   "ok": true,
+   "info": "{\"phase\":\"playerdown\",\"ko\":true,\"php\":0}"
+  },
+  {
+   "name": "A: 'playerdown' resolves to 'lose' + lose endcard",
+   "ok": true,
+   "info": "{\"phase\":\"lose\",\"lose\":true,\"endOn\":true,\"loseCls\":true,\"title\":\"DOWN YOU GO!\"}"
+  },
+  {
+   "name": "A: game.reset() with endcard up clears endcard + ended flag",
+   "ok": true,
+   "info": "{\"endOn\":false,\"ended\":false,\"phase\":\"intro\",\"endOn0\":true}"
+  },
+  {
+   "name": "A: zero page errors through the whole fight",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "B: practice flag — ai:false + practice:true on the fight",
+   "ok": true,
+   "info": "practice=true ai=false"
+  },
+  {
+   "name": "B: practice — clock frozen while fighting",
+   "ok": true,
+   "info": "timeLeft 90 → 90"
+  },
+  {
+   "name": "B: practice — NPC hp floors, never KO, stays fighting",
+   "ok": true,
+   "info": "{\"hp\":35,\"phase\":\"fighting\"}"
+  },
+  {
+   "name": "B: tutorial coach element is on",
+   "ok": true,
+   "info": "tutorOn=true"
+  },
+  {
+   "name": "C: tutorial steps advance (≥2 stages seen)",
+   "ok": true,
+   "info": "{\"steps\":[\"block\",\"slip\",\"duck\",\"move\",\"perfect\"],\"ti\":6,\"passed\":[\"punch\",\"block\",\"slip\",\"duck\",\"move\",\"perfect\"]}"
+  },
+  {
+   "name": "C: every lesson passes through real inputs",
+   "ok": true,
+   "info": "{\"ti\":6,\"passed\":[\"punch\",\"block\",\"slip\",\"duck\",\"move\",\"perfect\"]}"
+  },
+  {
+   "name": "C: end card matches the run — READY only on a clean sweep",
+   "ok": true,
+   "info": "{\"title\":\"YOU'RE READY!\",\"sub\":\"BASICS · 6 / 6 NAILED\",\"replay\":\"Fight the champ →\",\"passed\":[\"punch\",\"block\",\"slip\",\"duck\",\"move\",\"perfect\"]}"
+  },
+  {
+   "name": "C: practice never let anyone hit the canvas",
+   "ok": true,
+   "info": "phase=fighting"
+  },
+  {
+   "name": "B/C: zero page errors in practice/tutorial mode",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "C: ?tutorial=1 engages the same coach mode",
+   "ok": true,
+   "info": "{\"on\":true,\"phase\":\"fighting\"}"
+  },
+  {
+   "name": "C: zero page errors on ?tutorial=1",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "C: partial run gets a corner quip — never 'YOU'RE READY!'",
+   "ok": true,
+   "info": "{\"done\":true,\"passed\":[\"punch\"],\"endOn\":true,\"title\":\"YOUR CORNER IS CONCERNED\",\"sub\":\"BASICS · 1 / 6 NAILED\",\"replay\":\"Fight anyway →\"}"
+  },
+  {
+   "name": "C: zero page errors on the partial run",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "D: lineup click on unlocked bubble stores proto:bubble",
+   "ok": true,
+   "info": "{\"pick\":\"proto:bubble\"}"
+  },
+  {
+   "name": "D: pick proto:bubble → bubble spawns + HUD names it",
+   "ok": true,
+   "info": "{\"v\":\"bubble\",\"id\":\"bubble\",\"name\":\"BUBBLE\",\"lbl\":\"BUBBLE\"}"
+  },
+  {
+   "name": "D: earned proto:bean (ko avg ≤ 2) → bean spawns",
+   "ok": true,
+   "info": "{\"v\":\"bean\",\"name\":\"BEAN\"}"
+  },
+  {
+   "name": "D: smuggled locked pick can't enter — falls back to an open fighter",
+   "ok": true,
+   "info": "{\"v\":\"bubble\",\"name\":\"BUBBLE\"}"
+  },
+  {
+   "name": "D: stale PROP id falls back — no prop in the ring",
+   "ok": true,
+   "info": "{\"v\":\"bubble\",\"kind\":\"proto\"}"
+  },
+  {
+   "name": "D: zero page errors across the hand-off",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "E: malformed __forceHands — zero pageerrors",
+   "ok": true,
+   "info": "16/16 inputs ran clean"
+  },
+  {
+   "name": "E: tracked hands always draw gloves",
+   "ok": true,
+   "info": "tracked min total=3502"
+  },
+  {
+   "name": "E: tracking loss leaves no ghost gloves (glove spots clear)",
+   "ok": true,
+   "info": "{\"pxOn\":{\"l\":2162,\"r\":2167},\"pxLost\":{\"l\":0,\"r\":0}}"
+  },
+  {
+   "name": "E: gloves return when tracking recovers",
+   "ok": true,
+   "info": "{\"pxBack\":{\"total\":3990,\"guard\":0}}"
+  },
+  {
+   "name": "F1: partial dropout — dropped glove clears, tracked glove stays",
+   "ok": true,
+   "info": "{\"both\":{\"l\":5381,\"r\":5386},\"l\":5382,\"r\":0}"
+  },
+  {
+   "name": "F1: returning glove redraws beside the surviving one",
+   "ok": true,
+   "info": "{\"l\":5382,\"r\":5385}"
+  },
+  {
+   "name": "F2: dropout mid-swing cancels the throw (no stale emit)",
+   "ok": true,
+   "info": "{\"mid\":\"recover\",\"stateAfter\":\"idle\",\"newPunches\":0}"
+  },
+  {
+   "name": "F2: in-grace re-entry emits the swing at most once, then re-arms",
+   "ok": true,
+   "info": "{\"mid\":\"recover\",\"emitted\":0,\"state\":\"idle\"}"
+  },
+  {
+   "name": "F3: glove re-entry snaps to the hand — no cross-screen glide",
+   "ok": true,
+   "info": "{\"before\":5153,\"cleared\":0,\"mid\":0,\"spot\":6049}"
+  },
+  {
+   "name": "F: zero page errors through dropout edges",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "G: reset spam ×20 — no leaked scene children, clean fresh bout",
+   "ok": true,
+   "info": "{\"children\":2,\"afterSpam\":{\"phase\":\"fighting\",\"round\":1,\"events\":0,\"punches\":0,\"roundStarts\":1,\"endOn\":false},\"sawWindup\":true,\"afterTelReset\":{\"phase\":\"intro\",\"tel\":null,\"act\":\"idle\"},\"telPhase2\":\"fighting\"}"
+  },
+  {
+   "name": "G: reset mid-telegraph kills the windup cleanly",
+   "ok": true,
+   "info": "{\"saw\":true,\"after\":{\"phase\":\"intro\",\"tel\":null,\"act\":\"idle\"},\"p2\":\"fighting\"}"
+  },
+  {
+   "name": "G: reset during down-count + mid-countdown — phases stay sane",
+   "ok": true,
+   "info": "{\"downPhase\":\"playerdown\",\"afterDownReset\":{\"phase\":\"intro\",\"php\":100},\"sawCountdown\":true,\"final\":{\"phase\":\"fighting\",\"round\":1,\"countOn\":false,\"endOn\":false},\"hitAgain\":true}"
+  },
+  {
+   "name": "G: post-spam bout lands a real hit",
+   "ok": true,
+   "info": "hit=true"
+  },
+  {
+   "name": "G: zero page errors through reset spam",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "H: corrupt boxing:npc values all fall back to BUBBLE, zero errors",
+   "ok": true,
+   "info": "[{\"pick\":\"{}\",\"r\":{\"v\":\"bubble\",\"kind\":\"proto\",\"name\":\"BUBBLE\"},\"errs\":0},{\"pick\":\"\\\"proto:bogus\\\"\",\"r\":{\"v\":\"bubble\",\"kind\":\"proto\",\"name\":\"BUBBLE\"},\"errs\":0},{\"pick\":\"\\u0000\\u0000junk�\",\"r\":{\"v\":\"bubble\",\"kind\":\"proto\",\"name\":\"BUBBLE\"},\"errs\":0},{\"pick\":\"xxxxxxxxxxxxxxxxxx…\",\"r\":{\"v\":\"bubble\",\"kind\":\"proto\",\"name\":\"BUBBLE\"},\"errs\":0}]"
+  },
+  {
+   "name": "H: corrupt stats/settings keys — boots + reaches fighting clean",
+   "ok": true,
+   "info": "{\"phase\":\"fighting\",\"errs\":[]}"
+  },
+  {
+   "name": "H: lineup renders with corrupt stats/pick storage",
+   "ok": true,
+   "info": "{\"lres\":{\"cells\":3,\"pick\":\"BUBBLE\"},\"errs\":[]}"
+  },
+  {
+   "name": "I: rAF stalled during the freeze and resumed after",
+   "ok": true,
+   "info": "{\"n1\":20,\"raf\":46}"
+  },
+  {
+   "name": "I: 3.5s stall did not drain the fight clock (dt clamped)",
+   "ok": true,
+   "info": "{\"before\":89.88333333333334,\"after\":87.71289333332084,\"phase\":\"fighting\"}"
+  },
+  {
+   "name": "I: npc transform stayed finite through the stall",
+   "ok": true,
+   "info": "npcY=0"
+  },
+  {
+   "name": "I: visibilitychange listener survives hidden↔visible flips",
+   "ok": true,
+   "info": "{\"ok\":true}"
+  },
+  {
+   "name": "I: zero page errors through the hidden-tab drill",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "J: glb rig survives dt torture + unknown-pose fallback",
+   "ok": true,
+   "info": "{\"kind\":\"glb\",\"finite\":true,\"rx\":-2.3099030563121954e-10}"
+  },
+  {
+   "name": "J: telegraph sprite falls back when glove parts are missing",
+   "ok": true,
+   "info": "{\"shown\":true,\"finite\":true}"
+  },
+  {
+   "name": "J: dispose() is idempotent + update(null ctx) does not throw",
+   "ok": true,
+   "info": "{\"gone\":true,\"nullCtx\":true}"
+  },
+  {
+   "name": "J: live npc — gloveColor css, dt torture, NaN setDamage safe",
+   "ok": true,
+   "info": "{\"gc\":\"#ff6b57\",\"finite\":true,\"strike\":true,\"badMats\":0}"
+  },
+  {
+   "name": "J: zero page errors through npc torture",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "K: round transition — countdown then round 2, bell + clock reset",
+   "ok": true,
+   "info": "{\"between\":{\"phase\":\"countdown\",\"round\":2},\"r2\":{\"phase\":\"fighting\",\"round\":2,\"tl\":89.91666666666667,\"rs\":1},\"koPhase\":\"npcdown\",\"sawKo\":true}"
+  },
+  {
+   "name": "K: KO in round 2 → npcdown",
+   "ok": true,
+   "info": "{\"ko\":true,\"phase\":\"npcdown\"}"
+  },
+  {
+   "name": "K: round-2 KO resolves to win",
+   "ok": true,
+   "info": "{\"phase\":\"win\"}"
+  },
+  {
+   "name": "K: zero page errors through multi-round",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "L: boxing:ko = primitive 5 → real KO records sanely + endcard shows",
+   "ok": true,
+   "info": "{\"nm\":\"primitive 5\",\"pre\":{\"phase\":\"npcdown\",\"dist\":0.95,\"koSeen\":true,\"ev\":[\"player-punch\",\"player-hit\"]},\"want\":{\"n\":1,\"sum\":1},\"rec\":{\"phase\":\"win\",\"ko\":{\"n\":1,\"sum\":1},\"endOn\":true,\"title\":\"YOU WIN!\"}}"
+  },
+  {
+   "name": "L: boxing:ko = \"x\" → real KO records sanely + endcard shows",
+   "ok": true,
+   "info": "{\"nm\":\"\\\"x\\\"\",\"pre\":{\"phase\":\"npcdown\",\"dist\":0.95,\"koSeen\":true,\"ev\":[\"player-punch\",\"player-hit\"]},\"want\":{\"n\":1,\"sum\":1},\"rec\":{\"phase\":\"win\",\"ko\":{\"n\":1,\"sum\":1},\"endOn\":true,\"title\":\"YOU WIN!\"}}"
+  },
+  {
+   "name": "L: boxing:ko = {n:\"a\"} → real KO records sanely + endcard shows",
+   "ok": true,
+   "info": "{\"nm\":\"{n:\\\"a\\\"}\",\"pre\":{\"phase\":\"npcdown\",\"dist\":0.95,\"koSeen\":true,\"ev\":[\"player-punch\",\"player-hit\"]},\"want\":{\"n\":1,\"sum\":1},\"rec\":{\"phase\":\"win\",\"ko\":{\"n\":1,\"sum\":1},\"endOn\":true,\"title\":\"YOU WIN!\"}}"
+  },
+  {
+   "name": "L: boxing:ko = {n:1e308} → real KO records sanely + endcard shows",
+   "ok": true,
+   "info": "{\"nm\":\"{n:1e308}\",\"pre\":{\"phase\":\"npcdown\",\"dist\":0.95,\"koSeen\":true,\"ev\":[\"player-punch\",\"player-hit\"]},\"want\":{\"n\":1,\"sum\":1},\"rec\":{\"phase\":\"win\",\"ko\":{\"n\":1,\"sum\":1},\"endOn\":true,\"title\":\"YOU WIN!\"}}"
+  },
+  {
+   "name": "L: boxing:ko = valid {n:2,sum:5} → real KO records sanely + endcard shows",
+   "ok": true,
+   "info": "{\"nm\":\"valid {n:2,sum:5}\",\"pre\":{\"phase\":\"npcdown\",\"dist\":0.95,\"koSeen\":true,\"ev\":[\"player-punch\",\"player-hit\"]},\"want\":{\"n\":3,\"sum\":6},\"rec\":{\"phase\":\"win\",\"ko\":{\"n\":3,\"sum\":6},\"endOn\":true,\"title\":\"YOU WIN!\"}}"
+  },
+  {
+   "name": "L: zero page errors across 5 corrupt-stat KOs",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "M: intro/countdown held under waitForHands — no phase advance",
+   "ok": true,
+   "info": "{\"phase0\":\"countdown\",\"held\":{\"phase\":\"countdown\",\"waits\":39,\"cdOn\":true,\"cdRound\":\"FINDING YOUR HANDS\",\"cdN\":\"…\"}}"
+  },
+  {
+   "name": "M: countdown slot shows 'FINDING YOUR HANDS' while held",
+   "ok": true,
+   "info": "{\"phase\":\"countdown\",\"waits\":39,\"cdOn\":true,\"cdRound\":\"FINDING YOUR HANDS\",\"cdN\":\"…\"}"
+  },
+  {
+   "name": "M: countdown number frozen under the hold (dt=0 to fight.step)",
+   "ok": true,
+   "info": "{\"cd0\":{\"phase\":\"countdown\",\"cd\":3},\"held\":{\"phase\":\"countdown\",\"cd\":3,\"waits\":25,\"cdOn\":true,\"cdRound\":\"FINDING YOUR HANDS\",\"cdN\":\"…\"}}"
+  },
+  {
+   "name": "M: releasing waitForHands resumes → ROUND 1 bell + fighting",
+   "ok": true,
+   "info": "{\"phase\":\"fighting\",\"rs\":true,\"cdRound\":\"ROUND 1\",\"cdOn\":false}"
+  },
+  {
+   "name": "M: zero page errors through waitForHands injection",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "N: first bout resolves win + endcard latched",
+   "ok": true,
+   "info": "{\"n0\":{\"phase\":\"npcdown\",\"koSeen\":true,\"ev\":[\"player-punch\",\"player-hit\"]},\"n1\":{\"phase\":\"win\",\"endOn\":true,\"ended\":true}}"
+  },
+  {
+   "name": "N: same-tick reset+skipIntro → card + ended cleared on re-arm",
+   "ok": true,
+   "info": "{\"n2\":{\"phase\":\"intro\"},\"n3\":{\"phase\":\"countdown\",\"round\":1,\"endOn\":false,\"ended\":false}}"
+  },
+  {
+   "name": "N: fresh bout re-latches its own verdict — YOU WIN card again",
+   "ok": true,
+   "info": "{\"n4\":{\"phase\":\"npcdown\",\"koSeen\":true,\"ev\":[\"player-punch\",\"player-hit\"]},\"n5\":{\"phase\":\"win\",\"endOn\":true,\"ended\":true,\"title\":\"YOU WIN!\"}}"
+  },
+  {
+   "name": "N: zero page errors through same-tick re-arm",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "O: boots clean under corrupt audio/stats storage",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "O: master gain finite at the .8 default (NaN volume rejected)",
+   "ok": true,
+   "info": "{\"n\":7,\"v\":0.800000011920929}"
+  },
+  {
+   "name": "O: win with corrupt stats → endcard BEST sane + stored values finite",
+   "ok": true,
+   "info": "{\"o1\":{\"phase\":\"npcdown\",\"koSeen\":true,\"ev\":[\"player-punch\",\"player-hit\"]},\"o2\":{\"phase\":\"win\",\"sub\":\"BUBBLE DEFEATED · 535 PTS · BEST 535\",\"best\":535,\"wins\":1,\"score\":535}}"
+  },
+  {
+   "name": "O: zero page errors through corrupt-audio bout",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "P: injected-manifest shapes resolve to a fighter — never throw",
+   "ok": true,
+   "info": "[[\"candidates:\\\"oops\\\"\",\"proto\",\"bubble\"],[\"candidates:{}\",\"proto\",\"bubble\"],[\"candidates:null\",\"proto\",\"bubble\"],[\"manifest:7\",\"proto\",\"bubble\"],[\"entries:[null,5,\\\"x\\\"]\",\"proto\",\"bubble\"],[\"glb-entry-no-path\",\"proto\",\"bubble\"],[\"prop-only-pick\",\"proto\",\"bubble\"],[\"valid-glb-control\",\"glb\",\"bg\"]]"
+  },
+  {
+   "name": "P: frozen ctx.npc through telegraph→punch stays clean",
+   "ok": true,
+   "info": "{\"frozen\":true}"
+  },
+  {
+   "name": "P: api.kick replaced by primitive → re-seated, no throw",
+   "ok": true,
+   "info": "{\"kick\":true}"
+  },
+  {
+   "name": "P: dispose mid-telegraph → dead api is a true no-op",
+   "ok": true,
+   "info": "{\"disp\":true}"
+  },
+  {
+   "name": "P: dt torture at action boundaries keeps transforms finite",
+   "ok": true,
+   "info": "{\"dt\":true}"
+  },
+  {
+   "name": "P: zero page errors through npc residual torture (1 expected GLB 404)",
+   "ok": true,
+   "info": "unexpected=[] glb404s=1"
+  },
+  {
+   "name": "Q: boots clean in ?notrack=1&coach=1",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "Q: real hook lands hp 42 → ≤1/3 inside a live bout",
+   "ok": true,
+   "info": "{\"thrown\":true,\"hit\":true,\"hp\":30,\"phase\":\"fighting\"}"
+  },
+  {
+   "name": "Q: corner card rises at the damage trip",
+   "ok": true,
+   "info": "cardOn=true"
+  },
+  {
+   "name": "Q: corner deals round-2 countdown patched to cornerHeal (never full)",
+   "ok": true,
+   "info": "{\"phase\":\"countdown\",\"php\":55.00000000000001,\"nhp\":100,\"score\":0,\"combo\":0,\"round\":2,\"tl\":90,\"cd\":0,\"act\":\"idle\",\"actT\":0,\"nx\":0,\"nz\":-0.4,\"gy\":0,\"stam\":1,\"logN\":2,\"evN\":0}"
+  },
+  {
+   "name": "Q: cornerHold freezes the WHOLE bout — digest identical across 1.6s",
+   "ok": true,
+   "info": "{\"a\":{\"phase\":\"countdown\",\"php\":55.00000000000001,\"nhp\":100,\"score\":0,\"combo\":0,\"round\":2,\"tl\":90,\"cd\":0,\"act\":\"idle\",\"actT\":0,\"nx\":0,\"nz\":-0.4,\"gy\":0,\"stam\":1,\"logN\":2,\"evN\":0},\"b\":{\"phase\":\"countdown\",\"php\":55.00000000000001,\"nhp\":100,\"score\":0,\"combo\":0,\"round\":2,\"tl\":90,\"cd\":0,\"act\":\"idle\",\"actT\":0,\"nx\":0,\"nz\":-0.4,\"gy\":0,\"stam\":1,\"logN\":2,\"evN\":0}}"
+  },
+  {
+   "name": "Q: coach timer bar drains while the fight is frozen",
+   "ok": true,
+   "info": "{\"bar1\":\"scaleX(0.798452)\",\"bar2\":\"scaleX(0.710469)\"}"
+  },
+  {
+   "name": "Q: coach card headlines the next round",
+   "ok": true,
+   "info": "ROUND 2 UP NEXT · PATCHED TO 55%"
+  },
+  {
+   "name": "Q: Enter skips the card → same bout resumes into round 2",
+   "ok": true,
+   "info": "{\"skipped\":true,\"resumed\":{\"phase\":\"fighting\",\"php\":55.00000000000001,\"nhp\":100,\"score\":0,\"combo\":0,\"round\":2,\"tl\":90,\"cd\":0,\"act\":\"idle\",\"actT\":0,\"nx\":0,\"nz\":-0.4,\"gy\":0,\"stam\":1,\"logN\":6,\"evN\":0}}"
+  },
+  {
+   "name": "Q: used corner cannot refire in the same bout",
+   "ok": true,
+   "info": "{\"on\":false,\"phase\":\"fighting\"}"
+  },
+  {
+   "name": "Q: fresh bout re-arms — corner fires again at ≤1/3",
+   "ok": true,
+   "info": "phase=intro cardOn=true"
+  },
+  {
+   "name": "Q: reset mid-card clears the card AND leaves no stuck hold",
+   "ok": true,
+   "info": "{\"midReset\":\"intro\",\"cleared\":true,\"afterReset\":{\"phase\":\"fighting\",\"php\":100,\"round\":1}}"
+  },
+  {
+   "name": "Q: hp 34 (>1/3) never trips the corner",
+   "ok": true,
+   "info": "cardOn=false"
+  },
+  {
+   "name": "Q: hp ≤1/3 trips on the boundary itself",
+   "ok": true,
+   "info": "cardOn=true"
+  },
+  {
+   "name": "Q: KO through the rope → 'playerdown'→'lose', no corner card, sane order",
+   "ok": true,
+   "info": "{\"ok\":true,\"downPhase\":\"playerdown\",\"phase1\":\"lose\",\"seenCard\":false,\"ev\":[\"ko\",\"rise\",\"lose\"]}"
+  },
+  {
+   "name": "Q: 'Gloves up' button releases the card into a live round",
+   "ok": true,
+   "info": "{\"btnCard\":true,\"btnBack\":\"fighting\"}"
+  },
+  {
+   "name": "Q: unsent card expires inside the hold window and play resumes",
+   "ok": true,
+   "info": "{\"autoCard\":true,\"autoOff\":true,\"holdMs\":8700,\"autoBack\":{\"phase\":\"fighting\",\"round\":2}}"
+  },
+  {
+   "name": "Q: winning the bout never corners — 'npcdown'→'win' clean",
+   "ok": true,
+   "info": "{\"ko\":true,\"cardDuringDown\":false,\"phase\":\"win\",\"cardNow\":false}"
+  },
+  {
+   "name": "Q: zero page errors across the whole cornerHold section",
+   "ok": true,
+   "info": "unexpected=[] api5xx=0"
+  },
+  {
+   "name": "Q: ?coach=0 — no card even on the ropes",
+   "ok": true,
+   "info": "{\"on\":false,\"phase\":\"fighting\",\"hp\":30}"
+  },
+  {
+   "name": "Q: ?coach=0 boot stays error-free",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "R: corner card still rises with a wedged coach fetch",
+   "ok": true,
+   "info": "cardOn=true"
+  },
+  {
+   "name": "R: hanging fetch aborts ≈apiMs and the canned corner tip lands inside the hold",
+   "ok": true,
+   "info": "{\"tipDelayMs\":4439,\"tip\":\"Hands up, chin down — make them miss before you make them pa\"}"
+  },
+  {
+   "name": "R: AbortController fired the abort — one call, settled, ≈apiMs",
+   "ok": true,
+   "info": "{\"nCalls\":1,\"aborted\":true,\"settled\":true,\"ms\":5003,\"acAborted\":true}"
+  },
+  {
+   "name": "R: card closes inside the hold and play resumes patched",
+   "ok": true,
+   "info": "{\"holdMs\":8050,\"phase\":\"fighting\",\"php\":55}"
+  },
+  {
+   "name": "R: reset mid-fetch — abort still lands, stale tip discarded by the guard",
+   "ok": true,
+   "info": "{\"card2\":true,\"nCalls\":2,\"call2\":{\"aborted\":true,\"ms\":5002},\"tip\":\"— your corner is shouting over the crowd —\",\"cardOn\":false,\"phase\":\"countdown\"}"
+  },
+  {
+   "name": "R: zero page errors through the wedged-coach cascade",
+   "ok": true,
+   "info": "unexpected=[] api5xx=0"
+  },
+  {
+   "name": "S: 'proto:bubble' → bubble (house pick) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"bubble\",\"name\":\"BUBBLE\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":89,\"hp0\":100,\"eyeY\":1.24}"
+  },
+  {
+   "name": "S: 'bubble' → bubble (bare alias resolves the same fighter) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"bubble\",\"name\":\"BUBBLE\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":89,\"hp0\":100,\"eyeY\":1.24}"
+  },
+  {
+   "name": "S: 'proto:bean' → bean (earned — koAvg 2.5 ≤ 3) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"bean\",\"name\":\"BEAN\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":90,\"hp0\":100,\"eyeY\":1.32}"
+  },
+  {
+   "name": "S: 'bean' → bean (boundary — koAvg 3 ≤ 3) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"bean\",\"name\":\"BEAN\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":90,\"hp0\":100,\"eyeY\":1.32}"
+  },
+  {
+   "name": "S: 'proto:bean' → bubble (locked — koAvg 4 > 3) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"bubble\",\"name\":\"BUBBLE\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":89,\"hp0\":100,\"eyeY\":1.24}"
+  },
+  {
+   "name": "S: 'proto:bean' → bubble (locked — no ko record at all) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"bubble\",\"name\":\"BUBBLE\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":89,\"hp0\":100,\"eyeY\":1.24}"
+  },
+  {
+   "name": "S: 'proto:sumo' → sumo (earned — koAvg 2 ≤ 2) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"sumo\",\"name\":\"SUMO\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":91,\"hp0\":100,\"eyeY\":1.67}"
+  },
+  {
+   "name": "S: 'proto:sumo' → bubble (locked — koAvg 2.5 > 2) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"bubble\",\"name\":\"BUBBLE\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":89,\"hp0\":100,\"eyeY\":1.24}"
+  },
+  {
+   "name": "S: 'boxing-gloves' → bubble (PROP set dressing, not a fighter) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"bubble\",\"name\":\"BUBBLE\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":89,\"hp0\":100,\"eyeY\":1.24}"
+  },
+  {
+   "name": "S: 'punching-bag' → bubble (PROP set dressing, not a fighter) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"bubble\",\"name\":\"BUBBLE\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":89,\"hp0\":100,\"eyeY\":1.24}"
+  },
+  {
+   "name": "S: 'totally-bogus' → bubble (stale/unknown id) — spawns, telegraphs, eats damage",
+   "ok": true,
+   "info": "{\"kind\":\"proto\",\"v\":\"bubble\",\"name\":\"BUBBLE\",\"phase\":\"fighting\",\"fin\":true,\"thrown\":true,\"tel\":true,\"resolved\":true,\"hit\":true,\"hp\":89,\"hp0\":100,\"eyeY\":1.24}"
+  },
+  {
+   "name": "S: bean goes down for the count — KO + npcdown",
+   "ok": true,
+   "info": "{\"v\":\"bean\",\"name\":\"BEAN\",\"phase\":\"npcdown\",\"ko\":true}"
+  },
+  {
+   "name": "S: sumo goes down for the count — KO + npcdown",
+   "ok": true,
+   "info": "{\"v\":\"sumo\",\"name\":\"SUMO\",\"phase\":\"npcdown\",\"ko\":true}"
+  },
+  {
+   "name": "S: bubble goes down for the count — KO + npcdown",
+   "ok": true,
+   "info": "{\"v\":\"bubble\",\"name\":\"BUBBLE\",\"phase\":\"npcdown\",\"ko\":true}"
+  },
+  {
+   "name": "S: zero page errors across the whole roster sweep",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "T: combo chain builds 1→4, per-hit score matches the damage table",
+   "ok": true,
+   "info": "[{\"i\":0,\"combo\":1,\"delta\":35,\"want\":35,\"counter\":false,\"ev\":2},{\"i\":1,\"combo\":2,\"delta\":63,\"want\":63,\"counter\":false,\"ev\":2},{\"i\":2,\"combo\":3,\"delta\":46,\"want\":46,\"counter\":false,\"ev\":2},{\"i\":3,\"combo\":4,\"delta\":80,\"want\":80,\"counter\":false,\"ev\":2}]"
+  },
+  {
+   "name": "T: combo expires past comboWindow — next hit is combo 1 again",
+   "ok": true,
+   "info": "{\"exp\":true}"
+  },
+  {
+   "name": "T: perfect-dodge counter — flag + counter event + 1.35× damage scored",
+   "ok": true,
+   "info": "{}"
+  },
+  {
+   "name": "T: counter window expires — later hit is plain again",
+   "ok": true,
+   "info": "{\"exp\":true}"
+  },
+  {
+   "name": "T: a whiffed glove scores nothing and leaves the chain alone",
+   "ok": true,
+   "info": "{\"whiff\":true}"
+  },
+  {
+   "name": "T: npc-blocked eats the blow — no score, chain untouched",
+   "ok": true,
+   "info": "{\"block\":true,\"blk\":{\"delta\":0,\"combo\":1,\"was\":1,\"blocked\":true,\"saw\":true,\"res\":\"blocked\"}}"
+  },
+  {
+   "name": "T: eating a hit zeroes combo AND counterT",
+   "ok": true,
+   "info": "{\"taken\":true}"
+  },
+  {
+   "name": "T: KO lands the +score.ko bonus on top of the hit",
+   "ok": true,
+   "info": "{\"delta\":535,\"score\":1106}"
+  },
+  {
+   "name": "T: real-time drain — exactly one player-hit per swing, score never doubles",
+   "ok": true,
+   "info": "[{\"dScore\":35,\"dHp\":7,\"combo\":1,\"ev\":{\"pHit\":1,\"nHit\":1}},{\"dScore\":55,\"dHp\":11,\"combo\":1,\"ev\":{\"pHit\":1,\"nHit\":1}},{\"dScore\":35,\"dHp\":7,\"combo\":1,\"ev\":{\"pHit\":1,\"nHit\":1}}]"
+  },
+  {
+   "name": "T: zero page errors through the score/combo lab",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "U: every broken GLB path falls back to a working proto fighter",
+   "ok": true,
+   "info": "[\"404-path:proto\",\"js-bytes:proto\",\"video-bytes:proto\",\"dir-path:proto\",\"null-path:proto\",\"num-path:proto\",\"obj-path:proto\",\"empty-path:proto\",\"dotdot:proto\",\"real-bag:glb\",\"empty-husk:proto\"]"
+  },
+  {
+   "name": "U: zero unexpected page errors across the GLB failure cascade",
+   "ok": true,
+   "info": "unexpected=[] benign404s=6"
+  }
+ ],
+ "probes": [
+  {
+   "name": "corner-event-drain",
+   "inLog": true,
+   "inGot": false,
+   "note": "fight.corner() _emits 'corner' from cornerTick (outside any step) — the next fight.step wipes state.events before the drain: the event can never reach hud()/audio. boxing.html FEED['corner'] is dead code."
+  },
+  {
+   "name": "coach-abort-journal",
+   "calls": 2,
+   "firstCallMs": 5003,
+   "tipDelayMs": 4439,
+   "holdMs": 8050,
+   "staleSecond": {
+    "aborted": true,
+    "ms": 5002
+   }
+  },
+  {
+   "name": "glb-cascade",
+   "rows": [
+    {
+     "id": "404-path",
+     "kind": "proto",
+     "v": "bubble",
+     "ok": true
+    },
+    {
+     "id": "js-bytes",
+     "kind": "proto",
+     "v": "bubble",
+     "ok": true
+    },
+    {
+     "id": "video-bytes",
+     "kind": "proto",
+     "v": "bubble",
+     "ok": true
+    },
+    {
+     "id": "dir-path",
+     "kind": "proto",
+     "v": "bubble",
+     "ok": true
+    },
+    {
+     "id": "null-path",
+     "kind": "proto",
+     "v": "bubble",
+     "ok": true
+    },
+    {
+     "id": "num-path",
+     "kind": "proto",
+     "v": "bubble",
+     "ok": true
+    },
+    {
+     "id": "obj-path",
+     "kind": "proto",
+     "v": "bubble",
+     "ok": true
+    },
+    {
+     "id": "empty-path",
+     "kind": "proto",
+     "v": "bubble",
+     "ok": true
+    },
+    {
+     "id": "dotdot",
+     "kind": "proto",
+     "v": "bubble",
+     "ok": true
+    },
+    {
+     "id": "real-bag",
+     "kind": "glb",
+     "ok": true
+    },
+    {
+     "id": "empty-husk",
+     "kind": "proto",
+     "ok": true
+    }
+   ]
+  }
+ ],
+ "fatal": null,
+ "durationMs": 206025
+}

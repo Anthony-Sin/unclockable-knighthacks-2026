@@ -1,0 +1,144 @@
+{
+ "tool": "b5-render-live",
+ "url": "http://127.0.0.1:8791/boxing.html?notrack=1&coach=1",
+ "startedAt": "2026-10-11T07:42:36.407Z",
+ "gate": {
+  "load1": 9.5,
+  "load5": 11.98,
+  "memAvailMB": 8671,
+  "gpuUtilPct": null,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 12132
+ },
+ "checks": [
+  {
+   "name": "boot → fighting phase reached (?notrack)",
+   "pass": true,
+   "detail": "gpu=\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\" weak=true"
+  },
+  {
+   "name": "shadowMap: needsUpdate fires ~every 3rd frame",
+   "pass": true,
+   "detail": "23/70 = 0.329"
+  },
+  {
+   "name": "shadowMap: never every-frame, never frozen",
+   "pass": true,
+   "detail": "23 sets / 70 frames"
+  },
+  {
+   "name": "pre-hold: real hit spawned live fx sprites",
+   "pass": true,
+   "detail": "18 live"
+  },
+  {
+   "name": "cornerHold: card up, phase frozen in countdown",
+   "pass": true,
+   "detail": "phase=countdown"
+  },
+  {
+   "name": "cornerHold: fight clock frozen (timeLeft identical)",
+   "pass": true,
+   "detail": "timeLeft=90 round=2"
+  },
+  {
+   "name": "cornerHold: crowd keeps animating wall-clock",
+   "pass": true,
+   "detail": "cy 0.1651,0.7608,1.5821 → 0.0224,0.7113,1.6141"
+  },
+  {
+   "name": "cornerHold: fx sprites frozen — zero drift (pos+opacity bit-identical)",
+   "pass": true,
+   "detail": "25→25 sprites held"
+  },
+  {
+   "name": "cornerHold: no confetti born during freeze",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "cornerHold: sign poses suppressed mid-hold (not over)",
+   "pass": true,
+   "detail": "entranceSign=idle"
+  },
+  {
+   "name": "hitFx: ink burst visible under 30-hit heavy↔light spam",
+   "pass": true,
+   "detail": "band αΣ 0→1772712"
+  },
+  {
+   "name": "OBSERVE: hit events delivered during freeze DO birth sprites (injected path)",
+   "pass": true,
+   "detail": "live 25→72 — latent, unreachable in production"
+  },
+  {
+   "name": "hitFx: no ink ghost accumulation after bursts end",
+   "pass": true,
+   "detail": "band αΣ 0→1772712→0"
+  },
+  {
+   "name": "hitFx: ctx.globalAlpha restored to 1 after burst spam",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "cornerHold: release → countdown → fighting resumes",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "cornerHold: frozen sprites drain after release + time",
+   "pass": true,
+   "detail": "7 live now (was 18)"
+  },
+  {
+   "name": "mitt: 0×0 / 4096² / missing roundRect / filter → draws or no-ops, never throws",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "name": "mitt: ctx state clean after 4096² + adversarial draws",
+   "pass": true,
+   "detail": "α=1,1 tf=matrix(1, 0, 0, 1, 0, 0)"
+  },
+  {
+   "name": "mitt: mitt actually inked pixels on 4096²",
+   "pass": true,
+   "detail": "ink=56597"
+  },
+  {
+   "name": "mitt: mid-path ctx throw unwinds save/alpha/transform",
+   "pass": true,
+   "detail": "threw=\"Error: boom\" α=1 tf=matrix(1, 0, 0, 1, 0, 0)"
+  },
+  {
+   "name": "entrance: rematch intro camera track finite",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "REPORT-EVIDENCE game.js: NaN dt → camera NaN forever (live)",
+   "pass": true,
+   "defect": true,
+   "detail": "a=null,null,null b=null,null,null"
+  }
+ ],
+ "aborted": null,
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleBenign": [
+   "Failed to load resource: the server responded with a status of 501 (Not Implemented)"
+  ],
+  "httpStatus": [
+   "501 http://127.0.0.1:8791/api/coach-voice"
+  ],
+  "requestfailed": []
+ },
+ "finishedAt": "2026-10-11T07:43:51.316Z",
+ "pass": 22,
+ "fail": 0,
+ "exitCode": 0
+}

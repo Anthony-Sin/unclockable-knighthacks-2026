@@ -1,0 +1,26 @@
+{
+ "checks": {
+  "coach0.never-fires": {
+   "pass": true,
+   "extra": {
+    "on": false,
+    "ph": "fighting"
+   }
+  },
+  "notrack-default.never-fires": {
+   "pass": true,
+   "extra": {
+    "on": false
+   }
+  }
+ },
+ "subtests": {
+  "coach0": {
+   "pageerrors": []
+  },
+  "notrackDefault": {
+   "pageerrors": []
+  }
+ },
+ "fatal": "Error: Navigating frame was detached\n    at <instance_members_initializer> (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/LifecycleWatcher.js:33:14)\n    at new LifecycleWatcher (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/LifecycleWatcher.js:37:16)\n    at CdpFrame.goto (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/Frame.js:150:29)\n    at CdpFrame.<anonymous> (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/util/decorators.js:101:27)\n    at CdpPage.goto (file:///home/ANT/unclockable-knighthacks-2026/spatial-objects/node_modules/puppeteer-core/lib/esm/puppeteer/api/Page.js:576:43)\n    at file:///tmp/b5/corner3.mjs:68:16"
+}

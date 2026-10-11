@@ -145,3 +145,50 @@ Bugs filed outside a worker's boundary, to be fixed by owner or orchestrator.
 - b4-e2e in-flight (89/90): only 'ghost gloves (glove spots clear)' fails —
   chevron-bleed into ±24px box at .3w on 390w viewport (chevron reaches
   ~74-110px; box starts at 93). Fix post-landing: ±18px boxes at .32/.68.
+
+## b5-pages — routed (report-only; evidence in .teamwork/reports/b5-pages.md)
+
+| sev | file:line | issue | repro/evidence |
+|-----|-----------|-------|----------------|
+| P3 | boxing.html (stylesheet) | CSS animates but no `prefers-reduced-motion` media query — same class b5 fixed on index/lineup | qe-static media-query check (note-only, foreign file) |
+| P3 | boxing.html:385 | non-literal `innerHTML` from storage-fed markup — DOM XSS class | qe-static bug-class check |
+| P4 | boxing.html:524 | raw `Number()`/`parseFloat` on `getItem` — NaN-leak class | qe-static bug-class check |
+| P4 | shared/boxing/fight.js:181–183 | `JSON.parse` outside try — corrupt storage kills the caller | qe-static bug-class check |
+| P4 | shared/boxing/npc.js:159 | unguarded `await import()` — failed chunk kills module pre-wiring | qe-static bug-class check |
+| P4 | shared/boxing/tutorial.js:124 | non-literal `innerHTML` — storage-fed markup class | qe-static bug-class check |
+| P4 | shared/boxing/mitts/index.js:10 | `'../../x'` literal resolves neither file- nor page-relative | qe-static path check |
+| P4 | lineup-mockups/_hero/engine.mjs:244 | `webglcontextrestored` restarts rAF unconditionally — pending rAF → doubled chain | qe-static loop check (mockup dir) |
+| — | gallery.html | VERIFIED: 6-line redirect stub — no gallery state/manifest/kb-nav/stats surface exists to exercise; if a real gallery page is expected it does not exist (scope question, not a defect) | file read + static suite |
+| — | grace-3 verdict-wait | VERIFIED WORKING — probes N–R: silent-dead worker resolves at bootMs*3, zero inline fetch before cap, boot worker kept for late adopt, late 'ready' adopts over inline + closes pending lm, stop() reaps all, 20 rapid cycles → 0 zombies | qe-static probes N–R both Hands+Face |
+
+## b5-fuzz — routed (report-only; evidence in .teamwork/reports/b5-fuzz.md)
+
+| sev | file:line | issue | repro/evidence |
+|-----|-----------|-------|----------------|
+| P3 | boxing.html:900 + :1482 + :893 | doubled 'corner' chime after fight.js wave-5 event-queue fix. `cornerTick` calls `fight.corner()` (:893) which emits `'corner'` into `state.events`; the manual `audio?.handleEvent('corner', st)` (:900) plays it same-frame, and the preserved queue now also delivers it via `out.events` → `audio.handleEvent` (:1482) next frame — two bell dings per halftime break. The manual call existed because the old unconditional `events.length = 0` on `step(0)` ate the event before the drain; that workaround is now redundant AND a double-play. Fix (owner's choice): delete the :900 manual call (event path is reliable now — that's the contract) or skip 'corner' in the :1482 drain loop. Verified by qe-fuzz 'corner() event survives held frames to the drain' + EVENT_SFX['corner']→'bell' (audio.js:41) | node test/qe-fuzz.mjs — wave-5 section 20 |
+
+- Note for integrator: the fight.js `step(0)` contract changed deliberately —
+  held frames now preserve pending events (was: unconditional clear that ate
+  'corner'). Everything else about single-consumer drain is unchanged
+  (`game.js:232-233` `splice` still owns delivery).
+
+## b5-pages routes — TRIAGED (orchestrator)
+
+- boxing.html `prefers-reduced-motion` gap → **FIXED** (CSS block added, :285)
+- boxing.html:385 innerHTML → **false positive** — `parkFail` interpolates literal caller strings only
+- boxing.html:524 raw `Number(getItem)` → **already guarded** (wave-3 `Number.isFinite` fix)
+- fight.js:181 JSON.parse → **stale note** — `_TDEF/_SDEF/_VDEF` static literals, can't throw
+- tutorial.js:124 innerHTML → **false positive** — literal `<i>` pips; dynamic via textContent
+- mitts/index.js:10 literal path → **stale** — `MITT_IDS` whitelist landed (b4-render)
+- npc.js:159 unguarded `await import` → **b5-e2e** (running — tryGlb caller check)
+- mockups engine.mjs → skipped (user sandbox)
+- gallery.html = 6-line redirect stub → **scope question for user**
+- grace-3 verdict-wait → **VERIFIED** (probes N–R, 20 rapid cycles, 0 zombies)
+
+## b5-fuzz routes — TRIAGED (orchestrator)
+
+- boxing.html:900 manual `audio.handleEvent('corner')` → **REAL + FIXED** —
+  `fight.corner()` emits the event at :507; the frame splice at game.js:232
+  + drain at boxing.html:1482 deliver it exactly once (b5-fuzz gated the
+  dt>0 queue-clear specifically so held frames deliver it). Manual call
+  removed — was a double-bell.

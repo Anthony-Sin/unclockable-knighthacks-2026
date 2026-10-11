@@ -83,16 +83,24 @@ export class Fight {
   constructor(opts = {}) // {playerHp=100, npcHp=100, npcName='PIP', roundLen=90}
   step(dt, inputs)
   // inputs = { punches:[...from FistTracker...], guard:{left,right},
-  //            sway, distance, }
+  //            sway, distance, riseAspect (overlay W/H),
+  //            riseTouch:[{x,y}…]  // glove palm spots — a glove pressed inside
+  //                                // the ring tags it too (entry edge only) }
   state = {
     phase:'intro'|'fighting'|'playerdown'|'npcdown'|'win'|'lose',
-    round, timeLeft,
+    round, timeLeft, bout   // bout increments in reset() — pages re-arm
+                          // per-bout state (corner.used) off it, immune to
+                          // frames that burn through intro/countdown
     player:{hp, stamina, score, status:'idle'|'punching'|'blocking'|'hurt'|'down', hurtT},
     npc:{hp, stamina, name, action:'idle'|'press'|'circle'|'retreat'|'windup'|'punch'|'block'|'hurt'|'down'|'celebrate', actionT, telegraph:null|{kind:'jab'|'hook'|'upper', t01}},
     events:[]  // drained by consumer each step:
                // 'player-punch' 'player-hit' 'player-miss' 'npc-hit' 'npc-blocked'
                // 'npc-punch' 'player-hit-taken' 'player-blocked' 'player-dodged'
                // 'ko' 'round-start' 'win' 'lose'
+               // 'rise' 'rise-hit' 'rise-miss' 'rise-fade' 'revive'  (get-up QTE)
+    rise:{active, need, got, t01, each01, x, y, r, depth}
+        // playerdown beat-the-count QTE — escalates per knockdown:
+        // need = riseTargets + (depth-1)·riseStepN, fuse −riseStepFuse, r −riseStepR
   }
   npcDir()   // → 'press'|'circle'|'retreat'|'hold' (drives RingSim)
   reset()

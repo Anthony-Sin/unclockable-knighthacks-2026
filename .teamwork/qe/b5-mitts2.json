@@ -1,0 +1,30 @@
+{
+ "variants": {
+  "control": {
+   "lit": {
+    "lit": 5526,
+    "w": 680,
+    "h": 510
+   },
+   "pageerrors": []
+  },
+  "mitts-fail": {
+   "lit": {
+    "lit": 0,
+    "w": 680,
+    "h": 510
+   },
+   "pageerrors": []
+  }
+ },
+ "checks": {
+  "control-draws-gloves": {
+   "pass": true,
+   "lit": 5526
+  },
+  "mitts-fail-bare-fist-visible": {
+   "pass": false,
+   "lit": 0
+  }
+ }
+}
