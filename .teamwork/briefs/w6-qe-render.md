@@ -5,21 +5,15 @@ at `/home/ANT/unclockable-knighthacks-2026/.teamwork/` first.
 
 ## Context
 - Repo: `/home/ANT/unclockable-knighthacks-2026/spatial-objects`; live
-  server `http://127.0.0.1:34149/` (never kill/restart).
+  server `http://127.0.0.1:8791/` (never kill/restart).
 - Tooling: `node test/qe-runner.mjs`, `node test/qe-static.mjs` — use
   them; don't edit test/*.
-- The user is ACTIVELY editing `boxing.html`, `index.html`,
-  `lineup.html`, `shared/track-worker.js`, `shared/boxing/mitts/classic.js`
-  (entrance-glove arm/cap work) and the `*-mockups/` dirs RIGHT NOW.
-  Those are HOT — read-only for you except mitts/classic.js where you
-  may fix only outright crashes/syntax breakage, never revert their work.
 - Round 1 fixed 20 bugs — find NEW ones.
 
 ## Your files (fix bugs freely)
 - `shared/boxing/fx.js`, `scene.js`, `entrance.js`,
   `shared/boxing/assetManifest.json`
-- `shared/boxing/mitts/index.js` (classic.js = read + crash-fixes only,
-  it is hot)
+- `shared/boxing/mitts/` (index.js + classic.js — you own both now)
 - `shared/boxing/ring.js` READ-ONLY (w4 owns its fixes — file bugs)
 
 ## Do

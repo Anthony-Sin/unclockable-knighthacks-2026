@@ -12,8 +12,9 @@ at `/home/ANT/unclockable-knighthacks-2026/.teamwork/` first.
   them (`npm run qe`, `npm run qe:static`, `npm run qe:res`).
 
 ## Your files (exclusive this round — fix bugs freely)
-- `shared/boxing/fight.js`, `fists.js`, `npc.js`, `protoBoxer.js`,
+- `shared/boxing/fight.js`, `fists.js`, `protoBoxer.js`,
   `tutorial.js`, `audio.js`, `ring.js` (RingSim = steering/pathing sim)
+- NOT yours: `npc.js` (w7 owns it) — fuzz findings there are report-only
 - `test/qe-fuzz.mjs` (new — durable fuzz suite)
 - `package.json` (ONLY you may edit it this round — append
   `node test/qe-fuzz.mjs` to the `test` script)

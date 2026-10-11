@@ -5,7 +5,7 @@ at `/home/ANT/unclockable-knighthacks-2026/.teamwork/` first.
 
 ## Context
 - Repo: `/home/ANT/unclockable-knighthacks-2026/spatial-objects`; live
-  server `http://127.0.0.1:34149/` (never kill/restart). Chromium at
+  server `http://127.0.0.1:8791/` (never kill/restart). Chromium at
   /usr/bin/chromium, puppeteer-core installed.
 - QE tooling exists — USE IT: `node test/qe-runner.mjs <url> --name n
   --seconds N [--gpu]` (self-gates on CPU/RAM/GPU; JSON → `.teamwork/qe/`).
