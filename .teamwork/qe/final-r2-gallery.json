@@ -1,0 +1,59 @@
+{
+ "tool": "qe-runner",
+ "name": "final-r2-gallery",
+ "url": "http://127.0.0.1:8791/gallery.html",
+ "gpu": false,
+ "startedAt": "2026-10-11T04:37:56.311Z",
+ "gate": {
+  "load1": 9.34,
+  "load5": 9.11,
+  "memAvailMB": 8819,
+  "gpuUtilPct": 0,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 54904
+ },
+ "fps": {
+  "frames": 93,
+  "avgFps": 6.1,
+  "p50Ms": 150,
+  "p95Ms": 216.7,
+  "worstMs": 250,
+  "worst1sFps": 4.5
+ },
+ "ramMB": {
+  "peak": 1456,
+  "samples": [
+   1372,
+   1444,
+   1456,
+   1456,
+   1453,
+   1454,
+   1454,
+   1454,
+   1456,
+   1453,
+   1445,
+   1445,
+   1445,
+   1440,
+   1445,
+   1445,
+   1446,
+   1446
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 73548
+}

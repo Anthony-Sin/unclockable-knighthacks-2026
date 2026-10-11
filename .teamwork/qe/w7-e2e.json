@@ -1,0 +1,199 @@
+{
+ "tool": "qe-e2e",
+ "startedAt": "2026-10-11T04:36:02.504Z",
+ "base": "http://127.0.0.1:8791",
+ "gate": {
+  "load1": 4.86,
+  "load5": 6.55,
+  "memAvailMB": 7977,
+  "gpuUtilPct": 0,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 26
+ },
+ "checks": [
+  {
+   "name": "A: boots clean in ?notrack=1",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "A: countdown → fighting transition",
+   "ok": true,
+   "info": "{\"phases\":[\"countdown\",\"fighting\"],\"round\":1,\"ev\":[\"countdown\",\"countdown\",\"round-start\"]}"
+  },
+  {
+   "name": "A: round-start bell rang at round 1",
+   "ok": true,
+   "info": "round=1"
+  },
+  {
+   "name": "A: player punches land — npc.hp drops + damage events",
+   "ok": true,
+   "info": "{\"swings\":1,\"hp0\":100,\"hp\":93,\"lastBlow\":{\"who\":\"player\",\"kind\":\"jab\",\"dmg\":7,\"result\":\"hit\",\"counter\":false,\"combo\":1,\"flurry\":false},\"ev\":[\"player-punch\",\"player-hit\",\"npc-hit\"]}"
+  },
+  {
+   "name": "A: lastBlow.dmg recorded on the landed blow",
+   "ok": true,
+   "info": "lastBlow={\"who\":\"player\",\"kind\":\"jab\",\"dmg\":7,\"result\":\"hit\",\"counter\":false,\"combo\":1,\"flurry\":false}"
+  },
+  {
+   "name": "A: telegraph → sway dodge → 'player-dodged'",
+   "ok": true,
+   "info": "{\"res\":\"dodged\",\"tries\":[\"hook/left→dodged\"]}"
+  },
+  {
+   "name": "A: sustained punching → KO ('ko' event + 'npcdown')",
+   "ok": true,
+   "info": "{\"swings\":11,\"phase\":\"npcdown\",\"playerHp\":100,\"npcHp\":0,\"ko\":true,\"score\":1269}"
+  },
+  {
+   "name": "A: 'npcdown' resolves to 'win' + 'YOU WIN!' endcard",
+   "ok": true,
+   "info": "{\"phase\":\"win\",\"win\":true,\"endOn\":true,\"title\":\"YOU WIN!\",\"score\":1269}"
+  },
+  {
+   "name": "A: replay restart — fresh hp/score/round 1, no stale endcard",
+   "ok": true,
+   "info": "{\"phase\":\"fighting\",\"php\":100,\"pmax\":100,\"nhp\":100,\"nmax\":100,\"score\":0,\"round\":1,\"hash0\":85428,\"endOn\":false,\"ended\":false,\"hitAgain\":true,\"afterHp\":93}"
+  },
+  {
+   "name": "A: post-restart fight still lands hits",
+   "ok": true,
+   "info": "npc.hp=93/100"
+  },
+  {
+   "name": "A: in-page reset clears hp/score/combo/events/endcard",
+   "ok": true,
+   "info": "{\"before\":{\"nhp\":93,\"score\":35,\"dmg\":null,\"hash0\":85428,\"hashHit\":84879},\"clean0\":{\"phase\":\"intro\",\"php\":100,\"nhp\":100,\"score\":0,\"combo\":0,\"round\":0,\"events\":0,\"endOn\":false,\"ended\":false,\"dmg\":null,\"hashAfter\":85428},\"phase\":\"fighting\",\"hitAgain\":true,\"round2\":1}"
+  },
+  {
+   "name": "A: in-page reset clears the NPC damage wash",
+   "ok": true,
+   "info": "{\"dmg\":[null,null],\"hash\":[85428,84879,85428]}"
+  },
+  {
+   "name": "A: post-reset bout is a real round-1 fight again",
+   "ok": true,
+   "info": "{\"phase\":\"fighting\",\"hit\":true,\"round\":1}"
+  },
+  {
+   "name": "A: defenceless player gets KO'd → 'playerdown'",
+   "ok": true,
+   "info": "{\"phase\":\"playerdown\",\"ko\":true,\"php\":0}"
+  },
+  {
+   "name": "A: 'playerdown' resolves to 'lose' + lose endcard",
+   "ok": true,
+   "info": "{\"phase\":\"lose\",\"lose\":true,\"endOn\":true,\"loseCls\":true,\"title\":\"DOWN GOES YOU\"}"
+  },
+  {
+   "name": "A: game.reset() with endcard up clears endcard + ended flag",
+   "ok": true,
+   "info": "{\"endOn\":false,\"ended\":false,\"phase\":\"intro\",\"endOn0\":true}"
+  },
+  {
+   "name": "A: zero page errors through the whole fight",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "B: practice flag — ai:false + practice:true on the fight",
+   "ok": true,
+   "info": "practice=true ai=false"
+  },
+  {
+   "name": "B: practice — clock frozen while fighting",
+   "ok": true,
+   "info": "timeLeft 90 → 90"
+  },
+  {
+   "name": "B: practice — NPC hp floors, never KO, stays fighting",
+   "ok": true,
+   "info": "{\"hp\":35,\"phase\":\"fighting\"}"
+  },
+  {
+   "name": "B: tutorial coach element is on",
+   "ok": true,
+   "info": "tutorOn=true"
+  },
+  {
+   "name": "C: tutorial steps advance (≥2 stages seen)",
+   "ok": true,
+   "info": "{\"steps\":[\"block\",\"slip\",\"perfect\"],\"ti\":4,\"passed\":[\"punch\",\"block\",\"slip\",\"perfect\"]}"
+  },
+  {
+   "name": "C: tutorial finishes on the 'YOU'RE READY!' card",
+   "ok": true,
+   "info": "{\"title\":\"YOU'RE READY!\",\"sub\":\"BASICS · 4 / 4 NAILED\",\"replay\":\"Fight the champ →\",\"passed\":[\"punch\",\"block\",\"slip\",\"perfect\"]}"
+  },
+  {
+   "name": "C: practice never let anyone hit the canvas",
+   "ok": true,
+   "info": "phase=fighting"
+  },
+  {
+   "name": "B/C: zero page errors in practice/tutorial mode",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "C: ?tutorial=1 engages the same coach mode",
+   "ok": true,
+   "info": "{\"on\":true,\"phase\":\"fighting\"}"
+  },
+  {
+   "name": "C: zero page errors on ?tutorial=1",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "D: lineup click on unlocked bubble stores proto:bubble",
+   "ok": true,
+   "info": "{\"pick\":\"proto:bubble\"}"
+  },
+  {
+   "name": "D: pick proto:bubble → bubble spawns + HUD names it",
+   "ok": true,
+   "info": "{\"v\":\"bubble\",\"id\":\"bubble\",\"name\":\"BUBBLE\",\"lbl\":\"BUBBLE\"}"
+  },
+  {
+   "name": "D: earned proto:bean (ko avg ≤ 2) → bean spawns",
+   "ok": true,
+   "info": "{\"v\":\"bean\",\"name\":\"BEAN\"}"
+  },
+  {
+   "name": "D: smuggled locked pick can't enter — falls back to an open fighter",
+   "ok": true,
+   "info": "{\"v\":\"bubble\",\"name\":\"BUBBLE\"}"
+  },
+  {
+   "name": "D: stale PROP id falls back — no prop in the ring",
+   "ok": true,
+   "info": "{\"v\":\"bubble\",\"kind\":\"proto\"}"
+  },
+  {
+   "name": "D: zero page errors across the hand-off",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "E: malformed __forceHands — zero pageerrors",
+   "ok": true,
+   "info": "16/16 inputs ran clean"
+  },
+  {
+   "name": "E: gloves never disappear — overlay has pixels for every input",
+   "ok": true,
+   "info": "min total=3976"
+  },
+  {
+   "name": "E: lost tracking drifts gloves to the neutral guard pose (A7)",
+   "ok": true,
+   "info": "{\"pxLost\":{\"total\":6257,\"guard\":7066},\"weak\":[]}"
+  }
+ ],
+ "fatal": null,
+ "durationMs": 41233
+}

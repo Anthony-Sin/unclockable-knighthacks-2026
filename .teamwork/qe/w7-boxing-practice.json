@@ -1,0 +1,64 @@
+{
+ "tool": "qe-runner",
+ "name": "w7-boxing-practice",
+ "url": "http://127.0.0.1:8791/boxing.html?practice=1",
+ "gpu": false,
+ "startedAt": "2026-10-11T04:32:00.746Z",
+ "gate": {
+  "load1": 9.7,
+  "load5": 8.85,
+  "memAvailMB": 9244,
+  "gpuUtilPct": 0,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 10173
+ },
+ "fps": {
+  "frames": 192,
+  "avgFps": 12.7,
+  "p50Ms": 66.7,
+  "p95Ms": 266.7,
+  "worstMs": 666.6,
+  "worst1sFps": 5.9
+ },
+ "ramMB": {
+  "peak": 1736,
+  "samples": [
+   1247,
+   1562,
+   1616,
+   1624,
+   1670,
+   1698,
+   1700,
+   1702,
+   1705,
+   1701,
+   1701,
+   1702,
+   1709,
+   1715,
+   1716,
+   1736,
+   1735,
+   1736
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 29476
+}

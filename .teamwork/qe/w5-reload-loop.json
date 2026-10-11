@@ -1,0 +1,199 @@
+{
+ "tool": "w5-reload",
+ "url": "http://127.0.0.1:8791/boxing.html?vid=test-input.mp4",
+ "cycles": 8,
+ "startedAt": "2026-10-11T04:05:00.921Z",
+ "samples": [
+  {
+   "usedJSHeapSize": 8753282,
+   "totalJSHeapSize": 18932746,
+   "domNodes": 66,
+   "logLen": 6,
+   "logDups": [
+    [
+     "countdown",
+     3
+    ]
+   ],
+   "phase": "fighting",
+   "npcName": "BUBBLE",
+   "windowKeys": 240,
+   "resourceEntries": 19,
+   "timers": null,
+   "cycle": 0,
+   "pageerrorsSoFar": 0,
+   "msSinceNav": 9571
+  },
+  {
+   "usedJSHeapSize": 8769435,
+   "totalJSHeapSize": 26016675,
+   "domNodes": 66,
+   "logLen": 6,
+   "logDups": [
+    [
+     "countdown",
+     3
+    ]
+   ],
+   "phase": "fighting",
+   "npcName": "BUBBLE",
+   "windowKeys": 240,
+   "resourceEntries": 19,
+   "timers": null,
+   "cycle": 1,
+   "pageerrorsSoFar": 0,
+   "msSinceNav": 10121
+  },
+  {
+   "usedJSHeapSize": 8811098,
+   "totalJSHeapSize": 28389686,
+   "domNodes": 66,
+   "logLen": 6,
+   "logDups": [
+    [
+     "countdown",
+     3
+    ]
+   ],
+   "phase": "fighting",
+   "npcName": "BUBBLE",
+   "windowKeys": 240,
+   "resourceEntries": 19,
+   "timers": null,
+   "cycle": 2,
+   "pageerrorsSoFar": 0,
+   "msSinceNav": 10328
+  },
+  {
+   "usedJSHeapSize": 8696009,
+   "totalJSHeapSize": 13199017,
+   "domNodes": 65,
+   "logLen": 4,
+   "logDups": [
+    [
+     "countdown",
+     3
+    ]
+   ],
+   "phase": "fighting",
+   "npcName": "BUBBLE",
+   "windowKeys": 240,
+   "resourceEntries": 19,
+   "timers": null,
+   "cycle": 3,
+   "pageerrorsSoFar": 0,
+   "msSinceNav": 10347
+  },
+  {
+   "usedJSHeapSize": 8684757,
+   "totalJSHeapSize": 18704041,
+   "domNodes": 64,
+   "logLen": 2,
+   "logDups": [
+    [
+     "countdown",
+     2
+    ]
+   ],
+   "phase": "countdown",
+   "npcName": "BUBBLE",
+   "windowKeys": 240,
+   "resourceEntries": 19,
+   "timers": null,
+   "cycle": 4,
+   "pageerrorsSoFar": 0,
+   "msSinceNav": 9773
+  },
+  {
+   "usedJSHeapSize": 8700394,
+   "totalJSHeapSize": 22910002,
+   "domNodes": 64,
+   "logLen": 2,
+   "logDups": [
+    [
+     "countdown",
+     2
+    ]
+   ],
+   "phase": "countdown",
+   "npcName": "BUBBLE",
+   "windowKeys": 240,
+   "resourceEntries": 19,
+   "timers": null,
+   "cycle": 5,
+   "pageerrorsSoFar": 0,
+   "msSinceNav": 9912
+  },
+  {
+   "usedJSHeapSize": 12721258,
+   "totalJSHeapSize": 30555338,
+   "domNodes": 64,
+   "logLen": 1,
+   "logDups": [],
+   "phase": "countdown",
+   "npcName": "BUBBLE",
+   "windowKeys": 240,
+   "resourceEntries": 17,
+   "timers": null,
+   "cycle": 6,
+   "pageerrorsSoFar": 0,
+   "msSinceNav": 11480
+  },
+  {
+   "usedJSHeapSize": 8724482,
+   "totalJSHeapSize": 12168398,
+   "domNodes": 64,
+   "logLen": 3,
+   "logDups": [
+    [
+     "countdown",
+     3
+    ]
+   ],
+   "phase": "countdown",
+   "npcName": "BUBBLE",
+   "windowKeys": 240,
+   "resourceEntries": 19,
+   "timers": null,
+   "cycle": 7,
+   "pageerrorsSoFar": 0,
+   "msSinceNav": 11300
+  },
+  {
+   "usedJSHeapSize": 12762245,
+   "totalJSHeapSize": 15363677,
+   "domNodes": 64,
+   "logLen": 1,
+   "logDups": [],
+   "phase": "countdown",
+   "npcName": "BUBBLE",
+   "windowKeys": 240,
+   "resourceEntries": 19,
+   "timers": null,
+   "cycle": 8,
+   "pageerrorsSoFar": 0,
+   "msSinceNav": 12631
+  }
+ ],
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   },
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null
+}

@@ -1,0 +1,66 @@
+{
+ "tool": "qe-runner",
+ "name": "w5-mode-tutorial",
+ "url": "http://127.0.0.1:8791/boxing.html?tutorial=1",
+ "gpu": false,
+ "startedAt": "2026-10-11T04:22:59.890Z",
+ "gate": {
+  "load1": 8.61,
+  "load5": 11.23,
+  "memAvailMB": 11652,
+  "gpuUtilPct": 0,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 16
+ },
+ "fps": {
+  "frames": 88,
+  "avgFps": 5.7,
+  "p50Ms": 66.7,
+  "p95Ms": 616.6,
+  "worstMs": 983.3,
+  "worst1sFps": 4.6
+ },
+ "ramMB": {
+  "peak": 1595,
+  "samples": [
+   1106,
+   1141,
+   1417,
+   1478,
+   1516,
+   1524,
+   1528,
+   1528,
+   1529,
+   1529,
+   1527,
+   1532,
+   1532,
+   1537,
+   1539,
+   1595,
+   1577,
+   1585,
+   1592,
+   1594
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 21441
+}

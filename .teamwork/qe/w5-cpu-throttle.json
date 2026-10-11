@@ -1,0 +1,87 @@
+{
+ "tool": "w5-cpu-throttle",
+ "url": "http://127.0.0.1:8791/boxing.html?vid=test-input.mp4",
+ "rate": 4,
+ "runS": 20,
+ "startedAt": "2026-10-11T04:14:00.942Z",
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [
+   {
+    "text": "INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+    "benign": true
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "domLoadedMs": 2265,
+ "poll1": {
+  "phase": "countdown",
+  "gameUp": true,
+  "timeLeft": 90,
+  "status": null
+ },
+ "poll2": {
+  "phase": "countdown",
+  "gameUp": true,
+  "timeLeft": 90,
+  "status": null
+ },
+ "poll3": {
+  "phase": "countdown",
+  "gameUp": true,
+  "timeLeft": 90,
+  "status": null
+ },
+ "poll4": {
+  "phase": "countdown",
+  "gameUp": true,
+  "timeLeft": 90,
+  "status": null
+ },
+ "poll5": {
+  "phase": "fighting",
+  "gameUp": true,
+  "timeLeft": 89.71103500000015,
+  "status": null
+ },
+ "poll6": {
+  "phase": "fighting",
+  "gameUp": true,
+  "timeLeft": 88.91048,
+  "status": null
+ },
+ "poll7": {
+  "phase": "fighting",
+  "gameUp": true,
+  "timeLeft": 88.1908950000003,
+  "status": null
+ },
+ "poll8": {
+  "phase": "fighting",
+  "gameUp": true,
+  "timeLeft": 87.5932350000004,
+  "status": null
+ },
+ "poll9": {
+  "phase": "fighting",
+  "gameUp": true,
+  "timeLeft": 86.81432500000051,
+  "status": null
+ },
+ "poll10": {
+  "phase": "fighting",
+  "gameUp": true,
+  "timeLeft": 86.16352500000049,
+  "status": null
+ },
+ "pollsAlive": "10/10",
+ "finalPhase": "fighting",
+ "afterUnthrottle": {
+  "phase": "fighting",
+  "gameUp": true
+ }
+}

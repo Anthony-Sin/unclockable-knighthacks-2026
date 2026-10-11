@@ -1,0 +1,126 @@
+{
+ "tool": "w5-gpu-ctx",
+ "url": "http://127.0.0.1:8791/boxing.html?vid=test-input.mp4",
+ "gpuFlags": "vulkan",
+ "startedAt": "2026-10-11T04:00:36.012Z",
+ "events": {
+  "pageerrors": [
+   "Error: Error creating WebGL context."
+  ],
+  "consoleErrors": [
+   {
+    "text": "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Web page caused context loss and was blocked",
+    "benign": false
+   },
+   {
+    "text": "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Web page caused context loss and was blocked",
+    "benign": false
+   },
+   {
+    "text": "THREE.WebGLRenderer: Error creating WebGL context.",
+    "benign": false
+   }
+  ],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "probes": [
+  {
+   "hasBoxing": false,
+   "hasGame": false,
+   "hasRen": false,
+   "phase": null,
+   "timeLeft": null,
+   "glLost": null,
+   "glRenderer": null,
+   "gpuName": null,
+   "weakGpu": null,
+   "handDelegate": null,
+   "faceDelegate": null,
+   "handsState": null,
+   "status": null,
+   "px": null,
+   "t": 6
+  },
+  {
+   "hasBoxing": false,
+   "hasGame": false,
+   "hasRen": false,
+   "phase": null,
+   "timeLeft": null,
+   "glLost": null,
+   "glRenderer": null,
+   "gpuName": null,
+   "weakGpu": null,
+   "handDelegate": null,
+   "faceDelegate": null,
+   "handsState": null,
+   "status": null,
+   "px": null,
+   "t": 9
+  },
+  {
+   "hasBoxing": false,
+   "hasGame": false,
+   "hasRen": false,
+   "phase": null,
+   "timeLeft": null,
+   "glLost": null,
+   "glRenderer": null,
+   "gpuName": null,
+   "weakGpu": null,
+   "handDelegate": null,
+   "faceDelegate": null,
+   "handsState": null,
+   "status": null,
+   "px": null,
+   "t": 12
+  },
+  {
+   "hasBoxing": false,
+   "hasGame": false,
+   "hasRen": false,
+   "phase": null,
+   "timeLeft": null,
+   "glLost": null,
+   "glRenderer": null,
+   "gpuName": null,
+   "weakGpu": null,
+   "handDelegate": null,
+   "faceDelegate": null,
+   "handsState": null,
+   "status": null,
+   "px": null,
+   "t": 15
+  },
+  {
+   "hasBoxing": false,
+   "hasGame": false,
+   "hasRen": false,
+   "phase": null,
+   "timeLeft": null,
+   "glLost": null,
+   "glRenderer": null,
+   "gpuName": null,
+   "weakGpu": null,
+   "handDelegate": null,
+   "faceDelegate": null,
+   "handsState": null,
+   "status": null,
+   "px": null,
+   "t": 18
+  }
+ ],
+ "gate": {
+  "load1": 2.1,
+  "load5": 1.56,
+  "memAvailMB": 11641,
+  "gpuUtilPct": 4,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 1988
+ },
+ "screenshot": "w5-gpu-ctx.png"
+}

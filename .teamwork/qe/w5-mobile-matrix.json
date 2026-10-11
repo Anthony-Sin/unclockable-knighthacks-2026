@@ -1,0 +1,46 @@
+{
+ "tool": "w5-mobile-matrix",
+ "viewport": {
+  "width": 390,
+  "height": 844,
+  "isMobile": true
+ },
+ "startedAt": "2026-10-11T04:14:47.917Z",
+ "pages": {
+  "index.html": {
+   "url": "http://127.0.0.1:8791/index.html",
+   "loadError": null,
+   "runMs": 17380,
+   "health": {
+    "canvases": 1,
+    "scrollW": 399,
+    "clientW": 390,
+    "horizOverflow": true,
+    "status": null
+   },
+   "pageerrors": [],
+   "consoleErrors": [],
+   "consoleWarnings": [],
+   "requestfailed": [],
+   "httpStatus": []
+  },
+  "lineup.html": {
+   "url": "http://127.0.0.1:8791/lineup.html",
+   "loadError": null,
+   "runMs": 16581,
+   "health": {
+    "canvases": 1,
+    "scrollW": 390,
+    "clientW": 390,
+    "horizOverflow": false,
+    "status": null
+   },
+   "pageerrors": [],
+   "consoleErrors": [],
+   "consoleWarnings": [],
+   "requestfailed": [],
+   "httpStatus": []
+  }
+ },
+ "aborted": null
+}

@@ -1,0 +1,60 @@
+{
+ "tool": "qe-runner",
+ "name": "w5-mode-notrack",
+ "url": "http://127.0.0.1:8791/boxing.html?notrack=1",
+ "gpu": false,
+ "startedAt": "2026-10-11T04:20:25.660Z",
+ "gate": {
+  "load1": 9.39,
+  "load5": 11.63,
+  "memAvailMB": 11578,
+  "gpuUtilPct": 0,
+  "gpuMemUsedMB": 2,
+  "ok": true,
+  "reasons": [],
+  "waitedMs": 45660
+ },
+ "fps": {
+  "frames": 85,
+  "avgFps": 5.5,
+  "p50Ms": 66.7,
+  "p95Ms": 566.6,
+  "worstMs": 683.3,
+  "worst1sFps": 3.4
+ },
+ "ramMB": {
+  "peak": 1278,
+  "samples": [
+   1121,
+   1188,
+   1234,
+   1262,
+   1263,
+   1267,
+   1267,
+   1268,
+   1269,
+   1266,
+   1267,
+   1267,
+   1270,
+   1265,
+   1270,
+   1275,
+   1277,
+   1277,
+   1278
+  ]
+ },
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "loadError": null,
+ "exitCode": 0,
+ "durationMs": 66953
+}

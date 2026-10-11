@@ -1,0 +1,54 @@
+{
+ "tool": "w5-handoff",
+ "startedAt": "2026-10-11T04:19:44.313Z",
+ "steps": [
+  {
+   "name": "initial",
+   "enterHref": "./boxing.html",
+   "enterText": "ENTER THE RING →",
+   "pick": "BUBBLE",
+   "npcLS": "proto:bubble",
+   "cardName": "BUBBLE",
+   "tabs": [
+    "cell sel",
+    "cell locked",
+    "cell locked"
+   ]
+  },
+  {
+   "name": "locked-tab-click",
+   "enterHref": null,
+   "enterText": "LOCKED (AVG KO ≤ R2)",
+   "npcLS": "proto:bubble",
+   "note": "SUMO is locked — drop your average KO to round 2",
+   "url": "http://127.0.0.1:8791/lineup.html"
+  },
+  {
+   "name": "select-bubble",
+   "enterHref": "./boxing.html",
+   "npcLS": "proto:bubble",
+   "pick": "BUBBLE"
+  },
+  {
+   "name": "enter-nav",
+   "url": "http://127.0.0.1:8791/boxing.html",
+   "ok": true
+  },
+  {
+   "name": "boxing-landed",
+   "url": "http://127.0.0.1:8791/boxing.html",
+   "phase": "countdown",
+   "npcName": "BUBBLE",
+   "npcLS": "proto:bubble",
+   "gameUp": true
+  }
+ ],
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null
+}

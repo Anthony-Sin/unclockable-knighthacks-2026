@@ -1,0 +1,205 @@
+{
+ "tool": "w5-edge-inputs",
+ "url": "http://127.0.0.1:8791/boxing.html?notrack=1",
+ "startedAt": "2026-10-11T04:12:52.921Z",
+ "cases": [
+  {
+   "name": "baseline-valid",
+   "injectErr": "ReferenceError: hand is not defined",
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "countdown",
+    "hp": 100,
+    "npcHp": 100,
+    "logLen": 2
+   }
+  },
+  {
+   "name": "nan-landmarks",
+   "injectErr": "ReferenceError: hand is not defined",
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "countdown",
+    "hp": 100,
+    "npcHp": 100,
+    "logLen": 3
+   }
+  },
+  {
+   "name": "giant-coords",
+   "injectErr": "ReferenceError: hand is not defined",
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 100,
+    "npcHp": 100,
+    "logLen": 4
+   }
+  },
+  {
+   "name": "infinity-span",
+   "injectErr": "ReferenceError: hand is not defined",
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 100,
+    "npcHp": 100,
+    "logLen": 4
+   }
+  },
+  {
+   "name": "two-left-hands",
+   "injectErr": "ReferenceError: hand is not defined",
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 100,
+    "npcHp": 100,
+    "logLen": 4
+   }
+  },
+  {
+   "name": "empty-lm",
+   "injectErr": "ReferenceError: hand is not defined",
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 100,
+    "npcHp": 100,
+    "logLen": 5
+   }
+  },
+  {
+   "name": "null-lm-entries",
+   "injectErr": "ReferenceError: mkLm is not defined",
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 94,
+    "npcHp": 100,
+    "logLen": 6
+   }
+  },
+  {
+   "name": "missing-fields",
+   "injectErr": null,
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 94,
+    "npcHp": 100,
+    "logLen": 6
+   }
+  },
+  {
+   "name": "hands-not-array",
+   "injectErr": null,
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 94,
+    "npcHp": 100,
+    "logLen": 6
+   }
+  },
+  {
+   "name": "forcehands-scalar",
+   "injectErr": null,
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 94,
+    "npcHp": 100,
+    "logLen": 6
+   }
+  },
+  {
+   "name": "forcehands-null-proto",
+   "injectErr": "ReferenceError: hand is not defined",
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 94,
+    "npcHp": 100,
+    "logLen": 6
+   }
+  },
+  {
+   "name": "nan-face",
+   "injectErr": null,
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 82,
+    "npcHp": 100,
+    "logLen": 8
+   }
+  },
+  {
+   "name": "face-missing-nose",
+   "injectErr": null,
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 82,
+    "npcHp": 100,
+    "logLen": 8
+   }
+  },
+  {
+   "name": "face-scalar",
+   "injectErr": null,
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 82,
+    "npcHp": 100,
+    "logLen": 8
+   }
+  },
+  {
+   "name": "huge-hand-burst",
+   "injectErr": "ReferenceError: hand is not defined\npptr:evaluate;file%3A%2F%2F%2Ftmp%2Fw5%2Fedge.mjs%3A118%3A22:4:7",
+   "pageerrors": [],
+   "consoleErrors": [],
+   "stateAfter": {
+    "phase": "fighting",
+    "hp": 76,
+    "npcHp": 100,
+    "logLen": 10
+   }
+  }
+ ],
+ "events": {
+  "pageerrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "requestfailed": [],
+  "httpStatus": []
+ },
+ "aborted": null,
+ "gameUp": true,
+ "glovePixels": {
+  "lit": 38464,
+  "w": 1360,
+  "h": 765
+ },
+ "finalState": {
+  "phase": "fighting",
+  "logLen": 10
+ }
+}

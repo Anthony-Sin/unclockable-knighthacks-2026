@@ -1,0 +1,57 @@
+{
+ "tool": "w5-index-overflow",
+ "url": "http://127.0.0.1:8791/index.html",
+ "viewport": "390x844",
+ "startedAt": "2026-10-11T04:17:13.527Z",
+ "offenders": {
+  "clientW": 390,
+  "scrollW": 399,
+  "items": [
+   {
+    "tag": "CANVAS",
+    "id": "ring-canvas",
+    "cls": "ring-canvas",
+    "left": 0,
+    "right": 399,
+    "w": 399,
+    "text": ""
+   },
+   {
+    "tag": "DIV",
+    "id": null,
+    "cls": "comic-halftone",
+    "left": -6.5,
+    "right": 396.5,
+    "w": 403,
+    "text": ""
+   },
+   {
+    "tag": "svg",
+    "id": null,
+    "cls": "",
+    "left": -6.5,
+    "right": 396.5,
+    "w": 403,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "id": null,
+    "cls": "tut-label",
+    "left": 261.4,
+    "right": 398.8,
+    "w": 137.4,
+    "text": "Start in Tutorial"
+   },
+   {
+    "tag": "DIV",
+    "id": "settings-modal",
+    "cls": "settings-overlay",
+    "left": 0,
+    "right": 399,
+    "w": 399,
+    "text": "SETTINGS\n        ✕\n      \n\n      \n      "
+   }
+  ]
+ }
+}
